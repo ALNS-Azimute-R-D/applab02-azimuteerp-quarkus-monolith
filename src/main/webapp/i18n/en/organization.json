@@ -1,0 +1,44 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "organization": {
+      "home": {
+        "title": "Organizations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Organization",
+        "createOrEditLabel": "Create or edit a Organization",
+        "notFound": "No Organizations found"
+      },
+      "created": "A new Organization is created with identifier {{ param }}",
+      "updated": "A Organization is updated with identifier {{ param }}",
+      "deleted": "A Organization is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Organization {{ id }}?"
+      },
+      "detail": {
+        "title": "Organization"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "businessCode": "Business Code",
+      "hierarchicalLevel": "Hierarchical Level",
+      "name": "Name",
+      "description": "Description",
+      "businessHandlerClazz": "Business Handler Clazz",
+      "mainContactPersonDetails": "Main Contact Person Details",
+      "technicalEnvironmentsDetails": "Technical Environments Details",
+      "commonCustomAttributesDetails": "Common Custom Attributes Details",
+      "organizationStatus": "Organization Status",
+      "activationStatus": "Activation Status",
+      "logoImg": "Logo Img",
+      "tenant": "Tenant",
+      "typeOfOrganization": "Type Of Organization",
+      "organizationParent": "Organization Parent",
+      "organizationDomainsList": "Organization Domains List",
+      "organizationAttributesList": "Organization Attributes List",
+      "businessUnitsList": "Business Units List",
+      "childrenOrganizationsList": "Children Organizations List",
+      "organizationRolesList": "Organization Roles List",
+      "organizationMembershipsList": "Organization Memberships List"
+    }
+  }
+}

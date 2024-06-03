@@ -1,0 +1,27 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "customerType": {
+      "home": {
+        "title": "Customer Types",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Customer Type erstellen",
+        "createOrEditLabel": "Customer Type erstellen oder bearbeiten",
+        "notFound": "Keine Customer Types gefunden"
+      },
+      "created": "Customer Type erstellt mit ID {{ param }}",
+      "updated": "Customer Type aktualisiert mit ID {{ param }}",
+      "deleted": "Customer Type gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Customer Type {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Customer Type"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "businessHandlerClazz": "Business Handler Clazz",
+      "customersList": "Customers List"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "annotations": {
+    "changelogDate": "20240603224650"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "businessCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "customerUserId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "placedDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "totalTaxValue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "totalDueValue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OrderStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "COMPLETED,PENDING,CANCELLED"
+    },
+    {
+      "fieldName": "invoiceId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "estimatedDeliveryDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Order",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "orderItem",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "ordersItemsList",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

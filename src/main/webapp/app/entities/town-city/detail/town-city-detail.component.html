@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (townCity) {
+      <div>
+        <h2 data-cy="townCityDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.townCity.detail.title">Town City</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ townCity.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.townCity.acronym">Acronym</span></dt>
+          <dd>
+            <span>{{ townCity.acronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.townCity.name">Name</span></dt>
+          <dd>
+            <span>{{ townCity.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.townCity.geoPolygonArea">Geo Polygon Area</span></dt>
+          <dd>
+            @if (townCity.geoPolygonArea) {
+              <div>
+                <a (click)="openFile(townCity.geoPolygonArea, townCity.geoPolygonAreaContentType)" jhiTranslate="entity.action.open"
+                  >Open</a
+                >
+                {{ townCity.geoPolygonAreaContentType }}, {{ byteSize(townCity.geoPolygonArea) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.townCity.province">Province</span></dt>
+          <dd>
+            @if (townCity.province) {
+              <div>
+                <a [routerLink]="['/province', townCity.province.id, 'view']">{{ townCity.province.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/town-city', townCity.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

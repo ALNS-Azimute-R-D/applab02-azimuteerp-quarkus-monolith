@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20240603222850"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "dto": "mapstruct",
+  "entityTableName": "tb_organization_member_role",
+  "fields": [
+    {
+      "fieldName": "joinedAt",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "OrganizationMemberRole",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "organizationMembership",
+      "otherEntityRelationshipName": "organizationMemberRolesList",
+      "relationshipName": "organizationMembership",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "organizationRole",
+      "otherEntityRelationshipName": "organizationMemberRolesList",
+      "relationshipName": "organizationRole",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl"
+}

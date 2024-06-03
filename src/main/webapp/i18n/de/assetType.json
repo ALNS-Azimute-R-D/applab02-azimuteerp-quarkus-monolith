@@ -1,0 +1,30 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "assetType": {
+      "home": {
+        "title": "Asset Types",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Asset Type erstellen",
+        "createOrEditLabel": "Asset Type erstellen oder bearbeiten",
+        "notFound": "Keine Asset Types gefunden"
+      },
+      "created": "Asset Type erstellt mit ID {{ param }}",
+      "updated": "Asset Type aktualisiert mit ID {{ param }}",
+      "deleted": "Asset Type gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Asset Type {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Asset Type"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "description": "Description",
+      "handlerClazzName": "Handler Clazz Name",
+      "extraDetails": "Extra Details",
+      "rawAssetsProcsTmps": "Raw Assets Procs Tmps",
+      "assets": "Assets"
+    }
+  }
+}

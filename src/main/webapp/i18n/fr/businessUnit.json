@@ -1,0 +1,30 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "businessUnit": {
+      "home": {
+        "title": "BusinessUnits",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Business Unit",
+        "createOrEditLabel": "Créer ou éditer un Business Unit",
+        "notFound": "Aucun Business Unit trouvé"
+      },
+      "created": "Un nouveau Business Unit a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Business Unit avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Business Unit avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Business Unit {{ id }} ?"
+      },
+      "detail": {
+        "title": "Business Unit"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "hierarchicalLevel": "Hierarchical Level",
+      "name": "Name",
+      "activationStatus": "Activation Status",
+      "organization": "Organization",
+      "businessUnitParent": "Business Unit Parent",
+      "childrenBusinessUnitsList": "Children Business Units List"
+    }
+  }
+}

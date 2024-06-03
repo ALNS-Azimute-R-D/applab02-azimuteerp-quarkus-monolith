@@ -1,0 +1,309 @@
+<div>
+  <h2 id="page-heading" data-cy="PersonHeading">
+    <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.home.title">People</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-person"
+        [routerLink]="['/person/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.home.createLabel">Create a new Person</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (people?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.home.notFound">No People found</span>
+    </div>
+  }
+
+  @if (people && people.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="firstName">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.firstName">First Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastName">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.lastName">Last Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="birthDate">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.birthDate">Birth Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="gender">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.gender">Gender</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeBI">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.codeBI">Code BI</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeNIF">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.codeNIF">Code NIF</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="streetAddress">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.streetAddress">Street Address</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="houseNumber">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.houseNumber">House Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="locationName">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.locationName">Location Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="postalCode">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.postalCode">Postal Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mainEmail">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.mainEmail">Main Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="landPhoneNumber">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.landPhoneNumber">Land Phone Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mobilePhoneNumber">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.mobilePhoneNumber">Mobile Phone Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="occupation">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.occupation">Occupation</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="preferredLanguage">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.preferredLanguage">Preferred Language</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="usernameInOAuth2">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.usernameInOAuth2">Username In O Auth 2</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="userIdInOAuth2">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.userIdInOAuth2">User Id In O Auth 2</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="extraDetails">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.extraDetails">Extra Details</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activationStatus">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.activationStatus">Activation Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="avatarImg">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.avatarImg">Avatar Img</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="typeOfPerson.code">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.typeOfPerson">Type Of Person</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="district.name">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.district">District</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="managerPerson.lastName">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.managerPerson">Manager Person</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (person of people; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/person', person.id, 'view']">{{ person.id }}</a>
+              </td>
+              <td>{{ person.firstName }}</td>
+              <td>{{ person.lastName }}</td>
+              <td>{{ person.birthDate | formatMediumDate }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.GenderEnum.' + person.gender }}">{{ person.gender }}</td>
+              <td>{{ person.codeBI }}</td>
+              <td>{{ person.codeNIF }}</td>
+              <td>{{ person.streetAddress }}</td>
+              <td>{{ person.houseNumber }}</td>
+              <td>{{ person.locationName }}</td>
+              <td>{{ person.postalCode }}</td>
+              <td>{{ person.mainEmail }}</td>
+              <td>{{ person.landPhoneNumber }}</td>
+              <td>{{ person.mobilePhoneNumber }}</td>
+              <td>{{ person.occupation }}</td>
+              <td>{{ person.preferredLanguage }}</td>
+              <td>{{ person.usernameInOAuth2 }}</td>
+              <td>{{ person.userIdInOAuth2 }}</td>
+              <td>{{ person.extraDetails }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + person.activationStatus }}">
+                {{ person.activationStatus }}
+              </td>
+              <td>
+                @if (person.avatarImg) {
+                  <a (click)="openFile(person.avatarImg, person.avatarImgContentType)">
+                    <img
+                      [src]="'data:' + person.avatarImgContentType + ';base64,' + person.avatarImg"
+                      style="max-height: 30px"
+                      alt="person"
+                    />
+                  </a>
+                  <span>{{ person.avatarImgContentType }}, {{ byteSize(person.avatarImg) }}</span>
+                }
+              </td>
+              <td>
+                @if (person.typeOfPerson) {
+                  <div>
+                    <a [routerLink]="['/type-of-person', person.typeOfPerson.id, 'view']">{{ person.typeOfPerson.code }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (person.district) {
+                  <div>
+                    <a [routerLink]="['/district', person.district.id, 'view']">{{ person.district.name }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (person.managerPerson) {
+                  <div>
+                    <a [routerLink]="['/person', person.managerPerson.id, 'view']">{{ person.managerPerson.lastName }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/person', person.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/person', person.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(person)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (people && people.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (asset) {
+      <div>
+        <h2 data-cy="assetDetailsHeading"><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.detail.title">Asset</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ asset.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.uid">Uid</span></dt>
+          <dd>
+            <span>{{ asset.uid }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.name">Name</span></dt>
+          <dd>
+            <span>{{ asset.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.storageTypeUsed">Storage Type Used</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.StorageTypeEnum.' + asset.storageTypeUsed }}">{{
+              asset.storageTypeUsed
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.fullFilenamePath">Full Filename Path</span></dt>
+          <dd>
+            <span>{{ asset.fullFilenamePath }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.status">Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.StatusAssetEnum.' + asset.status }}">{{ asset.status }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.preferredPurpose">Preferred Purpose</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.PreferredPurposeEnum.' + asset.preferredPurpose }}">{{
+              asset.preferredPurpose
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.assetContentAsBlob">Asset Content As Blob</span></dt>
+          <dd>
+            @if (asset.assetContentAsBlob) {
+              <div>
+                <a (click)="openFile(asset.assetContentAsBlob, asset.assetContentAsBlobContentType)" jhiTranslate="entity.action.open"
+                  >Open</a
+                >
+                {{ asset.assetContentAsBlobContentType }}, {{ byteSize(asset.assetContentAsBlob) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.assetType">Asset Type</span></dt>
+          <dd>
+            @if (asset.assetType) {
+              <div>
+                <a [routerLink]="['/asset-type', asset.assetType.id, 'view']">{{ asset.assetType.name }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.rawAssetProcTmp">Raw Asset Proc Tmp</span></dt>
+          <dd>
+            @if (asset.rawAssetProcTmp) {
+              <div>
+                <a [routerLink]="['/raw-asset-proc-tmp', asset.rawAssetProcTmp.id, 'view']">{{ asset.rawAssetProcTmp.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/asset', asset.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

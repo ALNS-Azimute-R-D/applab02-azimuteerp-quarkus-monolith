@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (category) {
+      <div>
+        <h2 data-cy="categoryDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.category.detail.title">Category</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ category.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.category.acronym">Acronym</span></dt>
+          <dd>
+            <span>{{ category.acronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.category.name">Name</span></dt>
+          <dd>
+            <span>{{ category.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.category.description">Description</span></dt>
+          <dd>
+            <span>{{ category.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.category.handlerClazzName">Handler Clazz Name</span></dt>
+          <dd>
+            <span>{{ category.handlerClazzName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.category.categoryParent">Category Parent</span></dt>
+          <dd>
+            @if (category.categoryParent) {
+              <div>
+                <a [routerLink]="['/category', category.categoryParent.id, 'view']">{{ category.categoryParent.acronym }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/category', category.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

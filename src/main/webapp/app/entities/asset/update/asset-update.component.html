@@ -1,0 +1,241 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-asset-heading"
+        data-cy="AssetCreateUpdateHeading"
+        jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.home.createOrEditLabel"
+      >
+        Create or edit a Asset
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.uid" for="field_uid">Uid</label>
+          <input type="text" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          @if (editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)) {
+            <div>
+              @if (editForm.get('name')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('name')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }"
+                  >This field cannot be longer than 255 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.storageTypeUsed" for="field_storageTypeUsed"
+            >Storage Type Used</label
+          >
+          <select
+            class="form-control"
+            name="storageTypeUsed"
+            formControlName="storageTypeUsed"
+            id="field_storageTypeUsed"
+            data-cy="storageTypeUsed"
+          >
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.StorageTypeEnum.null' | translate }}</option>
+            @for (storageTypeEnum of storageTypeEnumValues; track $index) {
+              <option [value]="storageTypeEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.StorageTypeEnum.' + storageTypeEnum | translate }}
+              </option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.fullFilenamePath" for="field_fullFilenamePath"
+            >Full Filename Path</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="fullFilenamePath"
+            id="field_fullFilenamePath"
+            data-cy="fullFilenamePath"
+            formControlName="fullFilenamePath"
+          />
+          @if (
+            editForm.get('fullFilenamePath')!.invalid &&
+            (editForm.get('fullFilenamePath')!.dirty || editForm.get('fullFilenamePath')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('fullFilenamePath')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 512 }"
+                  >This field cannot be longer than 512 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.StatusAssetEnum.null' | translate }}</option>
+            @for (statusAssetEnum of statusAssetEnumValues; track $index) {
+              <option [value]="statusAssetEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.StatusAssetEnum.' + statusAssetEnum | translate }}
+              </option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.preferredPurpose" for="field_preferredPurpose"
+            >Preferred Purpose</label
+          >
+          <select
+            class="form-control"
+            name="preferredPurpose"
+            formControlName="preferredPurpose"
+            id="field_preferredPurpose"
+            data-cy="preferredPurpose"
+          >
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.PreferredPurposeEnum.null' | translate }}</option>
+            @for (preferredPurposeEnum of preferredPurposeEnumValues; track $index) {
+              <option [value]="preferredPurposeEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.PreferredPurposeEnum.' + preferredPurposeEnum | translate }}
+              </option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.assetContentAsBlob"
+            for="field_assetContentAsBlob"
+            >Asset Content As Blob</label
+          >
+          <div>
+            @if (editForm.get('assetContentAsBlob')!.value) {
+              <div class="form-text text-danger clearfix">
+                <a
+                  class="pull-start"
+                  (click)="openFile(editForm.get('assetContentAsBlob')!.value!, editForm.get('assetContentAsBlobContentType')!.value!)"
+                  jhiTranslate="entity.action.open"
+                  >Open</a
+                ><br />
+                <span class="pull-start"
+                  >{{ editForm.get('assetContentAsBlobContentType')!.value }},
+                  {{ byteSize(editForm.get('assetContentAsBlob')!.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="editForm.patchValue({ assetContentAsBlob: undefined, assetContentAsBlobContentType: undefined })"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_assetContentAsBlob"
+              data-cy="assetContentAsBlob"
+              (change)="setFileData($event, 'assetContentAsBlob', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="assetContentAsBlob"
+            id="field_assetContentAsBlob"
+            data-cy="assetContentAsBlob"
+            formControlName="assetContentAsBlob"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="assetContentAsBlobContentType"
+            id="field_assetContentAsBlobContentType"
+            formControlName="assetContentAsBlobContentType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.assetType" for="field_assetType"
+            >Asset Type</label
+          >
+          <select
+            class="form-control"
+            id="field_assetType"
+            data-cy="assetType"
+            name="assetType"
+            formControlName="assetType"
+            [compareWith]="compareAssetType"
+          >
+            @if (editForm.get(['assetType'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (assetTypeOption of assetTypesSharedCollection; track $index) {
+              <option [ngValue]="assetTypeOption">{{ assetTypeOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['assetType'])!.invalid && (editForm.get(['assetType'])!.dirty || editForm.get(['assetType'])!.touched)) {
+          <div>
+            @if (editForm.get(['assetType'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.rawAssetProcTmp" for="field_rawAssetProcTmp"
+            >Raw Asset Proc Tmp</label
+          >
+          <select
+            class="form-control"
+            id="field_rawAssetProcTmp"
+            data-cy="rawAssetProcTmp"
+            name="rawAssetProcTmp"
+            formControlName="rawAssetProcTmp"
+            [compareWith]="compareRawAssetProcTmp"
+          >
+            <option [ngValue]="null"></option>
+            @for (rawAssetProcTmpOption of rawAssetProcTmpsSharedCollection; track $index) {
+              <option [ngValue]="rawAssetProcTmpOption">{{ rawAssetProcTmpOption.name }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

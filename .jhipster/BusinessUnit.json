@@ -1,0 +1,64 @@
+{
+  "annotations": {
+    "changelogDate": "20240603222150"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "dto": "mapstruct",
+  "entityTableName": "tb_business_unit",
+  "fields": [
+    {
+      "fieldName": "acronym",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "hierarchicalLevel",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "120",
+      "fieldValidateRulesMinlength": "2"
+    },
+    {
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
+    }
+  ],
+  "name": "BusinessUnit",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "businessUnitsList",
+      "relationshipName": "organization",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "businessUnit",
+      "otherEntityRelationshipName": "childrenBusinessUnitsList",
+      "relationshipName": "businessUnitParent",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "businessUnit",
+      "otherEntityRelationshipName": "businessUnitParent",
+      "relationshipName": "childrenBusinessUnitsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

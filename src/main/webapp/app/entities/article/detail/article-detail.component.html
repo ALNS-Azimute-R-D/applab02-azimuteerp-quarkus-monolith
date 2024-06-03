@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (article) {
+      <div>
+        <h2 data-cy="articleDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.detail.title">Article</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ article.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.inventoryProductId">Inventory Product Id</span></dt>
+          <dd>
+            <span>{{ article.inventoryProductId }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.customName">Custom Name</span></dt>
+          <dd>
+            <span>{{ article.customName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.customDescription">Custom Description</span></dt>
+          <dd>
+            <span>{{ article.customDescription }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.priceValue">Price Value</span></dt>
+          <dd>
+            <span>{{ article.priceValue }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.itemSize">Item Size</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.SizeOptionEnum.' + article.itemSize }}">{{
+              article.itemSize
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.assetsCollectionUUID">Assets Collection UUID</span></dt>
+          <dd>
+            <span>{{ article.assetsCollectionUUID }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.isEnabled">Is Enabled</span></dt>
+          <dd>
+            <span>{{ article.isEnabled }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.mainCategory">Main Category</span></dt>
+          <dd>
+            @if (article.mainCategory) {
+              <div>
+                <a [routerLink]="['/category', article.mainCategory.id, 'view']">{{ article.mainCategory.acronym }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/article', article.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

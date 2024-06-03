@@ -1,0 +1,28 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "typeOfOrganization": {
+      "home": {
+        "title": "Type Of Organizations",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Type Of Organization erstellen",
+        "createOrEditLabel": "Type Of Organization erstellen oder bearbeiten",
+        "notFound": "Keine Type Of Organizations gefunden"
+      },
+      "created": "Type Of Organization erstellt mit ID {{ param }}",
+      "updated": "Type Of Organization aktualisiert mit ID {{ param }}",
+      "deleted": "Type Of Organization gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Type Of Organization {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Type Of Organization"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "description": "Description",
+      "businessHandlerClazz": "Business Handler Clazz",
+      "organizationsList": "Organizations List"
+    }
+  }
+}

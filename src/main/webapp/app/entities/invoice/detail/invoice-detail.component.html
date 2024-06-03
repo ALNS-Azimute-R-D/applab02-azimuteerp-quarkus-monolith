@@ -1,0 +1,104 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (invoice) {
+      <div>
+        <h2 data-cy="invoiceDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.detail.title">Invoice</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ invoice.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.businessCode">Business Code</span></dt>
+          <dd>
+            <span>{{ invoice.businessCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.originalOrderId">Original Order Id</span></dt>
+          <dd>
+            <span>{{ invoice.originalOrderId }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.invoiceDate">Invoice Date</span></dt>
+          <dd>
+            <span>{{ invoice.invoiceDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.dueDate">Due Date</span></dt>
+          <dd>
+            <span>{{ invoice.dueDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.description">Description</span></dt>
+          <dd>
+            <span>{{ invoice.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.taxValue">Tax Value</span></dt>
+          <dd>
+            <span>{{ invoice.taxValue }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.shippingValue">Shipping Value</span></dt>
+          <dd>
+            <span>{{ invoice.shippingValue }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.amountDueValue">Amount Due Value</span></dt>
+          <dd>
+            <span>{{ invoice.amountDueValue }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.numberOfInstallmentsOriginal"
+              >Number Of Installments Original</span
+            >
+          </dt>
+          <dd>
+            <span>{{ invoice.numberOfInstallmentsOriginal }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.numberOfInstallmentsPaid">Number Of Installments Paid</span>
+          </dt>
+          <dd>
+            <span>{{ invoice.numberOfInstallmentsPaid }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.amountPaidValue">Amount Paid Value</span></dt>
+          <dd>
+            <span>{{ invoice.amountPaidValue }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.status">Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.InvoiceStatusEnum.' + invoice.status }}">{{
+              invoice.status
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.extraDetails">Extra Details</span></dt>
+          <dd>
+            <span>{{ invoice.extraDetails }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.preferrablePaymentMethod">Preferrable Payment Method</span>
+          </dt>
+          <dd>
+            @if (invoice.preferrablePaymentMethod) {
+              <div>
+                <a [routerLink]="['/payment-method', invoice.preferrablePaymentMethod.id, 'view']">{{
+                  invoice.preferrablePaymentMethod.code
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/invoice', invoice.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

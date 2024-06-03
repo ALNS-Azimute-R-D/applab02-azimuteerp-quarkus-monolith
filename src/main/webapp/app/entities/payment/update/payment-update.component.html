@@ -1,0 +1,253 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-payment-heading"
+        data-cy="PaymentCreateUpdateHeading"
+        jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.home.createOrEditLabel"
+      >
+        Create or edit a Payment
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.installmentNumber"
+            for="field_installmentNumber"
+            >Installment Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="installmentNumber"
+            id="field_installmentNumber"
+            data-cy="installmentNumber"
+            formControlName="installmentNumber"
+          />
+          @if (
+            editForm.get('installmentNumber')!.invalid &&
+            (editForm.get('installmentNumber')!.dirty || editForm.get('installmentNumber')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('installmentNumber')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('installmentNumber')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.paymentDueDate" for="field_paymentDueDate"
+            >Payment Due Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_paymentDueDate"
+              data-cy="paymentDueDate"
+              type="datetime-local"
+              class="form-control"
+              name="paymentDueDate"
+              formControlName="paymentDueDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (
+            editForm.get('paymentDueDate')!.invalid && (editForm.get('paymentDueDate')!.dirty || editForm.get('paymentDueDate')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('paymentDueDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('paymentDueDate')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.paymentPaidDate" for="field_paymentPaidDate"
+            >Payment Paid Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_paymentPaidDate"
+              data-cy="paymentPaidDate"
+              type="datetime-local"
+              class="form-control"
+              name="paymentPaidDate"
+              formControlName="paymentPaidDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (
+            editForm.get('paymentPaidDate')!.invalid && (editForm.get('paymentPaidDate')!.dirty || editForm.get('paymentPaidDate')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('paymentPaidDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('paymentPaidDate')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.paymentAmount" for="field_paymentAmount"
+            >Payment Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="paymentAmount"
+            id="field_paymentAmount"
+            data-cy="paymentAmount"
+            formControlName="paymentAmount"
+          />
+          @if (editForm.get('paymentAmount')!.invalid && (editForm.get('paymentAmount')!.dirty || editForm.get('paymentAmount')!.touched)) {
+            <div>
+              @if (editForm.get('paymentAmount')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('paymentAmount')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.typeOfPayment" for="field_typeOfPayment"
+            >Type Of Payment</label
+          >
+          <select
+            class="form-control"
+            name="typeOfPayment"
+            formControlName="typeOfPayment"
+            id="field_typeOfPayment"
+            data-cy="typeOfPayment"
+          >
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.PaymentTypeEnum.null' | translate }}</option>
+            @for (paymentTypeEnum of paymentTypeEnumValues; track $index) {
+              <option [value]="paymentTypeEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.PaymentTypeEnum.' + paymentTypeEnum | translate }}
+              </option>
+            }
+          </select>
+          @if (editForm.get('typeOfPayment')!.invalid && (editForm.get('typeOfPayment')!.dirty || editForm.get('typeOfPayment')!.touched)) {
+            <div>
+              @if (editForm.get('typeOfPayment')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.PaymentStatusEnum.null' | translate }}</option>
+            @for (paymentStatusEnum of paymentStatusEnumValues; track $index) {
+              <option [value]="paymentStatusEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.PaymentStatusEnum.' + paymentStatusEnum | translate }}
+              </option>
+            }
+          </select>
+          @if (editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)) {
+            <div>
+              @if (editForm.get('status')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.extraDetails" for="field_extraDetails"
+            >Extra Details</label
+          >
+          <textarea
+            class="form-control"
+            name="extraDetails"
+            id="field_extraDetails"
+            data-cy="extraDetails"
+            formControlName="extraDetails"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.paymentMethod" for="field_paymentMethod"
+            >Payment Method</label
+          >
+          <select
+            class="form-control"
+            id="field_paymentMethod"
+            data-cy="paymentMethod"
+            name="paymentMethod"
+            formControlName="paymentMethod"
+            [compareWith]="comparePaymentMethod"
+          >
+            @if (editForm.get(['paymentMethod'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (paymentMethodOption of paymentMethodsSharedCollection; track $index) {
+              <option [ngValue]="paymentMethodOption">{{ paymentMethodOption.code }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['paymentMethod'])!.invalid && (editForm.get(['paymentMethod'])!.dirty || editForm.get(['paymentMethod'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['paymentMethod'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

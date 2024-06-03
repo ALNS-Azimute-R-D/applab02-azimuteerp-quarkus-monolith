@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Asset.
+    -->
+    <changeSet id="20240603223150-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="asset_type_id"
+                                 baseTableName="tb_asset"
+                                 constraintName="fk_tb_asset__asset_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tb_type_asset"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="raw_asset_proc_tmp_id"
+                                 baseTableName="tb_asset"
+                                 constraintName="fk_tb_asset__raw_asset_proc_tmp_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tb_raw_asset_proc_tmp"
+                                 />
+    </changeSet>
+</databaseChangeLog>

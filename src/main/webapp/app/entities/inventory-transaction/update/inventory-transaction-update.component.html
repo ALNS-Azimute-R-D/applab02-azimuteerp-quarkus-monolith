@@ -1,0 +1,226 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-inventory-transaction-heading"
+        data-cy="InventoryTransactionCreateUpdateHeading"
+        jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.home.createOrEditLabel"
+      >
+        Create or edit a Inventory Transaction
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.invoiceId"
+            for="field_invoiceId"
+            >Invoice Id</label
+          >
+          <input type="number" class="form-control" name="invoiceId" id="field_invoiceId" data-cy="invoiceId" formControlName="invoiceId" />
+          @if (editForm.get('invoiceId')!.invalid && (editForm.get('invoiceId')!.dirty || editForm.get('invoiceId')!.touched)) {
+            <div>
+              @if (editForm.get('invoiceId')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('invoiceId')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.transactionCreatedDate"
+            for="field_transactionCreatedDate"
+            >Transaction Created Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_transactionCreatedDate"
+              data-cy="transactionCreatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="transactionCreatedDate"
+              formControlName="transactionCreatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.transactionModifiedDate"
+            for="field_transactionModifiedDate"
+            >Transaction Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_transactionModifiedDate"
+              data-cy="transactionModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="transactionModifiedDate"
+              formControlName="transactionModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.quantity" for="field_quantity"
+            >Quantity</label
+          >
+          <input type="number" class="form-control" name="quantity" id="field_quantity" data-cy="quantity" formControlName="quantity" />
+          @if (editForm.get('quantity')!.invalid && (editForm.get('quantity')!.dirty || editForm.get('quantity')!.touched)) {
+            <div>
+              @if (editForm.get('quantity')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('quantity')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.comments" for="field_comments"
+            >Comments</label
+          >
+          <input type="text" class="form-control" name="comments" id="field_comments" data-cy="comments" formControlName="comments" />
+          @if (editForm.get('comments')!.invalid && (editForm.get('comments')!.dirty || editForm.get('comments')!.touched)) {
+            <div>
+              @if (editForm.get('comments')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }"
+                  >This field cannot be longer than 255 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.supplier" for="field_supplier"
+            >Supplier</label
+          >
+          <select
+            class="form-control"
+            id="field_supplier"
+            data-cy="supplier"
+            name="supplier"
+            formControlName="supplier"
+            [compareWith]="compareSupplier"
+          >
+            @if (editForm.get(['supplier'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (supplierOption of suppliersSharedCollection; track $index) {
+              <option [ngValue]="supplierOption">{{ supplierOption.acronym }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['supplier'])!.invalid && (editForm.get(['supplier'])!.dirty || editForm.get(['supplier'])!.touched)) {
+          <div>
+            @if (editForm.get(['supplier'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.product" for="field_product"
+            >Product</label
+          >
+          <select
+            class="form-control"
+            id="field_product"
+            data-cy="product"
+            name="product"
+            formControlName="product"
+            [compareWith]="compareProduct"
+          >
+            @if (editForm.get(['product'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (productOption of productsSharedCollection; track $index) {
+              <option [ngValue]="productOption">{{ productOption.productName }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['product'])!.invalid && (editForm.get(['product'])!.dirty || editForm.get(['product'])!.touched)) {
+          <div>
+            @if (editForm.get(['product'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.warehouse"
+            for="field_warehouse"
+            >Warehouse</label
+          >
+          <select
+            class="form-control"
+            id="field_warehouse"
+            data-cy="warehouse"
+            name="warehouse"
+            formControlName="warehouse"
+            [compareWith]="compareWarehouse"
+          >
+            @if (editForm.get(['warehouse'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (warehouseOption of warehousesSharedCollection; track $index) {
+              <option [ngValue]="warehouseOption">{{ warehouseOption.acronym }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['warehouse'])!.invalid && (editForm.get(['warehouse'])!.dirty || editForm.get(['warehouse'])!.touched)) {
+          <div>
+            @if (editForm.get(['warehouse'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

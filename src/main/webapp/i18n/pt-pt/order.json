@@ -1,0 +1,32 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "order": {
+      "home": {
+        "title": "Orders",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Order",
+        "createOrEditLabel": "Criar ou editar Order",
+        "notFound": "Nenhum Orders encontrado"
+      },
+      "created": "Um novo Order foi criado com o identificador {{ param }}",
+      "updated": "Order com identificador {{ param }} foi actualizado",
+      "deleted": "Order com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Order {{ id }}?"
+      },
+      "detail": {
+        "title": "Order"
+      },
+      "id": "ID",
+      "businessCode": "Business Code",
+      "customerUserId": "Customer User Id",
+      "placedDate": "Placed Date",
+      "totalTaxValue": "Total Tax Value",
+      "totalDueValue": "Total Due Value",
+      "status": "Status",
+      "invoiceId": "Invoice Id",
+      "estimatedDeliveryDate": "Estimated Delivery Date",
+      "ordersItemsList": "Orders Items List"
+    }
+  }
+}

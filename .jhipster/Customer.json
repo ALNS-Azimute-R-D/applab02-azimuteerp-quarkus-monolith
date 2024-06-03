@@ -1,0 +1,85 @@
+{
+  "annotations": {
+    "changelogDate": "20240603224250"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "documentation": "- Category\\n- Article\\n- Order\\n- OrderItem",
+  "dto": "mapstruct",
+  "entityTableName": "tb_customer",
+  "fields": [
+    {
+      "fieldName": "customerBusinessCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "15"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "80",
+      "fieldValidateRulesMinlength": "2"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique", "required", "pattern"],
+      "fieldValidateRulesPattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+    },
+    {
+      "fieldName": "addressDetails",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "zipCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "8"
+    },
+    {
+      "fieldName": "keycloakGroupDetails",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "CustomerStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "UNDER_EVALUATION,ONBOARDING,READY_TO_START,WORKING,PENDENT,IN_FAILURE"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Customer",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "customerType",
+      "otherEntityRelationshipName": "customersList",
+      "relationshipName": "customerType",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "district",
+      "otherEntityRelationshipName": "customersList",
+      "relationshipName": "district",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

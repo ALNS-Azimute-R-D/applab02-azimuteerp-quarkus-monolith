@@ -1,0 +1,97 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (product) {
+      <div>
+        <h2 data-cy="productDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.detail.title">Product</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ product.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.productSKU">Product SKU</span></dt>
+          <dd>
+            <span>{{ product.productSKU }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.productName">Product Name</span></dt>
+          <dd>
+            <span>{{ product.productName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.description">Description</span></dt>
+          <dd>
+            <span>{{ product.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.standardCost">Standard Cost</span></dt>
+          <dd>
+            <span>{{ product.standardCost }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.listPrice">List Price</span></dt>
+          <dd>
+            <span>{{ product.listPrice }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.reorderLevel">Reorder Level</span></dt>
+          <dd>
+            <span>{{ product.reorderLevel }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.targetLevel">Target Level</span></dt>
+          <dd>
+            <span>{{ product.targetLevel }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.quantityPerUnit">Quantity Per Unit</span></dt>
+          <dd>
+            <span>{{ product.quantityPerUnit }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.discontinued">Discontinued</span></dt>
+          <dd>
+            <span>{{ product.discontinued }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.minimumReorderQuantity">Minimum Reorder Quantity</span></dt>
+          <dd>
+            <span>{{ product.minimumReorderQuantity }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.suggestedCategory">Suggested Category</span></dt>
+          <dd>
+            <span>{{ product.suggestedCategory }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.attachments">Attachments</span></dt>
+          <dd>
+            @if (product.attachments) {
+              <div>
+                <a (click)="openFile(product.attachments, product.attachmentsContentType)" jhiTranslate="entity.action.open">Open</a>
+                {{ product.attachmentsContentType }}, {{ byteSize(product.attachments) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.supplierIds">Supplier Ids</span></dt>
+          <dd>
+            <span>{{ product.supplierIds }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.brand">Brand</span></dt>
+          <dd>
+            @if (product.brand) {
+              <div>
+                <a [routerLink]="['/brand', product.brand.id, 'view']">{{ product.brand.acronym }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

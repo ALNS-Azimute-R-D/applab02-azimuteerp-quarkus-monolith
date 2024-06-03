@@ -1,0 +1,61 @@
+{
+  "annotations": {
+    "changelogDate": "20240603224450"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "dto": "mapstruct",
+  "entityTableName": "tb_category",
+  "fields": [
+    {
+      "fieldName": "acronym",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "handlerClazzName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    }
+  ],
+  "name": "Category",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "article",
+      "otherEntityRelationshipName": "mainCategory",
+      "relationshipName": "articlesList",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "acronym",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "childrenCategoriesList",
+      "relationshipName": "categoryParent",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "categoryParent",
+      "relationshipName": "childrenCategoriesList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

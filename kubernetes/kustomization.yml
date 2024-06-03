@@ -1,0 +1,14 @@
+commonLabels:
+  app.kubernetes.io/genereted-by: JHipster
+
+namespace: azimuteerp-platform
+
+resources:
+  - namespace.yml
+  # Individual apps
+  # service discovery eureka/consul
+  - registry-k8s/consul.yml
+  - registry-k8s/consul-config-loader.yml
+  - registry-k8s/application-configmap.yml
+
+patchesJson6902:

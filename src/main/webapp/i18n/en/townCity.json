@@ -1,0 +1,28 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "townCity": {
+      "home": {
+        "title": "Town Cities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Town City",
+        "createOrEditLabel": "Create or edit a Town City",
+        "notFound": "No Town Cities found"
+      },
+      "created": "A new Town City is created with identifier {{ param }}",
+      "updated": "A Town City is updated with identifier {{ param }}",
+      "deleted": "A Town City is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Town City {{ id }}?"
+      },
+      "detail": {
+        "title": "Town City"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "geoPolygonArea": "Geo Polygon Area",
+      "province": "Province",
+      "districtsList": "Districts List"
+    }
+  }
+}

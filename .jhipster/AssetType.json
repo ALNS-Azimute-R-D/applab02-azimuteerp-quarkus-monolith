@@ -1,0 +1,59 @@
+{
+  "annotations": {
+    "changelogDate": "20240603222950"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "documentation": "- RawAssetProcTmp\\n- AssetType\\n- Asset\\n- AssetMetadata",
+  "dto": "mapstruct",
+  "entityTableName": "tb_type_asset",
+  "fields": [
+    {
+      "fieldName": "acronym",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "handlerClazzName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "extraDetails",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "name": "AssetType",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "rawAssetProcTmp",
+      "otherEntityRelationshipName": "assetType",
+      "relationshipName": "rawAssetsProcsTmps",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "asset",
+      "otherEntityRelationshipName": "assetType",
+      "relationshipName": "assets",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

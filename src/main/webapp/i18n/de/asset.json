@@ -1,0 +1,33 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "asset": {
+      "home": {
+        "title": "Assets",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Asset erstellen",
+        "createOrEditLabel": "Asset erstellen oder bearbeiten",
+        "notFound": "Keine Assets gefunden"
+      },
+      "created": "Asset erstellt mit ID {{ param }}",
+      "updated": "Asset aktualisiert mit ID {{ param }}",
+      "deleted": "Asset gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Asset {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Asset"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "name": "Name",
+      "storageTypeUsed": "Storage Type Used",
+      "fullFilenamePath": "Full Filename Path",
+      "status": "Status",
+      "preferredPurpose": "Preferred Purpose",
+      "assetContentAsBlob": "Asset Content As Blob",
+      "assetType": "Asset Type",
+      "rawAssetProcTmp": "Raw Asset Proc Tmp",
+      "assetMetadata": "Asset Metadata"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "annotations": {
+    "changelogDate": "20240603223050"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "dto": "mapstruct",
+  "entityTableName": "tb_raw_asset_proc_tmp",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "statusRawProcessing",
+      "fieldType": "StatusRawProcessingEnum",
+      "fieldValues": "UPLOADING,UPLOADED,WAITING_FOR_PROCESSING,PROCESSING,DONE,FAILURE"
+    },
+    {
+      "fieldName": "fullFilenamePath",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "assetRawContentAsBlob",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "extraDetails",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "name": "RawAssetProcTmp",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "assetType",
+      "otherEntityRelationshipName": "rawAssetsProcsTmps",
+      "relationshipName": "assetType",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "asset",
+      "otherEntityRelationshipName": "rawAssetProcTmp",
+      "relationshipName": "assets",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

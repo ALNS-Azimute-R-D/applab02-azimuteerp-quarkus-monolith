@@ -1,0 +1,34 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "customer": {
+      "home": {
+        "title": "Customers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Customer",
+        "createOrEditLabel": "Create or edit a Customer",
+        "notFound": "No Customers found"
+      },
+      "created": "A new Customer is created with identifier {{ param }}",
+      "updated": "A Customer is updated with identifier {{ param }}",
+      "deleted": "A Customer is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Customer {{ id }}?"
+      },
+      "detail": {
+        "title": "Customer"
+      },
+      "id": "ID",
+      "customerBusinessCode": "Customer Business Code",
+      "name": "Name",
+      "description": "Description",
+      "email": "Email",
+      "addressDetails": "Address Details",
+      "zipCode": "Zip Code",
+      "keycloakGroupDetails": "Keycloak Group Details",
+      "status": "Status",
+      "active": "Active",
+      "customerType": "Customer Type",
+      "district": "District"
+    }
+  }
+}

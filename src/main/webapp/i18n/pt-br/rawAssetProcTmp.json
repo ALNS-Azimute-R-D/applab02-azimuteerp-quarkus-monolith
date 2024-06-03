@@ -1,0 +1,30 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "rawAssetProcTmp": {
+      "home": {
+        "title": "Raw Asset Proc Tmps",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Raw Asset Proc Tmp",
+        "createOrEditLabel": "Criar ou editar Raw Asset Proc Tmp",
+        "notFound": "Nenhum Raw Asset Proc Tmp encontrado"
+      },
+      "created": "Um novo Raw Asset Proc Tmp foi criado com o identificador {{ param }}",
+      "updated": "Um Raw Asset Proc Tmp foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Raw Asset Proc Tmp foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Raw Asset Proc Tmp {{ id }}?"
+      },
+      "detail": {
+        "title": "Raw Asset Proc Tmp"
+      },
+      "id": "ID",
+      "name": "Name",
+      "statusRawProcessing": "Status Raw Processing",
+      "fullFilenamePath": "Full Filename Path",
+      "assetRawContentAsBlob": "Asset Raw Content As Blob",
+      "extraDetails": "Extra Details",
+      "assetType": "Asset Type",
+      "assets": "Assets"
+    }
+  }
+}

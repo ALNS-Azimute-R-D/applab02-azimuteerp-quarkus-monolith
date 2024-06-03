@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (organizationMembership) {
+      <div>
+        <h2 data-cy="organizationMembershipDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.detail.title">Organization Membership</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ organizationMembership.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.joinedAt">Joined At</span></dt>
+          <dd>
+            <span>{{ organizationMembership.joinedAt | formatMediumDate }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.activationStatus">Activation Status</span>
+          </dt>
+          <dd>
+            <span
+              jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + organizationMembership.activationStatus }}"
+              >{{ organizationMembership.activationStatus }}</span
+            >
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.organization">Organization</span></dt>
+          <dd>
+            @if (organizationMembership.organization) {
+              <div>
+                <a [routerLink]="['/organization', organizationMembership.organization.id, 'view']">{{
+                  organizationMembership.organization.name
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.person">Person</span></dt>
+          <dd>
+            @if (organizationMembership.person) {
+              <div>
+                <a [routerLink]="['/person', organizationMembership.person.id, 'view']">{{ organizationMembership.person.lastName }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/organization-membership', organizationMembership.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "organizationMembership": {
+      "home": {
+        "title": "Organization Memberships",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Organization Membership",
+        "createOrEditLabel": "Crear o editar Organization Membership",
+        "notFound": "Ningún Organization Memberships encontrado"
+      },
+      "created": "Un nuevo Organization Membership ha sido creado con el identificador {{ param }}",
+      "updated": "Un Organization Membership ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Organization Membership ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Organization Membership {{ id }}?"
+      },
+      "detail": {
+        "title": "Organization Membership"
+      },
+      "id": "ID",
+      "joinedAt": "Joined At",
+      "activationStatus": "Activation Status",
+      "organization": "Organization",
+      "person": "Person",
+      "organizationMemberRolesList": "Organization Member Roles List"
+    }
+  }
+}

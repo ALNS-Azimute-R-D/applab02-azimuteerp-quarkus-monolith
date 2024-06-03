@@ -1,0 +1,29 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "country": {
+      "home": {
+        "title": "Countries",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Country erstellen",
+        "createOrEditLabel": "Country erstellen oder bearbeiten",
+        "notFound": "Keine Countries gefunden"
+      },
+      "created": "Country erstellt mit ID {{ param }}",
+      "updated": "Country aktualisiert mit ID {{ param }}",
+      "deleted": "Country gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Country {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Country"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "continent": "Continent",
+      "geoPolygonArea": "Geo Polygon Area",
+      "provincesList": "Provinces List",
+      "localitiesList": "Localities List"
+    }
+  }
+}

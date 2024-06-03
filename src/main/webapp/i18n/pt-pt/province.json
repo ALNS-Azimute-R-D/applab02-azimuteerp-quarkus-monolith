@@ -1,0 +1,28 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "province": {
+      "home": {
+        "title": "Provinces",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Province",
+        "createOrEditLabel": "Criar ou editar Province",
+        "notFound": "Nenhum Provinces encontrado"
+      },
+      "created": "Um novo Province foi criado com o identificador {{ param }}",
+      "updated": "Province com identificador {{ param }} foi actualizado",
+      "deleted": "Province com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Province {{ id }}?"
+      },
+      "detail": {
+        "title": "Province"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "geoPolygonArea": "Geo Polygon Area",
+      "country": "Country",
+      "townCitiesList": "Town Cities List"
+    }
+  }
+}

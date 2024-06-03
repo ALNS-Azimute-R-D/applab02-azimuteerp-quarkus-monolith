@@ -1,0 +1,31 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "payment": {
+      "home": {
+        "title": "Payments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Payment",
+        "createOrEditLabel": "Criar ou editar Payment",
+        "notFound": "Nenhum Payments encontrado"
+      },
+      "created": "Um novo Payment foi criado com o identificador {{ param }}",
+      "updated": "Payment com identificador {{ param }} foi actualizado",
+      "deleted": "Payment com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Payment {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment"
+      },
+      "id": "ID",
+      "installmentNumber": "Installment Number",
+      "paymentDueDate": "Payment Due Date",
+      "paymentPaidDate": "Payment Paid Date",
+      "paymentAmount": "Payment Amount",
+      "typeOfPayment": "Type Of Payment",
+      "status": "Status",
+      "extraDetails": "Extra Details",
+      "paymentMethod": "Payment Method"
+    }
+  }
+}

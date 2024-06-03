@@ -1,0 +1,28 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "paymentMethod": {
+      "home": {
+        "title": "Payment Methods",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Payment Method erstellen",
+        "createOrEditLabel": "Payment Method erstellen oder bearbeiten",
+        "notFound": "Keine Payment Methods gefunden"
+      },
+      "created": "Payment Method erstellt mit ID {{ param }}",
+      "updated": "Payment Method aktualisiert mit ID {{ param }}",
+      "deleted": "Payment Method gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Payment Method {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Payment Method"
+      },
+      "id": "ID",
+      "code": "Code",
+      "description": "Description",
+      "businessHandlerClazz": "Business Handler Clazz",
+      "invoicesAsPreferrableList": "Invoices As Preferrable List",
+      "paymentsList": "Payments List"
+    }
+  }
+}

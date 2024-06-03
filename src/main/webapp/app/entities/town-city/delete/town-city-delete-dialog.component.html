@@ -1,0 +1,30 @@
+@if (townCity) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(townCity.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="townCityDeleteDialogHeading" jhiTranslate="entity.delete.title">Confirm delete operation</h4>
+
+      <span class="btn btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()"></span>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p
+        id="jhi-delete-townCity-heading"
+        jhiTranslate="azimuteErpQuarkusAngularMonolith02App.townCity.delete.question"
+        [translateValues]="{ id: townCity.id }"
+      >
+        Are you sure you want to delete Town City {{ townCity.id }}?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+      </button>
+
+      <button id="jhi-confirm-delete-townCity" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Delete</span>
+      </button>
+    </div>
+  </form>
+}

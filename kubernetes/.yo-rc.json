@@ -1,0 +1,27 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [],
+    "blueprints": [
+      {
+        "name": "generator-jhipster-quarkus",
+        "version": "3.1.0"
+      }
+    ],
+    "clusteredDbApps": [],
+    "dbRandomPassword": "5b72c6b7c886dc3ab2911950a841418ddd55c52d573939a911d967046193",
+    "deploymentType": "kubernetes",
+    "directoryPath": "../",
+    "dockerPushCommand": "docker push",
+    "dockerRepositoryName": "scout23df",
+    "ingressDomain": "",
+    "istio": false,
+    "jhipsterVersion": "8.2.1",
+    "jwtSecretKey": "MGM3NDllMjY4MzE0Yjk2MGFjMzBhY2M5YzhhZWExMDE0Y2RhMmRjNWFiNWRkMzI0Mzg5NWExNTQyNjk3YjBlMWYzMGI4Y2U3ZjcyMDk3ZWM5OWJjZjMyMTJiMjEzZDBiYmU3MQ==",
+    "kubernetesNamespace": "azimuteerp-platform",
+    "kubernetesServiceType": "LoadBalancer",
+    "kubernetesStorageClassName": "",
+    "kubernetesUseDynamicStorage": true,
+    "monitoring": "yes",
+    "serviceDiscoveryType": "consul"
+  }
+}

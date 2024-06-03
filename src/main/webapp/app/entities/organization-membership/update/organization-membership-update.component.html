@@ -1,0 +1,163 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-organization-membership-heading"
+        data-cy="OrganizationMembershipCreateUpdateHeading"
+        jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.home.createOrEditLabel"
+      >
+        Create or edit a Organization Membership
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.joinedAt"
+            for="field_joinedAt"
+            >Joined At</label
+          >
+          <div class="input-group">
+            <input
+              id="field_joinedAt"
+              data-cy="joinedAt"
+              type="text"
+              class="form-control"
+              name="joinedAt"
+              ngbDatepicker
+              #joinedAtDp="ngbDatepicker"
+              formControlName="joinedAt"
+            />
+            <button type="button" class="btn btn-secondary" (click)="joinedAtDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (editForm.get('joinedAt')!.invalid && (editForm.get('joinedAt')!.dirty || editForm.get('joinedAt')!.touched)) {
+            <div>
+              @if (editForm.get('joinedAt')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.activationStatus"
+            for="field_activationStatus"
+            >Activation Status</label
+          >
+          <select
+            class="form-control"
+            name="activationStatus"
+            formControlName="activationStatus"
+            id="field_activationStatus"
+            data-cy="activationStatus"
+          >
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.null' | translate }}</option>
+            @for (activationStatusEnum of activationStatusEnumValues; track $index) {
+              <option [value]="activationStatusEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + activationStatusEnum | translate }}
+              </option>
+            }
+          </select>
+          @if (
+            editForm.get('activationStatus')!.invalid &&
+            (editForm.get('activationStatus')!.dirty || editForm.get('activationStatus')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('activationStatus')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.organization"
+            for="field_organization"
+            >Organization</label
+          >
+          <select
+            class="form-control"
+            id="field_organization"
+            data-cy="organization"
+            name="organization"
+            formControlName="organization"
+            [compareWith]="compareOrganization"
+          >
+            @if (editForm.get(['organization'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (organizationOption of organizationsSharedCollection; track $index) {
+              <option [ngValue]="organizationOption">{{ organizationOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['organization'])!.invalid && (editForm.get(['organization'])!.dirty || editForm.get(['organization'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['organization'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.person" for="field_person"
+            >Person</label
+          >
+          <select
+            class="form-control"
+            id="field_person"
+            data-cy="person"
+            name="person"
+            formControlName="person"
+            [compareWith]="comparePerson"
+          >
+            @if (editForm.get(['person'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (personOption of peopleSharedCollection; track $index) {
+              <option [ngValue]="personOption">{{ personOption.lastName }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['person'])!.invalid && (editForm.get(['person'])!.dirty || editForm.get(['person'])!.touched)) {
+          <div>
+            @if (editForm.get(['person'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

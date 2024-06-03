@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (payment) {
+      <div>
+        <h2 data-cy="paymentDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.detail.title">Payment</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ payment.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.installmentNumber">Installment Number</span></dt>
+          <dd>
+            <span>{{ payment.installmentNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.paymentDueDate">Payment Due Date</span></dt>
+          <dd>
+            <span>{{ payment.paymentDueDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.paymentPaidDate">Payment Paid Date</span></dt>
+          <dd>
+            <span>{{ payment.paymentPaidDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.paymentAmount">Payment Amount</span></dt>
+          <dd>
+            <span>{{ payment.paymentAmount }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.typeOfPayment">Type Of Payment</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.PaymentTypeEnum.' + payment.typeOfPayment }}">{{
+              payment.typeOfPayment
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.status">Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.PaymentStatusEnum.' + payment.status }}">{{
+              payment.status
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.extraDetails">Extra Details</span></dt>
+          <dd>
+            <span>{{ payment.extraDetails }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.paymentMethod">Payment Method</span></dt>
+          <dd>
+            @if (payment.paymentMethod) {
+              <div>
+                <a [routerLink]="['/payment-method', payment.paymentMethod.id, 'view']">{{ payment.paymentMethod.code }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/payment', payment.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

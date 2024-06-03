@@ -1,0 +1,110 @@
+{
+  "annotations": {
+    "changelogDate": "20240603223950"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "dto": "mapstruct",
+  "entityTableName": "tb_product",
+  "fields": [
+    {
+      "fieldName": "productSKU",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "25"
+    },
+    {
+      "fieldName": "productName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "standardCost",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "listPrice",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "reorderLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "targetLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "quantityPerUnit",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "discontinued",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "minimumReorderQuantity",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "suggestedCategory",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "attachments",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "supplierIds",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "name": "Product",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "acronym",
+      "otherEntityName": "brand",
+      "otherEntityRelationshipName": "productsList",
+      "relationshipName": "brand",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "inventoryTransaction",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "productsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "stockLevel",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "stockLevelsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "productsList",
+      "relationshipName": "suppliersList",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

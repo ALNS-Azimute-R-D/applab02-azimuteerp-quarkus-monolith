@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (stockLevel) {
+      <div>
+        <h2 data-cy="stockLevelDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.detail.title">Stock Level</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ stockLevel.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.lastModifiedDate">Last Modified Date</span></dt>
+          <dd>
+            <span>{{ stockLevel.lastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.ramainingQuantity">Ramaining Quantity</span></dt>
+          <dd>
+            <span>{{ stockLevel.ramainingQuantity }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.extraDetails">Extra Details</span></dt>
+          <dd>
+            <span>{{ stockLevel.extraDetails }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.warehouse">Warehouse</span></dt>
+          <dd>
+            @if (stockLevel.warehouse) {
+              <div>
+                <a [routerLink]="['/warehouse', stockLevel.warehouse.id, 'view']">{{ stockLevel.warehouse.acronym }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.product">Product</span></dt>
+          <dd>
+            @if (stockLevel.product) {
+              <div>
+                <a [routerLink]="['/product', stockLevel.product.id, 'view']">{{ stockLevel.product.productName }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/stock-level', stockLevel.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

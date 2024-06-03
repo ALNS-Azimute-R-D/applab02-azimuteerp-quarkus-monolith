@@ -1,0 +1,152 @@
+{
+  "annotations": {
+    "changelogDate": "20240603222050"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "dto": "mapstruct",
+  "entityTableName": "tb_organization",
+  "fields": [
+    {
+      "fieldName": "acronym",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "businessCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "15"
+    },
+    {
+      "fieldName": "hierarchicalLevel",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "255",
+      "fieldValidateRulesMinlength": "2"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "businessHandlerClazz",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "mainContactPersonDetails",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "technicalEnvironmentsDetails",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "commonCustomAttributesDetails",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "organizationStatus",
+      "fieldType": "OrganizationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "UNDER_EVALUATION,ONBOARDING,READY_TO_START,WORKING,PENDENT,IN_FAILURE"
+    },
+    {
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
+    },
+    {
+      "fieldName": "logoImg",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "name": "Organization",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "tenant",
+      "otherEntityRelationshipName": "organizationsList",
+      "relationshipName": "tenant",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "typeOfOrganization",
+      "otherEntityRelationshipName": "organizationsList",
+      "relationshipName": "typeOfOrganization",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "childrenOrganizationsList",
+      "relationshipName": "organizationParent",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organizationDomain",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "organizationDomainsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "organizationAttribute",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "organizationAttributesList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "businessUnit",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "businessUnitsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "organizationParent",
+      "relationshipName": "childrenOrganizationsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "organizationRole",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "organizationRolesList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "organizationMembership",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "organizationMembershipsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

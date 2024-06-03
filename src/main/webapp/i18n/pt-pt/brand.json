@@ -1,0 +1,27 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "brand": {
+      "home": {
+        "title": "Brands",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Brand",
+        "createOrEditLabel": "Criar ou editar Brand",
+        "notFound": "Nenhum Brands encontrado"
+      },
+      "created": "Um novo Brand foi criado com o identificador {{ param }}",
+      "updated": "Brand com identificador {{ param }} foi actualizado",
+      "deleted": "Brand com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Brand {{ id }}?"
+      },
+      "detail": {
+        "title": "Brand"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "description": "Description",
+      "productsList": "Products List"
+    }
+  }
+}

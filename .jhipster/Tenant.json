@@ -1,0 +1,84 @@
+{
+  "annotations": {
+    "changelogDate": "20240603221850"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "documentation": "- Tenant\\n- TypeOfOrganization\\n- Organization\\n- BusinessUnit",
+  "dto": "mapstruct",
+  "entityTableName": "tb_tenant",
+  "fields": [
+    {
+      "fieldName": "acronym",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "128"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "customerBusinessCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "15"
+    },
+    {
+      "fieldName": "businessHandlerClazz",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "mainContactPersonDetails",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "billingDetails",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "technicalEnvironmentsDetails",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "commonCustomAttributesDetails",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "logoImg",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
+    }
+  ],
+  "name": "Tenant",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "tenant",
+      "relationshipName": "organizationsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

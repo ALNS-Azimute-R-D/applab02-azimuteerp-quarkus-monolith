@@ -1,0 +1,40 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "product": {
+      "home": {
+        "title": "Products",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Product erstellen",
+        "createOrEditLabel": "Product erstellen oder bearbeiten",
+        "notFound": "Keine Products gefunden"
+      },
+      "created": "Product erstellt mit ID {{ param }}",
+      "updated": "Product aktualisiert mit ID {{ param }}",
+      "deleted": "Product gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Product {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Product"
+      },
+      "id": "ID",
+      "productSKU": "Product SKU",
+      "productName": "Product Name",
+      "description": "Description",
+      "standardCost": "Standard Cost",
+      "listPrice": "List Price",
+      "reorderLevel": "Reorder Level",
+      "targetLevel": "Target Level",
+      "quantityPerUnit": "Quantity Per Unit",
+      "discontinued": "Discontinued",
+      "minimumReorderQuantity": "Minimum Reorder Quantity",
+      "suggestedCategory": "Suggested Category",
+      "attachments": "Attachments",
+      "supplierIds": "Supplier Ids",
+      "brand": "Brand",
+      "productsList": "Products List",
+      "stockLevelsList": "Stock Levels List",
+      "suppliersList": "Suppliers List"
+    }
+  }
+}

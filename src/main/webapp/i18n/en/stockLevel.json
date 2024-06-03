@@ -1,0 +1,28 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "stockLevel": {
+      "home": {
+        "title": "Stock Levels",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Stock Level",
+        "createOrEditLabel": "Create or edit a Stock Level",
+        "notFound": "No Stock Levels found"
+      },
+      "created": "A new Stock Level is created with identifier {{ param }}",
+      "updated": "A Stock Level is updated with identifier {{ param }}",
+      "deleted": "A Stock Level is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Stock Level {{ id }}?"
+      },
+      "detail": {
+        "title": "Stock Level"
+      },
+      "id": "ID",
+      "lastModifiedDate": "Last Modified Date",
+      "ramainingQuantity": "Ramaining Quantity",
+      "extraDetails": "Extra Details",
+      "warehouse": "Warehouse",
+      "product": "Product"
+    }
+  }
+}

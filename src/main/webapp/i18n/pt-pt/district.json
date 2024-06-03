@@ -1,0 +1,29 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "district": {
+      "home": {
+        "title": "Districts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) District",
+        "createOrEditLabel": "Criar ou editar District",
+        "notFound": "Nenhum Districts encontrado"
+      },
+      "created": "Um novo District foi criado com o identificador {{ param }}",
+      "updated": "District com identificador {{ param }} foi actualizado",
+      "deleted": "District com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) District {{ id }}?"
+      },
+      "detail": {
+        "title": "District"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "geoPolygonArea": "Geo Polygon Area",
+      "townCity": "Town City",
+      "personsList": "Persons List",
+      "customersList": "Customers List"
+    }
+  }
+}

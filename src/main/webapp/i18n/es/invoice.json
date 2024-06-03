@@ -1,0 +1,37 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "invoice": {
+      "home": {
+        "title": "Invoices",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Invoice",
+        "createOrEditLabel": "Crear o editar Invoice",
+        "notFound": "Ningún Invoices encontrado"
+      },
+      "created": "Un nuevo Invoice ha sido creado con el identificador {{ param }}",
+      "updated": "Un Invoice ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Invoice ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Invoice {{ id }}?"
+      },
+      "detail": {
+        "title": "Invoice"
+      },
+      "id": "ID",
+      "businessCode": "Business Code",
+      "originalOrderId": "Original Order Id",
+      "invoiceDate": "Invoice Date",
+      "dueDate": "Due Date",
+      "description": "Description",
+      "taxValue": "Tax Value",
+      "shippingValue": "Shipping Value",
+      "amountDueValue": "Amount Due Value",
+      "numberOfInstallmentsOriginal": "Number Of Installments Original",
+      "numberOfInstallmentsPaid": "Number Of Installments Paid",
+      "amountPaidValue": "Amount Paid Value",
+      "status": "Status",
+      "extraDetails": "Extra Details",
+      "preferrablePaymentMethod": "Preferrable Payment Method"
+    }
+  }
+}

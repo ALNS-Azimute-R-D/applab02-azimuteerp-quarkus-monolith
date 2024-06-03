@@ -1,0 +1,349 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-warehouse-heading"
+        data-cy="WarehouseCreateUpdateHeading"
+        jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.home.createOrEditLabel"
+      >
+        Create or edit a Warehouse
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.acronym" for="field_acronym"
+            >Acronym</label
+          >
+          <input type="text" class="form-control" name="acronym" id="field_acronym" data-cy="acronym" formControlName="acronym" />
+          @if (editForm.get('acronym')!.invalid && (editForm.get('acronym')!.dirty || editForm.get('acronym')!.touched)) {
+            <div>
+              @if (editForm.get('acronym')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('acronym')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }"
+                  >This field cannot be longer than 50 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          @if (editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)) {
+            <div>
+              @if (editForm.get('name')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('name')?.errors?.minlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 2 }"
+                  >This field is required to be at least 2 characters.</small
+                >
+              }
+              @if (editForm.get('name')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 120 }"
+                  >This field cannot be longer than 120 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.description" for="field_description"
+            >Description</label
+          >
+          <textarea
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.streetAddress" for="field_streetAddress"
+            >Street Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="streetAddress"
+            id="field_streetAddress"
+            data-cy="streetAddress"
+            formControlName="streetAddress"
+          />
+          @if (editForm.get('streetAddress')!.invalid && (editForm.get('streetAddress')!.dirty || editForm.get('streetAddress')!.touched)) {
+            <div>
+              @if (editForm.get('streetAddress')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('streetAddress')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 120 }"
+                  >This field cannot be longer than 120 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.houseNumber" for="field_houseNumber"
+            >House Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="houseNumber"
+            id="field_houseNumber"
+            data-cy="houseNumber"
+            formControlName="houseNumber"
+          />
+          @if (editForm.get('houseNumber')!.invalid && (editForm.get('houseNumber')!.dirty || editForm.get('houseNumber')!.touched)) {
+            <div>
+              @if (editForm.get('houseNumber')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }"
+                  >This field cannot be longer than 20 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.locationName" for="field_locationName"
+            >Location Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="locationName"
+            id="field_locationName"
+            data-cy="locationName"
+            formControlName="locationName"
+          />
+          @if (editForm.get('locationName')!.invalid && (editForm.get('locationName')!.dirty || editForm.get('locationName')!.touched)) {
+            <div>
+              @if (editForm.get('locationName')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }"
+                  >This field cannot be longer than 50 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.postalCode" for="field_postalCode"
+            >Postal Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="postalCode"
+            id="field_postalCode"
+            data-cy="postalCode"
+            formControlName="postalCode"
+          />
+          @if (editForm.get('postalCode')!.invalid && (editForm.get('postalCode')!.dirty || editForm.get('postalCode')!.touched)) {
+            <div>
+              @if (editForm.get('postalCode')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('postalCode')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 9 }"
+                  >This field cannot be longer than 9 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.pointLocation" for="field_pointLocation"
+            >Point Location</label
+          >
+          <div>
+            @if (editForm.get('pointLocation')!.value) {
+              <div class="form-text text-danger clearfix">
+                <a
+                  class="pull-start"
+                  (click)="openFile(editForm.get('pointLocation')!.value!, editForm.get('pointLocationContentType')!.value!)"
+                  jhiTranslate="entity.action.open"
+                  >Open</a
+                ><br />
+                <span class="pull-start"
+                  >{{ editForm.get('pointLocationContentType')!.value }}, {{ byteSize(editForm.get('pointLocation')!.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="editForm.patchValue({ pointLocation: undefined, pointLocationContentType: undefined })"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_pointLocation"
+              data-cy="pointLocation"
+              (change)="setFileData($event, 'pointLocation', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="pointLocation"
+            id="field_pointLocation"
+            data-cy="pointLocation"
+            formControlName="pointLocation"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="pointLocationContentType"
+            id="field_pointLocationContentType"
+            formControlName="pointLocationContentType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.mainEmail" for="field_mainEmail"
+            >Main Email</label
+          >
+          <input type="text" class="form-control" name="mainEmail" id="field_mainEmail" data-cy="mainEmail" formControlName="mainEmail" />
+          @if (editForm.get('mainEmail')!.invalid && (editForm.get('mainEmail')!.dirty || editForm.get('mainEmail')!.touched)) {
+            <div>
+              @if (editForm.get('mainEmail')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 120 }"
+                  >This field cannot be longer than 120 characters.</small
+                >
+              }
+              @if (editForm.get('mainEmail')?.errors?.pattern) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Main Email' }"
+                  >This field should follow pattern for Main Email.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.landPhoneNumber"
+            for="field_landPhoneNumber"
+            >Land Phone Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="landPhoneNumber"
+            id="field_landPhoneNumber"
+            data-cy="landPhoneNumber"
+            formControlName="landPhoneNumber"
+          />
+          @if (
+            editForm.get('landPhoneNumber')!.invalid && (editForm.get('landPhoneNumber')!.dirty || editForm.get('landPhoneNumber')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('landPhoneNumber')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 15 }"
+                  >This field cannot be longer than 15 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.mobilePhoneNumber"
+            for="field_mobilePhoneNumber"
+            >Mobile Phone Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="mobilePhoneNumber"
+            id="field_mobilePhoneNumber"
+            data-cy="mobilePhoneNumber"
+            formControlName="mobilePhoneNumber"
+          />
+          @if (
+            editForm.get('mobilePhoneNumber')!.invalid &&
+            (editForm.get('mobilePhoneNumber')!.dirty || editForm.get('mobilePhoneNumber')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('mobilePhoneNumber')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 15 }"
+                  >This field cannot be longer than 15 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.faxNumber" for="field_faxNumber"
+            >Fax Number</label
+          >
+          <input type="text" class="form-control" name="faxNumber" id="field_faxNumber" data-cy="faxNumber" formControlName="faxNumber" />
+          @if (editForm.get('faxNumber')!.invalid && (editForm.get('faxNumber')!.dirty || editForm.get('faxNumber')!.touched)) {
+            <div>
+              @if (editForm.get('faxNumber')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 15 }"
+                  >This field cannot be longer than 15 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.extraDetails" for="field_extraDetails"
+            >Extra Details</label
+          >
+          <textarea
+            class="form-control"
+            name="extraDetails"
+            id="field_extraDetails"
+            data-cy="extraDetails"
+            formControlName="extraDetails"
+          ></textarea>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

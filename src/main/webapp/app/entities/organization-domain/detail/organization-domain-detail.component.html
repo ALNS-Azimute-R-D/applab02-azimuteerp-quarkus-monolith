@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (organizationDomain) {
+      <div>
+        <h2 data-cy="organizationDomainDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationDomain.detail.title">Organization Domain</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ organizationDomain.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationDomain.domainAcronym">Domain Acronym</span></dt>
+          <dd>
+            <span>{{ organizationDomain.domainAcronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationDomain.name">Name</span></dt>
+          <dd>
+            <span>{{ organizationDomain.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationDomain.isVerified">Is Verified</span></dt>
+          <dd>
+            <span>{{ organizationDomain.isVerified }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationDomain.businessHandlerClazz">Business Handler Clazz</span>
+          </dt>
+          <dd>
+            <span>{{ organizationDomain.businessHandlerClazz }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationDomain.activationStatus">Activation Status</span></dt>
+          <dd>
+            <span
+              jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + organizationDomain.activationStatus }}"
+              >{{ organizationDomain.activationStatus }}</span
+            >
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationDomain.organization">Organization</span></dt>
+          <dd>
+            @if (organizationDomain.organization) {
+              <div>
+                <a [routerLink]="['/organization', organizationDomain.organization.id, 'view']">{{
+                  organizationDomain.organization.name
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/organization-domain', organizationDomain.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

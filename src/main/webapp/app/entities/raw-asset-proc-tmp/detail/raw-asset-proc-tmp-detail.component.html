@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (rawAssetProcTmp) {
+      <div>
+        <h2 data-cy="rawAssetProcTmpDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.detail.title">Raw Asset Proc Tmp</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ rawAssetProcTmp.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.name">Name</span></dt>
+          <dd>
+            <span>{{ rawAssetProcTmp.name }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.statusRawProcessing">Status Raw Processing</span>
+          </dt>
+          <dd>
+            <span
+              jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.StatusRawProcessingEnum.' + rawAssetProcTmp.statusRawProcessing }}"
+              >{{ rawAssetProcTmp.statusRawProcessing }}</span
+            >
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.fullFilenamePath">Full Filename Path</span></dt>
+          <dd>
+            <span>{{ rawAssetProcTmp.fullFilenamePath }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.assetRawContentAsBlob"
+              >Asset Raw Content As Blob</span
+            >
+          </dt>
+          <dd>
+            @if (rawAssetProcTmp.assetRawContentAsBlob) {
+              <div>
+                <a
+                  (click)="openFile(rawAssetProcTmp.assetRawContentAsBlob, rawAssetProcTmp.assetRawContentAsBlobContentType)"
+                  jhiTranslate="entity.action.open"
+                  >Open</a
+                >
+                {{ rawAssetProcTmp.assetRawContentAsBlobContentType }}, {{ byteSize(rawAssetProcTmp.assetRawContentAsBlob) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.extraDetails">Extra Details</span></dt>
+          <dd>
+            <span>{{ rawAssetProcTmp.extraDetails }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.assetType">Asset Type</span></dt>
+          <dd>
+            @if (rawAssetProcTmp.assetType) {
+              <div>
+                <a [routerLink]="['/asset-type', rawAssetProcTmp.assetType.id, 'view']">{{ rawAssetProcTmp.assetType.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/raw-asset-proc-tmp', rawAssetProcTmp.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

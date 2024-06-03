@@ -1,0 +1,143 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (person) {
+      <div>
+        <h2 data-cy="personDetailsHeading"><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.detail.title">Person</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ person.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.firstName">First Name</span></dt>
+          <dd>
+            <span>{{ person.firstName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.lastName">Last Name</span></dt>
+          <dd>
+            <span>{{ person.lastName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.birthDate">Birth Date</span></dt>
+          <dd>
+            <span>{{ person.birthDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.gender">Gender</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.GenderEnum.' + person.gender }}">{{ person.gender }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.codeBI">Code BI</span></dt>
+          <dd>
+            <span>{{ person.codeBI }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.codeNIF">Code NIF</span></dt>
+          <dd>
+            <span>{{ person.codeNIF }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.streetAddress">Street Address</span></dt>
+          <dd>
+            <span>{{ person.streetAddress }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.houseNumber">House Number</span></dt>
+          <dd>
+            <span>{{ person.houseNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.locationName">Location Name</span></dt>
+          <dd>
+            <span>{{ person.locationName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.postalCode">Postal Code</span></dt>
+          <dd>
+            <span>{{ person.postalCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.mainEmail">Main Email</span></dt>
+          <dd>
+            <span>{{ person.mainEmail }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.landPhoneNumber">Land Phone Number</span></dt>
+          <dd>
+            <span>{{ person.landPhoneNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.mobilePhoneNumber">Mobile Phone Number</span></dt>
+          <dd>
+            <span>{{ person.mobilePhoneNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.occupation">Occupation</span></dt>
+          <dd>
+            <span>{{ person.occupation }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.preferredLanguage">Preferred Language</span></dt>
+          <dd>
+            <span>{{ person.preferredLanguage }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.usernameInOAuth2">Username In O Auth 2</span></dt>
+          <dd>
+            <span>{{ person.usernameInOAuth2 }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.userIdInOAuth2">User Id In O Auth 2</span></dt>
+          <dd>
+            <span>{{ person.userIdInOAuth2 }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.extraDetails">Extra Details</span></dt>
+          <dd>
+            <span>{{ person.extraDetails }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.activationStatus">Activation Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + person.activationStatus }}">{{
+              person.activationStatus
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.avatarImg">Avatar Img</span></dt>
+          <dd>
+            @if (person.avatarImg) {
+              <div>
+                <a (click)="openFile(person.avatarImg, person.avatarImgContentType)">
+                  <img [src]="'data:' + person.avatarImgContentType + ';base64,' + person.avatarImg" style="max-width: 100%" alt="person" />
+                </a>
+                {{ person.avatarImgContentType }}, {{ byteSize(person.avatarImg) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.typeOfPerson">Type Of Person</span></dt>
+          <dd>
+            @if (person.typeOfPerson) {
+              <div>
+                <a [routerLink]="['/type-of-person', person.typeOfPerson.id, 'view']">{{ person.typeOfPerson.code }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.district">District</span></dt>
+          <dd>
+            @if (person.district) {
+              <div>
+                <a [routerLink]="['/district', person.district.id, 'view']">{{ person.district.name }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.managerPerson">Manager Person</span></dt>
+          <dd>
+            @if (person.managerPerson) {
+              <div>
+                <a [routerLink]="['/person', person.managerPerson.id, 'view']">{{ person.managerPerson.lastName }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/person', person.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

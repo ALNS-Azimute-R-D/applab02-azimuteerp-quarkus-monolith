@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (assetType) {
+      <div>
+        <h2 data-cy="assetTypeDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.assetType.detail.title">Asset Type</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ assetType.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.assetType.acronym">Acronym</span></dt>
+          <dd>
+            <span>{{ assetType.acronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.assetType.name">Name</span></dt>
+          <dd>
+            <span>{{ assetType.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.assetType.description">Description</span></dt>
+          <dd>
+            <span>{{ assetType.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.assetType.handlerClazzName">Handler Clazz Name</span></dt>
+          <dd>
+            <span>{{ assetType.handlerClazzName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.assetType.extraDetails">Extra Details</span></dt>
+          <dd>
+            <span>{{ assetType.extraDetails }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/asset-type', assetType.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,66 @@
+{
+  "annotations": {
+    "changelogDate": "20240603224550"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "dto": "mapstruct",
+  "entityTableName": "tb_article",
+  "fields": [
+    {
+      "fieldName": "inventoryProductId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "customName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "150"
+    },
+    {
+      "fieldName": "customDescription",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "priceValue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "itemSize",
+      "fieldType": "SizeOptionEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "S,M,L,XL,XXL,XXXL"
+    },
+    {
+      "fieldName": "assetsCollectionUUID",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "isEnabled",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Article",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "acronym",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "articlesList",
+      "relationshipName": "mainCategory",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "orderItem",
+      "otherEntityRelationshipName": "article",
+      "relationshipName": "ordersItemsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,29 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "organizationDomain": {
+      "home": {
+        "title": "Organization Domains",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Organization Domain",
+        "createOrEditLabel": "Criar ou editar Organization Domain",
+        "notFound": "Nenhum Organization Domain encontrado"
+      },
+      "created": "Um novo Organization Domain foi criado com o identificador {{ param }}",
+      "updated": "Um Organization Domain foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Organization Domain foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Organization Domain {{ id }}?"
+      },
+      "detail": {
+        "title": "Organization Domain"
+      },
+      "id": "ID",
+      "domainAcronym": "Domain Acronym",
+      "name": "Name",
+      "isVerified": "Is Verified",
+      "businessHandlerClazz": "Business Handler Clazz",
+      "activationStatus": "Activation Status",
+      "organization": "Organization"
+    }
+  }
+}

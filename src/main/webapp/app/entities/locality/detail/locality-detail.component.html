@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (locality) {
+      <div>
+        <h2 data-cy="localityDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.locality.detail.title">Locality</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ locality.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.locality.acronym">Acronym</span></dt>
+          <dd>
+            <span>{{ locality.acronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.locality.name">Name</span></dt>
+          <dd>
+            <span>{{ locality.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.locality.description">Description</span></dt>
+          <dd>
+            <span>{{ locality.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.locality.geoPolygonArea">Geo Polygon Area</span></dt>
+          <dd>
+            @if (locality.geoPolygonArea) {
+              <div>
+                <a (click)="openFile(locality.geoPolygonArea, locality.geoPolygonAreaContentType)" jhiTranslate="entity.action.open"
+                  >Open</a
+                >
+                {{ locality.geoPolygonAreaContentType }}, {{ byteSize(locality.geoPolygonArea) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.locality.country">Country</span></dt>
+          <dd>
+            @if (locality.country) {
+              <div>
+                <a [routerLink]="['/country', locality.country.id, 'view']">{{ locality.country.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/locality', locality.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,15 @@
+export enum ContinentEnum {
+  AFRICA = 'AFRICA',
+
+  ASIA = 'ASIA',
+
+  EUROPE = 'EUROPE',
+
+  OCEANIA = 'OCEANIA',
+
+  CENTRAL_AMERICA = 'CENTRAL_AMERICA',
+
+  NORTH_AMERICA = 'NORTH_AMERICA',
+
+  SOUTH_AMERICA = 'SOUTH_AMERICA',
+}

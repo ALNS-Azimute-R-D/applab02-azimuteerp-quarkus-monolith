@@ -1,0 +1,75 @@
+{
+  "annotations": {
+    "changelogDate": "20240603223150"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "dto": "mapstruct",
+  "entityTableName": "tb_asset",
+  "fields": [
+    {
+      "fieldName": "uid",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "storageTypeUsed",
+      "fieldType": "StorageTypeEnum",
+      "fieldValues": "BLOB_IN_DB,LOCAL_FILESYSTEM,LOCAL_MINIO,REMOTE_FILESYSTEM,REMOTE_MINIO,AWS_S3,OTHER_CLOUD_STORAGE"
+    },
+    {
+      "fieldName": "fullFilenamePath",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "StatusAssetEnum",
+      "fieldValues": "ENABLED,DISABLED,DELETED"
+    },
+    {
+      "fieldName": "preferredPurpose",
+      "fieldType": "PreferredPurposeEnum",
+      "fieldValues": "USER_AVATAR,LOGO_IMG,PHOTO_ALBUM,OTHER"
+    },
+    {
+      "fieldName": "assetContentAsBlob",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "name": "Asset",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "assetType",
+      "otherEntityRelationshipName": "assets",
+      "relationshipName": "assetType",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "rawAssetProcTmp",
+      "otherEntityRelationshipName": "assets",
+      "relationshipName": "rawAssetProcTmp",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "assetMetadata",
+      "otherEntityRelationshipName": "asset",
+      "relationshipName": "assetMetadata",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

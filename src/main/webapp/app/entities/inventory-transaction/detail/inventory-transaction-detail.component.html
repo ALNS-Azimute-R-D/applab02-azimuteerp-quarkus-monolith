@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (inventoryTransaction) {
+      <div>
+        <h2 data-cy="inventoryTransactionDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.detail.title">Inventory Transaction</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ inventoryTransaction.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.invoiceId">Invoice Id</span></dt>
+          <dd>
+            <span>{{ inventoryTransaction.invoiceId }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.transactionCreatedDate"
+              >Transaction Created Date</span
+            >
+          </dt>
+          <dd>
+            <span>{{ inventoryTransaction.transactionCreatedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.transactionModifiedDate"
+              >Transaction Modified Date</span
+            >
+          </dt>
+          <dd>
+            <span>{{ inventoryTransaction.transactionModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.quantity">Quantity</span></dt>
+          <dd>
+            <span>{{ inventoryTransaction.quantity }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.comments">Comments</span></dt>
+          <dd>
+            <span>{{ inventoryTransaction.comments }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.supplier">Supplier</span></dt>
+          <dd>
+            @if (inventoryTransaction.supplier) {
+              <div>
+                <a [routerLink]="['/supplier', inventoryTransaction.supplier.id, 'view']">{{ inventoryTransaction.supplier.acronym }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.product">Product</span></dt>
+          <dd>
+            @if (inventoryTransaction.product) {
+              <div>
+                <a [routerLink]="['/product', inventoryTransaction.product.id, 'view']">{{ inventoryTransaction.product.productName }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.warehouse">Warehouse</span></dt>
+          <dd>
+            @if (inventoryTransaction.warehouse) {
+              <div>
+                <a [routerLink]="['/warehouse', inventoryTransaction.warehouse.id, 'view']">{{ inventoryTransaction.warehouse.acronym }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/inventory-transaction', inventoryTransaction.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

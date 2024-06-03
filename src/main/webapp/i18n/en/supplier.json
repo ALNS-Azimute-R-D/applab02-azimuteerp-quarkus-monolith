@@ -1,0 +1,44 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "supplier": {
+      "home": {
+        "title": "Suppliers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Supplier",
+        "createOrEditLabel": "Create or edit a Supplier",
+        "notFound": "No Suppliers found"
+      },
+      "created": "A new Supplier is created with identifier {{ param }}",
+      "updated": "A Supplier is updated with identifier {{ param }}",
+      "deleted": "A Supplier is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Supplier {{ id }}?"
+      },
+      "detail": {
+        "title": "Supplier"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "companyName": "Company Name",
+      "representativeLastName": "Representative Last Name",
+      "representativeFirstName": "Representative First Name",
+      "jobTitle": "Job Title",
+      "streetAddress": "Street Address",
+      "houseNumber": "House Number",
+      "locationName": "Location Name",
+      "city": "City",
+      "stateProvince": "State Province",
+      "zipPostalCode": "Zip Postal Code",
+      "countryRegion": "Country Region",
+      "webPage": "Web Page",
+      "pointLocation": "Point Location",
+      "mainEmail": "Main Email",
+      "landPhoneNumber": "Land Phone Number",
+      "mobilePhoneNumber": "Mobile Phone Number",
+      "faxNumber": "Fax Number",
+      "extraDetails": "Extra Details",
+      "productsList": "Products List",
+      "inventoryTransactionsList": "Inventory Transactions List"
+    }
+  }
+}

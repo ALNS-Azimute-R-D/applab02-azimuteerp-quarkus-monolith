@@ -1,0 +1,202 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-article-heading"
+        data-cy="ArticleCreateUpdateHeading"
+        jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.home.createOrEditLabel"
+      >
+        Create or edit a Article
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.inventoryProductId"
+            for="field_inventoryProductId"
+            >Inventory Product Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="inventoryProductId"
+            id="field_inventoryProductId"
+            data-cy="inventoryProductId"
+            formControlName="inventoryProductId"
+          />
+          @if (
+            editForm.get('inventoryProductId')!.invalid &&
+            (editForm.get('inventoryProductId')!.dirty || editForm.get('inventoryProductId')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('inventoryProductId')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('inventoryProductId')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.customName" for="field_customName"
+            >Custom Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="customName"
+            id="field_customName"
+            data-cy="customName"
+            formControlName="customName"
+          />
+          @if (editForm.get('customName')!.invalid && (editForm.get('customName')!.dirty || editForm.get('customName')!.touched)) {
+            <div>
+              @if (editForm.get('customName')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 150 }"
+                  >This field cannot be longer than 150 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.customDescription"
+            for="field_customDescription"
+            >Custom Description</label
+          >
+          <textarea
+            class="form-control"
+            name="customDescription"
+            id="field_customDescription"
+            data-cy="customDescription"
+            formControlName="customDescription"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.priceValue" for="field_priceValue"
+            >Price Value</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="priceValue"
+            id="field_priceValue"
+            data-cy="priceValue"
+            formControlName="priceValue"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.itemSize" for="field_itemSize"
+            >Item Size</label
+          >
+          <select class="form-control" name="itemSize" formControlName="itemSize" id="field_itemSize" data-cy="itemSize">
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.SizeOptionEnum.null' | translate }}</option>
+            @for (sizeOptionEnum of sizeOptionEnumValues; track $index) {
+              <option [value]="sizeOptionEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.SizeOptionEnum.' + sizeOptionEnum | translate }}
+              </option>
+            }
+          </select>
+          @if (editForm.get('itemSize')!.invalid && (editForm.get('itemSize')!.dirty || editForm.get('itemSize')!.touched)) {
+            <div>
+              @if (editForm.get('itemSize')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.assetsCollectionUUID"
+            for="field_assetsCollectionUUID"
+            >Assets Collection UUID</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="assetsCollectionUUID"
+            id="field_assetsCollectionUUID"
+            data-cy="assetsCollectionUUID"
+            formControlName="assetsCollectionUUID"
+          />
+          @if (
+            editForm.get('assetsCollectionUUID')!.invalid &&
+            (editForm.get('assetsCollectionUUID')!.dirty || editForm.get('assetsCollectionUUID')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('assetsCollectionUUID')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }"
+                  >This field cannot be longer than 255 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.isEnabled" for="field_isEnabled"
+            >Is Enabled</label
+          >
+          <input type="checkbox" class="form-check" name="isEnabled" id="field_isEnabled" data-cy="isEnabled" formControlName="isEnabled" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.mainCategory" for="field_mainCategory"
+            >Main Category</label
+          >
+          <select
+            class="form-control"
+            id="field_mainCategory"
+            data-cy="mainCategory"
+            name="mainCategory"
+            formControlName="mainCategory"
+            [compareWith]="compareCategory"
+          >
+            <option [ngValue]="null"></option>
+            @for (categoryOption of categoriesSharedCollection; track $index) {
+              <option [ngValue]="categoryOption">{{ categoryOption.acronym }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

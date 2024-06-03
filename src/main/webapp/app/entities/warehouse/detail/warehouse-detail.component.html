@@ -1,0 +1,91 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (warehouse) {
+      <div>
+        <h2 data-cy="warehouseDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.detail.title">Warehouse</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ warehouse.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.acronym">Acronym</span></dt>
+          <dd>
+            <span>{{ warehouse.acronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.name">Name</span></dt>
+          <dd>
+            <span>{{ warehouse.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.description">Description</span></dt>
+          <dd>
+            <span>{{ warehouse.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.streetAddress">Street Address</span></dt>
+          <dd>
+            <span>{{ warehouse.streetAddress }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.houseNumber">House Number</span></dt>
+          <dd>
+            <span>{{ warehouse.houseNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.locationName">Location Name</span></dt>
+          <dd>
+            <span>{{ warehouse.locationName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.postalCode">Postal Code</span></dt>
+          <dd>
+            <span>{{ warehouse.postalCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.pointLocation">Point Location</span></dt>
+          <dd>
+            @if (warehouse.pointLocation) {
+              <div>
+                <a (click)="openFile(warehouse.pointLocation, warehouse.pointLocationContentType)" jhiTranslate="entity.action.open"
+                  >Open</a
+                >
+                {{ warehouse.pointLocationContentType }}, {{ byteSize(warehouse.pointLocation) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.mainEmail">Main Email</span></dt>
+          <dd>
+            <span>{{ warehouse.mainEmail }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.landPhoneNumber">Land Phone Number</span></dt>
+          <dd>
+            <span>{{ warehouse.landPhoneNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.mobilePhoneNumber">Mobile Phone Number</span></dt>
+          <dd>
+            <span>{{ warehouse.mobilePhoneNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.faxNumber">Fax Number</span></dt>
+          <dd>
+            <span>{{ warehouse.faxNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.extraDetails">Extra Details</span></dt>
+          <dd>
+            <span>{{ warehouse.extraDetails }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/warehouse', warehouse.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

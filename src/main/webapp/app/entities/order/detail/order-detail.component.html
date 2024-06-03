@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (order) {
+      <div>
+        <h2 data-cy="orderDetailsHeading"><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.detail.title">Order</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ order.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.businessCode">Business Code</span></dt>
+          <dd>
+            <span>{{ order.businessCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.customerUserId">Customer User Id</span></dt>
+          <dd>
+            <span>{{ order.customerUserId }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.placedDate">Placed Date</span></dt>
+          <dd>
+            <span>{{ order.placedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.totalTaxValue">Total Tax Value</span></dt>
+          <dd>
+            <span>{{ order.totalTaxValue }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.totalDueValue">Total Due Value</span></dt>
+          <dd>
+            <span>{{ order.totalDueValue }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.status">Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.OrderStatusEnum.' + order.status }}">{{ order.status }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.invoiceId">Invoice Id</span></dt>
+          <dd>
+            <span>{{ order.invoiceId }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.estimatedDeliveryDate">Estimated Delivery Date</span></dt>
+          <dd>
+            <span>{{ order.estimatedDeliveryDate | formatMediumDatetime }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/order', order.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

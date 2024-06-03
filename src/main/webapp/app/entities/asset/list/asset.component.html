@@ -1,0 +1,190 @@
+<div>
+  <h2 id="page-heading" data-cy="AssetHeading">
+    <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.home.title">Assets</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-asset"
+        [routerLink]="['/asset/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.home.createLabel">Create a new Asset</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (assets?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.home.notFound">No Assets found</span>
+    </div>
+  }
+
+  @if (assets && assets.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="uid">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.uid">Uid</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="name">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.name">Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="storageTypeUsed">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.storageTypeUsed">Storage Type Used</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fullFilenamePath">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.fullFilenamePath">Full Filename Path</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.status">Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="preferredPurpose">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.preferredPurpose">Preferred Purpose</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="assetContentAsBlob">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.assetContentAsBlob">Asset Content As Blob</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="assetType.name">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.assetType">Asset Type</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="rawAssetProcTmp.name">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.rawAssetProcTmp">Raw Asset Proc Tmp</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (asset of assets; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/asset', asset.id, 'view']">{{ asset.id }}</a>
+              </td>
+              <td>{{ asset.uid }}</td>
+              <td>{{ asset.name }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.StorageTypeEnum.' + asset.storageTypeUsed }}">
+                {{ asset.storageTypeUsed }}
+              </td>
+              <td>{{ asset.fullFilenamePath }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.StatusAssetEnum.' + asset.status }}">{{ asset.status }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.PreferredPurposeEnum.' + asset.preferredPurpose }}">
+                {{ asset.preferredPurpose }}
+              </td>
+              <td>
+                @if (asset.assetContentAsBlob) {
+                  <a (click)="openFile(asset.assetContentAsBlob, asset.assetContentAsBlobContentType)" jhiTranslate="entity.action.open"
+                    >Open</a
+                  >
+                  <span>{{ asset.assetContentAsBlobContentType }}, {{ byteSize(asset.assetContentAsBlob) }}</span>
+                }
+              </td>
+              <td>
+                @if (asset.assetType) {
+                  <div>
+                    <a [routerLink]="['/asset-type', asset.assetType.id, 'view']">{{ asset.assetType.name }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (asset.rawAssetProcTmp) {
+                  <div>
+                    <a [routerLink]="['/raw-asset-proc-tmp', asset.rawAssetProcTmp.id, 'view']">{{ asset.rawAssetProcTmp.name }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/asset', asset.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/asset', asset.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(asset)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (assets && assets.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

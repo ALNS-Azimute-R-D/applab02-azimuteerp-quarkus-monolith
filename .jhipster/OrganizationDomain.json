@@ -1,0 +1,54 @@
+{
+  "annotations": {
+    "changelogDate": "20240603222250"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "dto": "mapstruct",
+  "entityTableName": "tb_organization_domain",
+  "fields": [
+    {
+      "fieldName": "domainAcronym",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "255",
+      "fieldValidateRulesMinlength": "2"
+    },
+    {
+      "fieldName": "isVerified",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "businessHandlerClazz",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
+    }
+  ],
+  "name": "OrganizationDomain",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "organizationDomainsList",
+      "relationshipName": "organization",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "service": "serviceImpl"
+}

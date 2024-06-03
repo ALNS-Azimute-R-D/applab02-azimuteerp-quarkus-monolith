@@ -1,0 +1,137 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (organization) {
+      <div>
+        <h2 data-cy="organizationDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.detail.title">Organization</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ organization.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.acronym">Acronym</span></dt>
+          <dd>
+            <span>{{ organization.acronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.businessCode">Business Code</span></dt>
+          <dd>
+            <span>{{ organization.businessCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.hierarchicalLevel">Hierarchical Level</span></dt>
+          <dd>
+            <span>{{ organization.hierarchicalLevel }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.name">Name</span></dt>
+          <dd>
+            <span>{{ organization.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.description">Description</span></dt>
+          <dd>
+            <span>{{ organization.description }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.businessHandlerClazz">Business Handler Clazz</span>
+          </dt>
+          <dd>
+            <span>{{ organization.businessHandlerClazz }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.mainContactPersonDetails"
+              >Main Contact Person Details</span
+            >
+          </dt>
+          <dd>
+            <span>{{ organization.mainContactPersonDetails }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.technicalEnvironmentsDetails"
+              >Technical Environments Details</span
+            >
+          </dt>
+          <dd>
+            <span>{{ organization.technicalEnvironmentsDetails }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.commonCustomAttributesDetails"
+              >Common Custom Attributes Details</span
+            >
+          </dt>
+          <dd>
+            <span>{{ organization.commonCustomAttributesDetails }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.organizationStatus">Organization Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.OrganizationStatusEnum.' + organization.organizationStatus }}">{{
+              organization.organizationStatus
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.activationStatus">Activation Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + organization.activationStatus }}">{{
+              organization.activationStatus
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.logoImg">Logo Img</span></dt>
+          <dd>
+            @if (organization.logoImg) {
+              <div>
+                <a (click)="openFile(organization.logoImg, organization.logoImgContentType)">
+                  <img
+                    [src]="'data:' + organization.logoImgContentType + ';base64,' + organization.logoImg"
+                    style="max-width: 100%"
+                    alt="organization"
+                  />
+                </a>
+                {{ organization.logoImgContentType }}, {{ byteSize(organization.logoImg) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.tenant">Tenant</span></dt>
+          <dd>
+            @if (organization.tenant) {
+              <div>
+                <a [routerLink]="['/tenant', organization.tenant.id, 'view']">{{ organization.tenant.name }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.typeOfOrganization">Type Of Organization</span></dt>
+          <dd>
+            @if (organization.typeOfOrganization) {
+              <div>
+                <a [routerLink]="['/type-of-organization', organization.typeOfOrganization.id, 'view']">{{
+                  organization.typeOfOrganization.name
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.organizationParent">Organization Parent</span></dt>
+          <dd>
+            @if (organization.organizationParent) {
+              <div>
+                <a [routerLink]="['/organization', organization.organizationParent.id, 'view']">{{
+                  organization.organizationParent.name
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/organization', organization.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

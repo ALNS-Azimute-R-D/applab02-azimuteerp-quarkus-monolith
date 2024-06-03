@@ -1,0 +1,84 @@
+{
+  "annotations": {
+    "changelogDate": "20240603223350"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "documentation": "- Invoice\\n- PaymentMethod\\n- Payment",
+  "dto": "mapstruct",
+  "entityTableName": "tb_invoice",
+  "fields": [
+    {
+      "fieldName": "businessCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "15"
+    },
+    {
+      "fieldName": "originalOrderId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "invoiceDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dueDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "80"
+    },
+    {
+      "fieldName": "taxValue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "shippingValue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "amountDueValue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "numberOfInstallmentsOriginal",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numberOfInstallmentsPaid",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "amountPaidValue",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "InvoiceStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PAID_ONCE,PAYING_IN_INSTALLMENTS,ISSUED,CANCELLED"
+    },
+    {
+      "fieldName": "extraDetails",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "name": "Invoice",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "paymentMethod",
+      "otherEntityRelationshipName": "invoicesAsPreferrableList",
+      "relationshipName": "preferrablePaymentMethod",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

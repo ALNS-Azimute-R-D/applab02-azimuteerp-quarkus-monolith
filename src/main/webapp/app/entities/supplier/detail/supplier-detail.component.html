@@ -1,0 +1,126 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (supplier) {
+      <div>
+        <h2 data-cy="supplierDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.detail.title">Supplier</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ supplier.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.acronym">Acronym</span></dt>
+          <dd>
+            <span>{{ supplier.acronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.companyName">Company Name</span></dt>
+          <dd>
+            <span>{{ supplier.companyName }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.representativeLastName">Representative Last Name</span>
+          </dt>
+          <dd>
+            <span>{{ supplier.representativeLastName }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.representativeFirstName">Representative First Name</span>
+          </dt>
+          <dd>
+            <span>{{ supplier.representativeFirstName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.jobTitle">Job Title</span></dt>
+          <dd>
+            <span>{{ supplier.jobTitle }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.streetAddress">Street Address</span></dt>
+          <dd>
+            <span>{{ supplier.streetAddress }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.houseNumber">House Number</span></dt>
+          <dd>
+            <span>{{ supplier.houseNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.locationName">Location Name</span></dt>
+          <dd>
+            <span>{{ supplier.locationName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.city">City</span></dt>
+          <dd>
+            <span>{{ supplier.city }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.stateProvince">State Province</span></dt>
+          <dd>
+            <span>{{ supplier.stateProvince }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.zipPostalCode">Zip Postal Code</span></dt>
+          <dd>
+            <span>{{ supplier.zipPostalCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.countryRegion">Country Region</span></dt>
+          <dd>
+            <span>{{ supplier.countryRegion }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.webPage">Web Page</span></dt>
+          <dd>
+            <span>{{ supplier.webPage }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.pointLocation">Point Location</span></dt>
+          <dd>
+            @if (supplier.pointLocation) {
+              <div>
+                <a (click)="openFile(supplier.pointLocation, supplier.pointLocationContentType)" jhiTranslate="entity.action.open">Open</a>
+                {{ supplier.pointLocationContentType }}, {{ byteSize(supplier.pointLocation) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.mainEmail">Main Email</span></dt>
+          <dd>
+            <span>{{ supplier.mainEmail }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.landPhoneNumber">Land Phone Number</span></dt>
+          <dd>
+            <span>{{ supplier.landPhoneNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.mobilePhoneNumber">Mobile Phone Number</span></dt>
+          <dd>
+            <span>{{ supplier.mobilePhoneNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.faxNumber">Fax Number</span></dt>
+          <dd>
+            <span>{{ supplier.faxNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.extraDetails">Extra Details</span></dt>
+          <dd>
+            <span>{{ supplier.extraDetails }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.productsList">Products List</span></dt>
+          <dd>
+            @for (productsList of supplier.productsLists; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/product', productsList.id, 'view']">{{ productsList.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/supplier', supplier.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

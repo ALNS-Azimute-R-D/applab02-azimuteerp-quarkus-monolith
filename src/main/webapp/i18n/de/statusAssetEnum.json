@@ -1,0 +1,10 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "StatusAssetEnum": {
+      "null": "",
+      "ENABLED": "ENABLED",
+      "DISABLED": "DISABLED",
+      "DELETED": "DELETED"
+    }
+  }
+}

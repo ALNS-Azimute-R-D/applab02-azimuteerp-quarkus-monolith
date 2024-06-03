@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (businessUnit) {
+      <div>
+        <h2 data-cy="businessUnitDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.businessUnit.detail.title">Business Unit</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ businessUnit.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.businessUnit.acronym">Acronym</span></dt>
+          <dd>
+            <span>{{ businessUnit.acronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.businessUnit.hierarchicalLevel">Hierarchical Level</span></dt>
+          <dd>
+            <span>{{ businessUnit.hierarchicalLevel }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.businessUnit.name">Name</span></dt>
+          <dd>
+            <span>{{ businessUnit.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.businessUnit.activationStatus">Activation Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + businessUnit.activationStatus }}">{{
+              businessUnit.activationStatus
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.businessUnit.organization">Organization</span></dt>
+          <dd>
+            @if (businessUnit.organization) {
+              <div>
+                <a [routerLink]="['/organization', businessUnit.organization.id, 'view']">{{ businessUnit.organization.name }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.businessUnit.businessUnitParent">Business Unit Parent</span></dt>
+          <dd>
+            @if (businessUnit.businessUnitParent) {
+              <div>
+                <a [routerLink]="['/business-unit', businessUnit.businessUnitParent.id, 'view']">{{
+                  businessUnit.businessUnitParent.name
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/business-unit', businessUnit.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

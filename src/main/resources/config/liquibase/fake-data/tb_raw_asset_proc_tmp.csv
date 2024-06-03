@@ -1,0 +1,11 @@
+id;name;status_raw_processing;full_filename_path;asset_raw_content_as_blob;asset_raw_content_as_blob_content_type;extra_details;asset_type_id
+1;kindheartedly;UPLOADING;near deeply episode;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;1
+2;onto granular sympathetic;PROCESSING;phooey;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;2
+3;out;DONE;supposing;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;3
+4;nature unripe antennae;UPLOADING;duh yum yippee;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;4
+5;canine;FAILURE;gee mmm likewise;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;5
+6;although;UPLOADING;oversee pish consequently;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;6
+7;boldly;PROCESSING;curiously;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;7
+8;yahoo;DONE;skive;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;8
+9;likewise;UPLOADED;sweetly;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;9
+10;from during silk;PROCESSING;fetter an;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;10

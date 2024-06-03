@@ -1,0 +1,434 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-organization-heading"
+        data-cy="OrganizationCreateUpdateHeading"
+        jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.home.createOrEditLabel"
+      >
+        Create or edit a Organization
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.acronym" for="field_acronym"
+            >Acronym</label
+          >
+          <input type="text" class="form-control" name="acronym" id="field_acronym" data-cy="acronym" formControlName="acronym" />
+          @if (editForm.get('acronym')!.invalid && (editForm.get('acronym')!.dirty || editForm.get('acronym')!.touched)) {
+            <div>
+              @if (editForm.get('acronym')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('acronym')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }"
+                  >This field cannot be longer than 20 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.businessCode" for="field_businessCode"
+            >Business Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="businessCode"
+            id="field_businessCode"
+            data-cy="businessCode"
+            formControlName="businessCode"
+          />
+          @if (editForm.get('businessCode')!.invalid && (editForm.get('businessCode')!.dirty || editForm.get('businessCode')!.touched)) {
+            <div>
+              @if (editForm.get('businessCode')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('businessCode')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 15 }"
+                  >This field cannot be longer than 15 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.hierarchicalLevel"
+            for="field_hierarchicalLevel"
+            >Hierarchical Level</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="hierarchicalLevel"
+            id="field_hierarchicalLevel"
+            data-cy="hierarchicalLevel"
+            formControlName="hierarchicalLevel"
+          />
+          @if (
+            editForm.get('hierarchicalLevel')!.invalid &&
+            (editForm.get('hierarchicalLevel')!.dirty || editForm.get('hierarchicalLevel')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('hierarchicalLevel')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 30 }"
+                  >This field cannot be longer than 30 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          @if (editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)) {
+            <div>
+              @if (editForm.get('name')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('name')?.errors?.minlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 2 }"
+                  >This field is required to be at least 2 characters.</small
+                >
+              }
+              @if (editForm.get('name')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }"
+                  >This field cannot be longer than 255 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.description" for="field_description"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+          @if (editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)) {
+            <div>
+              @if (editForm.get('description')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('description')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 512 }"
+                  >This field cannot be longer than 512 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.businessHandlerClazz"
+            for="field_businessHandlerClazz"
+            >Business Handler Clazz</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="businessHandlerClazz"
+            id="field_businessHandlerClazz"
+            data-cy="businessHandlerClazz"
+            formControlName="businessHandlerClazz"
+          />
+          @if (
+            editForm.get('businessHandlerClazz')!.invalid &&
+            (editForm.get('businessHandlerClazz')!.dirty || editForm.get('businessHandlerClazz')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('businessHandlerClazz')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 512 }"
+                  >This field cannot be longer than 512 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.mainContactPersonDetails"
+            for="field_mainContactPersonDetails"
+            >Main Contact Person Details</label
+          >
+          <textarea
+            class="form-control"
+            name="mainContactPersonDetails"
+            id="field_mainContactPersonDetails"
+            data-cy="mainContactPersonDetails"
+            formControlName="mainContactPersonDetails"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.technicalEnvironmentsDetails"
+            for="field_technicalEnvironmentsDetails"
+            >Technical Environments Details</label
+          >
+          <textarea
+            class="form-control"
+            name="technicalEnvironmentsDetails"
+            id="field_technicalEnvironmentsDetails"
+            data-cy="technicalEnvironmentsDetails"
+            formControlName="technicalEnvironmentsDetails"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.commonCustomAttributesDetails"
+            for="field_commonCustomAttributesDetails"
+            >Common Custom Attributes Details</label
+          >
+          <textarea
+            class="form-control"
+            name="commonCustomAttributesDetails"
+            id="field_commonCustomAttributesDetails"
+            data-cy="commonCustomAttributesDetails"
+            formControlName="commonCustomAttributesDetails"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.organizationStatus"
+            for="field_organizationStatus"
+            >Organization Status</label
+          >
+          <select
+            class="form-control"
+            name="organizationStatus"
+            formControlName="organizationStatus"
+            id="field_organizationStatus"
+            data-cy="organizationStatus"
+          >
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.OrganizationStatusEnum.null' | translate }}</option>
+            @for (organizationStatusEnum of organizationStatusEnumValues; track $index) {
+              <option [value]="organizationStatusEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.OrganizationStatusEnum.' + organizationStatusEnum | translate }}
+              </option>
+            }
+          </select>
+          @if (
+            editForm.get('organizationStatus')!.invalid &&
+            (editForm.get('organizationStatus')!.dirty || editForm.get('organizationStatus')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('organizationStatus')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.activationStatus"
+            for="field_activationStatus"
+            >Activation Status</label
+          >
+          <select
+            class="form-control"
+            name="activationStatus"
+            formControlName="activationStatus"
+            id="field_activationStatus"
+            data-cy="activationStatus"
+          >
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.null' | translate }}</option>
+            @for (activationStatusEnum of activationStatusEnumValues; track $index) {
+              <option [value]="activationStatusEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + activationStatusEnum | translate }}
+              </option>
+            }
+          </select>
+          @if (
+            editForm.get('activationStatus')!.invalid &&
+            (editForm.get('activationStatus')!.dirty || editForm.get('activationStatus')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('activationStatus')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.logoImg" for="field_logoImg"
+            >Logo Img</label
+          >
+          <div>
+            @if (editForm.get('logoImg')!.value) {
+              <img
+                [src]="'data:' + editForm.get('logoImgContentType')!.value + ';base64,' + editForm.get('logoImg')!.value"
+                style="max-height: 100px"
+                alt="organization"
+              />
+            }
+            @if (editForm.get('logoImg')!.value) {
+              <div class="form-text text-danger clearfix">
+                <span class="pull-start"
+                  >{{ editForm.get('logoImgContentType')!.value }}, {{ byteSize(editForm.get('logoImg')!.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="clearInputImage('logoImg', 'logoImgContentType', 'file_logoImg')"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_logoImg"
+              data-cy="logoImg"
+              (change)="setFileData($event, 'logoImg', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="logoImg" id="field_logoImg" data-cy="logoImg" formControlName="logoImg" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="logoImgContentType"
+            id="field_logoImgContentType"
+            formControlName="logoImgContentType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.tenant" for="field_tenant"
+            >Tenant</label
+          >
+          <select
+            class="form-control"
+            id="field_tenant"
+            data-cy="tenant"
+            name="tenant"
+            formControlName="tenant"
+            [compareWith]="compareTenant"
+          >
+            @if (editForm.get(['tenant'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (tenantOption of tenantsSharedCollection; track $index) {
+              <option [ngValue]="tenantOption">{{ tenantOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['tenant'])!.invalid && (editForm.get(['tenant'])!.dirty || editForm.get(['tenant'])!.touched)) {
+          <div>
+            @if (editForm.get(['tenant'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.typeOfOrganization"
+            for="field_typeOfOrganization"
+            >Type Of Organization</label
+          >
+          <select
+            class="form-control"
+            id="field_typeOfOrganization"
+            data-cy="typeOfOrganization"
+            name="typeOfOrganization"
+            formControlName="typeOfOrganization"
+            [compareWith]="compareTypeOfOrganization"
+          >
+            @if (editForm.get(['typeOfOrganization'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (typeOfOrganizationOption of typeOfOrganizationsSharedCollection; track $index) {
+              <option [ngValue]="typeOfOrganizationOption">{{ typeOfOrganizationOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['typeOfOrganization'])!.invalid &&
+          (editForm.get(['typeOfOrganization'])!.dirty || editForm.get(['typeOfOrganization'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['typeOfOrganization'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.organizationParent"
+            for="field_organizationParent"
+            >Organization Parent</label
+          >
+          <select
+            class="form-control"
+            id="field_organizationParent"
+            data-cy="organizationParent"
+            name="organizationParent"
+            formControlName="organizationParent"
+            [compareWith]="compareOrganization"
+          >
+            <option [ngValue]="null"></option>
+            @for (organizationOption of organizationsSharedCollection; track $index) {
+              <option [ngValue]="organizationOption">{{ organizationOption.name }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

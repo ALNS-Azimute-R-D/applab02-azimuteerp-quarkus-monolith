@@ -1,0 +1,31 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "inventoryTransaction": {
+      "home": {
+        "title": "Inventory Transactions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Inventory Transaction",
+        "createOrEditLabel": "Crear o editar Inventory Transaction",
+        "notFound": "Ningún Inventory Transactions encontrado"
+      },
+      "created": "Un nuevo Inventory Transaction ha sido creado con el identificador {{ param }}",
+      "updated": "Un Inventory Transaction ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Inventory Transaction ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Inventory Transaction {{ id }}?"
+      },
+      "detail": {
+        "title": "Inventory Transaction"
+      },
+      "id": "ID",
+      "invoiceId": "Invoice Id",
+      "transactionCreatedDate": "Transaction Created Date",
+      "transactionModifiedDate": "Transaction Modified Date",
+      "quantity": "Quantity",
+      "comments": "Comments",
+      "supplier": "Supplier",
+      "product": "Product",
+      "warehouse": "Warehouse"
+    }
+  }
+}

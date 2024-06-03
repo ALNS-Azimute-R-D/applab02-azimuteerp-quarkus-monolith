@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (organizationAttribute) {
+      <div>
+        <h2 data-cy="organizationAttributeDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationAttribute.detail.title">Organization Attribute</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ organizationAttribute.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationAttribute.attributeName">Attribute Name</span></dt>
+          <dd>
+            <span>{{ organizationAttribute.attributeName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationAttribute.attributeValue">Attribute Value</span></dt>
+          <dd>
+            <span>{{ organizationAttribute.attributeValue }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationAttribute.organization">Organization</span></dt>
+          <dd>
+            @if (organizationAttribute.organization) {
+              <div>
+                <a [routerLink]="['/organization', organizationAttribute.organization.id, 'view']">{{
+                  organizationAttribute.organization.name
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/organization-attribute', organizationAttribute.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

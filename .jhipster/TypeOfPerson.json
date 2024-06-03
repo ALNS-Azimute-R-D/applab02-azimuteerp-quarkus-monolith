@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20240603222450"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "documentation": "- TypeOfPerson\\n- Person\\n- OrganizationRole\\n- OrganizationMembership\\n- OrganizationMemberRole",
+  "dto": "mapstruct",
+  "entityTableName": "tb_type_person",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "5"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "40"
+    }
+  ],
+  "name": "TypeOfPerson",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "person",
+      "otherEntityRelationshipName": "typeOfPerson",
+      "relationshipName": "personsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

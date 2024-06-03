@@ -1,0 +1,27 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "organizationRole": {
+      "home": {
+        "title": "OrganizationRoles",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Organization Role",
+        "createOrEditLabel": "Créer ou éditer un Organization Role",
+        "notFound": "Aucun Organization Role trouvé"
+      },
+      "created": "Un nouveau Organization Role a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Organization Role avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Organization Role avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Organization Role {{ id }} ?"
+      },
+      "detail": {
+        "title": "Organization Role"
+      },
+      "id": "ID",
+      "roleName": "Role Name",
+      "activationStatus": "Activation Status",
+      "organization": "Organization",
+      "organizationMemberRolesList": "Organization Member Roles List"
+    }
+  }
+}

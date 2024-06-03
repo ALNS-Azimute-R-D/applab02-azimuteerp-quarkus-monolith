@@ -1,0 +1,28 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "locality": {
+      "home": {
+        "title": "Localities",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Locality",
+        "createOrEditLabel": "Criar ou editar Locality",
+        "notFound": "Nenhum Locality encontrado"
+      },
+      "created": "Um novo Locality foi criado com o identificador {{ param }}",
+      "updated": "Um Locality foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Locality foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Locality {{ id }}?"
+      },
+      "detail": {
+        "title": "Locality"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "description": "Description",
+      "geoPolygonArea": "Geo Polygon Area",
+      "country": "Country"
+    }
+  }
+}

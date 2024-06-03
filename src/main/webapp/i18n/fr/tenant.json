@@ -1,0 +1,35 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "tenant": {
+      "home": {
+        "title": "Tenants",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Tenant",
+        "createOrEditLabel": "Créer ou éditer un Tenant",
+        "notFound": "Aucun Tenant trouvé"
+      },
+      "created": "Un nouveau Tenant a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Tenant avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Tenant avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Tenant {{ id }} ?"
+      },
+      "detail": {
+        "title": "Tenant"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "description": "Description",
+      "customerBusinessCode": "Customer Business Code",
+      "businessHandlerClazz": "Business Handler Clazz",
+      "mainContactPersonDetails": "Main Contact Person Details",
+      "billingDetails": "Billing Details",
+      "technicalEnvironmentsDetails": "Technical Environments Details",
+      "commonCustomAttributesDetails": "Common Custom Attributes Details",
+      "logoImg": "Logo Img",
+      "activationStatus": "Activation Status",
+      "organizationsList": "Organizations List"
+    }
+  }
+}

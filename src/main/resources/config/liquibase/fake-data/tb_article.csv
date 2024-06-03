@@ -1,0 +1,11 @@
+id;inventory_product_id;custom_name;custom_description;price_value;item_size;assets_collection_uuid;is_enabled
+1;13650;pedal among;../fake-data/blob/hipster.txt;2912.87;XXL;cornerstone;false
+2;11530;which;../fake-data/blob/hipster.txt;18813.62;XXXL;fast;true
+3;21392;uh-huh;../fake-data/blob/hipster.txt;29230.23;XXL;optimistic popular;true
+4;9666;separately;../fake-data/blob/hipster.txt;1593.85;XXL;brag for;true
+5;1261;constellation dispatch;../fake-data/blob/hipster.txt;23072.92;M;acidly once;false
+6;31650;into;../fake-data/blob/hipster.txt;9772.61;XL;busily;true
+7;24978;whoa;../fake-data/blob/hipster.txt;20893.13;XXXL;rhapsodize duh around;true
+8;32412;inexperienced imperfect yum;../fake-data/blob/hipster.txt;21889.65;XXXL;generously merrily;false
+9;10600;next miserably;../fake-data/blob/hipster.txt;23807.89;XXL;hedge however;true
+10;7041;ugh while whereas;../fake-data/blob/hipster.txt;1823.82;M;cheerfully healthily;true

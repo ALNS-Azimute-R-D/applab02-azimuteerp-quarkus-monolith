@@ -1,0 +1,48 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "person": {
+      "home": {
+        "title": "People",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Person",
+        "createOrEditLabel": "Create or edit a Person",
+        "notFound": "No People found"
+      },
+      "created": "A new Person is created with identifier {{ param }}",
+      "updated": "A Person is updated with identifier {{ param }}",
+      "deleted": "A Person is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Person {{ id }}?"
+      },
+      "detail": {
+        "title": "Person"
+      },
+      "id": "ID",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "birthDate": "Birth Date",
+      "gender": "Gender",
+      "codeBI": "Code BI",
+      "codeNIF": "Code NIF",
+      "streetAddress": "Street Address",
+      "houseNumber": "House Number",
+      "locationName": "Location Name",
+      "postalCode": "Postal Code",
+      "mainEmail": "Main Email",
+      "landPhoneNumber": "Land Phone Number",
+      "mobilePhoneNumber": "Mobile Phone Number",
+      "occupation": "Occupation",
+      "preferredLanguage": "Preferred Language",
+      "usernameInOAuth2": "Username In O Auth 2",
+      "userIdInOAuth2": "User Id In O Auth 2",
+      "extraDetails": "Extra Details",
+      "activationStatus": "Activation Status",
+      "avatarImg": "Avatar Img",
+      "typeOfPerson": "Type Of Person",
+      "district": "District",
+      "managerPerson": "Manager Person",
+      "managedPersonsList": "Managed Persons List",
+      "organizationMembershipsList": "Organization Memberships List"
+    }
+  }
+}

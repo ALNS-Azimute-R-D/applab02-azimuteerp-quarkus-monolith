@@ -1,0 +1,32 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "article": {
+      "home": {
+        "title": "Articles",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Article erstellen",
+        "createOrEditLabel": "Article erstellen oder bearbeiten",
+        "notFound": "Keine Articles gefunden"
+      },
+      "created": "Article erstellt mit ID {{ param }}",
+      "updated": "Article aktualisiert mit ID {{ param }}",
+      "deleted": "Article gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Article {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Article"
+      },
+      "id": "ID",
+      "inventoryProductId": "Inventory Product Id",
+      "customName": "Custom Name",
+      "customDescription": "Custom Description",
+      "priceValue": "Price Value",
+      "itemSize": "Item Size",
+      "assetsCollectionUUID": "Assets Collection UUID",
+      "isEnabled": "Is Enabled",
+      "mainCategory": "Main Category",
+      "ordersItemsList": "Orders Items List"
+    }
+  }
+}

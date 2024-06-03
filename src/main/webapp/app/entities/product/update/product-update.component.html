@@ -1,0 +1,335 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-product-heading"
+        data-cy="ProductCreateUpdateHeading"
+        jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.home.createOrEditLabel"
+      >
+        Create or edit a Product
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.productSKU" for="field_productSKU"
+            >Product SKU</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="productSKU"
+            id="field_productSKU"
+            data-cy="productSKU"
+            formControlName="productSKU"
+          />
+          @if (editForm.get('productSKU')!.invalid && (editForm.get('productSKU')!.dirty || editForm.get('productSKU')!.touched)) {
+            <div>
+              @if (editForm.get('productSKU')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 25 }"
+                  >This field cannot be longer than 25 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.productName" for="field_productName"
+            >Product Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="productName"
+            id="field_productName"
+            data-cy="productName"
+            formControlName="productName"
+          />
+          @if (editForm.get('productName')!.invalid && (editForm.get('productName')!.dirty || editForm.get('productName')!.touched)) {
+            <div>
+              @if (editForm.get('productName')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }"
+                  >This field cannot be longer than 50 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.description" for="field_description"
+            >Description</label
+          >
+          <textarea
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.standardCost" for="field_standardCost"
+            >Standard Cost</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="standardCost"
+            id="field_standardCost"
+            data-cy="standardCost"
+            formControlName="standardCost"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.listPrice" for="field_listPrice"
+            >List Price</label
+          >
+          <input type="number" class="form-control" name="listPrice" id="field_listPrice" data-cy="listPrice" formControlName="listPrice" />
+          @if (editForm.get('listPrice')!.invalid && (editForm.get('listPrice')!.dirty || editForm.get('listPrice')!.touched)) {
+            <div>
+              @if (editForm.get('listPrice')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('listPrice')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.reorderLevel" for="field_reorderLevel"
+            >Reorder Level</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="reorderLevel"
+            id="field_reorderLevel"
+            data-cy="reorderLevel"
+            formControlName="reorderLevel"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.targetLevel" for="field_targetLevel"
+            >Target Level</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="targetLevel"
+            id="field_targetLevel"
+            data-cy="targetLevel"
+            formControlName="targetLevel"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.quantityPerUnit" for="field_quantityPerUnit"
+            >Quantity Per Unit</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="quantityPerUnit"
+            id="field_quantityPerUnit"
+            data-cy="quantityPerUnit"
+            formControlName="quantityPerUnit"
+          />
+          @if (
+            editForm.get('quantityPerUnit')!.invalid && (editForm.get('quantityPerUnit')!.dirty || editForm.get('quantityPerUnit')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('quantityPerUnit')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }"
+                  >This field cannot be longer than 50 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.discontinued" for="field_discontinued"
+            >Discontinued</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="discontinued"
+            id="field_discontinued"
+            data-cy="discontinued"
+            formControlName="discontinued"
+          />
+          @if (editForm.get('discontinued')!.invalid && (editForm.get('discontinued')!.dirty || editForm.get('discontinued')!.touched)) {
+            <div>
+              @if (editForm.get('discontinued')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.minimumReorderQuantity"
+            for="field_minimumReorderQuantity"
+            >Minimum Reorder Quantity</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="minimumReorderQuantity"
+            id="field_minimumReorderQuantity"
+            data-cy="minimumReorderQuantity"
+            formControlName="minimumReorderQuantity"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.suggestedCategory"
+            for="field_suggestedCategory"
+            >Suggested Category</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="suggestedCategory"
+            id="field_suggestedCategory"
+            data-cy="suggestedCategory"
+            formControlName="suggestedCategory"
+          />
+          @if (
+            editForm.get('suggestedCategory')!.invalid &&
+            (editForm.get('suggestedCategory')!.dirty || editForm.get('suggestedCategory')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('suggestedCategory')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }"
+                  >This field cannot be longer than 50 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.attachments" for="field_attachments"
+            >Attachments</label
+          >
+          <div>
+            @if (editForm.get('attachments')!.value) {
+              <div class="form-text text-danger clearfix">
+                <a
+                  class="pull-start"
+                  (click)="openFile(editForm.get('attachments')!.value!, editForm.get('attachmentsContentType')!.value!)"
+                  jhiTranslate="entity.action.open"
+                  >Open</a
+                ><br />
+                <span class="pull-start"
+                  >{{ editForm.get('attachmentsContentType')!.value }}, {{ byteSize(editForm.get('attachments')!.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="editForm.patchValue({ attachments: undefined, attachmentsContentType: undefined })"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_attachments"
+              data-cy="attachments"
+              (change)="setFileData($event, 'attachments', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="attachments"
+            id="field_attachments"
+            data-cy="attachments"
+            formControlName="attachments"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="attachmentsContentType"
+            id="field_attachmentsContentType"
+            formControlName="attachmentsContentType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.supplierIds" for="field_supplierIds"
+            >Supplier Ids</label
+          >
+          <textarea
+            class="form-control"
+            name="supplierIds"
+            id="field_supplierIds"
+            data-cy="supplierIds"
+            formControlName="supplierIds"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.brand" for="field_brand">Brand</label>
+          <select class="form-control" id="field_brand" data-cy="brand" name="brand" formControlName="brand" [compareWith]="compareBrand">
+            @if (editForm.get(['brand'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (brandOption of brandsSharedCollection; track $index) {
+              <option [ngValue]="brandOption">{{ brandOption.acronym }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['brand'])!.invalid && (editForm.get(['brand'])!.dirty || editForm.get(['brand'])!.touched)) {
+          <div>
+            @if (editForm.get(['brand'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

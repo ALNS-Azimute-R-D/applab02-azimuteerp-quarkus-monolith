@@ -1,0 +1,27 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "organizationRole": {
+      "home": {
+        "title": "Organization Roles",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Organization Role erstellen",
+        "createOrEditLabel": "Organization Role erstellen oder bearbeiten",
+        "notFound": "Keine Organization Roles gefunden"
+      },
+      "created": "Organization Role erstellt mit ID {{ param }}",
+      "updated": "Organization Role aktualisiert mit ID {{ param }}",
+      "deleted": "Organization Role gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Organization Role {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Organization Role"
+      },
+      "id": "ID",
+      "roleName": "Role Name",
+      "activationStatus": "Activation Status",
+      "organization": "Organization",
+      "organizationMemberRolesList": "Organization Member Roles List"
+    }
+  }
+}

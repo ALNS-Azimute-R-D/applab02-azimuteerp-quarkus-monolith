@@ -1,0 +1,25 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "assetMetadata": {
+      "home": {
+        "title": "Asset Metadata",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Asset Metadata",
+        "createOrEditLabel": "Criar ou editar Asset Metadata",
+        "notFound": "Nenhum Asset Metadata encontrado"
+      },
+      "created": "Um novo Asset Metadata foi criado com o identificador {{ param }}",
+      "updated": "Asset Metadata com identificador {{ param }} foi actualizado",
+      "deleted": "Asset Metadata com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Asset Metadata {{ id }}?"
+      },
+      "detail": {
+        "title": "Asset Metadata"
+      },
+      "id": "ID",
+      "metadataDetails": "Metadata Details",
+      "asset": "Asset"
+    }
+  }
+}

@@ -1,0 +1,197 @@
+<div>
+  <h2 id="page-heading" data-cy="CustomerHeading">
+    <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.home.title">Customers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-customer"
+        [routerLink]="['/customer/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.home.createLabel">Create a new Customer</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (customers?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.home.notFound">No Customers found</span>
+    </div>
+  }
+
+  @if (customers && customers.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="customerBusinessCode">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.customerBusinessCode">Customer Business Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="name">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.name">Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="description">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.description">Description</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="addressDetails">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.addressDetails">Address Details</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="zipCode">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.zipCode">Zip Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="keycloakGroupDetails">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.keycloakGroupDetails">Keycloak Group Details</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.status">Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="active">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.active">Active</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="customerType.name">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.customerType">Customer Type</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="district.name">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.district">District</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (customer of customers; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/customer', customer.id, 'view']">{{ customer.id }}</a>
+              </td>
+              <td>{{ customer.customerBusinessCode }}</td>
+              <td>{{ customer.name }}</td>
+              <td>{{ customer.description }}</td>
+              <td>{{ customer.email }}</td>
+              <td>{{ customer.addressDetails }}</td>
+              <td>{{ customer.zipCode }}</td>
+              <td>{{ customer.keycloakGroupDetails }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.CustomerStatusEnum.' + customer.status }}">
+                {{ customer.status }}
+              </td>
+              <td>{{ customer.active }}</td>
+              <td>
+                @if (customer.customerType) {
+                  <div>
+                    <a [routerLink]="['/customer-type', customer.customerType.id, 'view']">{{ customer.customerType.name }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (customer.district) {
+                  <div>
+                    <a [routerLink]="['/district', customer.district.id, 'view']">{{ customer.district.name }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/customer', customer.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/customer', customer.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(customer)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (customers && customers.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

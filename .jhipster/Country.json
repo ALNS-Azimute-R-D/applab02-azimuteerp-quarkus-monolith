@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20240603221350"
+  },
+  "applications": ["azimuteERPQuarkusAngularMonolith02"],
+  "documentation": "- Country\\n- Province\\n- TownCity\\n- District\\n- Locality",
+  "dto": "mapstruct",
+  "entityTableName": "tb_country",
+  "fields": [
+    {
+      "fieldName": "acronym",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "3"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "40"
+    },
+    {
+      "fieldName": "continent",
+      "fieldType": "ContinentEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "AFRICA,ASIA,EUROPE,OCEANIA,CENTRAL_AMERICA,NORTH_AMERICA,SOUTH_AMERICA"
+    },
+    {
+      "fieldName": "geoPolygonArea",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "name": "Country",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "province",
+      "otherEntityRelationshipName": "country",
+      "relationshipName": "provincesList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "locality",
+      "otherEntityRelationshipName": "country",
+      "relationshipName": "localitiesList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

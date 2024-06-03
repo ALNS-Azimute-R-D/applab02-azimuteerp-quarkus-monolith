@@ -1,0 +1,26 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "organizationAttribute": {
+      "home": {
+        "title": "OrganizationAttributes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Organization Attribute",
+        "createOrEditLabel": "Créer ou éditer un Organization Attribute",
+        "notFound": "Aucun Organization Attribute trouvé"
+      },
+      "created": "Un nouveau Organization Attribute a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Organization Attribute avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Organization Attribute avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Organization Attribute {{ id }} ?"
+      },
+      "detail": {
+        "title": "Organization Attribute"
+      },
+      "id": "ID",
+      "attributeName": "Attribute Name",
+      "attributeValue": "Attribute Value",
+      "organization": "Organization"
+    }
+  }
+}

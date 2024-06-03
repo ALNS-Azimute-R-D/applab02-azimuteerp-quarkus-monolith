@@ -1,0 +1,219 @@
+<div>
+  <h2 id="page-heading" data-cy="ProductHeading">
+    <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.home.title">Products</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-product"
+        [routerLink]="['/product/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.home.createLabel">Create a new Product</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (products?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.home.notFound">No Products found</span>
+    </div>
+  }
+
+  @if (products && products.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productSKU">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.productSKU">Product SKU</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="productName">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.productName">Product Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="description">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.description">Description</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="standardCost">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.standardCost">Standard Cost</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="listPrice">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.listPrice">List Price</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="reorderLevel">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.reorderLevel">Reorder Level</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="targetLevel">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.targetLevel">Target Level</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="quantityPerUnit">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.quantityPerUnit">Quantity Per Unit</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="discontinued">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.discontinued">Discontinued</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="minimumReorderQuantity">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.minimumReorderQuantity">Minimum Reorder Quantity</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="suggestedCategory">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.suggestedCategory">Suggested Category</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="attachments">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.attachments">Attachments</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="supplierIds">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.supplierIds">Supplier Ids</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="brand.acronym">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.brand">Brand</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (product of products; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/product', product.id, 'view']">{{ product.id }}</a>
+              </td>
+              <td>{{ product.productSKU }}</td>
+              <td>{{ product.productName }}</td>
+              <td>{{ product.description }}</td>
+              <td>{{ product.standardCost }}</td>
+              <td>{{ product.listPrice }}</td>
+              <td>{{ product.reorderLevel }}</td>
+              <td>{{ product.targetLevel }}</td>
+              <td>{{ product.quantityPerUnit }}</td>
+              <td>{{ product.discontinued }}</td>
+              <td>{{ product.minimumReorderQuantity }}</td>
+              <td>{{ product.suggestedCategory }}</td>
+              <td>
+                @if (product.attachments) {
+                  <a (click)="openFile(product.attachments, product.attachmentsContentType)" jhiTranslate="entity.action.open">Open</a>
+                  <span>{{ product.attachmentsContentType }}, {{ byteSize(product.attachments) }}</span>
+                }
+              </td>
+              <td>{{ product.supplierIds }}</td>
+              <td>
+                @if (product.brand) {
+                  <div>
+                    <a [routerLink]="['/brand', product.brand.id, 'view']">{{ product.brand.acronym }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/product', product.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(product)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (products && products.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

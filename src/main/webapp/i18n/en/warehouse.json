@@ -1,0 +1,38 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "warehouse": {
+      "home": {
+        "title": "Warehouses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Warehouse",
+        "createOrEditLabel": "Create or edit a Warehouse",
+        "notFound": "No Warehouses found"
+      },
+      "created": "A new Warehouse is created with identifier {{ param }}",
+      "updated": "A Warehouse is updated with identifier {{ param }}",
+      "deleted": "A Warehouse is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Warehouse {{ id }}?"
+      },
+      "detail": {
+        "title": "Warehouse"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "description": "Description",
+      "streetAddress": "Street Address",
+      "houseNumber": "House Number",
+      "locationName": "Location Name",
+      "postalCode": "Postal Code",
+      "pointLocation": "Point Location",
+      "mainEmail": "Main Email",
+      "landPhoneNumber": "Land Phone Number",
+      "mobilePhoneNumber": "Mobile Phone Number",
+      "faxNumber": "Fax Number",
+      "extraDetails": "Extra Details",
+      "inventoryTransactionsList": "Inventory Transactions List",
+      "stockLevelsList": "Stock Levels List"
+    }
+  }
+}

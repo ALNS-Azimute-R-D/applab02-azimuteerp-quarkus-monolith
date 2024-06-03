@@ -1,0 +1,20 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [],
+    "blueprints": [
+      {
+        "name": "generator-jhipster-quarkus",
+        "version": "3.1.0"
+      }
+    ],
+    "clusteredDbApps": [],
+    "deploymentType": "docker-compose",
+    "directoryPath": "../",
+    "dockerRepositoryName": "scout23df",
+    "gatewayType": "SpringCloudGateway",
+    "jhipsterVersion": "8.2.1",
+    "jwtSecretKey": "ZmRlZDRkODhhOTUzNzYxNjQ0M2E5ZmFmNTA2MzVkY2IwNjgwOWM0MjlmOGU4YWJiNDk2OTY2ZmMxOTY5ODMxMmZkNmVjOGM3OTNjMjQxY2M1MjRhZTk3NGZiN2Y3OGExZTY1OQ==",
+    "monitoring": "yes",
+    "serviceDiscoveryType": "consul"
+  }
+}

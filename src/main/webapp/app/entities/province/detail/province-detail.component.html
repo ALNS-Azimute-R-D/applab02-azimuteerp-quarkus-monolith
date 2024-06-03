@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (province) {
+      <div>
+        <h2 data-cy="provinceDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.province.detail.title">Province</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ province.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.province.acronym">Acronym</span></dt>
+          <dd>
+            <span>{{ province.acronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.province.name">Name</span></dt>
+          <dd>
+            <span>{{ province.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.province.geoPolygonArea">Geo Polygon Area</span></dt>
+          <dd>
+            @if (province.geoPolygonArea) {
+              <div>
+                <a (click)="openFile(province.geoPolygonArea, province.geoPolygonAreaContentType)" jhiTranslate="entity.action.open"
+                  >Open</a
+                >
+                {{ province.geoPolygonAreaContentType }}, {{ byteSize(province.geoPolygonArea) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.province.country">Country</span></dt>
+          <dd>
+            @if (province.country) {
+              <div>
+                <a [routerLink]="['/country', province.country.id, 'view']">{{ province.country.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/province', province.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,11 @@
+id;product_sku;product_name;description;standard_cost;list_price;reorder_level;target_level;quantity_per_unit;discontinued;minimum_reorder_quantity;suggested_category;attachments;attachments_content_type;supplier_ids;brand_id
+1;photograph;remaster ambience honestly;../fake-data/blob/hipster.txt;20650.11;26877.71;19883;27935;equal;false;12943;amusing;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;1
+2;unless unlike extirpate;transfigure;../fake-data/blob/hipster.txt;14599.92;9954.95;32210;15509;out;false;22905;given;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;2
+3;so whereas;indeed needy;../fake-data/blob/hipster.txt;3858.16;14786.58;19286;5462;aw worthwhile;true;23942;ethics especially median;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;3
+4;apud brightly wary;finish;../fake-data/blob/hipster.txt;11778.21;7675.97;16418;27959;delight;true;20335;dreamily;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;4
+5;yet eek yet;woot so within;../fake-data/blob/hipster.txt;32078.24;12566.45;24879;9917;telescreen drat;true;12229;now notwithstanding at;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;5
+6;deathwatch desert;grateful interject questioner;../fake-data/blob/hipster.txt;24064.53;18316.04;8003;8792;upon insecure;true;3262;stable;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;6
+7;before;mmm besides;../fake-data/blob/hipster.txt;11412.41;24922.04;9434;26784;or;true;22523;forked mock aw;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;7
+8;grandparent;ah whereas;../fake-data/blob/hipster.txt;7656.79;25680.94;31409;20851;per aha;true;8819;consequently out;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;8
+9;once;dough quick tremendously;../fake-data/blob/hipster.txt;25110.96;18882.17;23405;21863;fresh;true;31875;deify;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;9
+10;than once unless;wherever mishandle mmm;../fake-data/blob/hipster.txt;29743.07;10033.17;5936;22324;joyously heal although;false;12893;how;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;10

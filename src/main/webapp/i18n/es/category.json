@@ -1,0 +1,30 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "category": {
+      "home": {
+        "title": "Categories",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Category",
+        "createOrEditLabel": "Crear o editar Category",
+        "notFound": "Ningún Categories encontrado"
+      },
+      "created": "Un nuevo Category ha sido creado con el identificador {{ param }}",
+      "updated": "Un Category ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Category ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Category"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "description": "Description",
+      "handlerClazzName": "Handler Clazz Name",
+      "articlesList": "Articles List",
+      "categoryParent": "Category Parent",
+      "childrenCategoriesList": "Children Categories List"
+    }
+  }
+}

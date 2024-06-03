@@ -1,0 +1,28 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "province": {
+      "home": {
+        "title": "Provinces",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Province erstellen",
+        "createOrEditLabel": "Province erstellen oder bearbeiten",
+        "notFound": "Keine Provinces gefunden"
+      },
+      "created": "Province erstellt mit ID {{ param }}",
+      "updated": "Province aktualisiert mit ID {{ param }}",
+      "deleted": "Province gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Province {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Province"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "geoPolygonArea": "Geo Polygon Area",
+      "country": "Country",
+      "townCitiesList": "Town Cities List"
+    }
+  }
+}

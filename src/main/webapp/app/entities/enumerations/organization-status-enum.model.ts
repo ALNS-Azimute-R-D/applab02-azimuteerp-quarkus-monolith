@@ -1,0 +1,13 @@
+export enum OrganizationStatusEnum {
+  UNDER_EVALUATION = 'UNDER_EVALUATION',
+
+  ONBOARDING = 'ONBOARDING',
+
+  READY_TO_START = 'READY_TO_START',
+
+  WORKING = 'WORKING',
+
+  PENDENT = 'PENDENT',
+
+  IN_FAILURE = 'IN_FAILURE',
+}

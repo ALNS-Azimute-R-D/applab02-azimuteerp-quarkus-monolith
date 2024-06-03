@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (orderItem) {
+      <div>
+        <h2 data-cy="orderItemDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.orderItem.detail.title">Order Item</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ orderItem.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.orderItem.quantity">Quantity</span></dt>
+          <dd>
+            <span>{{ orderItem.quantity }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.orderItem.totalPrice">Total Price</span></dt>
+          <dd>
+            <span>{{ orderItem.totalPrice }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.orderItem.status">Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.OrderItemStatusEnum.' + orderItem.status }}">{{
+              orderItem.status
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.orderItem.article">Article</span></dt>
+          <dd>
+            @if (orderItem.article) {
+              <div>
+                <a [routerLink]="['/article', orderItem.article.id, 'view']">{{ orderItem.article.customName }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.orderItem.order">Order</span></dt>
+          <dd>
+            @if (orderItem.order) {
+              <div>
+                <a [routerLink]="['/order', orderItem.order.id, 'view']">{{ orderItem.order.businessCode }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/order-item', orderItem.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

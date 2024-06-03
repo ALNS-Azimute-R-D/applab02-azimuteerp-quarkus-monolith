@@ -1,0 +1,26 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "typeOfPerson": {
+      "home": {
+        "title": "Type Of People",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Type Of Person",
+        "createOrEditLabel": "Create or edit a Type Of Person",
+        "notFound": "No Type Of People found"
+      },
+      "created": "A new Type Of Person is created with identifier {{ param }}",
+      "updated": "A Type Of Person is updated with identifier {{ param }}",
+      "deleted": "A Type Of Person is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Type Of Person {{ id }}?"
+      },
+      "detail": {
+        "title": "Type Of Person"
+      },
+      "id": "ID",
+      "code": "Code",
+      "description": "Description",
+      "personsList": "Persons List"
+    }
+  }
+}

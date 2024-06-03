@@ -1,0 +1,200 @@
+<div>
+  <h2 id="page-heading" data-cy="TenantHeading">
+    <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.home.title">Tenants</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tenant"
+        [routerLink]="['/tenant/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.home.createLabel">Create a new Tenant</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (tenants?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.home.notFound">No Tenants found</span>
+    </div>
+  }
+
+  @if (tenants && tenants.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="acronym">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.acronym">Acronym</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="name">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.name">Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="description">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.description">Description</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="customerBusinessCode">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.customerBusinessCode">Customer Business Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="businessHandlerClazz">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.businessHandlerClazz">Business Handler Clazz</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mainContactPersonDetails">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.mainContactPersonDetails"
+                  >Main Contact Person Details</span
+                >
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="billingDetails">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.billingDetails">Billing Details</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="technicalEnvironmentsDetails">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.technicalEnvironmentsDetails"
+                  >Technical Environments Details</span
+                >
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="commonCustomAttributesDetails">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.commonCustomAttributesDetails"
+                  >Common Custom Attributes Details</span
+                >
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="logoImg">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.logoImg">Logo Img</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activationStatus">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.activationStatus">Activation Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (tenant of tenants; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/tenant', tenant.id, 'view']">{{ tenant.id }}</a>
+              </td>
+              <td>{{ tenant.acronym }}</td>
+              <td>{{ tenant.name }}</td>
+              <td>{{ tenant.description }}</td>
+              <td>{{ tenant.customerBusinessCode }}</td>
+              <td>{{ tenant.businessHandlerClazz }}</td>
+              <td>{{ tenant.mainContactPersonDetails }}</td>
+              <td>{{ tenant.billingDetails }}</td>
+              <td>{{ tenant.technicalEnvironmentsDetails }}</td>
+              <td>{{ tenant.commonCustomAttributesDetails }}</td>
+              <td>
+                @if (tenant.logoImg) {
+                  <a (click)="openFile(tenant.logoImg, tenant.logoImgContentType)">
+                    <img [src]="'data:' + tenant.logoImgContentType + ';base64,' + tenant.logoImg" style="max-height: 30px" alt="tenant" />
+                  </a>
+                  <span>{{ tenant.logoImgContentType }}, {{ byteSize(tenant.logoImg) }}</span>
+                }
+              </td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + tenant.activationStatus }}">
+                {{ tenant.activationStatus }}
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/tenant', tenant.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/tenant', tenant.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(tenant)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (tenants && tenants.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>
