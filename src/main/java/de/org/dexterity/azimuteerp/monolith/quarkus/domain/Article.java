@@ -11,7 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
 /**
  * A Article.
@@ -38,8 +40,9 @@ public class Article extends PanacheEntityBase implements Serializable {
     public String customName;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "custom_description")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "custom_description", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String customDescription;
 
     @Column(name = "price_value", precision = 21, scale = 2)

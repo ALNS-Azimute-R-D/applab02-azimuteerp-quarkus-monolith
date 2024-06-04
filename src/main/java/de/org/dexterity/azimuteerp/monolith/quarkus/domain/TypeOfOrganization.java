@@ -9,7 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
 /**
  * A TypeOfOrganization.
@@ -38,8 +40,9 @@ public class TypeOfOrganization extends PanacheEntityBase implements Serializabl
     public String name;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "description", nullable = false)
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "description", nullable = false, columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String description;
 
     @Size(max = 512)

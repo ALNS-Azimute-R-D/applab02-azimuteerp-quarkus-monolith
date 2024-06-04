@@ -9,7 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
 /**
  * - Warehouse
@@ -43,8 +45,9 @@ public class Warehouse extends PanacheEntityBase implements Serializable {
     public String name;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "description")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "description", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String description;
 
     @NotNull
@@ -90,8 +93,9 @@ public class Warehouse extends PanacheEntityBase implements Serializable {
     public String faxNumber;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "extra_details")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "extra_details", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String extraDetails;
 
     @OneToMany(mappedBy = "warehouse")

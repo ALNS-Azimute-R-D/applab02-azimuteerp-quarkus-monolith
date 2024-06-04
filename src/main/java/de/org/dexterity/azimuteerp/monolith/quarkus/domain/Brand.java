@@ -9,7 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
 /**
  * A Brand.
@@ -38,8 +40,9 @@ public class Brand extends PanacheEntityBase implements Serializable {
     public String name;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "description")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "description", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String description;
 
     @OneToMany(mappedBy = "brand")

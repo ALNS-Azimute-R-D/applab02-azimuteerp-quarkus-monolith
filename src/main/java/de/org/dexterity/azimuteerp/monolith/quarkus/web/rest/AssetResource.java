@@ -106,7 +106,7 @@ public class AssetResource {
         @BeanParam PageRequestVM pageRequest,
         @BeanParam SortRequestVM sortRequest,
         @Context UriInfo uriInfo,
-        @RequestParam(required = false) String filter
+        @QueryParam("filter") String filter
     ) {
         log.debug("REST request to get a page of Assets");
         var page = pageRequest.toPage();

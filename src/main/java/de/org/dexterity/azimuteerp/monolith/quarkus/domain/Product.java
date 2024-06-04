@@ -13,7 +13,9 @@ import java.util.Optional;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
 /**
  * A Product.
@@ -40,8 +42,9 @@ public class Product extends PanacheEntityBase implements Serializable {
     public String productName;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "description")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "description", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String description;
 
     @Column(name = "standard_cost", precision = 21, scale = 2)
@@ -80,8 +83,9 @@ public class Product extends PanacheEntityBase implements Serializable {
     public String attachmentsContentType;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "supplier_ids")
+    //@Type(type = "org.hibernate.type.TextType")
+    @Column(name = "supplier_ids", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String supplierIds;
 
     @ManyToOne(optional = false)

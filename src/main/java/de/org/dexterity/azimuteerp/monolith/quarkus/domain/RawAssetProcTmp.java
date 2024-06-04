@@ -10,7 +10,9 @@ import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
 /**
  * A RawAssetProcTmp.
@@ -49,8 +51,9 @@ public class RawAssetProcTmp extends PanacheEntityBase implements Serializable {
     public String assetRawContentAsBlobContentType;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "extra_details")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "extra_details", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String extraDetails;
 
     @ManyToOne(optional = false)

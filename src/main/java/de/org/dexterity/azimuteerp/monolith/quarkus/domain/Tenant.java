@@ -10,7 +10,9 @@ import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
 /**
  * - Tenant
@@ -56,23 +58,27 @@ public class Tenant extends PanacheEntityBase implements Serializable {
     public String businessHandlerClazz;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "main_contact_person_details")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "main_contact_person_details", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String mainContactPersonDetails;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "billing_details")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "billing_details", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String billingDetails;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "technical_environments_details")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "technical_environments_details", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String technicalEnvironmentsDetails;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "common_custom_attributes_details")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "common_custom_attributes_details", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String commonCustomAttributesDetails;
 
     @Lob

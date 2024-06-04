@@ -6,7 +6,9 @@ import io.quarkus.runtime.annotations.RegisterForReflection;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
 /**
  * - Category
@@ -38,8 +40,9 @@ public class Customer extends PanacheEntityBase implements Serializable {
     public String name;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "description")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "description", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String description;
 
     @NotNull

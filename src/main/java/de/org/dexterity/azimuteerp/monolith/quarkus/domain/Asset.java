@@ -1,5 +1,6 @@
 package de.org.dexterity.azimuteerp.monolith.quarkus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.org.dexterity.azimuteerp.monolith.quarkus.domain.enumeration.PreferredPurposeEnum;
 import de.org.dexterity.azimuteerp.monolith.quarkus.domain.enumeration.StatusAssetEnum;
 import de.org.dexterity.azimuteerp.monolith.quarkus.domain.enumeration.StorageTypeEnum;

@@ -9,6 +9,7 @@ import io.quarkus.panache.common.Page;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +56,11 @@ public class AssetServiceImpl implements AssetService {
     public Optional<AssetDTO> findOne(Long id) {
         log.debug("Request to get Asset : {}", id);
         return Asset.findByIdOptional(id).map(asset -> assetMapper.toDto((Asset) asset));
+    }
+
+    @Override
+    public List<AssetDTO> findAllWhereAssetMetadataIsNull() {
+        return List.of();
     }
 
     /**

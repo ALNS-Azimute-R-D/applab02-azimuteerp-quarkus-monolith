@@ -12,7 +12,9 @@ import java.util.Optional;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
 /**
  * A Supplier.
@@ -82,8 +84,9 @@ public class Supplier extends PanacheEntityBase implements Serializable {
     public String countryRegion;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "web_page")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "web_page", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String webPage;
 
     @Lob
@@ -111,8 +114,9 @@ public class Supplier extends PanacheEntityBase implements Serializable {
     public String faxNumber;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "extra_details")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "extra_details", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String extraDetails;
 
     @ManyToMany

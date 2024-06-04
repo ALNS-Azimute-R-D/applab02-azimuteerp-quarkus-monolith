@@ -6,7 +6,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.Type;
+import org.hibernate.type.descriptor.jdbc.LongVarcharJdbcType;
 
 /**
  * A StockLevel.
@@ -33,8 +35,9 @@ public class StockLevel extends PanacheEntityBase implements Serializable {
     public Integer ramainingQuantity;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "extra_details")
+    // @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "extra_details", columnDefinition = "TEXT")
+    @JdbcType(LongVarcharJdbcType.class)
     public String extraDetails;
 
     @ManyToOne(optional = false)
