@@ -1,11 +1,11 @@
-id;acronym;name;description
-1;woot overconfidently;gap;../fake-data/blob/hipster.txt
-2;shyly snowball lonel;pollute;../fake-data/blob/hipster.txt
-3;girdle down er;so seemingly consequently;../fake-data/blob/hipster.txt
-4;until;reluctantly;../fake-data/blob/hipster.txt
-5;snoopy grave aw;cool or hunter;../fake-data/blob/hipster.txt
-6;subtract instead;if up;../fake-data/blob/hipster.txt
-7;stay fragrance;where zowie above;../fake-data/blob/hipster.txt
-8;afore weep;yippee embellished;../fake-data/blob/hipster.txt
-9;obstruct feline;aX;../fake-data/blob/hipster.txt
-10;past inheritance ben;gleefully well;../fake-data/blob/hipster.txt
+id;acronym;name;description;logo_brand;logo_brand_content_type
+1;woot overconfidently;gap;shyly snowball lonely;../fake-data/blob/hipster.png;image/png
+2;pollute;girdle down er;so seemingly consequently;../fake-data/blob/hipster.png;image/png
+3;until;reluctantly;snoopy grave aw;../fake-data/blob/hipster.png;image/png
+4;cool or hunter;subtract instead;if up;../fake-data/blob/hipster.png;image/png
+5;stay fragrance;where zowie above;afore weep;../fake-data/blob/hipster.png;image/png
+6;yippee embellished;obstruct feline;a;../fake-data/blob/hipster.png;image/png
+7;past inheritance ben;gleefully well;forenenst;../fake-data/blob/hipster.png;image/png
+8;scrape;route favorable;whenever reflecting although;../fake-data/blob/hipster.png;image/png
+9;always;incidentally mukluk;whoever lyrics;../fake-data/blob/hipster.png;image/png
+10;hamburger microchip ;reluctantly in yet;sermonise huzzah whereas;../fake-data/blob/hipster.png;image/png

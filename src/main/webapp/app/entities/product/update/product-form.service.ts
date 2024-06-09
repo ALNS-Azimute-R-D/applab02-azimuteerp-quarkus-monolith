@@ -14,7 +14,7 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type ProductFormGroupInput = IProduct | PartialWithRequiredKeyOf<NewProduct>;
 
-type ProductFormDefaults = Pick<NewProduct, 'id' | 'discontinued'>;
+type ProductFormDefaults = Pick<NewProduct, 'id' | 'discontinued' | 'toSuppliers'>;
 
 type ProductFormGroupContent = {
   id: FormControl<IProduct['id'] | NewProduct['id']>;
@@ -31,8 +31,9 @@ type ProductFormGroupContent = {
   suggestedCategory: FormControl<IProduct['suggestedCategory']>;
   attachments: FormControl<IProduct['attachments']>;
   attachmentsContentType: FormControl<IProduct['attachmentsContentType']>;
-  supplierIds: FormControl<IProduct['supplierIds']>;
+  activationStatus: FormControl<IProduct['activationStatus']>;
   brand: FormControl<IProduct['brand']>;
+  toSuppliers: FormControl<IProduct['toSuppliers']>;
 };
 
 export type ProductFormGroup = FormGroup<ProductFormGroupContent>;
@@ -58,7 +59,9 @@ export class ProductFormService {
       productName: new FormControl(productRawValue.productName, {
         validators: [Validators.maxLength(50)],
       }),
-      description: new FormControl(productRawValue.description),
+      description: new FormControl(productRawValue.description, {
+        validators: [Validators.maxLength(512)],
+      }),
       standardCost: new FormControl(productRawValue.standardCost),
       listPrice: new FormControl(productRawValue.listPrice, {
         validators: [Validators.required],
@@ -77,10 +80,13 @@ export class ProductFormService {
       }),
       attachments: new FormControl(productRawValue.attachments),
       attachmentsContentType: new FormControl(productRawValue.attachmentsContentType),
-      supplierIds: new FormControl(productRawValue.supplierIds),
+      activationStatus: new FormControl(productRawValue.activationStatus, {
+        validators: [Validators.required],
+      }),
       brand: new FormControl(productRawValue.brand, {
         validators: [Validators.required],
       }),
+      toSuppliers: new FormControl(productRawValue.toSuppliers ?? []),
     });
   }
 
@@ -102,6 +108,7 @@ export class ProductFormService {
     return {
       id: null,
       discontinued: false,
+      toSuppliers: [],
     };
   }
 }

@@ -84,28 +84,28 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="mainContactPersonDetails">
+            <th scope="col" jhiSortBy="mainContactPersonDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.mainContactPersonDetails"
-                  >Main Contact Person Details</span
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.mainContactPersonDetailsJSON"
+                  >Main Contact Person Details JSON</span
                 >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="technicalEnvironmentsDetails">
+            <th scope="col" jhiSortBy="technicalEnvironmentsDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.technicalEnvironmentsDetails"
-                  >Technical Environments Details</span
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.technicalEnvironmentsDetailsJSON"
+                  >Technical Environments Details JSON</span
                 >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="commonCustomAttributesDetails">
+            <th scope="col" jhiSortBy="customAttributesDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.commonCustomAttributesDetails"
-                  >Common Custom Attributes Details</span
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organization.customAttributesDetailsJSON"
+                  >Custom Attributes Details JSON</span
                 >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -165,9 +165,9 @@
               <td>{{ organization.name }}</td>
               <td>{{ organization.description }}</td>
               <td>{{ organization.businessHandlerClazz }}</td>
-              <td>{{ organization.mainContactPersonDetails }}</td>
-              <td>{{ organization.technicalEnvironmentsDetails }}</td>
-              <td>{{ organization.commonCustomAttributesDetails }}</td>
+              <td>{{ organization.mainContactPersonDetailsJSON }}</td>
+              <td>{{ organization.technicalEnvironmentsDetailsJSON }}</td>
+              <td>{{ organization.customAttributesDetailsJSON }}</td>
               <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.OrganizationStatusEnum.' + organization.organizationStatus }}">
                 {{ organization.organizationStatus }}
               </td>

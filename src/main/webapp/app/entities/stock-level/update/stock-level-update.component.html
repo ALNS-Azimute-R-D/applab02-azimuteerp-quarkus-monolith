@@ -58,29 +58,29 @@
         <div class="mb-3">
           <label
             class="form-label"
-            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.ramainingQuantity"
-            for="field_ramainingQuantity"
-            >Ramaining Quantity</label
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.remainingQuantity"
+            for="field_remainingQuantity"
+            >Remaining Quantity</label
           >
           <input
             type="number"
             class="form-control"
-            name="ramainingQuantity"
-            id="field_ramainingQuantity"
-            data-cy="ramainingQuantity"
-            formControlName="ramainingQuantity"
+            name="remainingQuantity"
+            id="field_remainingQuantity"
+            data-cy="remainingQuantity"
+            formControlName="remainingQuantity"
           />
           @if (
-            editForm.get('ramainingQuantity')!.invalid &&
-            (editForm.get('ramainingQuantity')!.dirty || editForm.get('ramainingQuantity')!.touched)
+            editForm.get('remainingQuantity')!.invalid &&
+            (editForm.get('remainingQuantity')!.dirty || editForm.get('remainingQuantity')!.touched)
           ) {
             <div>
-              @if (editForm.get('ramainingQuantity')?.errors?.required) {
+              @if (editForm.get('remainingQuantity')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
               <small
                 class="form-text text-danger"
-                [hidden]="!editForm.get('ramainingQuantity')?.errors?.number"
+                [hidden]="!editForm.get('remainingQuantity')?.errors?.number"
                 jhiTranslate="entity.validation.number"
                 >This field should be a number.</small
               >
@@ -89,16 +89,32 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.extraDetails" for="field_extraDetails"
-            >Extra Details</label
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.commonAttributesDetailsJSON"
+            for="field_commonAttributesDetailsJSON"
+            >Common Attributes Details JSON</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
-            name="extraDetails"
-            id="field_extraDetails"
-            data-cy="extraDetails"
-            formControlName="extraDetails"
-          ></textarea>
+            name="commonAttributesDetailsJSON"
+            id="field_commonAttributesDetailsJSON"
+            data-cy="commonAttributesDetailsJSON"
+            formControlName="commonAttributesDetailsJSON"
+          />
+          @if (
+            editForm.get('commonAttributesDetailsJSON')!.invalid &&
+            (editForm.get('commonAttributesDetailsJSON')!.dirty || editForm.get('commonAttributesDetailsJSON')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('commonAttributesDetailsJSON')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 2048 }"
+                  >This field cannot be longer than 2048 characters.</small
+                >
+              }
+            </div>
+          }
         </div>
 
         <div class="mb-3">

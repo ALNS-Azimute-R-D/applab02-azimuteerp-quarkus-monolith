@@ -1,0 +1,29 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "paymentGateway": {
+      "home": {
+        "title": "Payment Gateways",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Payment Gateway",
+        "createOrEditLabel": "Criar ou editar Payment Gateway",
+        "notFound": "Nenhum Payment Gateway encontrado"
+      },
+      "created": "Um novo Payment Gateway foi criado com o identificador {{ param }}",
+      "updated": "Um Payment Gateway foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Payment Gateway foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Payment Gateway {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Gateway"
+      },
+      "id": "ID",
+      "aliasCode": "Alias Code",
+      "description": "Description",
+      "businessHandlerClazz": "Business Handler Clazz",
+      "activationStatus": "Activation Status",
+      "invoicesAsPreferrableList": "Invoices As Preferrable List",
+      "paymentsList": "Payments List"
+    }
+  }
+}

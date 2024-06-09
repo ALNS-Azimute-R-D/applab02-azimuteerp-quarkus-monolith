@@ -48,7 +48,7 @@ export class TypeOfOrganizationFormService {
         validators: [Validators.required, Validators.maxLength(255)],
       }),
       description: new FormControl(typeOfOrganizationRawValue.description, {
-        validators: [Validators.required],
+        validators: [Validators.required, Validators.maxLength(128)],
       }),
       businessHandlerClazz: new FormControl(typeOfOrganizationRawValue.businessHandlerClazz, {
         validators: [Validators.maxLength(512)],

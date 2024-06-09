@@ -7,13 +7,10 @@ import { finalize, map } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { IAsset } from 'app/entities/asset/asset.model';
 import { AssetService } from 'app/entities/asset/service/asset.service';
-import { AssetMetadataService } from '../service/asset-metadata.service';
 import { IAssetMetadata } from '../asset-metadata.model';
+import { AssetMetadataService } from '../service/asset-metadata.service';
 import { AssetMetadataFormService, AssetMetadataFormGroup } from './asset-metadata-form.service';
 
 @Component({
@@ -28,8 +25,6 @@ export class AssetMetadataUpdateComponent implements OnInit {
 
   assetsCollection: IAsset[] = [];
 
-  protected dataUtils = inject(DataUtils);
-  protected eventManager = inject(EventManager);
   protected assetMetadataService = inject(AssetMetadataService);
   protected assetMetadataFormService = inject(AssetMetadataFormService);
   protected assetService = inject(AssetService);
@@ -48,23 +43,6 @@ export class AssetMetadataUpdateComponent implements OnInit {
       }
 
       this.loadRelationshipsOptions();
-    });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    this.dataUtils.openFile(base64String, contentType);
-  }
-
-  setFileData(event: Event, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
-      error: (err: FileLoadError) =>
-        this.eventManager.broadcast(
-          new EventWithContent<AlertError>('azimuteErpQuarkusAngularMonolith02App.error', { ...err, key: 'error.file.' + err.key }),
-        ),
     });
   }
 

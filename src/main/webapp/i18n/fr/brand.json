@@ -21,6 +21,7 @@
       "acronym": "Acronym",
       "name": "Name",
       "description": "Description",
+      "logoBrand": "Logo Brand",
       "productsList": "Products List"
     }
   }

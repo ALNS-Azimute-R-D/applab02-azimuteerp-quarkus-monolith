@@ -20,11 +20,11 @@ export const sampleWithFullData: IRawAssetProcTmp = {
   fullFilenamePath: 'minus',
   assetRawContentAsBlob: '../fake-data/blob/hipster.png',
   assetRawContentAsBlobContentType: 'unknown',
-  extraDetails: '../fake-data/blob/hipster.txt',
+  customAttributesDetailsJSON: 'justify',
 };
 
 export const sampleWithNewData: NewRawAssetProcTmp = {
-  name: 'justify',
+  name: 'indeed probe',
   id: null,
 };
 

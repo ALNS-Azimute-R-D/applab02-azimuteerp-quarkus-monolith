@@ -8,8 +8,10 @@ import { of, Subject, from } from 'rxjs';
 
 import { IBrand } from 'app/entities/brand/brand.model';
 import { BrandService } from 'app/entities/brand/service/brand.service';
-import { ProductService } from '../service/product.service';
+import { ISupplier } from 'app/entities/supplier/supplier.model';
+import { SupplierService } from 'app/entities/supplier/service/supplier.service';
 import { IProduct } from '../product.model';
+import { ProductService } from '../service/product.service';
 import { ProductFormService } from './product-form.service';
 
 import { ProductUpdateComponent } from './product-update.component';
@@ -21,6 +23,7 @@ describe('Product Management Update Component', () => {
   let productFormService: ProductFormService;
   let productService: ProductService;
   let brandService: BrandService;
+  let supplierService: SupplierService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -43,6 +46,7 @@ describe('Product Management Update Component', () => {
     productFormService = TestBed.inject(ProductFormService);
     productService = TestBed.inject(ProductService);
     brandService = TestBed.inject(BrandService);
+    supplierService = TestBed.inject(SupplierService);
 
     comp = fixture.componentInstance;
   });
@@ -50,10 +54,10 @@ describe('Product Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Brand query and add missing value', () => {
       const product: IProduct = { id: 456 };
-      const brand: IBrand = { id: 23258 };
+      const brand: IBrand = { id: 10317 };
       product.brand = brand;
 
-      const brandCollection: IBrand[] = [{ id: 32455 }];
+      const brandCollection: IBrand[] = [{ id: 16805 }];
       jest.spyOn(brandService, 'query').mockReturnValue(of(new HttpResponse({ body: brandCollection })));
       const additionalBrands = [brand];
       const expectedCollection: IBrand[] = [...additionalBrands, ...brandCollection];
@@ -70,15 +74,40 @@ describe('Product Management Update Component', () => {
       expect(comp.brandsSharedCollection).toEqual(expectedCollection);
     });
 
+    it('Should call Supplier query and add missing value', () => {
+      const product: IProduct = { id: 456 };
+      const toSuppliers: ISupplier[] = [{ id: 25865 }];
+      product.toSuppliers = toSuppliers;
+
+      const supplierCollection: ISupplier[] = [{ id: 2093 }];
+      jest.spyOn(supplierService, 'query').mockReturnValue(of(new HttpResponse({ body: supplierCollection })));
+      const additionalSuppliers = [...toSuppliers];
+      const expectedCollection: ISupplier[] = [...additionalSuppliers, ...supplierCollection];
+      jest.spyOn(supplierService, 'addSupplierToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ product });
+      comp.ngOnInit();
+
+      expect(supplierService.query).toHaveBeenCalled();
+      expect(supplierService.addSupplierToCollectionIfMissing).toHaveBeenCalledWith(
+        supplierCollection,
+        ...additionalSuppliers.map(expect.objectContaining),
+      );
+      expect(comp.suppliersSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should update editForm', () => {
       const product: IProduct = { id: 456 };
-      const brand: IBrand = { id: 4106 };
+      const brand: IBrand = { id: 4362 };
       product.brand = brand;
+      const toSupplier: ISupplier = { id: 12079 };
+      product.toSuppliers = [toSupplier];
 
       activatedRoute.data = of({ product });
       comp.ngOnInit();
 
       expect(comp.brandsSharedCollection).toContain(brand);
+      expect(comp.suppliersSharedCollection).toContain(toSupplier);
       expect(comp.product).toEqual(product);
     });
   });
@@ -159,6 +188,16 @@ describe('Product Management Update Component', () => {
         jest.spyOn(brandService, 'compareBrand');
         comp.compareBrand(entity, entity2);
         expect(brandService.compareBrand).toHaveBeenCalledWith(entity, entity2);
+      });
+    });
+
+    describe('compareSupplier', () => {
+      it('Should forward to supplierService', () => {
+        const entity = { id: 123 };
+        const entity2 = { id: 456 };
+        jest.spyOn(supplierService, 'compareSupplier');
+        comp.compareSupplier(entity, entity2);
+        expect(supplierService.compareSupplier).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });

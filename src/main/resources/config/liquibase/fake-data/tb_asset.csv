@@ -1,11 +1,11 @@
-id;uid;name;storage_type_used;full_filename_path;status;preferred_purpose;asset_content_as_blob;asset_content_as_blob_content_type;asset_type_id
-1;5cb99ce7-7dde-43de-b01e-b46f73949bb1;converge than;REMOTE_FILESYSTEM;swamp zowie weird;DISABLED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;1
-2;b4a25030-4d55-495b-a9eb-81b77fd21a5c;fooey;BLOB_IN_DB;failing snivel brother-in-law;DISABLED;PHOTO_ALBUM;../fake-data/blob/hipster.png;image/png;2
-3;6a14145d-274f-4874-8aef-690f14d66b7f;discredit astride;OTHER_CLOUD_STORAGE;equally;ENABLED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;3
-4;ec4784a9-c3ff-4302-889f-ce235590d32e;though;REMOTE_MINIO;because refer;DISABLED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;4
-5;c2db021e-b6c1-416c-b6f9-ad1a93dba7f1;rotating smug trail;BLOB_IN_DB;carol;DISABLED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;5
-6;8cc92e30-00a0-4c4c-8c4c-c63158e62247;so dolman query;REMOTE_FILESYSTEM;barring;DELETED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;6
-7;17188da7-c69a-4f18-b4a8-ccb22d1e97f3;up who;REMOTE_FILESYSTEM;zowie;ENABLED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;7
-8;83b9277d-a182-4232-b3eb-2817201411e7;hatchling;LOCAL_MINIO;reboot;DISABLED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;8
-9;83c531d4-a49d-4576-9652-a9a522eee7a8;upon;BLOB_IN_DB;hmph that actuate;ENABLED;OTHER;../fake-data/blob/hipster.png;image/png;9
-10;d5731a94-4d24-4885-ac02-0be656492acf;unwritten or maggot;REMOTE_MINIO;antique off censure;DISABLED;USER_AVATAR;../fake-data/blob/hipster.png;image/png;10
+id;name;storage_type_used;full_filename_path;status;preferred_purpose;asset_content_as_blob;asset_content_as_blob_content_type;activation_status;asset_type_id
+1;joyful who;BLOB_IN_DB;fooey;DISABLED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;PENDENT;1
+2;eek which enrage;OTHER_CLOUD_STORAGE;addle tarry;DISABLED;EXECUTABLE_PROGRAM_BINARY;../fake-data/blob/hipster.png;image/png;PENDENT;2
+3;eraser hm moist;BLOB_IN_DB;readily across until;DISABLED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;INACTIVE;3
+4;blaring aboard;AWS_S3;calmly;ENABLED;PHOTO_ALBUM;../fake-data/blob/hipster.png;image/png;BLOCKED;4
+5;prettify;OTHER_CLOUD_STORAGE;truly opening discredit;DISABLED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;BLOCKED;5
+6;filly foolishly that;REMOTE_MINIO;nap immediately utterly;ENABLED;USER_AVATAR;../fake-data/blob/hipster.png;image/png;INVALID;6
+7;gadzooks;AWS_S3;irritably;ENABLED;ANY_OFFICE_FILE_TYPE;../fake-data/blob/hipster.png;image/png;INVALID;7
+8;what sans modulo;REMOTE_MINIO;onto poem upside-down;ENABLED;LOGO_IMG;../fake-data/blob/hipster.png;image/png;ON_HOLD;8
+9;uniformity for scissors;AWS_S3;pummel round;DELETED;PHOTO_ALBUM;../fake-data/blob/hipster.png;image/png;ACTIVE;9
+10;barring;REMOTE_FILESYSTEM;obediently;DISABLED;EXECUTABLE_PROGRAM_BINARY;../fake-data/blob/hipster.png;image/png;PENDENT;10

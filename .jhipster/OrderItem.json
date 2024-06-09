@@ -1,9 +1,10 @@
 {
   "annotations": {
-    "changelogDate": "20240603224750"
+    "changelogDate": "20240608082007"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
+  "entityTableName": "tb_item_order",
   "fields": [
     {
       "fieldName": "quantity",
@@ -39,7 +40,7 @@
     {
       "otherEntityField": "businessCode",
       "otherEntityName": "order",
-      "otherEntityRelationshipName": "ordersItemsList",
+      "otherEntityRelationshipName": "orderItemsList",
       "relationshipName": "order",
       "relationshipSide": "right",
       "relationshipType": "many-to-one",

@@ -17,6 +17,7 @@ import { RawAssetProcTmpService } from 'app/entities/raw-asset-proc-tmp/service/
 import { StorageTypeEnum } from 'app/entities/enumerations/storage-type-enum.model';
 import { StatusAssetEnum } from 'app/entities/enumerations/status-asset-enum.model';
 import { PreferredPurposeEnum } from 'app/entities/enumerations/preferred-purpose-enum.model';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 import { AssetService } from '../service/asset.service';
 import { IAsset } from '../asset.model';
 import { AssetFormService, AssetFormGroup } from './asset-form.service';
@@ -33,6 +34,7 @@ export class AssetUpdateComponent implements OnInit {
   storageTypeEnumValues = Object.keys(StorageTypeEnum);
   statusAssetEnumValues = Object.keys(StatusAssetEnum);
   preferredPurposeEnumValues = Object.keys(PreferredPurposeEnum);
+  activationStatusEnumValues = Object.keys(ActivationStatusEnum);
 
   assetTypesSharedCollection: IAssetType[] = [];
   rawAssetProcTmpsSharedCollection: IRawAssetProcTmp[] = [];

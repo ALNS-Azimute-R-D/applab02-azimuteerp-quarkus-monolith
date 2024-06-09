@@ -15,7 +15,7 @@ describe('StockLevel e2e test', () => {
   const stockLevelPageUrlPattern = new RegExp('/stock-level(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  // const stockLevelSample = {"lastModifiedDate":"2024-06-03T17:34:25.876Z","ramainingQuantity":4220};
+  // const stockLevelSample = {"lastModifiedDate":"2024-06-08T03:37:46.402Z","remainingQuantity":31293};
 
   let stockLevel;
   // let warehouse;
@@ -31,7 +31,7 @@ describe('StockLevel e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/warehouses',
-      body: {"acronym":"ecclesia","name":"wastebasket phooey calculating","description":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","streetAddress":"inasmuch ouch revoke","houseNumber":"upon","locationName":"spirituality until brazen","postalCode":"during sp","pointLocation":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","pointLocationContentType":"unknown","mainEmail":"~C]@MNb8/`.6l!~","landPhoneNumber":"daintily though","mobilePhoneNumber":"kindly","faxNumber":"geez search","extraDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ="},
+      body: {"acronym":"after troubled opposite","name":"above duh","description":"youngster scarily hmph","streetAddress":"incidentally reprocess","houseNumber":"along yuck more","locationName":"but gah geez","postalCode":"cohere ex","pointLocation":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","pointLocationContentType":"unknown","mainEmail":"w:i9V@M4.D=Vr","landPhoneNumber":"whip plus gadzo","mobilePhoneNumber":"besides","faxNumber":"furthermore","customAttributesDetailsJSON":"offer","activationStatus":"PENDENT"},
     }).then(({ body }) => {
       warehouse = body;
     });
@@ -39,7 +39,7 @@ describe('StockLevel e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/products',
-      body: {"productSKU":"that grim crown","productName":"to indeed through","description":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","standardCost":817.02,"listPrice":21632.25,"reorderLevel":32481,"targetLevel":15716,"quantityPerUnit":"observatory which","discontinued":true,"minimumReorderQuantity":27054,"suggestedCategory":"cluttered","attachments":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","attachmentsContentType":"unknown","supplierIds":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ="},
+      body: {"productSKU":"tracking","productName":"hollow drool hotdog","description":"document","standardCost":7211.79,"listPrice":4492.61,"reorderLevel":19262,"targetLevel":14584,"quantityPerUnit":"er","discontinued":false,"minimumReorderQuantity":29190,"suggestedCategory":"ouch hourly precious","attachments":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","attachmentsContentType":"unknown","activationStatus":"INVALID"},
     }).then(({ body }) => {
       product = body;
     });
@@ -236,15 +236,15 @@ describe('StockLevel e2e test', () => {
     });
 
     it.skip('should create an instance of StockLevel', () => {
-      cy.get(`[data-cy="lastModifiedDate"]`).type('2024-06-03T02:06');
+      cy.get(`[data-cy="lastModifiedDate"]`).type('2024-06-08T00:41');
       cy.get(`[data-cy="lastModifiedDate"]`).blur();
-      cy.get(`[data-cy="lastModifiedDate"]`).should('have.value', '2024-06-03T02:06');
+      cy.get(`[data-cy="lastModifiedDate"]`).should('have.value', '2024-06-08T00:41');
 
-      cy.get(`[data-cy="ramainingQuantity"]`).type('27110');
-      cy.get(`[data-cy="ramainingQuantity"]`).should('have.value', '27110');
+      cy.get(`[data-cy="remainingQuantity"]`).type('17017');
+      cy.get(`[data-cy="remainingQuantity"]`).should('have.value', '17017');
 
-      cy.get(`[data-cy="extraDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="extraDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="commonAttributesDetailsJSON"]`).type('where before');
+      cy.get(`[data-cy="commonAttributesDetailsJSON"]`).should('have.value', 'where before');
 
       cy.get(`[data-cy="warehouse"]`).select(1);
       cy.get(`[data-cy="product"]`).select(1);

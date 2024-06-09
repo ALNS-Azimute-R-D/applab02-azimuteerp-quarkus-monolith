@@ -1,11 +1,11 @@
-id;acronym;name;description;handler_clazz_name;extra_details
-1;gah disqualify;respite meter apprehensive;roost;since;../fake-data/blob/hipster.txt
-2;scarecrow dance ick;brr since aside;hm;uh-huh;../fake-data/blob/hipster.txt
-3;pray glistening er;each oof hm;iron decadence since;plush;../fake-data/blob/hipster.txt
-4;fortress;gobbler self-reliant representative;reassuringly yippee;yum cable;../fake-data/blob/hipster.txt
-5;greatly;at yippee;well-worn bracket;like wrapping;../fake-data/blob/hipster.txt
-6;meh at sans;toward times qua;shyly;solidly boiling;../fake-data/blob/hipster.txt
-7;freely zowie neuter;original excluding gah;unnecessarily finally aboard;trivial eek;../fake-data/blob/hipster.txt
-8;minor cool root;acclaimed;effect huzzah;proud openly;../fake-data/blob/hipster.txt
-9;till ick whereas;lest;precious phooey;jealously;../fake-data/blob/hipster.txt
-10;now brand;misfire;loving jiffy;boo;../fake-data/blob/hipster.txt
+id;acronym;name;description;handler_clazz_name;custom_attributes_details_json
+1;gah disqualify;respite meter apprehensive;roost;since;scarecrow dance ick
+2;brr since aside;hm;uh-huh;pray glistening er;each oof hm
+3;iron decadence since;plush;fortress;gobbler self-reliant representative;reassuringly yippee
+4;yum cable;greatly;at yippee;well-worn bracket;like wrapping
+5;meh at sans;toward times qua;shyly;solidly boiling;freely zowie neuter
+6;original excluding gah;unnecessarily finally aboard;trivial eek;minor cool root;acclaimed
+7;effect huzzah;proud openly;till ick whereas;lest;precious phooey
+8;jealously;now brand;misfire;loving jiffy;boo
+9;log pitiful;eek upwardly closed;below;yearly;cleverly pro
+10;swiftly ample;excluding;or foolishly;phooey gran;co-producer regarding

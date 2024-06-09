@@ -1,11 +1,11 @@
-id;business_code;original_order_id;invoice_date;due_date;description;tax_value;shipping_value;amount_due_value;number_of_installments_original;number_of_installments_paid;amount_paid_value;status;extra_details
-1;aha;27203;2024-06-03T20:57:46;2024-06-03T10:37:58;vacantly;10264.63;21496.73;868.68;28520;32607;1031.93;PAYING_IN_INSTALLMENTS;../fake-data/blob/hipster.txt
-2;taut acidic;3375;2024-06-03T09:15:55;2024-06-03T21:17:27;seriously how openly;17460.76;825.67;20332.48;6113;2300;10041.34;CANCELLED;../fake-data/blob/hipster.txt
-3;ouch;16425;2024-06-03T10:48:51;2024-06-03T02:40:59;above till;28801.79;2450.29;12890.01;10085;17528;18328.42;PAYING_IN_INSTALLMENTS;../fake-data/blob/hipster.txt
-4;exactly ick min;25522;2024-06-03T14:30:38;2024-06-02T23:08:49;amidst brr which;6192.27;3894.85;21979.21;15414;6541;24196.43;ISSUED;../fake-data/blob/hipster.txt
-5;indeed wearily;17736;2024-06-03T15:05:03;2024-06-03T17:37:13;never certainly cleverly;3157.33;18567.1;26787.54;20520;18132;18399.47;PAID_ONCE;../fake-data/blob/hipster.txt
-6;leisure fluid w;16261;2024-06-03T04:02:43;2024-06-03T01:39:24;run fence oof;516.63;23945.77;16030.56;10100;28987;26646.53;PAYING_IN_INSTALLMENTS;../fake-data/blob/hipster.txt
-7;traumatic tweet;16177;2024-06-03T02:40:18;2024-06-03T06:24:55;although;24199.12;27350.29;1196.26;27911;6786;27472.05;ISSUED;../fake-data/blob/hipster.txt
-8;implementation;17481;2024-06-03T01:15:16;2024-06-03T06:23:06;essay since garrote;22981.68;28913.69;30525.72;22956;12720;20377.54;PAYING_IN_INSTALLMENTS;../fake-data/blob/hipster.txt
-9;provided;10635;2024-06-03T08:49:46;2024-06-03T14:40:35;tensely anguished;976.73;4875.32;26473.67;23006;20780;18726.5;ISSUED;../fake-data/blob/hipster.txt
-10;dreamily screec;1015;2024-06-03T00:06:44;2024-06-03T09:05:19;carabao;19334.12;30170.89;7908.08;27400;10822;3370.46;PAID_ONCE;../fake-data/blob/hipster.txt
+id;business_code;invoice_date;due_date;description;tax_value;shipping_value;amount_due_value;number_of_installments_original;number_of_installments_paid;amount_paid_value;status;custom_attributes_details_json;activation_status
+1;aha;2024-06-07T12:10:39;2024-06-08T06:30:03;once answer;13511.52;14093.91;13424.96;12796;17663;8606.76;CANCELLED;upward um yowza;INACTIVE
+2;afore boohoo;2024-06-08T06:24:59;2024-06-08T00:44:49;string lox into;28100.99;12560.89;7112.26;28958;21997;28801.79;PAID_ONCE;mammoth soon;INVALID
+3;beyond;2024-06-07T22:01:55;2024-06-08T06:47:06;chart garrotte;13032.49;6214.69;2753.3;10708;4069;24896.07;PAID_ONCE;nor;ACTIVE
+4;broadly clumsy ;2024-06-07T15:51:44;2024-06-07T12:52:29;motherly;2687.99;15394.13;3339.49;10635;16934;26010.26;ISSUED;memo;PENDENT
+5;boohoo;2024-06-07T19:56:30;2024-06-07T15:50:19;via;25368.5;21183.29;14405.78;22249;32261;16261.05;CANCELLED;mechanically gosh publish;INVALID
+6;statistic;2024-06-07T18:34:51;2024-06-08T03:25:48;frugal for quake;3197.13;21126;3774.06;29443;6560;15808.62;PAYING_IN_INSTALLMENTS;what;ACTIVE
+7;obediently;2024-06-07T10:47:33;2024-06-07T15:55:23;essay since garrote;22981.68;28913.69;30525.72;22956;12720;20377.54;PAYING_IN_INSTALLMENTS;provided;ACTIVE
+8;with woot;2024-06-07T17:45:39;2024-06-08T07:15:01;knotty;25054.74;14736.85;14984.5;20197;29775;10344.51;PAID_ONCE;oh realization;PENDENT
+9;certainly earth;2024-06-08T05:22:20;2024-06-07T22:42:27;whenever clear-cut;22146.47;30356.99;26313.68;3734;16363;20795.3;CANCELLED;canine enormously pleased;INACTIVE
+10;uh-huh blah pur;2024-06-08T02:21:45;2024-06-07T20:51:07;wallet;4523.49;10657.22;8706.89;24884;14495;8912.78;ISSUED;innocently;INVALID

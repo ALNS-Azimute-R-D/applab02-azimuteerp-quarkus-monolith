@@ -18,7 +18,7 @@
         "title": "Asset Metadata"
       },
       "id": "ID",
-      "metadataDetails": "Metadata Details",
+      "metadataDetailsJSON": "Metadata Details JSON",
       "asset": "Asset"
     }
   }

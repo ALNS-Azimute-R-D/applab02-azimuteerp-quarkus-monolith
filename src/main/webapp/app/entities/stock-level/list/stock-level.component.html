@@ -49,16 +49,18 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="ramainingQuantity">
+            <th scope="col" jhiSortBy="remainingQuantity">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.ramainingQuantity">Ramaining Quantity</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.remainingQuantity">Remaining Quantity</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="extraDetails">
+            <th scope="col" jhiSortBy="commonAttributesDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.extraDetails">Extra Details</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.stockLevel.commonAttributesDetailsJSON"
+                  >Common Attributes Details JSON</span
+                >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -85,8 +87,8 @@
                 <a [routerLink]="['/stock-level', stockLevel.id, 'view']">{{ stockLevel.id }}</a>
               </td>
               <td>{{ stockLevel.lastModifiedDate | formatMediumDatetime }}</td>
-              <td>{{ stockLevel.ramainingQuantity }}</td>
-              <td>{{ stockLevel.extraDetails }}</td>
+              <td>{{ stockLevel.remainingQuantity }}</td>
+              <td>{{ stockLevel.commonAttributesDetailsJSON }}</td>
               <td>
                 @if (stockLevel.warehouse) {
                   <div>

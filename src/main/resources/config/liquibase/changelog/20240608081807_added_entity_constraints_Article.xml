@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Article.
+    -->
+    <changeSet id="20240608081807-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="tb_article_id"
+                                 baseTableName="rel_tb_article__asset_collection"
+                                 constraintName="fk_rel_tb_article__asset_collection__tb_article_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tb_article"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="asset_collection_id"
+                                 baseTableName="rel_tb_article__asset_collection"
+                                 constraintName="fk_rel_tb_article__asset_collection__asset_collection_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tb_asset_collection"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="main_category_id"
+                                 baseTableName="tb_article"
+                                 constraintName="fk_tb_article__main_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tb_category"
+                                 />
+    </changeSet>
+</databaseChangeLog>

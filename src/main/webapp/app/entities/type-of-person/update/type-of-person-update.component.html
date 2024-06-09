@@ -54,8 +54,8 @@
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
               @if (editForm.get('description')?.errors?.maxlength) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 40 }"
-                  >This field cannot be longer than 40 characters.</small
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 80 }"
+                  >This field cannot be longer than 80 characters.</small
                 >
               }
             </div>

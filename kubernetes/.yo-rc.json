@@ -8,7 +8,7 @@
       }
     ],
     "clusteredDbApps": [],
-    "dbRandomPassword": "5b72c6b7c886dc3ab2911950a841418ddd55c52d573939a911d967046193",
+    "dbRandomPassword": "bdd094fef2eb2aad9700a8858bbb90569504daa3822191a5f5e74d0f1006",
     "deploymentType": "kubernetes",
     "directoryPath": "../",
     "dockerPushCommand": "docker push",
@@ -16,7 +16,7 @@
     "ingressDomain": "",
     "istio": false,
     "jhipsterVersion": "8.2.1",
-    "jwtSecretKey": "MGM3NDllMjY4MzE0Yjk2MGFjMzBhY2M5YzhhZWExMDE0Y2RhMmRjNWFiNWRkMzI0Mzg5NWExNTQyNjk3YjBlMWYzMGI4Y2U3ZjcyMDk3ZWM5OWJjZjMyMTJiMjEzZDBiYmU3MQ==",
+    "jwtSecretKey": "NDAxNzRjYzcwNzgyMmFhNTcyNzc2ZWQxMWFiODIzODRhNjQ2ZjBmODhlNDI4OWU5MmE0NjE3YjBmMGY2ZTk4MDg1Y2QzYzE3Njk3NDJiY2QzMDdiOTA2MmY5ZTUyYjU1ODQyZg==",
     "kubernetesNamespace": "azimuteerp-platform",
     "kubernetesServiceType": "LoadBalancer",
     "kubernetesStorageClassName": "",

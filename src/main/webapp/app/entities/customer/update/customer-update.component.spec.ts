@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, Subject, from } from 'rxjs';
 
+import { IPerson } from 'app/entities/person/person.model';
+import { PersonService } from 'app/entities/person/service/person.service';
 import { ICustomerType } from 'app/entities/customer-type/customer-type.model';
 import { CustomerTypeService } from 'app/entities/customer-type/service/customer-type.service';
 import { IDistrict } from 'app/entities/district/district.model';
@@ -22,6 +24,7 @@ describe('Customer Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let customerFormService: CustomerFormService;
   let customerService: CustomerService;
+  let personService: PersonService;
   let customerTypeService: CustomerTypeService;
   let districtService: DistrictService;
 
@@ -45,6 +48,7 @@ describe('Customer Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     customerFormService = TestBed.inject(CustomerFormService);
     customerService = TestBed.inject(CustomerService);
+    personService = TestBed.inject(PersonService);
     customerTypeService = TestBed.inject(CustomerTypeService);
     districtService = TestBed.inject(DistrictService);
 
@@ -52,6 +56,28 @@ describe('Customer Management Update Component', () => {
   });
 
   describe('ngOnInit', () => {
+    it('Should call Person query and add missing value', () => {
+      const customer: ICustomer = { id: 456 };
+      const buyerPerson: IPerson = { id: 9788 };
+      customer.buyerPerson = buyerPerson;
+
+      const personCollection: IPerson[] = [{ id: 24013 }];
+      jest.spyOn(personService, 'query').mockReturnValue(of(new HttpResponse({ body: personCollection })));
+      const additionalPeople = [buyerPerson];
+      const expectedCollection: IPerson[] = [...additionalPeople, ...personCollection];
+      jest.spyOn(personService, 'addPersonToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ customer });
+      comp.ngOnInit();
+
+      expect(personService.query).toHaveBeenCalled();
+      expect(personService.addPersonToCollectionIfMissing).toHaveBeenCalledWith(
+        personCollection,
+        ...additionalPeople.map(expect.objectContaining),
+      );
+      expect(comp.peopleSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should call CustomerType query and add missing value', () => {
       const customer: ICustomer = { id: 456 };
       const customerType: ICustomerType = { id: 28641 };
@@ -76,10 +102,10 @@ describe('Customer Management Update Component', () => {
 
     it('Should call District query and add missing value', () => {
       const customer: ICustomer = { id: 456 };
-      const district: IDistrict = { id: 1447 };
+      const district: IDistrict = { id: 18628 };
       customer.district = district;
 
-      const districtCollection: IDistrict[] = [{ id: 14680 }];
+      const districtCollection: IDistrict[] = [{ id: 16331 }];
       jest.spyOn(districtService, 'query').mockReturnValue(of(new HttpResponse({ body: districtCollection })));
       const additionalDistricts = [district];
       const expectedCollection: IDistrict[] = [...additionalDistricts, ...districtCollection];
@@ -98,14 +124,17 @@ describe('Customer Management Update Component', () => {
 
     it('Should update editForm', () => {
       const customer: ICustomer = { id: 456 };
+      const buyerPerson: IPerson = { id: 25370 };
+      customer.buyerPerson = buyerPerson;
       const customerType: ICustomerType = { id: 18143 };
       customer.customerType = customerType;
-      const district: IDistrict = { id: 8674 };
+      const district: IDistrict = { id: 413 };
       customer.district = district;
 
       activatedRoute.data = of({ customer });
       comp.ngOnInit();
 
+      expect(comp.peopleSharedCollection).toContain(buyerPerson);
       expect(comp.customerTypesSharedCollection).toContain(customerType);
       expect(comp.districtsSharedCollection).toContain(district);
       expect(comp.customer).toEqual(customer);
@@ -181,6 +210,16 @@ describe('Customer Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
+    describe('comparePerson', () => {
+      it('Should forward to personService', () => {
+        const entity = { id: 123 };
+        const entity2 = { id: 456 };
+        jest.spyOn(personService, 'comparePerson');
+        comp.comparePerson(entity, entity2);
+        expect(personService.comparePerson).toHaveBeenCalledWith(entity, entity2);
+      });
+    });
+
     describe('compareCustomerType', () => {
       it('Should forward to customerTypeService', () => {
         const entity = { id: 123 };

@@ -94,13 +94,13 @@
               <li>
                 <a
                   class="dropdown-item"
-                  routerLink="/locality"
+                  routerLink="/common-locality"
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: true }"
                   (click)="collapseNavbar()"
                 >
                   <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.locality">Locality</span>
+                  <span jhiTranslate="global.menu.entities.commonLocality">Common Locality</span>
                 </a>
               </li>
               <li>
@@ -286,6 +286,18 @@
               <li>
                 <a
                   class="dropdown-item"
+                  routerLink="/asset-collection"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  (click)="collapseNavbar()"
+                >
+                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                  <span jhiTranslate="global.menu.entities.assetCollection">Asset Collection</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
                   routerLink="/invoice"
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: true }"
@@ -298,13 +310,13 @@
               <li>
                 <a
                   class="dropdown-item"
-                  routerLink="/payment-method"
+                  routerLink="/payment-gateway"
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: true }"
                   (click)="collapseNavbar()"
                 >
                   <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.paymentMethod">Payment Method</span>
+                  <span jhiTranslate="global.menu.entities.paymentGateway">Payment Gateway</span>
                 </a>
               </li>
               <li>

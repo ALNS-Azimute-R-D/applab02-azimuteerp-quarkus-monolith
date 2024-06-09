@@ -3,28 +3,31 @@ import { IAsset, NewAsset } from './asset.model';
 export const sampleWithRequiredData: IAsset = {
   id: 29147,
   name: 'litigate ugly',
+  activationStatus: 'BLOCKED',
 };
 
 export const sampleWithPartialData: IAsset = {
   id: 2575,
   name: 'inwardly',
   storageTypeUsed: 'BLOB_IN_DB',
+  activationStatus: 'INACTIVE',
 };
 
 export const sampleWithFullData: IAsset = {
-  id: 2084,
-  uid: '634609f0-b2af-47b1-8496-c577312ea535',
-  name: 'now cathedral always',
-  storageTypeUsed: 'REMOTE_MINIO',
-  fullFilenamePath: 'warm',
-  status: 'DELETED',
-  preferredPurpose: 'LOGO_IMG',
+  id: 12817,
+  name: 'reshape',
+  storageTypeUsed: 'BLOB_IN_DB',
+  fullFilenamePath: 'excluding yowza unto',
+  status: 'ENABLED',
+  preferredPurpose: 'ANY_OFFICE_FILE_TYPE',
   assetContentAsBlob: '../fake-data/blob/hipster.png',
   assetContentAsBlobContentType: 'unknown',
+  activationStatus: 'ON_HOLD',
 };
 
 export const sampleWithNewData: NewAsset = {
-  name: 'inside sleepy',
+  name: 'separately',
+  activationStatus: 'INVALID',
   id: null,
 };
 

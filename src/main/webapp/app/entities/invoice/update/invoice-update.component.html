@@ -46,20 +46,6 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.originalOrderId" for="field_originalOrderId"
-            >Original Order Id</label
-          >
-          <input
-            type="number"
-            class="form-control"
-            name="originalOrderId"
-            id="field_originalOrderId"
-            data-cy="originalOrderId"
-            formControlName="originalOrderId"
-          />
-        </div>
-
-        <div class="mb-3">
           <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.invoiceDate" for="field_invoiceDate"
             >Invoice Date</label
           >
@@ -238,36 +224,85 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.extraDetails" for="field_extraDetails"
-            >Extra Details</label
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.customAttributesDetailsJSON"
+            for="field_customAttributesDetailsJSON"
+            >Custom Attributes Details JSON</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
-            name="extraDetails"
-            id="field_extraDetails"
-            data-cy="extraDetails"
-            formControlName="extraDetails"
-          ></textarea>
+            name="customAttributesDetailsJSON"
+            id="field_customAttributesDetailsJSON"
+            data-cy="customAttributesDetailsJSON"
+            formControlName="customAttributesDetailsJSON"
+          />
+          @if (
+            editForm.get('customAttributesDetailsJSON')!.invalid &&
+            (editForm.get('customAttributesDetailsJSON')!.dirty || editForm.get('customAttributesDetailsJSON')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('customAttributesDetailsJSON')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 4096 }"
+                  >This field cannot be longer than 4096 characters.</small
+                >
+              }
+            </div>
+          }
         </div>
 
         <div class="mb-3">
           <label
             class="form-label"
-            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.preferrablePaymentMethod"
-            for="field_preferrablePaymentMethod"
-            >Preferrable Payment Method</label
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.activationStatus"
+            for="field_activationStatus"
+            >Activation Status</label
           >
           <select
             class="form-control"
-            id="field_preferrablePaymentMethod"
-            data-cy="preferrablePaymentMethod"
-            name="preferrablePaymentMethod"
-            formControlName="preferrablePaymentMethod"
-            [compareWith]="comparePaymentMethod"
+            name="activationStatus"
+            formControlName="activationStatus"
+            id="field_activationStatus"
+            data-cy="activationStatus"
+          >
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.null' | translate }}</option>
+            @for (activationStatusEnum of activationStatusEnumValues; track $index) {
+              <option [value]="activationStatusEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + activationStatusEnum | translate }}
+              </option>
+            }
+          </select>
+          @if (
+            editForm.get('activationStatus')!.invalid &&
+            (editForm.get('activationStatus')!.dirty || editForm.get('activationStatus')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('activationStatus')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.preferrablePaymentGateway"
+            for="field_preferrablePaymentGateway"
+            >Preferrable Payment Gateway</label
+          >
+          <select
+            class="form-control"
+            id="field_preferrablePaymentGateway"
+            data-cy="preferrablePaymentGateway"
+            name="preferrablePaymentGateway"
+            formControlName="preferrablePaymentGateway"
+            [compareWith]="comparePaymentGateway"
           >
             <option [ngValue]="null"></option>
-            @for (paymentMethodOption of paymentMethodsSharedCollection; track $index) {
-              <option [ngValue]="paymentMethodOption">{{ paymentMethodOption.code }}</option>
+            @for (paymentGatewayOption of paymentGatewaysSharedCollection; track $index) {
+              <option [ngValue]="paymentGatewayOption">{{ paymentGatewayOption.aliasCode }}</option>
             }
           </select>
         </div>

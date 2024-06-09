@@ -9,20 +9,20 @@ export const sampleWithPartialData: IAssetType = {
   id: 2757,
   name: 'lazily separate into',
   handlerClazzName: 'gosh recovery gadzooks',
-  extraDetails: '../fake-data/blob/hipster.txt',
+  customAttributesDetailsJSON: 'insignificant imaginative',
 };
 
 export const sampleWithFullData: IAssetType = {
-  id: 13767,
-  acronym: 'gah thief',
-  name: 'whereas barring without',
-  description: 'always',
-  handlerClazzName: 'geez willing',
-  extraDetails: '../fake-data/blob/hipster.txt',
+  id: 29576,
+  acronym: 'whereas barring without',
+  name: 'always',
+  description: 'geez willing',
+  handlerClazzName: 'forenenst daybed flourish',
+  customAttributesDetailsJSON: 'finally',
 };
 
 export const sampleWithNewData: NewAssetType = {
-  name: 'forenenst daybed flourish',
+  name: 'courteous',
   id: null,
 };
 

@@ -24,7 +24,7 @@ describe('AssetType Form Service', () => {
             name: expect.any(Object),
             description: expect.any(Object),
             handlerClazzName: expect.any(Object),
-            extraDetails: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
           }),
         );
       });
@@ -39,7 +39,7 @@ describe('AssetType Form Service', () => {
             name: expect.any(Object),
             description: expect.any(Object),
             handlerClazzName: expect.any(Object),
-            extraDetails: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
           }),
         );
       });

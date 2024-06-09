@@ -14,15 +14,12 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type SupplierFormGroupInput = ISupplier | PartialWithRequiredKeyOf<NewSupplier>;
 
-type SupplierFormDefaults = Pick<NewSupplier, 'id' | 'productsLists'>;
+type SupplierFormDefaults = Pick<NewSupplier, 'id'>;
 
 type SupplierFormGroupContent = {
   id: FormControl<ISupplier['id'] | NewSupplier['id']>;
   acronym: FormControl<ISupplier['acronym']>;
   companyName: FormControl<ISupplier['companyName']>;
-  representativeLastName: FormControl<ISupplier['representativeLastName']>;
-  representativeFirstName: FormControl<ISupplier['representativeFirstName']>;
-  jobTitle: FormControl<ISupplier['jobTitle']>;
   streetAddress: FormControl<ISupplier['streetAddress']>;
   houseNumber: FormControl<ISupplier['houseNumber']>;
   locationName: FormControl<ISupplier['locationName']>;
@@ -30,15 +27,14 @@ type SupplierFormGroupContent = {
   stateProvince: FormControl<ISupplier['stateProvince']>;
   zipPostalCode: FormControl<ISupplier['zipPostalCode']>;
   countryRegion: FormControl<ISupplier['countryRegion']>;
-  webPage: FormControl<ISupplier['webPage']>;
   pointLocation: FormControl<ISupplier['pointLocation']>;
   pointLocationContentType: FormControl<ISupplier['pointLocationContentType']>;
   mainEmail: FormControl<ISupplier['mainEmail']>;
-  landPhoneNumber: FormControl<ISupplier['landPhoneNumber']>;
-  mobilePhoneNumber: FormControl<ISupplier['mobilePhoneNumber']>;
-  faxNumber: FormControl<ISupplier['faxNumber']>;
-  extraDetails: FormControl<ISupplier['extraDetails']>;
-  productsLists: FormControl<ISupplier['productsLists']>;
+  phoneNumber1: FormControl<ISupplier['phoneNumber1']>;
+  phoneNumber2: FormControl<ISupplier['phoneNumber2']>;
+  customAttributesDetailsJSON: FormControl<ISupplier['customAttributesDetailsJSON']>;
+  activationStatus: FormControl<ISupplier['activationStatus']>;
+  representativePerson: FormControl<ISupplier['representativePerson']>;
 };
 
 export type SupplierFormGroup = FormGroup<SupplierFormGroupContent>;
@@ -64,15 +60,6 @@ export class SupplierFormService {
       companyName: new FormControl(supplierRawValue.companyName, {
         validators: [Validators.required, Validators.minLength(2), Validators.maxLength(120)],
       }),
-      representativeLastName: new FormControl(supplierRawValue.representativeLastName, {
-        validators: [Validators.maxLength(50)],
-      }),
-      representativeFirstName: new FormControl(supplierRawValue.representativeFirstName, {
-        validators: [Validators.maxLength(50)],
-      }),
-      jobTitle: new FormControl(supplierRawValue.jobTitle, {
-        validators: [Validators.maxLength(50)],
-      }),
       streetAddress: new FormControl(supplierRawValue.streetAddress, {
         validators: [Validators.required, Validators.maxLength(120)],
       }),
@@ -94,23 +81,26 @@ export class SupplierFormService {
       countryRegion: new FormControl(supplierRawValue.countryRegion, {
         validators: [Validators.maxLength(50)],
       }),
-      webPage: new FormControl(supplierRawValue.webPage),
       pointLocation: new FormControl(supplierRawValue.pointLocation),
       pointLocationContentType: new FormControl(supplierRawValue.pointLocationContentType),
       mainEmail: new FormControl(supplierRawValue.mainEmail, {
         validators: [Validators.maxLength(120), Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')],
       }),
-      landPhoneNumber: new FormControl(supplierRawValue.landPhoneNumber, {
+      phoneNumber1: new FormControl(supplierRawValue.phoneNumber1, {
         validators: [Validators.maxLength(15)],
       }),
-      mobilePhoneNumber: new FormControl(supplierRawValue.mobilePhoneNumber, {
+      phoneNumber2: new FormControl(supplierRawValue.phoneNumber2, {
         validators: [Validators.maxLength(15)],
       }),
-      faxNumber: new FormControl(supplierRawValue.faxNumber, {
-        validators: [Validators.maxLength(15)],
+      customAttributesDetailsJSON: new FormControl(supplierRawValue.customAttributesDetailsJSON, {
+        validators: [Validators.maxLength(2048)],
       }),
-      extraDetails: new FormControl(supplierRawValue.extraDetails),
-      productsLists: new FormControl(supplierRawValue.productsLists ?? []),
+      activationStatus: new FormControl(supplierRawValue.activationStatus, {
+        validators: [Validators.required],
+      }),
+      representativePerson: new FormControl(supplierRawValue.representativePerson, {
+        validators: [Validators.required],
+      }),
     });
   }
 
@@ -131,7 +121,6 @@ export class SupplierFormService {
   private getFormDefaults(): SupplierFormDefaults {
     return {
       id: null,
-      productsLists: [],
     };
   }
 }

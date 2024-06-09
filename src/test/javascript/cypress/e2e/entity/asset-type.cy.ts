@@ -15,7 +15,7 @@ describe('AssetType e2e test', () => {
   const assetTypePageUrlPattern = new RegExp('/asset-type(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const assetTypeSample = { name: 'brightly amazement' };
+  const assetTypeSample = { name: 'kettle' };
 
   let assetType;
 
@@ -160,20 +160,20 @@ describe('AssetType e2e test', () => {
     });
 
     it('should create an instance of AssetType', () => {
-      cy.get(`[data-cy="acronym"]`).type('long given excluding');
-      cy.get(`[data-cy="acronym"]`).should('have.value', 'long given excluding');
+      cy.get(`[data-cy="acronym"]`).type('even');
+      cy.get(`[data-cy="acronym"]`).should('have.value', 'even');
 
-      cy.get(`[data-cy="name"]`).type('release tepid');
-      cy.get(`[data-cy="name"]`).should('have.value', 'release tepid');
+      cy.get(`[data-cy="name"]`).type('athwart during');
+      cy.get(`[data-cy="name"]`).should('have.value', 'athwart during');
 
-      cy.get(`[data-cy="description"]`).type('wrathful');
-      cy.get(`[data-cy="description"]`).should('have.value', 'wrathful');
+      cy.get(`[data-cy="description"]`).type('beneficial');
+      cy.get(`[data-cy="description"]`).should('have.value', 'beneficial');
 
-      cy.get(`[data-cy="handlerClazzName"]`).type('whenever bold');
-      cy.get(`[data-cy="handlerClazzName"]`).should('have.value', 'whenever bold');
+      cy.get(`[data-cy="handlerClazzName"]`).type('excitedly yearningly ack');
+      cy.get(`[data-cy="handlerClazzName"]`).should('have.value', 'excitedly yearningly ack');
 
-      cy.get(`[data-cy="extraDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="extraDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).type('visa spiteful');
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).should('have.value', 'visa spiteful');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

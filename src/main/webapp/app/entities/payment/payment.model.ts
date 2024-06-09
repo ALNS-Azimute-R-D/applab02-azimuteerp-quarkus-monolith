@@ -1,7 +1,8 @@
 import dayjs from 'dayjs/esm';
-import { IPaymentMethod } from 'app/entities/payment-method/payment-method.model';
+import { IPaymentGateway } from 'app/entities/payment-gateway/payment-gateway.model';
 import { PaymentTypeEnum } from 'app/entities/enumerations/payment-type-enum.model';
 import { PaymentStatusEnum } from 'app/entities/enumerations/payment-status-enum.model';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 
 export interface IPayment {
   id: number;
@@ -10,9 +11,10 @@ export interface IPayment {
   paymentPaidDate?: dayjs.Dayjs | null;
   paymentAmount?: number | null;
   typeOfPayment?: keyof typeof PaymentTypeEnum | null;
-  status?: keyof typeof PaymentStatusEnum | null;
-  extraDetails?: string | null;
-  paymentMethod?: Pick<IPaymentMethod, 'id' | 'code'> | null;
+  statusPayment?: keyof typeof PaymentStatusEnum | null;
+  customAttributesDetailsJSON?: string | null;
+  activationStatus?: keyof typeof ActivationStatusEnum | null;
+  paymentGateway?: Pick<IPaymentGateway, 'id' | 'aliasCode'> | null;
 }
 
 export type NewPayment = Omit<IPayment, 'id'> & { id: null };

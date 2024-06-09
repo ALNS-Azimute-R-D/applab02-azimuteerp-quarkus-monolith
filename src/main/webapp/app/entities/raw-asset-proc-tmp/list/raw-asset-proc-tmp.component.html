@@ -72,9 +72,11 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="extraDetails">
+            <th scope="col" jhiSortBy="customAttributesDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.extraDetails">Extra Details</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.customAttributesDetailsJSON"
+                  >Custom Attributes Details JSON</span
+                >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -111,7 +113,7 @@
                   <span>{{ rawAssetProcTmp.assetRawContentAsBlobContentType }}, {{ byteSize(rawAssetProcTmp.assetRawContentAsBlob) }}</span>
                 }
               </td>
-              <td>{{ rawAssetProcTmp.extraDetails }}</td>
+              <td>{{ rawAssetProcTmp.customAttributesDetailsJSON }}</td>
               <td>
                 @if (rawAssetProcTmp.assetType) {
                   <div>

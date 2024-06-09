@@ -19,12 +19,13 @@
       },
       "id": "ID",
       "inventoryProductId": "Inventory Product Id",
+      "skuCode": "Sku Code",
       "customName": "Custom Name",
       "customDescription": "Custom Description",
       "priceValue": "Price Value",
       "itemSize": "Item Size",
-      "assetsCollectionUUID": "Assets Collection UUID",
-      "isEnabled": "Is Enabled",
+      "activationStatus": "Activation Status",
+      "assetCollection": "Asset Collection",
       "mainCategory": "Main Category",
       "ordersItemsList": "Orders Items List"
     }

@@ -7,14 +7,14 @@ import { finalize, map } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
+import { IPerson } from 'app/entities/person/person.model';
+import { PersonService } from 'app/entities/person/service/person.service';
 import { ICustomerType } from 'app/entities/customer-type/customer-type.model';
 import { CustomerTypeService } from 'app/entities/customer-type/service/customer-type.service';
 import { IDistrict } from 'app/entities/district/district.model';
 import { DistrictService } from 'app/entities/district/service/district.service';
 import { CustomerStatusEnum } from 'app/entities/enumerations/customer-status-enum.model';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 import { CustomerService } from '../service/customer.service';
 import { ICustomer } from '../customer.model';
 import { CustomerFormService, CustomerFormGroup } from './customer-form.service';
@@ -29,20 +29,23 @@ export class CustomerUpdateComponent implements OnInit {
   isSaving = false;
   customer: ICustomer | null = null;
   customerStatusEnumValues = Object.keys(CustomerStatusEnum);
+  activationStatusEnumValues = Object.keys(ActivationStatusEnum);
 
+  peopleSharedCollection: IPerson[] = [];
   customerTypesSharedCollection: ICustomerType[] = [];
   districtsSharedCollection: IDistrict[] = [];
 
-  protected dataUtils = inject(DataUtils);
-  protected eventManager = inject(EventManager);
   protected customerService = inject(CustomerService);
   protected customerFormService = inject(CustomerFormService);
+  protected personService = inject(PersonService);
   protected customerTypeService = inject(CustomerTypeService);
   protected districtService = inject(DistrictService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: CustomerFormGroup = this.customerFormService.createCustomerFormGroup();
+
+  comparePerson = (o1: IPerson | null, o2: IPerson | null): boolean => this.personService.comparePerson(o1, o2);
 
   compareCustomerType = (o1: ICustomerType | null, o2: ICustomerType | null): boolean =>
     this.customerTypeService.compareCustomerType(o1, o2);
@@ -57,23 +60,6 @@ export class CustomerUpdateComponent implements OnInit {
       }
 
       this.loadRelationshipsOptions();
-    });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    this.dataUtils.openFile(base64String, contentType);
-  }
-
-  setFileData(event: Event, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
-      error: (err: FileLoadError) =>
-        this.eventManager.broadcast(
-          new EventWithContent<AlertError>('azimuteErpQuarkusAngularMonolith02App.error', { ...err, key: 'error.file.' + err.key }),
-        ),
     });
   }
 
@@ -114,6 +100,10 @@ export class CustomerUpdateComponent implements OnInit {
     this.customer = customer;
     this.customerFormService.resetForm(this.editForm, customer);
 
+    this.peopleSharedCollection = this.personService.addPersonToCollectionIfMissing<IPerson>(
+      this.peopleSharedCollection,
+      customer.buyerPerson,
+    );
     this.customerTypesSharedCollection = this.customerTypeService.addCustomerTypeToCollectionIfMissing<ICustomerType>(
       this.customerTypesSharedCollection,
       customer.customerType,
@@ -125,6 +115,12 @@ export class CustomerUpdateComponent implements OnInit {
   }
 
   protected loadRelationshipsOptions(): void {
+    this.personService
+      .query()
+      .pipe(map((res: HttpResponse<IPerson[]>) => res.body ?? []))
+      .pipe(map((people: IPerson[]) => this.personService.addPersonToCollectionIfMissing<IPerson>(people, this.customer?.buyerPerson)))
+      .subscribe((people: IPerson[]) => (this.peopleSharedCollection = people));
+
     this.customerTypeService
       .query()
       .pipe(map((res: HttpResponse<ICustomerType[]>) => res.body ?? []))

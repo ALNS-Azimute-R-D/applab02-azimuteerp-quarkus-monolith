@@ -50,10 +50,10 @@ describe('RawAssetProcTmp Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call AssetType query and add missing value', () => {
       const rawAssetProcTmp: IRawAssetProcTmp = { id: 456 };
-      const assetType: IAssetType = { id: 3123 };
+      const assetType: IAssetType = { id: 28844 };
       rawAssetProcTmp.assetType = assetType;
 
-      const assetTypeCollection: IAssetType[] = [{ id: 17392 }];
+      const assetTypeCollection: IAssetType[] = [{ id: 32696 }];
       jest.spyOn(assetTypeService, 'query').mockReturnValue(of(new HttpResponse({ body: assetTypeCollection })));
       const additionalAssetTypes = [assetType];
       const expectedCollection: IAssetType[] = [...additionalAssetTypes, ...assetTypeCollection];
@@ -72,7 +72,7 @@ describe('RawAssetProcTmp Management Update Component', () => {
 
     it('Should update editForm', () => {
       const rawAssetProcTmp: IRawAssetProcTmp = { id: 456 };
-      const assetType: IAssetType = { id: 25601 };
+      const assetType: IAssetType = { id: 20896 };
       rawAssetProcTmp.assetType = assetType;
 
       activatedRoute.data = of({ rawAssetProcTmp });

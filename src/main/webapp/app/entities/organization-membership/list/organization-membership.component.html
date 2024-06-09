@@ -66,7 +66,7 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="person.lastName">
+            <th scope="col" jhiSortBy="person.lastname">
               <div class="d-flex">
                 <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.organizationMembership.person">Person</span>
                 <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -99,7 +99,7 @@
               <td>
                 @if (organizationMembership.person) {
                   <div>
-                    <a [routerLink]="['/person', organizationMembership.person.id, 'view']">{{ organizationMembership.person.lastName }}</a>
+                    <a [routerLink]="['/person', organizationMembership.person.id, 'view']">{{ organizationMembership.person.lastname }}</a>
                   </div>
                 }
               </td>

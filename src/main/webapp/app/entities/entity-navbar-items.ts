@@ -22,9 +22,9 @@ export const EntityNavbarItems: NavbarItem[] = [
     translationKey: 'global.menu.entities.district',
   },
   {
-    name: 'Locality',
-    route: '/locality',
-    translationKey: 'global.menu.entities.locality',
+    name: 'CommonLocality',
+    route: '/common-locality',
+    translationKey: 'global.menu.entities.commonLocality',
   },
   {
     name: 'Tenant',
@@ -102,14 +102,19 @@ export const EntityNavbarItems: NavbarItem[] = [
     translationKey: 'global.menu.entities.assetMetadata',
   },
   {
+    name: 'AssetCollection',
+    route: '/asset-collection',
+    translationKey: 'global.menu.entities.assetCollection',
+  },
+  {
     name: 'Invoice',
     route: '/invoice',
     translationKey: 'global.menu.entities.invoice',
   },
   {
-    name: 'PaymentMethod',
-    route: '/payment-method',
-    translationKey: 'global.menu.entities.paymentMethod',
+    name: 'PaymentGateway',
+    route: '/payment-gateway',
+    translationKey: 'global.menu.entities.paymentGateway',
   },
   {
     name: 'Payment',

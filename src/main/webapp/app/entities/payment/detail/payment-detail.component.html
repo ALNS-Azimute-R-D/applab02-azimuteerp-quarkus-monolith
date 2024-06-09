@@ -39,21 +39,31 @@
               payment.typeOfPayment
             }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.status">Status</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.statusPayment">Status Payment</span></dt>
           <dd>
-            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.PaymentStatusEnum.' + payment.status }}">{{
-              payment.status
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.PaymentStatusEnum.' + payment.statusPayment }}">{{
+              payment.statusPayment
             }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.extraDetails">Extra Details</span></dt>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.customAttributesDetailsJSON"
+              >Custom Attributes Details JSON</span
+            >
+          </dt>
           <dd>
-            <span>{{ payment.extraDetails }}</span>
+            <span>{{ payment.customAttributesDetailsJSON }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.paymentMethod">Payment Method</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.activationStatus">Activation Status</span></dt>
           <dd>
-            @if (payment.paymentMethod) {
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + payment.activationStatus }}">{{
+              payment.activationStatus
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.payment.paymentGateway">Payment Gateway</span></dt>
+          <dd>
+            @if (payment.paymentGateway) {
               <div>
-                <a [routerLink]="['/payment-method', payment.paymentMethod.id, 'view']">{{ payment.paymentMethod.code }}</a>
+                <a [routerLink]="['/payment-gateway', payment.paymentGateway.id, 'view']">{{ payment.paymentGateway.aliasCode }}</a>
               </div>
             }
           </dd>

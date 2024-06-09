@@ -21,39 +21,37 @@
           <dd>
             <span>{{ customer.customerBusinessCode }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.name">Name</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.fullname">Fullname</span></dt>
           <dd>
-            <span>{{ customer.name }}</span>
+            <span>{{ customer.fullname }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.description">Description</span></dt>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.customAttributesDetailsJSON"
+              >Custom Attributes Details JSON</span
+            >
+          </dt>
           <dd>
-            <span>{{ customer.description }}</span>
+            <span>{{ customer.customAttributesDetailsJSON }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.email">Email</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.customerStatus">Customer Status</span></dt>
           <dd>
-            <span>{{ customer.email }}</span>
-          </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.addressDetails">Address Details</span></dt>
-          <dd>
-            <span>{{ customer.addressDetails }}</span>
-          </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.zipCode">Zip Code</span></dt>
-          <dd>
-            <span>{{ customer.zipCode }}</span>
-          </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.keycloakGroupDetails">Keycloak Group Details</span></dt>
-          <dd>
-            <span>{{ customer.keycloakGroupDetails }}</span>
-          </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.status">Status</span></dt>
-          <dd>
-            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.CustomerStatusEnum.' + customer.status }}">{{
-              customer.status
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.CustomerStatusEnum.' + customer.customerStatus }}">{{
+              customer.customerStatus
             }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.active">Active</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.activationStatus">Activation Status</span></dt>
           <dd>
-            <span>{{ customer.active }}</span>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + customer.activationStatus }}">{{
+              customer.activationStatus
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.buyerPerson">Buyer Person</span></dt>
+          <dd>
+            @if (customer.buyerPerson) {
+              <div>
+                <a [routerLink]="['/person', customer.buyerPerson.id, 'view']">{{ customer.buyerPerson.lastname }}</a>
+              </div>
+            }
           </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.customerType">Customer Type</span></dt>
           <dd>

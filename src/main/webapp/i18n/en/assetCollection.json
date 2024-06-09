@@ -1,0 +1,28 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "assetCollection": {
+      "home": {
+        "title": "Asset Collections",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Asset Collection",
+        "createOrEditLabel": "Create or edit a Asset Collection",
+        "notFound": "No Asset Collections found"
+      },
+      "created": "A new Asset Collection is created with identifier {{ param }}",
+      "updated": "A Asset Collection is updated with identifier {{ param }}",
+      "deleted": "A Asset Collection is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Asset Collection {{ id }}?"
+      },
+      "detail": {
+        "title": "Asset Collection"
+      },
+      "id": "ID",
+      "name": "Name",
+      "fullFilenamePath": "Full Filename Path",
+      "activationStatus": "Activation Status",
+      "asset": "Asset",
+      "article": "Article"
+    }
+  }
+}

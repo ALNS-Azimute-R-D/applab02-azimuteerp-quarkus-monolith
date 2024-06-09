@@ -49,13 +49,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="originalOrderId">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.originalOrderId">Original Order Id</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="invoiceDate">
               <div class="d-flex">
                 <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.invoiceDate">Invoice Date</span>
@@ -130,17 +123,26 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="extraDetails">
+            <th scope="col" jhiSortBy="customAttributesDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.extraDetails">Extra Details</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.customAttributesDetailsJSON"
+                  >Custom Attributes Details JSON</span
+                >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="preferrablePaymentMethod.code">
+            <th scope="col" jhiSortBy="activationStatus">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.preferrablePaymentMethod"
-                  >Preferrable Payment Method</span
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.activationStatus">Activation Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="preferrablePaymentGateway.aliasCode">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.preferrablePaymentGateway"
+                  >Preferrable Payment Gateway</span
                 >
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -155,7 +157,6 @@
                 <a [routerLink]="['/invoice', invoice.id, 'view']">{{ invoice.id }}</a>
               </td>
               <td>{{ invoice.businessCode }}</td>
-              <td>{{ invoice.originalOrderId }}</td>
               <td>{{ invoice.invoiceDate | formatMediumDatetime }}</td>
               <td>{{ invoice.dueDate | formatMediumDatetime }}</td>
               <td>{{ invoice.description }}</td>
@@ -166,12 +167,15 @@
               <td>{{ invoice.numberOfInstallmentsPaid }}</td>
               <td>{{ invoice.amountPaidValue }}</td>
               <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.InvoiceStatusEnum.' + invoice.status }}">{{ invoice.status }}</td>
-              <td>{{ invoice.extraDetails }}</td>
+              <td>{{ invoice.customAttributesDetailsJSON }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + invoice.activationStatus }}">
+                {{ invoice.activationStatus }}
+              </td>
               <td>
-                @if (invoice.preferrablePaymentMethod) {
+                @if (invoice.preferrablePaymentGateway) {
                   <div>
-                    <a [routerLink]="['/payment-method', invoice.preferrablePaymentMethod.id, 'view']">{{
-                      invoice.preferrablePaymentMethod.code
+                    <a [routerLink]="['/payment-gateway', invoice.preferrablePaymentGateway.id, 'view']">{{
+                      invoice.preferrablePaymentGateway.aliasCode
                     }}</a>
                   </div>
                 }

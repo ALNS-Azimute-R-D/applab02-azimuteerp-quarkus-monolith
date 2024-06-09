@@ -14,17 +14,18 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type ArticleFormGroupInput = IArticle | PartialWithRequiredKeyOf<NewArticle>;
 
-type ArticleFormDefaults = Pick<NewArticle, 'id' | 'isEnabled'>;
+type ArticleFormDefaults = Pick<NewArticle, 'id' | 'assetCollections'>;
 
 type ArticleFormGroupContent = {
   id: FormControl<IArticle['id'] | NewArticle['id']>;
   inventoryProductId: FormControl<IArticle['inventoryProductId']>;
+  skuCode: FormControl<IArticle['skuCode']>;
   customName: FormControl<IArticle['customName']>;
   customDescription: FormControl<IArticle['customDescription']>;
   priceValue: FormControl<IArticle['priceValue']>;
   itemSize: FormControl<IArticle['itemSize']>;
-  assetsCollectionUUID: FormControl<IArticle['assetsCollectionUUID']>;
-  isEnabled: FormControl<IArticle['isEnabled']>;
+  activationStatus: FormControl<IArticle['activationStatus']>;
+  assetCollections: FormControl<IArticle['assetCollections']>;
   mainCategory: FormControl<IArticle['mainCategory']>;
 };
 
@@ -48,18 +49,23 @@ export class ArticleFormService {
       inventoryProductId: new FormControl(articleRawValue.inventoryProductId, {
         validators: [Validators.required],
       }),
+      skuCode: new FormControl(articleRawValue.skuCode, {
+        validators: [Validators.maxLength(60)],
+      }),
       customName: new FormControl(articleRawValue.customName, {
         validators: [Validators.maxLength(150)],
       }),
-      customDescription: new FormControl(articleRawValue.customDescription),
+      customDescription: new FormControl(articleRawValue.customDescription, {
+        validators: [Validators.maxLength(8192)],
+      }),
       priceValue: new FormControl(articleRawValue.priceValue),
       itemSize: new FormControl(articleRawValue.itemSize, {
         validators: [Validators.required],
       }),
-      assetsCollectionUUID: new FormControl(articleRawValue.assetsCollectionUUID, {
-        validators: [Validators.maxLength(255)],
+      activationStatus: new FormControl(articleRawValue.activationStatus, {
+        validators: [Validators.required],
       }),
-      isEnabled: new FormControl(articleRawValue.isEnabled),
+      assetCollections: new FormControl(articleRawValue.assetCollections ?? []),
       mainCategory: new FormControl(articleRawValue.mainCategory),
     });
   }
@@ -81,7 +87,7 @@ export class ArticleFormService {
   private getFormDefaults(): ArticleFormDefaults {
     return {
       id: null,
-      isEnabled: false,
+      assetCollections: [],
     };
   }
 }

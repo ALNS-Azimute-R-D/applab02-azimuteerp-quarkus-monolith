@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240603223750"
+    "changelogDate": "20240608081007"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
@@ -18,24 +18,6 @@
       "fieldValidateRules": ["required", "minlength", "maxlength"],
       "fieldValidateRulesMaxlength": "120",
       "fieldValidateRulesMinlength": "2"
-    },
-    {
-      "fieldName": "representativeLastName",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "50"
-    },
-    {
-      "fieldName": "representativeFirstName",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "50"
-    },
-    {
-      "fieldName": "jobTitle",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "50"
     },
     {
       "fieldName": "streetAddress",
@@ -80,11 +62,6 @@
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "webPage",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
-    },
-    {
       "fieldName": "pointLocation",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "any"
@@ -97,38 +74,41 @@
       "fieldValidateRulesPattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
     },
     {
-      "fieldName": "landPhoneNumber",
+      "fieldName": "phoneNumber1",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "15"
     },
     {
-      "fieldName": "mobilePhoneNumber",
+      "fieldName": "phoneNumber2",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "15"
     },
     {
-      "fieldName": "faxNumber",
+      "fieldName": "customAttributesDetailsJSON",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "15"
+      "fieldValidateRulesMaxlength": "2048"
     },
     {
-      "fieldName": "extraDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
     }
   ],
   "name": "Supplier",
   "pagination": "pagination",
   "relationships": [
     {
-      "otherEntityName": "product",
+      "otherEntityField": "lastname",
+      "otherEntityName": "person",
       "otherEntityRelationshipName": "suppliersList",
-      "relationshipName": "productsList",
+      "relationshipName": "representativePerson",
       "relationshipSide": "left",
-      "relationshipType": "many-to-many"
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
     },
     {
       "otherEntityName": "inventoryTransaction",
@@ -136,6 +116,13 @@
       "relationshipName": "inventoryTransactionsList",
       "relationshipSide": "right",
       "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "toSupplier",
+      "relationshipName": "toProduct",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
     }
   ],
   "service": "serviceImpl"

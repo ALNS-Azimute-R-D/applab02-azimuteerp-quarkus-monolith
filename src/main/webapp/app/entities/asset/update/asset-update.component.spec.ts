@@ -54,10 +54,10 @@ describe('Asset Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call AssetType query and add missing value', () => {
       const asset: IAsset = { id: 456 };
-      const assetType: IAssetType = { id: 1085 };
+      const assetType: IAssetType = { id: 27768 };
       asset.assetType = assetType;
 
-      const assetTypeCollection: IAssetType[] = [{ id: 4752 }];
+      const assetTypeCollection: IAssetType[] = [{ id: 16160 }];
       jest.spyOn(assetTypeService, 'query').mockReturnValue(of(new HttpResponse({ body: assetTypeCollection })));
       const additionalAssetTypes = [assetType];
       const expectedCollection: IAssetType[] = [...additionalAssetTypes, ...assetTypeCollection];
@@ -76,10 +76,10 @@ describe('Asset Management Update Component', () => {
 
     it('Should call RawAssetProcTmp query and add missing value', () => {
       const asset: IAsset = { id: 456 };
-      const rawAssetProcTmp: IRawAssetProcTmp = { id: 19260 };
+      const rawAssetProcTmp: IRawAssetProcTmp = { id: 23707 };
       asset.rawAssetProcTmp = rawAssetProcTmp;
 
-      const rawAssetProcTmpCollection: IRawAssetProcTmp[] = [{ id: 18905 }];
+      const rawAssetProcTmpCollection: IRawAssetProcTmp[] = [{ id: 18448 }];
       jest.spyOn(rawAssetProcTmpService, 'query').mockReturnValue(of(new HttpResponse({ body: rawAssetProcTmpCollection })));
       const additionalRawAssetProcTmps = [rawAssetProcTmp];
       const expectedCollection: IRawAssetProcTmp[] = [...additionalRawAssetProcTmps, ...rawAssetProcTmpCollection];
@@ -98,9 +98,9 @@ describe('Asset Management Update Component', () => {
 
     it('Should update editForm', () => {
       const asset: IAsset = { id: 456 };
-      const assetType: IAssetType = { id: 1363 };
+      const assetType: IAssetType = { id: 30949 };
       asset.assetType = assetType;
-      const rawAssetProcTmp: IRawAssetProcTmp = { id: 5272 };
+      const rawAssetProcTmp: IRawAssetProcTmp = { id: 9051 };
       asset.rawAssetProcTmp = rawAssetProcTmp;
 
       activatedRoute.data = of({ asset });

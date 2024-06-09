@@ -1,11 +1,11 @@
-id;inventory_product_id;custom_name;custom_description;price_value;item_size;assets_collection_uuid;is_enabled
-1;13650;pedal among;../fake-data/blob/hipster.txt;2912.87;XXL;cornerstone;false
-2;11530;which;../fake-data/blob/hipster.txt;18813.62;XXXL;fast;true
-3;21392;uh-huh;../fake-data/blob/hipster.txt;29230.23;XXL;optimistic popular;true
-4;9666;separately;../fake-data/blob/hipster.txt;1593.85;XXL;brag for;true
-5;1261;constellation dispatch;../fake-data/blob/hipster.txt;23072.92;M;acidly once;false
-6;31650;into;../fake-data/blob/hipster.txt;9772.61;XL;busily;true
-7;24978;whoa;../fake-data/blob/hipster.txt;20893.13;XXXL;rhapsodize duh around;true
-8;32412;inexperienced imperfect yum;../fake-data/blob/hipster.txt;21889.65;XXXL;generously merrily;false
-9;10600;next miserably;../fake-data/blob/hipster.txt;23807.89;XXL;hedge however;true
-10;7041;ugh while whereas;../fake-data/blob/hipster.txt;1823.82;M;cheerfully healthily;true
+id;inventory_product_id;sku_code;custom_name;custom_description;price_value;item_size;activation_status
+1;13650;pedal among;cafe;gadzooks far-off;23118.51;S;PENDENT
+2;19011;but;male optimistic;immense whirlwind lest;5326.04;XL;PENDENT
+3;14470;for;grand;bah ick er;5038.13;L;INACTIVE
+4;16445;certainly butcher phew;whoa;hoarse nasalise;401.02;XXL;ON_HOLD
+5;15234;pro inexperienced imperfect;pun;jealously yowza forenenst;4013.25;XXL;ON_HOLD
+6;19556;sharply stigmatize kindly;with;wearily;4064.99;XXL;INVALID
+7;26400;ah aboard energetically;sympathetically;ack;863.69;L;ON_HOLD
+8;9395;dispute stable well-documented;glossy;including;21466.13;S;INVALID
+9;31938;waitress off lycra;alongside despite correctly;slippery furthermore;13268.12;S;INVALID
+10;23160;specific after lest;behalf;when behove;26440.82;XXL;ACTIVE

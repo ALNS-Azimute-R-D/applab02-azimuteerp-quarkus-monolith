@@ -33,13 +33,14 @@ type OrderFormDefaults = Pick<NewOrder, 'id' | 'placedDate' | 'estimatedDelivery
 type OrderFormGroupContent = {
   id: FormControl<OrderFormRawValue['id'] | NewOrder['id']>;
   businessCode: FormControl<OrderFormRawValue['businessCode']>;
-  customerUserId: FormControl<OrderFormRawValue['customerUserId']>;
   placedDate: FormControl<OrderFormRawValue['placedDate']>;
   totalTaxValue: FormControl<OrderFormRawValue['totalTaxValue']>;
   totalDueValue: FormControl<OrderFormRawValue['totalDueValue']>;
   status: FormControl<OrderFormRawValue['status']>;
-  invoiceId: FormControl<OrderFormRawValue['invoiceId']>;
   estimatedDeliveryDate: FormControl<OrderFormRawValue['estimatedDeliveryDate']>;
+  activationStatus: FormControl<OrderFormRawValue['activationStatus']>;
+  invoice: FormControl<OrderFormRawValue['invoice']>;
+  customer: FormControl<OrderFormRawValue['customer']>;
 };
 
 export type OrderFormGroup = FormGroup<OrderFormGroupContent>;
@@ -62,9 +63,6 @@ export class OrderFormService {
       businessCode: new FormControl(orderRawValue.businessCode, {
         validators: [Validators.required, Validators.maxLength(20)],
       }),
-      customerUserId: new FormControl(orderRawValue.customerUserId, {
-        validators: [Validators.required],
-      }),
       placedDate: new FormControl(orderRawValue.placedDate, {
         validators: [Validators.required],
       }),
@@ -73,8 +71,14 @@ export class OrderFormService {
       status: new FormControl(orderRawValue.status, {
         validators: [Validators.required],
       }),
-      invoiceId: new FormControl(orderRawValue.invoiceId),
       estimatedDeliveryDate: new FormControl(orderRawValue.estimatedDeliveryDate),
+      activationStatus: new FormControl(orderRawValue.activationStatus, {
+        validators: [Validators.required],
+      }),
+      invoice: new FormControl(orderRawValue.invoice),
+      customer: new FormControl(orderRawValue.customer, {
+        validators: [Validators.required],
+      }),
     });
   }
 

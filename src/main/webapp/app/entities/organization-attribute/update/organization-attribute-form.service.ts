@@ -46,7 +46,7 @@ export class OrganizationAttributeFormService {
         validators: [Validators.maxLength(255)],
       }),
       attributeValue: new FormControl(organizationAttributeRawValue.attributeValue, {
-        validators: [Validators.maxLength(4000)],
+        validators: [Validators.maxLength(4096)],
       }),
       organization: new FormControl(organizationAttributeRawValue.organization, {
         validators: [Validators.required],

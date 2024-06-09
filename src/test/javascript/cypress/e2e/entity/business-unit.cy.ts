@@ -30,7 +30,7 @@ describe('BusinessUnit e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/organizations',
-      body: {"acronym":"dental yum regarding","businessCode":"meh gah","hierarchicalLevel":"phooey frankly clamp","name":"yowza","description":"kiddingly too","businessHandlerClazz":"dreamily inasmuch blissfully","mainContactPersonDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","technicalEnvironmentsDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","commonCustomAttributesDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","organizationStatus":"ONBOARDING","activationStatus":"INACTIVE","logoImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","logoImgContentType":"unknown"},
+      body: {"acronym":"shack knottily","businessCode":"exactly violent","hierarchicalLevel":"incommode","name":"snowsuit organic","description":"indeed whereas","businessHandlerClazz":"beside furthermore loftily","mainContactPersonDetailsJSON":"haunt blissfully","technicalEnvironmentsDetailsJSON":"tally","customAttributesDetailsJSON":"qua blah","organizationStatus":"READY_TO_START","activationStatus":"INVALID","logoImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","logoImgContentType":"unknown"},
     }).then(({ body }) => {
       organization = body;
     });

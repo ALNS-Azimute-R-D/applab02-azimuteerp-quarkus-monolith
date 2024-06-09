@@ -32,8 +32,9 @@ describe('Product Form Service', () => {
             minimumReorderQuantity: expect.any(Object),
             suggestedCategory: expect.any(Object),
             attachments: expect.any(Object),
-            supplierIds: expect.any(Object),
+            activationStatus: expect.any(Object),
             brand: expect.any(Object),
+            toSuppliers: expect.any(Object),
           }),
         );
       });
@@ -56,8 +57,9 @@ describe('Product Form Service', () => {
             minimumReorderQuantity: expect.any(Object),
             suggestedCategory: expect.any(Object),
             attachments: expect.any(Object),
-            supplierIds: expect.any(Object),
+            activationStatus: expect.any(Object),
             brand: expect.any(Object),
+            toSuppliers: expect.any(Object),
           }),
         );
       });

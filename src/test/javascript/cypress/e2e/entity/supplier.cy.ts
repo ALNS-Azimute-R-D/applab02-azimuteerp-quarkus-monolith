@@ -15,19 +15,54 @@ describe('Supplier e2e test', () => {
   const supplierPageUrlPattern = new RegExp('/supplier(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const supplierSample = { acronym: 'opposite even', companyName: 'depersonalise after', streetAddress: 'cluttered unfurl whenever' };
+  // const supplierSample = {"acronym":"bah whoa","companyName":"pickup","streetAddress":"bitmap ouch circa","activationStatus":"PENDENT"};
 
   let supplier;
+  // let person;
 
   beforeEach(() => {
     cy.login(username, password);
   });
+
+  /* Disabled due to incompatibility
+  beforeEach(() => {
+    // create an instance at the required relationship entity:
+    cy.authenticatedRequest({
+      method: 'POST',
+      url: '/api/people',
+      body: {"firstname":"whereas","lastname":"masculinise defile roughly","fullname":"geez beyond","birthDate":"2024-06-07","gender":"FEMALE","codeBI":"turmeric uh-huh push","codeNIF":"oh","streetAddress":"hydrant financing","houseNumber":"after when","locationName":"hastily ha academic","postalCode":"instead s","mainEmail":"M7K8D@{3Pz.i.(=N","landPhoneNumber":"pace","mobilePhoneNumber":"even insomnia t","occupation":"yet mother","preferredLanguage":"singe","usernameInOAuth2":"bill lipstick","userIdInOAuth2":"tingling","customAttributesDetailsJSON":"close","activationStatus":"ACTIVE","avatarImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","avatarImgContentType":"unknown"},
+    }).then(({ body }) => {
+      person = body;
+    });
+  });
+   */
 
   beforeEach(() => {
     cy.intercept('GET', '/api/suppliers+(?*|)').as('entitiesRequest');
     cy.intercept('POST', '/api/suppliers').as('postEntityRequest');
     cy.intercept('DELETE', '/api/suppliers/*').as('deleteEntityRequest');
   });
+
+  /* Disabled due to incompatibility
+  beforeEach(() => {
+    // Simulate relationships api for better performance and reproducibility.
+    cy.intercept('GET', '/api/people', {
+      statusCode: 200,
+      body: [person],
+    });
+
+    cy.intercept('GET', '/api/inventory-transactions', {
+      statusCode: 200,
+      body: [],
+    });
+
+    cy.intercept('GET', '/api/products', {
+      statusCode: 200,
+      body: [],
+    });
+
+  });
+   */
 
   afterEach(() => {
     if (supplier) {
@@ -39,6 +74,19 @@ describe('Supplier e2e test', () => {
       });
     }
   });
+
+  /* Disabled due to incompatibility
+  afterEach(() => {
+    if (person) {
+      cy.authenticatedRequest({
+        method: 'DELETE',
+        url: `/api/people/${person.id}`,
+      }).then(() => {
+        person = undefined;
+      });
+    }
+  });
+   */
 
   it('Suppliers menu should load Suppliers page', () => {
     cy.visit('/');
@@ -75,11 +123,15 @@ describe('Supplier e2e test', () => {
     });
 
     describe('with existing value', () => {
+      /* Disabled due to incompatibility
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
           url: '/api/suppliers',
-          body: supplierSample,
+          body: {
+            ...supplierSample,
+            representativePerson: person,
+          },
         }).then(({ body }) => {
           supplier = body;
 
@@ -95,13 +147,24 @@ describe('Supplier e2e test', () => {
                 link: '<http://localhost/api/suppliers?page=0&size=20>; rel="last",<http://localhost/api/suppliers?page=0&size=20>; rel="first"',
               },
               body: [supplier],
-            },
+            }
           ).as('entitiesRequestInternal');
         });
 
         cy.visit(supplierPageUrl);
 
         cy.wait('@entitiesRequestInternal');
+      });
+       */
+
+      beforeEach(function () {
+        cy.visit(supplierPageUrl);
+
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          if (response.body.length === 0) {
+            this.skip();
+          }
+        });
       });
 
       it('detail button click should load details Supplier page', () => {
@@ -135,7 +198,7 @@ describe('Supplier e2e test', () => {
         cy.url().should('match', supplierPageUrlPattern);
       });
 
-      it('last delete button click should delete instance of Supplier', () => {
+      it.skip('last delete button click should delete instance of Supplier', () => {
         cy.get(entityDeleteButtonSelector).last().click();
         cy.getEntityDeleteDialogHeading('supplier').should('exist');
         cy.get(entityConfirmDeleteButtonSelector).click();
@@ -159,62 +222,51 @@ describe('Supplier e2e test', () => {
       cy.getEntityCreateUpdateHeading('Supplier');
     });
 
-    it('should create an instance of Supplier', () => {
-      cy.get(`[data-cy="acronym"]`).type('given subsume massage');
-      cy.get(`[data-cy="acronym"]`).should('have.value', 'given subsume massage');
+    it.skip('should create an instance of Supplier', () => {
+      cy.get(`[data-cy="acronym"]`).type('shirk');
+      cy.get(`[data-cy="acronym"]`).should('have.value', 'shirk');
 
-      cy.get(`[data-cy="companyName"]`).type('bah');
-      cy.get(`[data-cy="companyName"]`).should('have.value', 'bah');
+      cy.get(`[data-cy="companyName"]`).type('arrogantly incomparable');
+      cy.get(`[data-cy="companyName"]`).should('have.value', 'arrogantly incomparable');
 
-      cy.get(`[data-cy="representativeLastName"]`).type('termite roller into');
-      cy.get(`[data-cy="representativeLastName"]`).should('have.value', 'termite roller into');
+      cy.get(`[data-cy="streetAddress"]`).type('after since');
+      cy.get(`[data-cy="streetAddress"]`).should('have.value', 'after since');
 
-      cy.get(`[data-cy="representativeFirstName"]`).type('striking flop');
-      cy.get(`[data-cy="representativeFirstName"]`).should('have.value', 'striking flop');
+      cy.get(`[data-cy="houseNumber"]`).type('powerful bah');
+      cy.get(`[data-cy="houseNumber"]`).should('have.value', 'powerful bah');
 
-      cy.get(`[data-cy="jobTitle"]`).type('Central Security Designer');
-      cy.get(`[data-cy="jobTitle"]`).should('have.value', 'Central Security Designer');
+      cy.get(`[data-cy="locationName"]`).type('um fancy indeed');
+      cy.get(`[data-cy="locationName"]`).should('have.value', 'um fancy indeed');
 
-      cy.get(`[data-cy="streetAddress"]`).type('by');
-      cy.get(`[data-cy="streetAddress"]`).should('have.value', 'by');
+      cy.get(`[data-cy="city"]`).type('Rogahntown');
+      cy.get(`[data-cy="city"]`).should('have.value', 'Rogahntown');
 
-      cy.get(`[data-cy="houseNumber"]`).type('hearty');
-      cy.get(`[data-cy="houseNumber"]`).should('have.value', 'hearty');
+      cy.get(`[data-cy="stateProvince"]`).type('handle towards');
+      cy.get(`[data-cy="stateProvince"]`).should('have.value', 'handle towards');
 
-      cy.get(`[data-cy="locationName"]`).type('opposite');
-      cy.get(`[data-cy="locationName"]`).should('have.value', 'opposite');
+      cy.get(`[data-cy="zipPostalCode"]`).type('injury lumpy');
+      cy.get(`[data-cy="zipPostalCode"]`).should('have.value', 'injury lumpy');
 
-      cy.get(`[data-cy="city"]`).type('South Joan');
-      cy.get(`[data-cy="city"]`).should('have.value', 'South Joan');
-
-      cy.get(`[data-cy="stateProvince"]`).type('practice');
-      cy.get(`[data-cy="stateProvince"]`).should('have.value', 'practice');
-
-      cy.get(`[data-cy="zipPostalCode"]`).type('drowse');
-      cy.get(`[data-cy="zipPostalCode"]`).should('have.value', 'drowse');
-
-      cy.get(`[data-cy="countryRegion"]`).type('brownie');
-      cy.get(`[data-cy="countryRegion"]`).should('have.value', 'brownie');
-
-      cy.get(`[data-cy="webPage"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="webPage"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="countryRegion"]`).type('refrain pro whoa');
+      cy.get(`[data-cy="countryRegion"]`).should('have.value', 'refrain pro whoa');
 
       cy.setFieldImageAsBytesOfEntity('pointLocation', 'integration-test.png', 'image/png');
 
-      cy.get(`[data-cy="mainEmail"]`).type("GcwQ'@;T${.gU_I^");
-      cy.get(`[data-cy="mainEmail"]`).should('have.value', "GcwQ'@;T${.gU_I^");
+      cy.get(`[data-cy="mainEmail"]`).type('-@hbhZe.).');
+      cy.get(`[data-cy="mainEmail"]`).should('have.value', '-@hbhZe.).');
 
-      cy.get(`[data-cy="landPhoneNumber"]`).type('sway');
-      cy.get(`[data-cy="landPhoneNumber"]`).should('have.value', 'sway');
+      cy.get(`[data-cy="phoneNumber1"]`).type('turbulent obnox');
+      cy.get(`[data-cy="phoneNumber1"]`).should('have.value', 'turbulent obnox');
 
-      cy.get(`[data-cy="mobilePhoneNumber"]`).type('meh foolishly');
-      cy.get(`[data-cy="mobilePhoneNumber"]`).should('have.value', 'meh foolishly');
+      cy.get(`[data-cy="phoneNumber2"]`).type('helplessly whos');
+      cy.get(`[data-cy="phoneNumber2"]`).should('have.value', 'helplessly whos');
 
-      cy.get(`[data-cy="faxNumber"]`).type('heavily fast wo');
-      cy.get(`[data-cy="faxNumber"]`).should('have.value', 'heavily fast wo');
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).type('excel');
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).should('have.value', 'excel');
 
-      cy.get(`[data-cy="extraDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="extraDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="activationStatus"]`).select('ON_HOLD');
+
+      cy.get(`[data-cy="representativePerson"]`).select(1);
 
       // since cypress clicks submit too fast before the blob fields are validated
       cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting

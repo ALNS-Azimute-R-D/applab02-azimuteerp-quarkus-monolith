@@ -41,9 +41,18 @@
           <dd>
             <span>{{ inventoryTransaction.quantity }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.comments">Comments</span></dt>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.transactionComments">Transaction Comments</span>
+          </dt>
           <dd>
-            <span>{{ inventoryTransaction.comments }}</span>
+            <span>{{ inventoryTransaction.transactionComments }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.activationStatus">Activation Status</span></dt>
+          <dd>
+            <span
+              jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + inventoryTransaction.activationStatus }}"
+              >{{ inventoryTransaction.activationStatus }}</span
+            >
           </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.supplier">Supplier</span></dt>
           <dd>

@@ -1,3 +1,5 @@
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
+
 export interface IWarehouse {
   id: number;
   acronym?: string | null;
@@ -13,7 +15,8 @@ export interface IWarehouse {
   landPhoneNumber?: string | null;
   mobilePhoneNumber?: string | null;
   faxNumber?: string | null;
-  extraDetails?: string | null;
+  customAttributesDetailsJSON?: string | null;
+  activationStatus?: keyof typeof ActivationStatusEnum | null;
 }
 
 export type NewWarehouse = Omit<IWarehouse, 'id'> & { id: null };

@@ -7,11 +7,8 @@ import { finalize } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
-import { TypeOfOrganizationService } from '../service/type-of-organization.service';
 import { ITypeOfOrganization } from '../type-of-organization.model';
+import { TypeOfOrganizationService } from '../service/type-of-organization.service';
 import { TypeOfOrganizationFormService, TypeOfOrganizationFormGroup } from './type-of-organization-form.service';
 
 @Component({
@@ -24,8 +21,6 @@ export class TypeOfOrganizationUpdateComponent implements OnInit {
   isSaving = false;
   typeOfOrganization: ITypeOfOrganization | null = null;
 
-  protected dataUtils = inject(DataUtils);
-  protected eventManager = inject(EventManager);
   protected typeOfOrganizationService = inject(TypeOfOrganizationService);
   protected typeOfOrganizationFormService = inject(TypeOfOrganizationFormService);
   protected activatedRoute = inject(ActivatedRoute);
@@ -39,23 +34,6 @@ export class TypeOfOrganizationUpdateComponent implements OnInit {
       if (typeOfOrganization) {
         this.updateForm(typeOfOrganization);
       }
-    });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    this.dataUtils.openFile(base64String, contentType);
-  }
-
-  setFileData(event: Event, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
-      error: (err: FileLoadError) =>
-        this.eventManager.broadcast(
-          new EventWithContent<AlertError>('azimuteErpQuarkusAngularMonolith02App.error', { ...err, key: 'error.file.' + err.key }),
-        ),
     });
   }
 

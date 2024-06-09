@@ -6,8 +6,9 @@ import { ActivationStatusEnum } from 'app/entities/enumerations/activation-statu
 
 export interface IPerson {
   id: number;
-  firstName?: string | null;
-  lastName?: string | null;
+  firstname?: string | null;
+  lastname?: string | null;
+  fullname?: string | null;
   birthDate?: dayjs.Dayjs | null;
   gender?: keyof typeof GenderEnum | null;
   codeBI?: string | null;
@@ -23,13 +24,13 @@ export interface IPerson {
   preferredLanguage?: string | null;
   usernameInOAuth2?: string | null;
   userIdInOAuth2?: string | null;
-  extraDetails?: string | null;
+  customAttributesDetailsJSON?: string | null;
   activationStatus?: keyof typeof ActivationStatusEnum | null;
   avatarImg?: string | null;
   avatarImgContentType?: string | null;
   typeOfPerson?: Pick<ITypeOfPerson, 'id' | 'code'> | null;
   district?: Pick<IDistrict, 'id' | 'name'> | null;
-  managerPerson?: Pick<IPerson, 'id' | 'lastName'> | null;
+  managerPerson?: Pick<IPerson, 'id' | 'lastname'> | null;
 }
 
 export type NewPerson = Omit<IPerson, 'id'> & { id: null };

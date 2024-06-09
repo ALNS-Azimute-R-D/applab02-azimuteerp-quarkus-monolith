@@ -24,9 +24,9 @@ type OrganizationFormGroupContent = {
   name: FormControl<IOrganization['name']>;
   description: FormControl<IOrganization['description']>;
   businessHandlerClazz: FormControl<IOrganization['businessHandlerClazz']>;
-  mainContactPersonDetails: FormControl<IOrganization['mainContactPersonDetails']>;
-  technicalEnvironmentsDetails: FormControl<IOrganization['technicalEnvironmentsDetails']>;
-  commonCustomAttributesDetails: FormControl<IOrganization['commonCustomAttributesDetails']>;
+  mainContactPersonDetailsJSON: FormControl<IOrganization['mainContactPersonDetailsJSON']>;
+  technicalEnvironmentsDetailsJSON: FormControl<IOrganization['technicalEnvironmentsDetailsJSON']>;
+  customAttributesDetailsJSON: FormControl<IOrganization['customAttributesDetailsJSON']>;
   organizationStatus: FormControl<IOrganization['organizationStatus']>;
   activationStatus: FormControl<IOrganization['activationStatus']>;
   logoImg: FormControl<IOrganization['logoImg']>;
@@ -71,9 +71,15 @@ export class OrganizationFormService {
       businessHandlerClazz: new FormControl(organizationRawValue.businessHandlerClazz, {
         validators: [Validators.maxLength(512)],
       }),
-      mainContactPersonDetails: new FormControl(organizationRawValue.mainContactPersonDetails),
-      technicalEnvironmentsDetails: new FormControl(organizationRawValue.technicalEnvironmentsDetails),
-      commonCustomAttributesDetails: new FormControl(organizationRawValue.commonCustomAttributesDetails),
+      mainContactPersonDetailsJSON: new FormControl(organizationRawValue.mainContactPersonDetailsJSON, {
+        validators: [Validators.maxLength(2048)],
+      }),
+      technicalEnvironmentsDetailsJSON: new FormControl(organizationRawValue.technicalEnvironmentsDetailsJSON, {
+        validators: [Validators.maxLength(4096)],
+      }),
+      customAttributesDetailsJSON: new FormControl(organizationRawValue.customAttributesDetailsJSON, {
+        validators: [Validators.maxLength(4096)],
+      }),
       organizationStatus: new FormControl(organizationRawValue.organizationStatus, {
         validators: [Validators.required],
       }),

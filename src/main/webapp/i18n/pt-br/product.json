@@ -30,11 +30,11 @@
       "minimumReorderQuantity": "Minimum Reorder Quantity",
       "suggestedCategory": "Suggested Category",
       "attachments": "Attachments",
-      "supplierIds": "Supplier Ids",
+      "activationStatus": "Activation Status",
       "brand": "Brand",
+      "toSupplier": "To Supplier",
       "productsList": "Products List",
-      "stockLevelsList": "Stock Levels List",
-      "suppliersList": "Suppliers List"
+      "stockLevelsList": "Stock Levels List"
     }
   }
 }

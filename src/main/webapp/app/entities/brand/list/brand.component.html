@@ -63,6 +63,13 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="logoBrand">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.brand.logoBrand">Logo Brand</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -75,6 +82,14 @@
               <td>{{ brand.acronym }}</td>
               <td>{{ brand.name }}</td>
               <td>{{ brand.description }}</td>
+              <td>
+                @if (brand.logoBrand) {
+                  <a (click)="openFile(brand.logoBrand, brand.logoBrandContentType)">
+                    <img [src]="'data:' + brand.logoBrandContentType + ';base64,' + brand.logoBrand" style="max-height: 30px" alt="brand" />
+                  </a>
+                  <span>{{ brand.logoBrandContentType }}, {{ byteSize(brand.logoBrand) }}</span>
+                }
+              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/brand', brand.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

@@ -15,7 +15,7 @@ describe('Asset e2e test', () => {
   const assetPageUrlPattern = new RegExp('/asset(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const assetSample = { name: 'ready wampum wherever' };
+  const assetSample = { name: 'dimly trellis', activationStatus: 'PENDENT' };
 
   let asset;
   let assetType;
@@ -30,11 +30,11 @@ describe('Asset e2e test', () => {
       method: 'POST',
       url: '/api/asset-types',
       body: {
-        acronym: 'till aboard before',
-        name: 'recreate',
-        description: 'nor thistle',
-        handlerClazzName: 'regarding brightly',
-        extraDetails: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
+        acronym: 'skill',
+        name: 'before amid subcontract',
+        description: 'ha',
+        handlerClazzName: 'consequently',
+        customAttributesDetailsJSON: 'factor aha',
       },
     }).then(({ body }) => {
       assetType = body;
@@ -60,6 +60,11 @@ describe('Asset e2e test', () => {
     });
 
     cy.intercept('GET', '/api/asset-metadata', {
+      statusCode: 200,
+      body: [],
+    });
+
+    cy.intercept('GET', '/api/asset-collections', {
       statusCode: 200,
       body: [],
     });
@@ -210,22 +215,21 @@ describe('Asset e2e test', () => {
     });
 
     it('should create an instance of Asset', () => {
-      cy.get(`[data-cy="uid"]`).type('ad4d8ff7-9558-48b1-b328-9b259e867445');
-      cy.get(`[data-cy="uid"]`).invoke('val').should('match', new RegExp('ad4d8ff7-9558-48b1-b328-9b259e867445'));
+      cy.get(`[data-cy="name"]`).type('hostess more inside');
+      cy.get(`[data-cy="name"]`).should('have.value', 'hostess more inside');
 
-      cy.get(`[data-cy="name"]`).type('round amongst now');
-      cy.get(`[data-cy="name"]`).should('have.value', 'round amongst now');
+      cy.get(`[data-cy="storageTypeUsed"]`).select('OTHER_CLOUD_STORAGE');
 
-      cy.get(`[data-cy="storageTypeUsed"]`).select('LOCAL_MINIO');
+      cy.get(`[data-cy="fullFilenamePath"]`).type('dearest wrong');
+      cy.get(`[data-cy="fullFilenamePath"]`).should('have.value', 'dearest wrong');
 
-      cy.get(`[data-cy="fullFilenamePath"]`).type('metaphor');
-      cy.get(`[data-cy="fullFilenamePath"]`).should('have.value', 'metaphor');
-
-      cy.get(`[data-cy="status"]`).select('ENABLED');
+      cy.get(`[data-cy="status"]`).select('DELETED');
 
       cy.get(`[data-cy="preferredPurpose"]`).select('PHOTO_ALBUM');
 
       cy.setFieldImageAsBytesOfEntity('assetContentAsBlob', 'integration-test.png', 'image/png');
+
+      cy.get(`[data-cy="activationStatus"]`).select('PENDENT');
 
       cy.get(`[data-cy="assetType"]`).select(1);
 

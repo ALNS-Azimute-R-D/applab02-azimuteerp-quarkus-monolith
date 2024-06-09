@@ -1,11 +1,11 @@
-id;last_modified_date;ramaining_quantity;extra_details;warehouse_id;product_id
-1;2024-06-03T20:21:02;14193;../fake-data/blob/hipster.txt;1;1
-2;2024-06-03T08:18:16;18861;../fake-data/blob/hipster.txt;2;2
-3;2024-06-03T05:23:46;27290;../fake-data/blob/hipster.txt;3;3
-4;2024-06-03T05:31:15;7284;../fake-data/blob/hipster.txt;4;4
-5;2024-06-03T08:43:53;26371;../fake-data/blob/hipster.txt;5;5
-6;2024-06-03T16:20:51;16148;../fake-data/blob/hipster.txt;6;6
-7;2024-06-03T19:20:57;14734;../fake-data/blob/hipster.txt;7;7
-8;2024-06-03T19:25:36;31245;../fake-data/blob/hipster.txt;8;8
-9;2024-06-03T14:13:09;25019;../fake-data/blob/hipster.txt;9;9
-10;2024-06-03T06:23:06;26184;../fake-data/blob/hipster.txt;10;10
+id;last_modified_date;remaining_quantity;common_attributes_details_json;warehouse_id;product_id
+1;2024-06-08T05:53:19;14193;uh-huh by;1;1
+2;2024-06-07T13:54:37;22271;ew astrologer whenever;2;2
+3;2024-06-07T17:48:44;28585;slop unlawful;3;3
+4;2024-06-08T01:48:26;28905;er;4;4
+5;2024-06-07T18:20:29;5174;quirkily;5;5
+6;2024-06-07T14:36:32;15974;aw;6;6
+7;2024-06-08T01:06:29;18281;indeed;7;7
+8;2024-06-07T23:13:08;29040;um abnormally owlishly;8;8
+9;2024-06-07T19:02:44;19817;why;9;9
+10;2024-06-08T04:24:43;22549;yet;10;10

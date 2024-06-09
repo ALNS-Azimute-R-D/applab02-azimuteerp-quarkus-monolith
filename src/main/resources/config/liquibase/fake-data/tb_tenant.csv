@@ -1,11 +1,11 @@
-id;acronym;name;description;customer_business_code;business_handler_clazz;main_contact_person_details;billing_details;technical_environments_details;common_custom_attributes_details;logo_img;logo_img_content_type;activation_status
-1;even lucky;motionless;excepting dam gosh;garnish conspir;whereas;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;ON_HOLD
-2;remark failing casse;gosh yippee ack;yowza;mow versus pins;next stravaig urge;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;BLOCKED
-3;flintlock why comfor;yuppify hmph shakily;captain seemingly;so provision;but sprinkle;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;INACTIVE
-4;brightly frenzy;drink sad querulous;independent sure-footed oof;ew paint prefac;boohoo cage;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;INVALID
-5;compose made-up ick;yowza;however how;rake;incomparable mortified phew;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;PENDENT
-6;to;duh nor doctor;barring;whenever;greedily consequently;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;INVALID
-7;huzzah bracelet;characterize;aha meh;for violent;geez hmph;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;INVALID
-8;tapioca jade;sparkling obnoxiously;where right;hence;paddle;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;PENDENT
-9;sky base meager;bright yellowish;station;about ticket;pish;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;ON_HOLD
-10;failing;noisily;circa even entire;gutter;deceivingly;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;INVALID
+id;acronym;name;description;customer_business_code;business_handler_clazz;main_contact_person_details_json;billing_details_json;technical_environments_details_json;custom_attributes_details_json;logo_img;logo_img_content_type;activation_status
+1;even lucky;motionless;excepting dam gosh;garnish conspir;whereas;suppurate yang;casserole incidentally;yippee ack stot;usually;../fake-data/blob/hipster.png;image/png;PENDENT
+2;meanwhile prison;thunderous slip;preface;ha;bah;wound via;minus;abaft with along;arbitrate;../fake-data/blob/hipster.png;image/png;BLOCKED
+3;along;whose;gadzooks incidentally buoy;glamorous since;wide deceivingly;consequently pace hm;candid;impossible gadzooks gosh;ha how discolor;../fake-data/blob/hipster.png;image/png;PENDENT
+4;anti minus;gall;troop deformation prescription;enormously pass;whereas uh-huh off;organisation;teen off;carelessly;bend or;../fake-data/blob/hipster.png;image/png;BLOCKED
+5;without while mmm;red caterwaul;midst tapioca;numismatist spa;incapacitate where right;hence;paddle;huzzah hmph;meager;../fake-data/blob/hipster.png;image/png;ON_HOLD
+6;lovingly;broadly misspell about;although pish;often since;essay;recreate;entire;gutter;deceivingly;../fake-data/blob/hipster.png;image/png;INVALID
+7;colorfully;dress;striking;glittering lumb;mindless;or considering dearly;throughout;kayak;needily;../fake-data/blob/hipster.png;image/png;INACTIVE
+8;scarily;limited pish;anguished if excise;odd magnetize;of on;different fooey exist;eek;chop;helplessly;../fake-data/blob/hipster.png;image/png;PENDENT
+9;over if excluding;as brr reassuringly;failing since televise;brown;highlight;mess;intensely;possible flawless;anxiously;../fake-data/blob/hipster.png;image/png;ON_HOLD
+10;wherever notwithstan;bungle notwithstanding roasted;trouser phooey fooey;loaf;chilly;vice;gee below;into color;boring jicama grin;../fake-data/blob/hipster.png;image/png;INACTIVE

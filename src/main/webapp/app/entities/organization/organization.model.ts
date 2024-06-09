@@ -11,9 +11,9 @@ export interface IOrganization {
   name?: string | null;
   description?: string | null;
   businessHandlerClazz?: string | null;
-  mainContactPersonDetails?: string | null;
-  technicalEnvironmentsDetails?: string | null;
-  commonCustomAttributesDetails?: string | null;
+  mainContactPersonDetailsJSON?: string | null;
+  technicalEnvironmentsDetailsJSON?: string | null;
+  customAttributesDetailsJSON?: string | null;
   organizationStatus?: keyof typeof OrganizationStatusEnum | null;
   activationStatus?: keyof typeof ActivationStatusEnum | null;
   logoImg?: string | null;

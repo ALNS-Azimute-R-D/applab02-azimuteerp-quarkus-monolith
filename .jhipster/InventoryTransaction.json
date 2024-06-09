@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240603224050"
+    "changelogDate": "20240608081307"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
@@ -25,10 +25,16 @@
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "comments",
+      "fieldName": "transactionComments",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "255"
+      "fieldValidateRulesMaxlength": "512"
+    },
+    {
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
     }
   ],
   "name": "InventoryTransaction",

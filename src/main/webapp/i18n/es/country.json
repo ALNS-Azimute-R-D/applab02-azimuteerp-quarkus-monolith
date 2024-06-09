@@ -22,8 +22,7 @@
       "name": "Name",
       "continent": "Continent",
       "geoPolygonArea": "Geo Polygon Area",
-      "provincesList": "Provinces List",
-      "localitiesList": "Localities List"
+      "provincesList": "Provinces List"
     }
   }
 }

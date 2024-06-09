@@ -18,7 +18,7 @@ type AssetMetadataFormDefaults = Pick<NewAssetMetadata, 'id'>;
 
 type AssetMetadataFormGroupContent = {
   id: FormControl<IAssetMetadata['id'] | NewAssetMetadata['id']>;
-  metadataDetails: FormControl<IAssetMetadata['metadataDetails']>;
+  metadataDetailsJSON: FormControl<IAssetMetadata['metadataDetailsJSON']>;
   asset: FormControl<IAssetMetadata['asset']>;
 };
 
@@ -39,7 +39,9 @@ export class AssetMetadataFormService {
           validators: [Validators.required],
         },
       ),
-      metadataDetails: new FormControl(assetMetadataRawValue.metadataDetails),
+      metadataDetailsJSON: new FormControl(assetMetadataRawValue.metadataDetailsJSON, {
+        validators: [Validators.maxLength(8192)],
+      }),
       asset: new FormControl(assetMetadataRawValue.asset, {
         validators: [Validators.required],
       }),

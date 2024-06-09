@@ -23,9 +23,10 @@
       "paymentPaidDate": "Payment Paid Date",
       "paymentAmount": "Payment Amount",
       "typeOfPayment": "Type Of Payment",
-      "status": "Status",
-      "extraDetails": "Extra Details",
-      "paymentMethod": "Payment Method"
+      "statusPayment": "Status Payment",
+      "customAttributesDetailsJSON": "Custom Attributes Details JSON",
+      "activationStatus": "Activation Status",
+      "paymentGateway": "Payment Gateway"
     }
   }
 }

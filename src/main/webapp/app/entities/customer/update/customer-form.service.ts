@@ -14,19 +14,16 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type CustomerFormGroupInput = ICustomer | PartialWithRequiredKeyOf<NewCustomer>;
 
-type CustomerFormDefaults = Pick<NewCustomer, 'id' | 'active'>;
+type CustomerFormDefaults = Pick<NewCustomer, 'id'>;
 
 type CustomerFormGroupContent = {
   id: FormControl<ICustomer['id'] | NewCustomer['id']>;
   customerBusinessCode: FormControl<ICustomer['customerBusinessCode']>;
-  name: FormControl<ICustomer['name']>;
-  description: FormControl<ICustomer['description']>;
-  email: FormControl<ICustomer['email']>;
-  addressDetails: FormControl<ICustomer['addressDetails']>;
-  zipCode: FormControl<ICustomer['zipCode']>;
-  keycloakGroupDetails: FormControl<ICustomer['keycloakGroupDetails']>;
-  status: FormControl<ICustomer['status']>;
-  active: FormControl<ICustomer['active']>;
+  fullname: FormControl<ICustomer['fullname']>;
+  customAttributesDetailsJSON: FormControl<ICustomer['customAttributesDetailsJSON']>;
+  customerStatus: FormControl<ICustomer['customerStatus']>;
+  activationStatus: FormControl<ICustomer['activationStatus']>;
+  buyerPerson: FormControl<ICustomer['buyerPerson']>;
   customerType: FormControl<ICustomer['customerType']>;
   district: FormControl<ICustomer['district']>;
 };
@@ -51,26 +48,19 @@ export class CustomerFormService {
       customerBusinessCode: new FormControl(customerRawValue.customerBusinessCode, {
         validators: [Validators.required, Validators.maxLength(15)],
       }),
-      name: new FormControl(customerRawValue.name, {
+      fullname: new FormControl(customerRawValue.fullname, {
         validators: [Validators.required, Validators.minLength(2), Validators.maxLength(80)],
       }),
-      description: new FormControl(customerRawValue.description),
-      email: new FormControl(customerRawValue.email, {
-        validators: [Validators.required, Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')],
+      customAttributesDetailsJSON: new FormControl(customerRawValue.customAttributesDetailsJSON, {
+        validators: [Validators.maxLength(2048)],
       }),
-      addressDetails: new FormControl(customerRawValue.addressDetails, {
-        validators: [Validators.maxLength(255)],
-      }),
-      zipCode: new FormControl(customerRawValue.zipCode, {
-        validators: [Validators.maxLength(8)],
-      }),
-      keycloakGroupDetails: new FormControl(customerRawValue.keycloakGroupDetails, {
-        validators: [Validators.maxLength(1024)],
-      }),
-      status: new FormControl(customerRawValue.status, {
+      customerStatus: new FormControl(customerRawValue.customerStatus, {
         validators: [Validators.required],
       }),
-      active: new FormControl(customerRawValue.active, {
+      activationStatus: new FormControl(customerRawValue.activationStatus, {
+        validators: [Validators.required],
+      }),
+      buyerPerson: new FormControl(customerRawValue.buyerPerson, {
         validators: [Validators.required],
       }),
       customerType: new FormControl(customerRawValue.customerType),
@@ -95,7 +85,6 @@ export class CustomerFormService {
   private getFormDefaults(): CustomerFormDefaults {
     return {
       id: null,
-      active: false,
     };
   }
 }

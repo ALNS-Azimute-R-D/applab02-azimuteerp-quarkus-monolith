@@ -16,11 +16,11 @@ describe('Tenant e2e test', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const tenantSample = {
-    acronym: 'below versus excited',
-    name: 'finally why',
-    description: 'disclosure ick',
-    customerBusinessCode: 'forenenst up',
-    activationStatus: 'ACTIVE',
+    acronym: 'conservation hmph ca',
+    name: 'phew',
+    description: 'um joyfully',
+    customerBusinessCode: 'fickle cemetery',
+    activationStatus: 'PENDENT',
   };
 
   let tenant;
@@ -166,32 +166,32 @@ describe('Tenant e2e test', () => {
     });
 
     it('should create an instance of Tenant', () => {
-      cy.get(`[data-cy="acronym"]`).type('vaguely');
-      cy.get(`[data-cy="acronym"]`).should('have.value', 'vaguely');
+      cy.get(`[data-cy="acronym"]`).type('yet');
+      cy.get(`[data-cy="acronym"]`).should('have.value', 'yet');
 
-      cy.get(`[data-cy="name"]`).type('psst disembodiment');
-      cy.get(`[data-cy="name"]`).should('have.value', 'psst disembodiment');
+      cy.get(`[data-cy="name"]`).type('finding yowza');
+      cy.get(`[data-cy="name"]`).should('have.value', 'finding yowza');
 
-      cy.get(`[data-cy="description"]`).type('sedately');
-      cy.get(`[data-cy="description"]`).should('have.value', 'sedately');
+      cy.get(`[data-cy="description"]`).type('manhandle indeed rowdy');
+      cy.get(`[data-cy="description"]`).should('have.value', 'manhandle indeed rowdy');
 
-      cy.get(`[data-cy="customerBusinessCode"]`).type('oddly');
-      cy.get(`[data-cy="customerBusinessCode"]`).should('have.value', 'oddly');
+      cy.get(`[data-cy="customerBusinessCode"]`).type('toilet hurrican');
+      cy.get(`[data-cy="customerBusinessCode"]`).should('have.value', 'toilet hurrican');
 
-      cy.get(`[data-cy="businessHandlerClazz"]`).type('yahoo misguided');
-      cy.get(`[data-cy="businessHandlerClazz"]`).should('have.value', 'yahoo misguided');
+      cy.get(`[data-cy="businessHandlerClazz"]`).type('amid ack yum');
+      cy.get(`[data-cy="businessHandlerClazz"]`).should('have.value', 'amid ack yum');
 
-      cy.get(`[data-cy="mainContactPersonDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="mainContactPersonDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="mainContactPersonDetailsJSON"]`).type('on seriously beside');
+      cy.get(`[data-cy="mainContactPersonDetailsJSON"]`).should('have.value', 'on seriously beside');
 
-      cy.get(`[data-cy="billingDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="billingDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="billingDetailsJSON"]`).type('a');
+      cy.get(`[data-cy="billingDetailsJSON"]`).should('have.value', 'a');
 
-      cy.get(`[data-cy="technicalEnvironmentsDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="technicalEnvironmentsDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="technicalEnvironmentsDetailsJSON"]`).type('corny around yum');
+      cy.get(`[data-cy="technicalEnvironmentsDetailsJSON"]`).should('have.value', 'corny around yum');
 
-      cy.get(`[data-cy="commonCustomAttributesDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="commonCustomAttributesDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).type('alley');
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).should('have.value', 'alley');
 
       cy.setFieldImageAsBytesOfEntity('logoImg', 'integration-test.png', 'image/png');
 

@@ -1,22 +1,28 @@
 {
   "annotations": {
-    "changelogDate": "20240603222550"
+    "changelogDate": "20240608075707"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
   "entityTableName": "tb_person",
   "fields": [
     {
-      "fieldName": "firstName",
+      "fieldName": "firstname",
       "fieldType": "String",
       "fieldValidateRules": ["required", "maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "lastName",
+      "fieldName": "lastname",
       "fieldType": "String",
       "fieldValidateRules": ["required", "maxlength"],
-      "fieldValidateRulesMaxlength": "80"
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "fullname",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
     },
     {
       "fieldName": "birthDate",
@@ -109,9 +115,10 @@
       "fieldValidateRulesMaxlength": "80"
     },
     {
-      "fieldName": "extraDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "customAttributesDetailsJSON",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "2048"
     },
     {
       "fieldName": "activationStatus",
@@ -146,7 +153,7 @@
       "relationshipType": "many-to-one"
     },
     {
-      "otherEntityField": "lastName",
+      "otherEntityField": "lastname",
       "otherEntityName": "person",
       "otherEntityRelationshipName": "managedPersonsList",
       "relationshipName": "managerPerson",
@@ -164,6 +171,20 @@
       "otherEntityName": "organizationMembership",
       "otherEntityRelationshipName": "person",
       "relationshipName": "organizationMembershipsList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "representativePerson",
+      "relationshipName": "suppliersList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "buyerPerson",
+      "relationshipName": "customersList",
       "relationshipSide": "right",
       "relationshipType": "one-to-many"
     }

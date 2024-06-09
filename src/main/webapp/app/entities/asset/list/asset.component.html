@@ -42,13 +42,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="uid">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.uid">Uid</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="name">
               <div class="d-flex">
                 <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.name">Name</span>
@@ -91,6 +84,13 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="activationStatus">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.activationStatus">Activation Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col" jhiSortBy="assetType.name">
               <div class="d-flex">
                 <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.assetType">Asset Type</span>
@@ -112,7 +112,6 @@
               <td>
                 <a [routerLink]="['/asset', asset.id, 'view']">{{ asset.id }}</a>
               </td>
-              <td>{{ asset.uid }}</td>
               <td>{{ asset.name }}</td>
               <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.StorageTypeEnum.' + asset.storageTypeUsed }}">
                 {{ asset.storageTypeUsed }}
@@ -129,6 +128,9 @@
                   >
                   <span>{{ asset.assetContentAsBlobContentType }}, {{ byteSize(asset.assetContentAsBlob) }}</span>
                 }
+              </td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + asset.activationStatus }}">
+                {{ asset.activationStatus }}
               </td>
               <td>
                 @if (asset.assetType) {

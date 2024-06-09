@@ -4,29 +4,29 @@ export const sampleWithRequiredData: ITypeOfOrganization = {
   id: 21906,
   acronym: 'deceivingly',
   name: 'decode bold',
-  description: '../fake-data/blob/hipster.txt',
+  description: 'oxford',
 };
 
 export const sampleWithPartialData: ITypeOfOrganization = {
-  id: 11644,
-  acronym: 'instead coruscate',
-  name: 'handmade',
-  description: '../fake-data/blob/hipster.txt',
-  businessHandlerClazz: 'yum',
+  id: 12436,
+  acronym: 'fooey',
+  name: 'extend yum fox',
+  description: 'crop',
+  businessHandlerClazz: 'irritably',
 };
 
 export const sampleWithFullData: ITypeOfOrganization = {
-  id: 7506,
-  acronym: 'meanwhile',
-  name: 'madly after finally',
-  description: '../fake-data/blob/hipster.txt',
-  businessHandlerClazz: 'meanwhile puzzling',
+  id: 127,
+  acronym: 'though meanwhile',
+  name: 'illiterate',
+  description: 'whoa if',
+  businessHandlerClazz: 'fooey because afore',
 };
 
 export const sampleWithNewData: NewTypeOfOrganization = {
-  acronym: 'barrack whoever',
-  name: 'provided',
-  description: '../fake-data/blob/hipster.txt',
+  acronym: 'cheek josh following',
+  name: 'seep',
+  description: 'phew boo quizzically',
   id: null,
 };
 

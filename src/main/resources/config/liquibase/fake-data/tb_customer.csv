@@ -1,11 +1,11 @@
-id;customer_business_code;name;description;email;address_details;zip_code;keycloak_group_details;status;active
-1;theater regular;festival religion;../fake-data/blob/hipster.txt;"5V<#&T@,Z}=t.*<8";possess;03501;teenager devil;READY_TO_START;true
-2;noteworthy enli;well boo;../fake-data/blob/hipster.txt;"Z#aI1@7=2;O{.Y5";piece;79325-26;bah cupola behind;UNDER_EVALUATION;false
-3;as lovely;while;../fake-data/blob/hipster.txt;"GR.nyY@HaC'4L.kDf";wherever;27997;yahoo gracefully;READY_TO_START;true
-4;ukulele sweet s;whoa;../fake-data/blob/hipster.txt;"[XSPm@2.SzA";gosh cub apud;30734;taper;IN_FAILURE;true
-5;since haversack;once gosh;../fake-data/blob/hipster.txt;"]%>@<.9]ax)";ruddy;73156-01;yippee yahoo almost;ONBOARDING;true
-6;despite absent;behind vivaciously enormous;../fake-data/blob/hipster.txt;"Wr)+L)@rP+.8";homogenate;69255-22;as pronoun or;ONBOARDING;true
-7;consent tomatil;soggy that till;../fake-data/blob/hipster.txt;"19i)@MR\.s";spider against;24374-52;difference ack;WORKING;true
-8;tenderly;joyous;../fake-data/blob/hipster.txt;"kb^@%)[.VX1";beside tender until;83921;subsidence;PENDENT;true
-9;clearly scarily;marshland poker humble;../fake-data/blob/hipster.txt;"cv@YfP9..w";notwithstanding;20938-38;until;READY_TO_START;false
-10;whereas that en;deficient strategy;../fake-data/blob/hipster.txt;"`l-C8@4e;M#..<q";up whether;41152-90;of flare inflect;UNDER_EVALUATION;true
+id;customer_business_code;fullname;custom_attributes_details_json;customer_status;activation_status;buyer_person_id
+1;theater regular;festival religion;till alongside meh;WORKING;INVALID;1
+2;loaf teenager;but;perfect skeletal;ONBOARDING;PENDENT;2
+3;guzzle retract;greatly crest;piece;WORKING;BLOCKED;3
+4;tasty wherever ;behind;slump;PENDENT;ACTIVE;4
+5;ecstatic while;squeegee by rarely;whose circa;IN_FAILURE;ON_HOLD;5
+6;gracefully mmm;loudly;fully conciliate legalise;PENDENT;INACTIVE;6
+7;stimulating;plane within abnormally;fooey daily vague;ONBOARDING;INACTIVE;7
+8;dazzling sulk a;trim;stigmatise;PENDENT;BLOCKED;8
+9;doubtfully oh l;amidst;ick;WORKING;INVALID;9
+10;absent likewise;vivaciously;yesterday likewise;IN_FAILURE;PENDENT;10

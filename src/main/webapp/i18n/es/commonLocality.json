@@ -1,0 +1,32 @@
+{
+  "azimuteErpQuarkusAngularMonolith02App": {
+    "commonLocality": {
+      "home": {
+        "title": "Common Localities",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Common Locality",
+        "createOrEditLabel": "Crear o editar Common Locality",
+        "notFound": "Ningún Common Localities encontrado"
+      },
+      "created": "Un nuevo Common Locality ha sido creado con el identificador {{ param }}",
+      "updated": "Un Common Locality ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Common Locality ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Common Locality {{ id }}?"
+      },
+      "detail": {
+        "title": "Common Locality"
+      },
+      "id": "ID",
+      "acronym": "Acronym",
+      "name": "Name",
+      "description": "Description",
+      "streetAddress": "Street Address",
+      "houseNumber": "House Number",
+      "locationName": "Location Name",
+      "postalCode": "Postal Code",
+      "geoPolygonArea": "Geo Polygon Area",
+      "district": "District"
+    }
+  }
+}

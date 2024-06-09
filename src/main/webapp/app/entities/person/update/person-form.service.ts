@@ -18,8 +18,9 @@ type PersonFormDefaults = Pick<NewPerson, 'id'>;
 
 type PersonFormGroupContent = {
   id: FormControl<IPerson['id'] | NewPerson['id']>;
-  firstName: FormControl<IPerson['firstName']>;
-  lastName: FormControl<IPerson['lastName']>;
+  firstname: FormControl<IPerson['firstname']>;
+  lastname: FormControl<IPerson['lastname']>;
+  fullname: FormControl<IPerson['fullname']>;
   birthDate: FormControl<IPerson['birthDate']>;
   gender: FormControl<IPerson['gender']>;
   codeBI: FormControl<IPerson['codeBI']>;
@@ -35,7 +36,7 @@ type PersonFormGroupContent = {
   preferredLanguage: FormControl<IPerson['preferredLanguage']>;
   usernameInOAuth2: FormControl<IPerson['usernameInOAuth2']>;
   userIdInOAuth2: FormControl<IPerson['userIdInOAuth2']>;
-  extraDetails: FormControl<IPerson['extraDetails']>;
+  customAttributesDetailsJSON: FormControl<IPerson['customAttributesDetailsJSON']>;
   activationStatus: FormControl<IPerson['activationStatus']>;
   avatarImg: FormControl<IPerson['avatarImg']>;
   avatarImgContentType: FormControl<IPerson['avatarImgContentType']>;
@@ -61,11 +62,14 @@ export class PersonFormService {
           validators: [Validators.required],
         },
       ),
-      firstName: new FormControl(personRawValue.firstName, {
+      firstname: new FormControl(personRawValue.firstname, {
         validators: [Validators.required, Validators.maxLength(50)],
       }),
-      lastName: new FormControl(personRawValue.lastName, {
-        validators: [Validators.required, Validators.maxLength(80)],
+      lastname: new FormControl(personRawValue.lastname, {
+        validators: [Validators.required, Validators.maxLength(50)],
+      }),
+      fullname: new FormControl(personRawValue.fullname, {
+        validators: [Validators.maxLength(100)],
       }),
       birthDate: new FormControl(personRawValue.birthDate, {
         validators: [Validators.required],
@@ -112,7 +116,9 @@ export class PersonFormService {
       userIdInOAuth2: new FormControl(personRawValue.userIdInOAuth2, {
         validators: [Validators.maxLength(80)],
       }),
-      extraDetails: new FormControl(personRawValue.extraDetails),
+      customAttributesDetailsJSON: new FormControl(personRawValue.customAttributesDetailsJSON, {
+        validators: [Validators.maxLength(2048)],
+      }),
       activationStatus: new FormControl(personRawValue.activationStatus, {
         validators: [Validators.required],
       }),

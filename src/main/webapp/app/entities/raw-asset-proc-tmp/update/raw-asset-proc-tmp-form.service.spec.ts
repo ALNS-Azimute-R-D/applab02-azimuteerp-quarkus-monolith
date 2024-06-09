@@ -24,7 +24,7 @@ describe('RawAssetProcTmp Form Service', () => {
             statusRawProcessing: expect.any(Object),
             fullFilenamePath: expect.any(Object),
             assetRawContentAsBlob: expect.any(Object),
-            extraDetails: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
             assetType: expect.any(Object),
           }),
         );
@@ -40,7 +40,7 @@ describe('RawAssetProcTmp Form Service', () => {
             statusRawProcessing: expect.any(Object),
             fullFilenamePath: expect.any(Object),
             assetRawContentAsBlob: expect.any(Object),
-            extraDetails: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
             assetType: expect.any(Object),
           }),
         );

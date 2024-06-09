@@ -1,4 +1,6 @@
 import { IBrand } from 'app/entities/brand/brand.model';
+import { ISupplier } from 'app/entities/supplier/supplier.model';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 
 export interface IProduct {
   id: number;
@@ -15,8 +17,9 @@ export interface IProduct {
   suggestedCategory?: string | null;
   attachments?: string | null;
   attachmentsContentType?: string | null;
-  supplierIds?: string | null;
+  activationStatus?: keyof typeof ActivationStatusEnum | null;
   brand?: Pick<IBrand, 'id' | 'acronym'> | null;
+  toSuppliers?: Pick<ISupplier, 'id'>[] | null;
 }
 
 export type NewProduct = Omit<IProduct, 'id'> & { id: null };

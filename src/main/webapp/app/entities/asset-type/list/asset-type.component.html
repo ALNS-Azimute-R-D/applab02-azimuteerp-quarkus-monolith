@@ -70,9 +70,11 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="extraDetails">
+            <th scope="col" jhiSortBy="customAttributesDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.assetType.extraDetails">Extra Details</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.assetType.customAttributesDetailsJSON"
+                  >Custom Attributes Details JSON</span
+                >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -90,7 +92,7 @@
               <td>{{ assetType.name }}</td>
               <td>{{ assetType.description }}</td>
               <td>{{ assetType.handlerClazzName }}</td>
-              <td>{{ assetType.extraDetails }}</td>
+              <td>{{ assetType.customAttributesDetailsJSON }}</td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/asset-type', assetType.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

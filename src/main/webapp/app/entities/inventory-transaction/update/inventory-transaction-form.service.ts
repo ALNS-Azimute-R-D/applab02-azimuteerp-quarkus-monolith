@@ -39,7 +39,8 @@ type InventoryTransactionFormGroupContent = {
   transactionCreatedDate: FormControl<InventoryTransactionFormRawValue['transactionCreatedDate']>;
   transactionModifiedDate: FormControl<InventoryTransactionFormRawValue['transactionModifiedDate']>;
   quantity: FormControl<InventoryTransactionFormRawValue['quantity']>;
-  comments: FormControl<InventoryTransactionFormRawValue['comments']>;
+  transactionComments: FormControl<InventoryTransactionFormRawValue['transactionComments']>;
+  activationStatus: FormControl<InventoryTransactionFormRawValue['activationStatus']>;
   supplier: FormControl<InventoryTransactionFormRawValue['supplier']>;
   product: FormControl<InventoryTransactionFormRawValue['product']>;
   warehouse: FormControl<InventoryTransactionFormRawValue['warehouse']>;
@@ -72,8 +73,11 @@ export class InventoryTransactionFormService {
       quantity: new FormControl(inventoryTransactionRawValue.quantity, {
         validators: [Validators.required],
       }),
-      comments: new FormControl(inventoryTransactionRawValue.comments, {
-        validators: [Validators.maxLength(255)],
+      transactionComments: new FormControl(inventoryTransactionRawValue.transactionComments, {
+        validators: [Validators.maxLength(512)],
+      }),
+      activationStatus: new FormControl(inventoryTransactionRawValue.activationStatus, {
+        validators: [Validators.required],
       }),
       supplier: new FormControl(inventoryTransactionRawValue.supplier, {
         validators: [Validators.required],

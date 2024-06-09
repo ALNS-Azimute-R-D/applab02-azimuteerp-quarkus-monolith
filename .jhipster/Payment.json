@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240603223550"
+    "changelogDate": "20240608080807"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
@@ -33,25 +33,32 @@
       "fieldValues": "CASH,CREDIT,DEBIT,BANK_TRANSFER,OTHER"
     },
     {
-      "fieldName": "status",
+      "fieldName": "statusPayment",
       "fieldType": "PaymentStatusEnum",
       "fieldValidateRules": ["required"],
       "fieldValues": "OPEN,DELAYED,PAID,CANCELLED"
     },
     {
-      "fieldName": "extraDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "customAttributesDetailsJSON",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "2048"
+    },
+    {
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
     }
   ],
   "name": "Payment",
   "pagination": "pagination",
   "relationships": [
     {
-      "otherEntityField": "code",
-      "otherEntityName": "paymentMethod",
+      "otherEntityField": "aliasCode",
+      "otherEntityName": "paymentGateway",
       "otherEntityRelationshipName": "paymentsList",
-      "relationshipName": "paymentMethod",
+      "relationshipName": "paymentGateway",
       "relationshipSide": "left",
       "relationshipType": "many-to-one",
       "relationshipValidateRules": "required"

@@ -19,14 +19,15 @@
       },
       "id": "ID",
       "businessCode": "Business Code",
-      "customerUserId": "Customer User Id",
       "placedDate": "Placed Date",
       "totalTaxValue": "Total Tax Value",
       "totalDueValue": "Total Due Value",
       "status": "Status",
-      "invoiceId": "Invoice Id",
       "estimatedDeliveryDate": "Estimated Delivery Date",
-      "ordersItemsList": "Orders Items List"
+      "activationStatus": "Activation Status",
+      "orderItemsList": "Order Items List",
+      "invoice": "Invoice",
+      "customer": "Customer"
     }
   }
 }

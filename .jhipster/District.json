@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240603221650"
+    "changelogDate": "20240608074807"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
@@ -35,6 +35,13 @@
       "relationshipSide": "left",
       "relationshipType": "many-to-one",
       "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "commonLocality",
+      "otherEntityRelationshipName": "district",
+      "relationshipName": "commonLocalitiesList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "person",

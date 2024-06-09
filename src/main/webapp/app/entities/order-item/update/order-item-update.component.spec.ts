@@ -54,10 +54,10 @@ describe('OrderItem Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Article query and add missing value', () => {
       const orderItem: IOrderItem = { id: 456 };
-      const article: IArticle = { id: 6245 };
+      const article: IArticle = { id: 17378 };
       orderItem.article = article;
 
-      const articleCollection: IArticle[] = [{ id: 29408 }];
+      const articleCollection: IArticle[] = [{ id: 31244 }];
       jest.spyOn(articleService, 'query').mockReturnValue(of(new HttpResponse({ body: articleCollection })));
       const additionalArticles = [article];
       const expectedCollection: IArticle[] = [...additionalArticles, ...articleCollection];
@@ -76,10 +76,10 @@ describe('OrderItem Management Update Component', () => {
 
     it('Should call Order query and add missing value', () => {
       const orderItem: IOrderItem = { id: 456 };
-      const order: IOrder = { id: 11570 };
+      const order: IOrder = { id: 4130 };
       orderItem.order = order;
 
-      const orderCollection: IOrder[] = [{ id: 3467 }];
+      const orderCollection: IOrder[] = [{ id: 26932 }];
       jest.spyOn(orderService, 'query').mockReturnValue(of(new HttpResponse({ body: orderCollection })));
       const additionalOrders = [order];
       const expectedCollection: IOrder[] = [...additionalOrders, ...orderCollection];
@@ -98,9 +98,9 @@ describe('OrderItem Management Update Component', () => {
 
     it('Should update editForm', () => {
       const orderItem: IOrderItem = { id: 456 };
-      const article: IArticle = { id: 4050 };
+      const article: IArticle = { id: 21388 };
       orderItem.article = article;
-      const order: IOrder = { id: 24610 };
+      const order: IOrder = { id: 12424 };
       orderItem.order = order;
 
       activatedRoute.data = of({ orderItem });

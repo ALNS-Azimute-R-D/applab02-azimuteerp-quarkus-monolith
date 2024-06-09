@@ -21,8 +21,8 @@ describe('StockLevel Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             lastModifiedDate: expect.any(Object),
-            ramainingQuantity: expect.any(Object),
-            extraDetails: expect.any(Object),
+            remainingQuantity: expect.any(Object),
+            commonAttributesDetailsJSON: expect.any(Object),
             warehouse: expect.any(Object),
             product: expect.any(Object),
           }),
@@ -36,8 +36,8 @@ describe('StockLevel Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             lastModifiedDate: expect.any(Object),
-            ramainingQuantity: expect.any(Object),
-            extraDetails: expect.any(Object),
+            remainingQuantity: expect.any(Object),
+            commonAttributesDetailsJSON: expect.any(Object),
             warehouse: expect.any(Object),
             product: expect.any(Object),
           }),

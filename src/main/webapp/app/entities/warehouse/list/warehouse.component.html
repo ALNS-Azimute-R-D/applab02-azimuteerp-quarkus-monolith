@@ -126,9 +126,18 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="extraDetails">
+            <th scope="col" jhiSortBy="customAttributesDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.extraDetails">Extra Details</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.customAttributesDetailsJSON"
+                  >Custom Attributes Details JSON</span
+                >
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activationStatus">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.activationStatus">Activation Status</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -161,7 +170,10 @@
               <td>{{ warehouse.landPhoneNumber }}</td>
               <td>{{ warehouse.mobilePhoneNumber }}</td>
               <td>{{ warehouse.faxNumber }}</td>
-              <td>{{ warehouse.extraDetails }}</td>
+              <td>{{ warehouse.customAttributesDetailsJSON }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + warehouse.activationStatus }}">
+                {{ warehouse.activationStatus }}
+              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/warehouse', warehouse.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

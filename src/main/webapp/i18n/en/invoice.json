@@ -19,7 +19,6 @@
       },
       "id": "ID",
       "businessCode": "Business Code",
-      "originalOrderId": "Original Order Id",
       "invoiceDate": "Invoice Date",
       "dueDate": "Due Date",
       "description": "Description",
@@ -30,8 +29,10 @@
       "numberOfInstallmentsPaid": "Number Of Installments Paid",
       "amountPaidValue": "Amount Paid Value",
       "status": "Status",
-      "extraDetails": "Extra Details",
-      "preferrablePaymentMethod": "Preferrable Payment Method"
+      "customAttributesDetailsJSON": "Custom Attributes Details JSON",
+      "activationStatus": "Activation Status",
+      "preferrablePaymentGateway": "Preferrable Payment Gateway",
+      "ordersList": "Orders List"
     }
   }
 }

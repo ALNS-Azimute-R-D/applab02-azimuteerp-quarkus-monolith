@@ -3,41 +3,34 @@ import { ICustomer, NewCustomer } from './customer.model';
 export const sampleWithRequiredData: ICustomer = {
   id: 5009,
   customerBusinessCode: 'fixed joyous hu',
-  name: 'apud bah',
-  email: '.3\\;1j@P_k$8~.rt1\\',
-  status: 'UNDER_EVALUATION',
-  active: false,
+  fullname: 'apud bah',
+  customerStatus: 'IN_FAILURE',
+  activationStatus: 'INACTIVE',
 };
 
 export const sampleWithPartialData: ICustomer = {
-  id: 6595,
-  customerBusinessCode: 'overuse boo for',
-  name: 'giant fabulous',
-  description: '../fake-data/blob/hipster.txt',
-  email: 'f@eg.(pE>',
-  status: 'PENDENT',
-  active: true,
+  id: 20700,
+  customerBusinessCode: 'apt',
+  fullname: 'before',
+  customAttributesDetailsJSON: 'aside times tinker',
+  customerStatus: 'PENDENT',
+  activationStatus: 'ON_HOLD',
 };
 
 export const sampleWithFullData: ICustomer = {
-  id: 18066,
-  customerBusinessCode: 'knead cautiousl',
-  name: 'ick distribute quarterly',
-  description: '../fake-data/blob/hipster.txt',
-  email: '5TQ-@".Wc`DN',
-  addressDetails: 'after fiercely hence',
-  zipCode: '48653',
-  keycloakGroupDetails: 'yuck eek',
-  status: 'UNDER_EVALUATION',
-  active: true,
+  id: 16227,
+  customerBusinessCode: 'governance glea',
+  fullname: 'ouch for wary',
+  customAttributesDetailsJSON: 'down',
+  customerStatus: 'UNDER_EVALUATION',
+  activationStatus: 'ACTIVE',
 };
 
 export const sampleWithNewData: NewCustomer = {
-  customerBusinessCode: 'concerning',
-  name: 'incomparable exterminate aside',
-  email: 'F|@yIP.p',
-  status: 'ONBOARDING',
-  active: false,
+  customerBusinessCode: 'bag failing meh',
+  fullname: 'dutiful so elastic',
+  customerStatus: 'UNDER_EVALUATION',
+  activationStatus: 'INACTIVE',
   id: null,
 };
 

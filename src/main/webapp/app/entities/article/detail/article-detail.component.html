@@ -21,6 +21,10 @@
           <dd>
             <span>{{ article.inventoryProductId }}</span>
           </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.skuCode">Sku Code</span></dt>
+          <dd>
+            <span>{{ article.skuCode }}</span>
+          </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.customName">Custom Name</span></dt>
           <dd>
             <span>{{ article.customName }}</span>
@@ -39,13 +43,20 @@
               article.itemSize
             }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.assetsCollectionUUID">Assets Collection UUID</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.activationStatus">Activation Status</span></dt>
           <dd>
-            <span>{{ article.assetsCollectionUUID }}</span>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + article.activationStatus }}">{{
+              article.activationStatus
+            }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.isEnabled">Is Enabled</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.assetCollection">Asset Collection</span></dt>
           <dd>
-            <span>{{ article.isEnabled }}</span>
+            @for (assetCollection of article.assetCollections; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/asset-collection', assetCollection.id, 'view']">{{ assetCollection.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
           </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.mainCategory">Main Category</span></dt>
           <dd>

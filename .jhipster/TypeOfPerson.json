@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240603222450"
+    "changelogDate": "20240608075607"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "documentation": "- TypeOfPerson\\n- Person\\n- OrganizationRole\\n- OrganizationMembership\\n- OrganizationMemberRole",
@@ -17,7 +17,7 @@
       "fieldName": "description",
       "fieldType": "String",
       "fieldValidateRules": ["required", "maxlength"],
-      "fieldValidateRulesMaxlength": "40"
+      "fieldValidateRulesMaxlength": "80"
     }
   ],
   "name": "TypeOfPerson",

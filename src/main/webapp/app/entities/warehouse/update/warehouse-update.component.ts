@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 import { WarehouseService } from '../service/warehouse.service';
 import { IWarehouse } from '../warehouse.model';
 import { WarehouseFormService, WarehouseFormGroup } from './warehouse-form.service';
@@ -23,6 +24,7 @@ import { WarehouseFormService, WarehouseFormGroup } from './warehouse-form.servi
 export class WarehouseUpdateComponent implements OnInit {
   isSaving = false;
   warehouse: IWarehouse | null = null;
+  activationStatusEnumValues = Object.keys(ActivationStatusEnum);
 
   protected dataUtils = inject(DataUtils);
   protected eventManager = inject(EventManager);

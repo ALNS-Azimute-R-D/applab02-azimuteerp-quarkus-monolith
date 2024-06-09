@@ -8,7 +8,7 @@ export interface IRawAssetProcTmp {
   fullFilenamePath?: string | null;
   assetRawContentAsBlob?: string | null;
   assetRawContentAsBlobContentType?: string | null;
-  extraDetails?: string | null;
+  customAttributesDetailsJSON?: string | null;
   assetType?: Pick<IAssetType, 'id' | 'name'> | null;
 }
 

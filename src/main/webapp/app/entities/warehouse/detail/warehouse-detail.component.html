@@ -72,9 +72,19 @@
           <dd>
             <span>{{ warehouse.faxNumber }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.extraDetails">Extra Details</span></dt>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.customAttributesDetailsJSON"
+              >Custom Attributes Details JSON</span
+            >
+          </dt>
           <dd>
-            <span>{{ warehouse.extraDetails }}</span>
+            <span>{{ warehouse.customAttributesDetailsJSON }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.warehouse.activationStatus">Activation Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + warehouse.activationStatus }}">{{
+              warehouse.activationStatus
+            }}</span>
           </dd>
         </dl>
 

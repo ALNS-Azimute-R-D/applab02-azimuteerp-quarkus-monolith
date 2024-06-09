@@ -22,7 +22,7 @@
       "name": "Name",
       "description": "Description",
       "handlerClazzName": "Handler Clazz Name",
-      "extraDetails": "Extra Details",
+      "customAttributesDetailsJSON": "Custom Attributes Details JSON",
       "rawAssetsProcsTmps": "Raw Assets Procs Tmps",
       "assets": "Assets"
     }

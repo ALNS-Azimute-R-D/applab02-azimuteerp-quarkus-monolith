@@ -37,9 +37,10 @@ type PaymentFormGroupContent = {
   paymentPaidDate: FormControl<PaymentFormRawValue['paymentPaidDate']>;
   paymentAmount: FormControl<PaymentFormRawValue['paymentAmount']>;
   typeOfPayment: FormControl<PaymentFormRawValue['typeOfPayment']>;
-  status: FormControl<PaymentFormRawValue['status']>;
-  extraDetails: FormControl<PaymentFormRawValue['extraDetails']>;
-  paymentMethod: FormControl<PaymentFormRawValue['paymentMethod']>;
+  statusPayment: FormControl<PaymentFormRawValue['statusPayment']>;
+  customAttributesDetailsJSON: FormControl<PaymentFormRawValue['customAttributesDetailsJSON']>;
+  activationStatus: FormControl<PaymentFormRawValue['activationStatus']>;
+  paymentGateway: FormControl<PaymentFormRawValue['paymentGateway']>;
 };
 
 export type PaymentFormGroup = FormGroup<PaymentFormGroupContent>;
@@ -74,11 +75,16 @@ export class PaymentFormService {
       typeOfPayment: new FormControl(paymentRawValue.typeOfPayment, {
         validators: [Validators.required],
       }),
-      status: new FormControl(paymentRawValue.status, {
+      statusPayment: new FormControl(paymentRawValue.statusPayment, {
         validators: [Validators.required],
       }),
-      extraDetails: new FormControl(paymentRawValue.extraDetails),
-      paymentMethod: new FormControl(paymentRawValue.paymentMethod, {
+      customAttributesDetailsJSON: new FormControl(paymentRawValue.customAttributesDetailsJSON, {
+        validators: [Validators.maxLength(2048)],
+      }),
+      activationStatus: new FormControl(paymentRawValue.activationStatus, {
+        validators: [Validators.required],
+      }),
+      paymentGateway: new FormControl(paymentRawValue.paymentGateway, {
         validators: [Validators.required],
       }),
     });

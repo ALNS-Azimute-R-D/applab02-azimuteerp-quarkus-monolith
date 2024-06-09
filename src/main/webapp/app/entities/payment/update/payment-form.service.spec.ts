@@ -25,9 +25,10 @@ describe('Payment Form Service', () => {
             paymentPaidDate: expect.any(Object),
             paymentAmount: expect.any(Object),
             typeOfPayment: expect.any(Object),
-            status: expect.any(Object),
-            extraDetails: expect.any(Object),
-            paymentMethod: expect.any(Object),
+            statusPayment: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
+            activationStatus: expect.any(Object),
+            paymentGateway: expect.any(Object),
           }),
         );
       });
@@ -43,9 +44,10 @@ describe('Payment Form Service', () => {
             paymentPaidDate: expect.any(Object),
             paymentAmount: expect.any(Object),
             typeOfPayment: expect.any(Object),
-            status: expect.any(Object),
-            extraDetails: expect.any(Object),
-            paymentMethod: expect.any(Object),
+            statusPayment: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
+            activationStatus: expect.any(Object),
+            paymentGateway: expect.any(Object),
           }),
         );
       });

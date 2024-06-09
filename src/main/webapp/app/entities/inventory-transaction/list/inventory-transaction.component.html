@@ -76,9 +76,18 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="comments">
+            <th scope="col" jhiSortBy="transactionComments">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.comments">Comments</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.transactionComments"
+                  >Transaction Comments</span
+                >
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activationStatus">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.activationStatus">Activation Status</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -114,7 +123,12 @@
               <td>{{ inventoryTransaction.transactionCreatedDate | formatMediumDatetime }}</td>
               <td>{{ inventoryTransaction.transactionModifiedDate | formatMediumDatetime }}</td>
               <td>{{ inventoryTransaction.quantity }}</td>
-              <td>{{ inventoryTransaction.comments }}</td>
+              <td>{{ inventoryTransaction.transactionComments }}</td>
+              <td
+                jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + inventoryTransaction.activationStatus }}"
+              >
+                {{ inventoryTransaction.activationStatus }}
+              </td>
               <td>
                 @if (inventoryTransaction.supplier) {
                   <div>

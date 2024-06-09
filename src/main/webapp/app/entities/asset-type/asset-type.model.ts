@@ -4,7 +4,7 @@ export interface IAssetType {
   name?: string | null;
   description?: string | null;
   handlerClazzName?: string | null;
-  extraDetails?: string | null;
+  customAttributesDetailsJSON?: string | null;
 }
 
 export type NewAssetType = Omit<IAssetType, 'id'> & { id: null };

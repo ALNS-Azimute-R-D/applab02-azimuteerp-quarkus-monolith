@@ -30,7 +30,7 @@ describe('AssetMetadata e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/assets',
-      body: {"uid":"fe3a1a06-d9c6-4eee-b39d-869a142c8630","name":"provided gray","storageTypeUsed":"LOCAL_FILESYSTEM","fullFilenamePath":"certification hilarious gracefully","status":"DELETED","preferredPurpose":"OTHER","assetContentAsBlob":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","assetContentAsBlobContentType":"unknown"},
+      body: {"name":"noted realign","storageTypeUsed":"LOCAL_FILESYSTEM","fullFilenamePath":"next yahoo auction","status":"DISABLED","preferredPurpose":"EXECUTABLE_PROGRAM_BINARY","assetContentAsBlob":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","assetContentAsBlobContentType":"unknown","activationStatus":"ACTIVE"},
     }).then(({ body }) => {
       asset = body;
     });
@@ -213,8 +213,8 @@ describe('AssetMetadata e2e test', () => {
     });
 
     it.skip('should create an instance of AssetMetadata', () => {
-      cy.get(`[data-cy="metadataDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="metadataDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="metadataDetailsJSON"]`).type('defiantly very');
+      cy.get(`[data-cy="metadataDetailsJSON"]`).should('have.value', 'defiantly very');
 
       cy.get(`[data-cy="asset"]`).select(1);
 

@@ -8,7 +8,7 @@ export interface IOrganizationMembership {
   joinedAt?: dayjs.Dayjs | null;
   activationStatus?: keyof typeof ActivationStatusEnum | null;
   organization?: Pick<IOrganization, 'id' | 'name'> | null;
-  person?: Pick<IPerson, 'id' | 'lastName'> | null;
+  person?: Pick<IPerson, 'id' | 'lastname'> | null;
 }
 
 export type NewOrganizationMembership = Omit<IOrganizationMembership, 'id'> & { id: null };

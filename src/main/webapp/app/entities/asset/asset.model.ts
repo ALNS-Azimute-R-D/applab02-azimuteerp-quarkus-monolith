@@ -3,10 +3,10 @@ import { IRawAssetProcTmp } from 'app/entities/raw-asset-proc-tmp/raw-asset-proc
 import { StorageTypeEnum } from 'app/entities/enumerations/storage-type-enum.model';
 import { StatusAssetEnum } from 'app/entities/enumerations/status-asset-enum.model';
 import { PreferredPurposeEnum } from 'app/entities/enumerations/preferred-purpose-enum.model';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 
 export interface IAsset {
   id: number;
-  uid?: string | null;
   name?: string | null;
   storageTypeUsed?: keyof typeof StorageTypeEnum | null;
   fullFilenamePath?: string | null;
@@ -14,6 +14,7 @@ export interface IAsset {
   preferredPurpose?: keyof typeof PreferredPurposeEnum | null;
   assetContentAsBlob?: string | null;
   assetContentAsBlobContentType?: string | null;
+  activationStatus?: keyof typeof ActivationStatusEnum | null;
   assetType?: Pick<IAssetType, 'id' | 'name'> | null;
   rawAssetProcTmp?: Pick<IRawAssetProcTmp, 'id' | 'name'> | null;
 }

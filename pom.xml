@@ -3,7 +3,7 @@
     xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.org.dexterity.azimuteerp.monolith.quarkus</groupId>
+    <groupId>org.dexterity.darueira.azimuteerp.monolith.quarkus</groupId>
     <artifactId>azimute-erp-quarkus-angular-monolith-02</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>

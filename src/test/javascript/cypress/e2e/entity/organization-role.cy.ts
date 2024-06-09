@@ -30,7 +30,7 @@ describe('OrganizationRole e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/organizations',
-      body: {"acronym":"well back","businessCode":"like duh and","hierarchicalLevel":"geez","name":"banana","description":"by","businessHandlerClazz":"pfft","mainContactPersonDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","technicalEnvironmentsDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","commonCustomAttributesDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","organizationStatus":"IN_FAILURE","activationStatus":"INVALID","logoImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","logoImgContentType":"unknown"},
+      body: {"acronym":"though junk","businessCode":"archives","hierarchicalLevel":"ballpark","name":"questionably hostel","description":"incidentally","businessHandlerClazz":"doubtfully like ew","mainContactPersonDetailsJSON":"doting vacation","technicalEnvironmentsDetailsJSON":"vol zowie past","customAttributesDetailsJSON":"opposite","organizationStatus":"UNDER_EVALUATION","activationStatus":"INACTIVE","logoImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","logoImgContentType":"unknown"},
     }).then(({ body }) => {
       organization = body;
     });

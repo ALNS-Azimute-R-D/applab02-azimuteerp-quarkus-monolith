@@ -21,10 +21,6 @@
           <dd>
             <span>{{ invoice.businessCode }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.originalOrderId">Original Order Id</span></dt>
-          <dd>
-            <span>{{ invoice.originalOrderId }}</span>
-          </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.invoiceDate">Invoice Date</span></dt>
           <dd>
             <span>{{ invoice.invoiceDate | formatMediumDatetime }}</span>
@@ -73,18 +69,28 @@
               invoice.status
             }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.extraDetails">Extra Details</span></dt>
-          <dd>
-            <span>{{ invoice.extraDetails }}</span>
-          </dd>
           <dt>
-            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.preferrablePaymentMethod">Preferrable Payment Method</span>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.customAttributesDetailsJSON"
+              >Custom Attributes Details JSON</span
+            >
           </dt>
           <dd>
-            @if (invoice.preferrablePaymentMethod) {
+            <span>{{ invoice.customAttributesDetailsJSON }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.activationStatus">Activation Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + invoice.activationStatus }}">{{
+              invoice.activationStatus
+            }}</span>
+          </dd>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.invoice.preferrablePaymentGateway">Preferrable Payment Gateway</span>
+          </dt>
+          <dd>
+            @if (invoice.preferrablePaymentGateway) {
               <div>
-                <a [routerLink]="['/payment-method', invoice.preferrablePaymentMethod.id, 'view']">{{
-                  invoice.preferrablePaymentMethod.code
+                <a [routerLink]="['/payment-gateway', invoice.preferrablePaymentGateway.id, 'view']">{{
+                  invoice.preferrablePaymentGateway.aliasCode
                 }}</a>
               </div>
             }

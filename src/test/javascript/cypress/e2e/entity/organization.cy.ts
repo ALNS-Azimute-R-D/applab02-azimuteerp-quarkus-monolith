@@ -16,12 +16,12 @@ describe('Organization e2e test', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const organizationSample = {
-    acronym: 'for',
-    businessCode: 'ferociously',
-    name: 'sympathetic clone given',
-    description: 'gently off',
-    organizationStatus: 'ONBOARDING',
-    activationStatus: 'ACTIVE',
+    acronym: 'meh gah',
+    businessCode: 'phooey frankly ',
+    name: 'yowza',
+    description: 'kiddingly too',
+    organizationStatus: 'PENDENT',
+    activationStatus: 'ON_HOLD',
   };
 
   let organization;
@@ -38,18 +38,18 @@ describe('Organization e2e test', () => {
       method: 'POST',
       url: '/api/tenants',
       body: {
-        acronym: 'how ugh growing',
-        name: 'pootle extra-large',
-        description: 'fickle',
-        customerBusinessCode: 'traumatic booho',
-        businessHandlerClazz: 'except',
-        mainContactPersonDetails: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        billingDetails: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        technicalEnvironmentsDetails: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        commonCustomAttributesDetails: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
+        acronym: 'vivaciously brr ente',
+        name: 'scatter hmph conform',
+        description: 'finally vivaciously junior',
+        customerBusinessCode: 'frantically dei',
+        businessHandlerClazz: 'pulse',
+        mainContactPersonDetailsJSON: 'hospitality which',
+        billingDetailsJSON: 'officially for onset',
+        technicalEnvironmentsDetailsJSON: 'quarterly resident first',
+        customAttributesDetailsJSON: 'unless',
         logoImg: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=',
         logoImgContentType: 'unknown',
-        activationStatus: 'INVALID',
+        activationStatus: 'ACTIVE',
       },
     }).then(({ body }) => {
       tenant = body;
@@ -59,10 +59,10 @@ describe('Organization e2e test', () => {
       method: 'POST',
       url: '/api/type-of-organizations',
       body: {
-        acronym: 'ack once ambush',
-        name: 'yum dory calmly',
-        description: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
-        businessHandlerClazz: 'wine',
+        acronym: 'quantity pish solidi',
+        name: 'who',
+        description: 'incidentally big wholly',
+        businessHandlerClazz: 'catalog unimpressively',
       },
     }).then(({ body }) => {
       typeOfOrganization = body;
@@ -272,36 +272,36 @@ describe('Organization e2e test', () => {
     });
 
     it('should create an instance of Organization', () => {
-      cy.get(`[data-cy="acronym"]`).type('pish');
-      cy.get(`[data-cy="acronym"]`).should('have.value', 'pish');
+      cy.get(`[data-cy="acronym"]`).type('the owlishly circa');
+      cy.get(`[data-cy="acronym"]`).should('have.value', 'the owlishly circa');
 
-      cy.get(`[data-cy="businessCode"]`).type('beneath nor');
-      cy.get(`[data-cy="businessCode"]`).should('have.value', 'beneath nor');
+      cy.get(`[data-cy="businessCode"]`).type('rectangular');
+      cy.get(`[data-cy="businessCode"]`).should('have.value', 'rectangular');
 
-      cy.get(`[data-cy="hierarchicalLevel"]`).type('throughout');
-      cy.get(`[data-cy="hierarchicalLevel"]`).should('have.value', 'throughout');
+      cy.get(`[data-cy="hierarchicalLevel"]`).type('looks but');
+      cy.get(`[data-cy="hierarchicalLevel"]`).should('have.value', 'looks but');
 
-      cy.get(`[data-cy="name"]`).type('crude');
-      cy.get(`[data-cy="name"]`).should('have.value', 'crude');
+      cy.get(`[data-cy="name"]`).type('huzzah duplexer');
+      cy.get(`[data-cy="name"]`).should('have.value', 'huzzah duplexer');
 
-      cy.get(`[data-cy="description"]`).type('owlishly circa splutter');
-      cy.get(`[data-cy="description"]`).should('have.value', 'owlishly circa splutter');
+      cy.get(`[data-cy="description"]`).type('monthly stylish');
+      cy.get(`[data-cy="description"]`).should('have.value', 'monthly stylish');
 
-      cy.get(`[data-cy="businessHandlerClazz"]`).type('whose although unimpressively');
-      cy.get(`[data-cy="businessHandlerClazz"]`).should('have.value', 'whose although unimpressively');
+      cy.get(`[data-cy="businessHandlerClazz"]`).type('well alias');
+      cy.get(`[data-cy="businessHandlerClazz"]`).should('have.value', 'well alias');
 
-      cy.get(`[data-cy="mainContactPersonDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="mainContactPersonDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="mainContactPersonDetailsJSON"]`).type('dreamily manor');
+      cy.get(`[data-cy="mainContactPersonDetailsJSON"]`).should('have.value', 'dreamily manor');
 
-      cy.get(`[data-cy="technicalEnvironmentsDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="technicalEnvironmentsDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="technicalEnvironmentsDetailsJSON"]`).type('on reassuringly');
+      cy.get(`[data-cy="technicalEnvironmentsDetailsJSON"]`).should('have.value', 'on reassuringly');
 
-      cy.get(`[data-cy="commonCustomAttributesDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="commonCustomAttributesDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).type('antigen');
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).should('have.value', 'antigen');
 
-      cy.get(`[data-cy="organizationStatus"]`).select('WORKING');
+      cy.get(`[data-cy="organizationStatus"]`).select('READY_TO_START');
 
-      cy.get(`[data-cy="activationStatus"]`).select('INACTIVE');
+      cy.get(`[data-cy="activationStatus"]`).select('BLOCKED');
 
       cy.setFieldImageAsBytesOfEntity('logoImg', 'integration-test.png', 'image/png');
 

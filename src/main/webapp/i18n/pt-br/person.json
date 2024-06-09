@@ -18,8 +18,9 @@
         "title": "Person"
       },
       "id": "ID",
-      "firstName": "First Name",
-      "lastName": "Last Name",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "fullname": "Fullname",
       "birthDate": "Birth Date",
       "gender": "Gender",
       "codeBI": "Code BI",
@@ -35,14 +36,16 @@
       "preferredLanguage": "Preferred Language",
       "usernameInOAuth2": "Username In O Auth 2",
       "userIdInOAuth2": "User Id In O Auth 2",
-      "extraDetails": "Extra Details",
+      "customAttributesDetailsJSON": "Custom Attributes Details JSON",
       "activationStatus": "Activation Status",
       "avatarImg": "Avatar Img",
       "typeOfPerson": "Type Of Person",
       "district": "District",
       "managerPerson": "Manager Person",
       "managedPersonsList": "Managed Persons List",
-      "organizationMembershipsList": "Organization Memberships List"
+      "organizationMembershipsList": "Organization Memberships List",
+      "suppliersList": "Suppliers List",
+      "customersList": "Customers List"
     }
   }
 }

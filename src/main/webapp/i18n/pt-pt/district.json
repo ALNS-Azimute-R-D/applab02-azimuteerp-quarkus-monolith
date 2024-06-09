@@ -22,6 +22,7 @@
       "name": "Name",
       "geoPolygonArea": "Geo Polygon Area",
       "townCity": "Town City",
+      "commonLocalitiesList": "Common Localities List",
       "personsList": "Persons List",
       "customersList": "Customers List"
     }

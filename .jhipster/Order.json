@@ -1,20 +1,16 @@
 {
   "annotations": {
-    "changelogDate": "20240603224650"
+    "changelogDate": "20240608081907"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
+  "entityTableName": "tb_order",
   "fields": [
     {
       "fieldName": "businessCode",
       "fieldType": "String",
       "fieldValidateRules": ["required", "maxlength"],
       "fieldValidateRulesMaxlength": "20"
-    },
-    {
-      "fieldName": "customerUserId",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "placedDate",
@@ -36,12 +32,14 @@
       "fieldValues": "COMPLETED,PENDING,CANCELLED"
     },
     {
-      "fieldName": "invoiceId",
-      "fieldType": "Long"
-    },
-    {
       "fieldName": "estimatedDeliveryDate",
       "fieldType": "Instant"
+    },
+    {
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
     }
   ],
   "name": "Order",
@@ -50,9 +48,26 @@
     {
       "otherEntityName": "orderItem",
       "otherEntityRelationshipName": "order",
-      "relationshipName": "ordersItemsList",
+      "relationshipName": "orderItemsList",
       "relationshipSide": "left",
       "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "description",
+      "otherEntityName": "invoice",
+      "otherEntityRelationshipName": "ordersList",
+      "relationshipName": "invoice",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "fullname",
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "ordersList",
+      "relationshipName": "customer",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
     }
   ],
   "service": "serviceImpl"

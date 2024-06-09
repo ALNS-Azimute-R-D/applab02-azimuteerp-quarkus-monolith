@@ -56,27 +56,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="representativeLastName">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.representativeLastName">Representative Last Name</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="representativeFirstName">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.representativeFirstName">Representative First Name</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="jobTitle">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.jobTitle">Job Title</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="streetAddress">
               <div class="d-flex">
                 <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.streetAddress">Street Address</span>
@@ -126,13 +105,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="webPage">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.webPage">Web Page</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="pointLocation">
               <div class="d-flex">
                 <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.pointLocation">Point Location</span>
@@ -147,31 +119,39 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="landPhoneNumber">
+            <th scope="col" jhiSortBy="phoneNumber1">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.landPhoneNumber">Land Phone Number</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.phoneNumber1">Phone Number 1</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="mobilePhoneNumber">
+            <th scope="col" jhiSortBy="phoneNumber2">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.mobilePhoneNumber">Mobile Phone Number</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.phoneNumber2">Phone Number 2</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="faxNumber">
+            <th scope="col" jhiSortBy="customAttributesDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.faxNumber">Fax Number</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.customAttributesDetailsJSON"
+                  >Custom Attributes Details JSON</span
+                >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="extraDetails">
+            <th scope="col" jhiSortBy="activationStatus">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.extraDetails">Extra Details</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.activationStatus">Activation Status</span>
 
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="representativePerson.lastname">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.representativePerson">Representative Person</span>
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
@@ -186,9 +166,6 @@
               </td>
               <td>{{ supplier.acronym }}</td>
               <td>{{ supplier.companyName }}</td>
-              <td>{{ supplier.representativeLastName }}</td>
-              <td>{{ supplier.representativeFirstName }}</td>
-              <td>{{ supplier.jobTitle }}</td>
               <td>{{ supplier.streetAddress }}</td>
               <td>{{ supplier.houseNumber }}</td>
               <td>{{ supplier.locationName }}</td>
@@ -196,7 +173,6 @@
               <td>{{ supplier.stateProvince }}</td>
               <td>{{ supplier.zipPostalCode }}</td>
               <td>{{ supplier.countryRegion }}</td>
-              <td>{{ supplier.webPage }}</td>
               <td>
                 @if (supplier.pointLocation) {
                   <a (click)="openFile(supplier.pointLocation, supplier.pointLocationContentType)" jhiTranslate="entity.action.open"
@@ -206,10 +182,19 @@
                 }
               </td>
               <td>{{ supplier.mainEmail }}</td>
-              <td>{{ supplier.landPhoneNumber }}</td>
-              <td>{{ supplier.mobilePhoneNumber }}</td>
-              <td>{{ supplier.faxNumber }}</td>
-              <td>{{ supplier.extraDetails }}</td>
+              <td>{{ supplier.phoneNumber1 }}</td>
+              <td>{{ supplier.phoneNumber2 }}</td>
+              <td>{{ supplier.customAttributesDetailsJSON }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + supplier.activationStatus }}">
+                {{ supplier.activationStatus }}
+              </td>
+              <td>
+                @if (supplier.representativePerson) {
+                  <div>
+                    <a [routerLink]="['/person', supplier.representativePerson.id, 'view']">{{ supplier.representativePerson.lastname }}</a>
+                  </div>
+                }
+              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/supplier', supplier.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

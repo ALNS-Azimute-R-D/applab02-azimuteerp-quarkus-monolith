@@ -53,6 +53,22 @@
         </div>
 
         <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.skuCode" for="field_skuCode"
+            >Sku Code</label
+          >
+          <input type="text" class="form-control" name="skuCode" id="field_skuCode" data-cy="skuCode" formControlName="skuCode" />
+          @if (editForm.get('skuCode')!.invalid && (editForm.get('skuCode')!.dirty || editForm.get('skuCode')!.touched)) {
+            <div>
+              @if (editForm.get('skuCode')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 60 }"
+                  >This field cannot be longer than 60 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
           <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.customName" for="field_customName"
             >Custom Name</label
           >
@@ -82,13 +98,26 @@
             for="field_customDescription"
             >Custom Description</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="customDescription"
             id="field_customDescription"
             data-cy="customDescription"
             formControlName="customDescription"
-          ></textarea>
+          />
+          @if (
+            editForm.get('customDescription')!.invalid &&
+            (editForm.get('customDescription')!.dirty || editForm.get('customDescription')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('customDescription')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 8192 }"
+                  >This field cannot be longer than 8192 characters.</small
+                >
+              }
+            </div>
+          }
         </div>
 
         <div class="mb-3">
@@ -129,37 +158,53 @@
         <div class="mb-3">
           <label
             class="form-label"
-            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.assetsCollectionUUID"
-            for="field_assetsCollectionUUID"
-            >Assets Collection UUID</label
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.activationStatus"
+            for="field_activationStatus"
+            >Activation Status</label
           >
-          <input
-            type="text"
+          <select
             class="form-control"
-            name="assetsCollectionUUID"
-            id="field_assetsCollectionUUID"
-            data-cy="assetsCollectionUUID"
-            formControlName="assetsCollectionUUID"
-          />
+            name="activationStatus"
+            formControlName="activationStatus"
+            id="field_activationStatus"
+            data-cy="activationStatus"
+          >
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.null' | translate }}</option>
+            @for (activationStatusEnum of activationStatusEnumValues; track $index) {
+              <option [value]="activationStatusEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + activationStatusEnum | translate }}
+              </option>
+            }
+          </select>
           @if (
-            editForm.get('assetsCollectionUUID')!.invalid &&
-            (editForm.get('assetsCollectionUUID')!.dirty || editForm.get('assetsCollectionUUID')!.touched)
+            editForm.get('activationStatus')!.invalid &&
+            (editForm.get('activationStatus')!.dirty || editForm.get('activationStatus')!.touched)
           ) {
             <div>
-              @if (editForm.get('assetsCollectionUUID')?.errors?.maxlength) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }"
-                  >This field cannot be longer than 255 characters.</small
-                >
+              @if (editForm.get('activationStatus')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>
           }
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.isEnabled" for="field_isEnabled"
-            >Is Enabled</label
+          <label jhiTranslate="azimuteErpQuarkusAngularMonolith02App.article.assetCollection" for="field_assetCollections"
+            >Asset Collection</label
           >
-          <input type="checkbox" class="form-check" name="isEnabled" id="field_isEnabled" data-cy="isEnabled" formControlName="isEnabled" />
+          <select
+            class="form-control"
+            id="field_assetCollections"
+            data-cy="assetCollection"
+            multiple
+            name="assetCollections"
+            formControlName="assetCollections"
+            [compareWith]="compareAssetCollection"
+          >
+            @for (assetCollectionOption of assetCollectionsSharedCollection; track $index) {
+              <option [ngValue]="assetCollectionOption">{{ assetCollectionOption.id }}</option>
+            }
+          </select>
         </div>
 
         <div class="mb-3">

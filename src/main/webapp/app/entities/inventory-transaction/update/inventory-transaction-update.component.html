@@ -103,16 +103,62 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.comments" for="field_comments"
-            >Comments</label
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.transactionComments"
+            for="field_transactionComments"
+            >Transaction Comments</label
           >
-          <input type="text" class="form-control" name="comments" id="field_comments" data-cy="comments" formControlName="comments" />
-          @if (editForm.get('comments')!.invalid && (editForm.get('comments')!.dirty || editForm.get('comments')!.touched)) {
+          <input
+            type="text"
+            class="form-control"
+            name="transactionComments"
+            id="field_transactionComments"
+            data-cy="transactionComments"
+            formControlName="transactionComments"
+          />
+          @if (
+            editForm.get('transactionComments')!.invalid &&
+            (editForm.get('transactionComments')!.dirty || editForm.get('transactionComments')!.touched)
+          ) {
             <div>
-              @if (editForm.get('comments')?.errors?.maxlength) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }"
-                  >This field cannot be longer than 255 characters.</small
+              @if (editForm.get('transactionComments')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 512 }"
+                  >This field cannot be longer than 512 characters.</small
                 >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.inventoryTransaction.activationStatus"
+            for="field_activationStatus"
+            >Activation Status</label
+          >
+          <select
+            class="form-control"
+            name="activationStatus"
+            formControlName="activationStatus"
+            id="field_activationStatus"
+            data-cy="activationStatus"
+          >
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.null' | translate }}</option>
+            @for (activationStatusEnum of activationStatusEnumValues; track $index) {
+              <option [value]="activationStatusEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + activationStatusEnum | translate }}
+              </option>
+            }
+          </select>
+          @if (
+            editForm.get('activationStatus')!.invalid &&
+            (editForm.get('activationStatus')!.dirty || editForm.get('activationStatus')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('activationStatus')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>
           }

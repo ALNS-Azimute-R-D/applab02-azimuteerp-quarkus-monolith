@@ -46,29 +46,6 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.customerUserId" for="field_customerUserId"
-            >Customer User Id</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name="customerUserId"
-            id="field_customerUserId"
-            data-cy="customerUserId"
-            formControlName="customerUserId"
-          />
-          @if (
-            editForm.get('customerUserId')!.invalid && (editForm.get('customerUserId')!.dirty || editForm.get('customerUserId')!.touched)
-          ) {
-            <div>
-              @if (editForm.get('customerUserId')?.errors?.required) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
-              }
-            </div>
-          }
-        </div>
-
-        <div class="mb-3">
           <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.placedDate" for="field_placedDate"
             >Placed Date</label
           >
@@ -146,13 +123,6 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.invoiceId" for="field_invoiceId"
-            >Invoice Id</label
-          >
-          <input type="number" class="form-control" name="invoiceId" id="field_invoiceId" data-cy="invoiceId" formControlName="invoiceId" />
-        </div>
-
-        <div class="mb-3">
           <label
             class="form-label"
             jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.estimatedDeliveryDate"
@@ -171,6 +141,81 @@
             />
           </div>
         </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.activationStatus" for="field_activationStatus"
+            >Activation Status</label
+          >
+          <select
+            class="form-control"
+            name="activationStatus"
+            formControlName="activationStatus"
+            id="field_activationStatus"
+            data-cy="activationStatus"
+          >
+            <option [ngValue]="null">{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.null' | translate }}</option>
+            @for (activationStatusEnum of activationStatusEnumValues; track $index) {
+              <option [value]="activationStatusEnum">
+                {{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + activationStatusEnum | translate }}
+              </option>
+            }
+          </select>
+          @if (
+            editForm.get('activationStatus')!.invalid &&
+            (editForm.get('activationStatus')!.dirty || editForm.get('activationStatus')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('activationStatus')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.invoice" for="field_invoice">Invoice</label>
+          <select
+            class="form-control"
+            id="field_invoice"
+            data-cy="invoice"
+            name="invoice"
+            formControlName="invoice"
+            [compareWith]="compareInvoice"
+          >
+            <option [ngValue]="null"></option>
+            @for (invoiceOption of invoicesSharedCollection; track $index) {
+              <option [ngValue]="invoiceOption">{{ invoiceOption.description }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.customer" for="field_customer"
+            >Customer</label
+          >
+          <select
+            class="form-control"
+            id="field_customer"
+            data-cy="customer"
+            name="customer"
+            formControlName="customer"
+            [compareWith]="compareCustomer"
+          >
+            @if (editForm.get(['customer'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (customerOption of customersSharedCollection; track $index) {
+              <option [ngValue]="customerOption">{{ customerOption.fullname }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['customer'])!.invalid && (editForm.get(['customer'])!.dirty || editForm.get(['customer'])!.touched)) {
+          <div>
+            @if (editForm.get(['customer'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
       </div>
 
       <div>

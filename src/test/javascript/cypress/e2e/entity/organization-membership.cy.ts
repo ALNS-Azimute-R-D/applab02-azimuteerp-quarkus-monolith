@@ -15,7 +15,7 @@ describe('OrganizationMembership e2e test', () => {
   const organizationMembershipPageUrlPattern = new RegExp('/organization-membership(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  // const organizationMembershipSample = {"joinedAt":"2024-06-03","activationStatus":"INVALID"};
+  // const organizationMembershipSample = {"joinedAt":"2024-06-07","activationStatus":"INVALID"};
 
   let organizationMembership;
   // let organization;
@@ -31,7 +31,7 @@ describe('OrganizationMembership e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/organizations',
-      body: {"acronym":"blah","businessCode":"drivel grumpy","hierarchicalLevel":"wise","name":"whether","description":"quaintly psst lively","businessHandlerClazz":"where shrink while","mainContactPersonDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","technicalEnvironmentsDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","commonCustomAttributesDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","organizationStatus":"IN_FAILURE","activationStatus":"PENDENT","logoImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","logoImgContentType":"unknown"},
+      body: {"acronym":"healthily stinger br","businessCode":"if administrato","hierarchicalLevel":"after angrily","name":"phooey amongst past","description":"berth","businessHandlerClazz":"off as considering","mainContactPersonDetailsJSON":"boogie","technicalEnvironmentsDetailsJSON":"aha tremendously triumphantly","customAttributesDetailsJSON":"even naughty","organizationStatus":"WORKING","activationStatus":"ACTIVE","logoImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","logoImgContentType":"unknown"},
     }).then(({ body }) => {
       organization = body;
     });
@@ -39,7 +39,7 @@ describe('OrganizationMembership e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/people',
-      body: {"firstName":"Romaine","lastName":"Schaefer","birthDate":"2024-06-03","gender":"OTHER","codeBI":"among except","codeNIF":"meaty lance","streetAddress":"now","houseNumber":"though","locationName":"harass forenenst retell","postalCode":"noxious m","mainEmail":"k@FyYl.W<","landPhoneNumber":"though","mobilePhoneNumber":"monster","occupation":"yahoo ick","preferredLanguage":"what ","usernameInOAuth2":"yahoo","userIdInOAuth2":"stealthily misname atom","extraDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","activationStatus":"ACTIVE","avatarImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","avatarImgContentType":"unknown"},
+      body: {"firstname":"above times","lastname":"villa","fullname":"even gladly phooey","birthDate":"2024-06-07","gender":"MALE","codeBI":"blah openly angrily","codeNIF":"which lightly up","streetAddress":"juvenile dramatise","houseNumber":"kiddingly yowza unco","locationName":"ack spiteful aggressive","postalCode":"prosperit","mainEmail":"#B@y.':","landPhoneNumber":"correctly","mobilePhoneNumber":"jam thud","occupation":"besides vault off","preferredLanguage":"shock","usernameInOAuth2":"by triumphantly offensively","userIdInOAuth2":"sentencing","customAttributesDetailsJSON":"famously","activationStatus":"ON_HOLD","avatarImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","avatarImgContentType":"unknown"},
     }).then(({ body }) => {
       person = body;
     });
@@ -241,9 +241,9 @@ describe('OrganizationMembership e2e test', () => {
     });
 
     it.skip('should create an instance of OrganizationMembership', () => {
-      cy.get(`[data-cy="joinedAt"]`).type('2024-06-03');
+      cy.get(`[data-cy="joinedAt"]`).type('2024-06-07');
       cy.get(`[data-cy="joinedAt"]`).blur();
-      cy.get(`[data-cy="joinedAt"]`).should('have.value', '2024-06-03');
+      cy.get(`[data-cy="joinedAt"]`).should('have.value', '2024-06-07');
 
       cy.get(`[data-cy="activationStatus"]`).select('ON_HOLD');
 

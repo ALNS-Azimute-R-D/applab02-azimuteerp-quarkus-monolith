@@ -5,8 +5,8 @@ import { IProduct } from 'app/entities/product/product.model';
 export interface IStockLevel {
   id: number;
   lastModifiedDate?: dayjs.Dayjs | null;
-  ramainingQuantity?: number | null;
-  extraDetails?: string | null;
+  remainingQuantity?: number | null;
+  commonAttributesDetailsJSON?: string | null;
   warehouse?: Pick<IWarehouse, 'id' | 'acronym'> | null;
   product?: Pick<IProduct, 'id' | 'productName'> | null;
 }

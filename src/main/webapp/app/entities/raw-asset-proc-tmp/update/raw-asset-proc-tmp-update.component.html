@@ -147,17 +147,30 @@
         <div class="mb-3">
           <label
             class="form-label"
-            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.extraDetails"
-            for="field_extraDetails"
-            >Extra Details</label
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.rawAssetProcTmp.customAttributesDetailsJSON"
+            for="field_customAttributesDetailsJSON"
+            >Custom Attributes Details JSON</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
-            name="extraDetails"
-            id="field_extraDetails"
-            data-cy="extraDetails"
-            formControlName="extraDetails"
-          ></textarea>
+            name="customAttributesDetailsJSON"
+            id="field_customAttributesDetailsJSON"
+            data-cy="customAttributesDetailsJSON"
+            formControlName="customAttributesDetailsJSON"
+          />
+          @if (
+            editForm.get('customAttributesDetailsJSON')!.invalid &&
+            (editForm.get('customAttributesDetailsJSON')!.dirty || editForm.get('customAttributesDetailsJSON')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('customAttributesDetailsJSON')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 4096 }"
+                  >This field cannot be longer than 4096 characters.</small
+                >
+              }
+            </div>
+          }
         </div>
 
         <div class="mb-3">

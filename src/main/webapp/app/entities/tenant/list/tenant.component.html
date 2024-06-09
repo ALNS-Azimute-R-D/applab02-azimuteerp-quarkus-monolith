@@ -77,35 +77,35 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="mainContactPersonDetails">
+            <th scope="col" jhiSortBy="mainContactPersonDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.mainContactPersonDetails"
-                  >Main Contact Person Details</span
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.mainContactPersonDetailsJSON"
+                  >Main Contact Person Details JSON</span
                 >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="billingDetails">
+            <th scope="col" jhiSortBy="billingDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.billingDetails">Billing Details</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.billingDetailsJSON">Billing Details JSON</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="technicalEnvironmentsDetails">
+            <th scope="col" jhiSortBy="technicalEnvironmentsDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.technicalEnvironmentsDetails"
-                  >Technical Environments Details</span
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.technicalEnvironmentsDetailsJSON"
+                  >Technical Environments Details JSON</span
                 >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="commonCustomAttributesDetails">
+            <th scope="col" jhiSortBy="customAttributesDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.commonCustomAttributesDetails"
-                  >Common Custom Attributes Details</span
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.tenant.customAttributesDetailsJSON"
+                  >Custom Attributes Details JSON</span
                 >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -139,10 +139,10 @@
               <td>{{ tenant.description }}</td>
               <td>{{ tenant.customerBusinessCode }}</td>
               <td>{{ tenant.businessHandlerClazz }}</td>
-              <td>{{ tenant.mainContactPersonDetails }}</td>
-              <td>{{ tenant.billingDetails }}</td>
-              <td>{{ tenant.technicalEnvironmentsDetails }}</td>
-              <td>{{ tenant.commonCustomAttributesDetails }}</td>
+              <td>{{ tenant.mainContactPersonDetailsJSON }}</td>
+              <td>{{ tenant.billingDetailsJSON }}</td>
+              <td>{{ tenant.technicalEnvironmentsDetailsJSON }}</td>
+              <td>{{ tenant.customAttributesDetailsJSON }}</td>
               <td>
                 @if (tenant.logoImg) {
                   <a (click)="openFile(tenant.logoImg, tenant.logoImgContentType)">

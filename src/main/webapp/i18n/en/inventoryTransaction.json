@@ -22,7 +22,8 @@
       "transactionCreatedDate": "Transaction Created Date",
       "transactionModifiedDate": "Transaction Modified Date",
       "quantity": "Quantity",
-      "comments": "Comments",
+      "transactionComments": "Transaction Comments",
+      "activationStatus": "Activation Status",
       "supplier": "Supplier",
       "product": "Product",
       "warehouse": "Warehouse"

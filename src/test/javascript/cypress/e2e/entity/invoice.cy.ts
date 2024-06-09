@@ -15,7 +15,13 @@ describe('Invoice e2e test', () => {
   const invoicePageUrlPattern = new RegExp('/invoice(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const invoiceSample = { businessCode: 'knowingly speed', description: 'toward', numberOfInstallmentsOriginal: 29767, status: 'ISSUED' };
+  const invoiceSample = {
+    businessCode: 'dearly seldom',
+    description: 'monitor',
+    numberOfInstallmentsOriginal: 12352,
+    status: 'CANCELLED',
+    activationStatus: 'INVALID',
+  };
 
   let invoice;
 
@@ -160,45 +166,44 @@ describe('Invoice e2e test', () => {
     });
 
     it('should create an instance of Invoice', () => {
-      cy.get(`[data-cy="businessCode"]`).type('paragraph what');
-      cy.get(`[data-cy="businessCode"]`).should('have.value', 'paragraph what');
+      cy.get(`[data-cy="businessCode"]`).type('taxicab overjoy');
+      cy.get(`[data-cy="businessCode"]`).should('have.value', 'taxicab overjoy');
 
-      cy.get(`[data-cy="originalOrderId"]`).type('29823');
-      cy.get(`[data-cy="originalOrderId"]`).should('have.value', '29823');
-
-      cy.get(`[data-cy="invoiceDate"]`).type('2024-06-03T18:55');
+      cy.get(`[data-cy="invoiceDate"]`).type('2024-06-07T18:32');
       cy.get(`[data-cy="invoiceDate"]`).blur();
-      cy.get(`[data-cy="invoiceDate"]`).should('have.value', '2024-06-03T18:55');
+      cy.get(`[data-cy="invoiceDate"]`).should('have.value', '2024-06-07T18:32');
 
-      cy.get(`[data-cy="dueDate"]`).type('2024-06-03T19:06');
+      cy.get(`[data-cy="dueDate"]`).type('2024-06-07T13:01');
       cy.get(`[data-cy="dueDate"]`).blur();
-      cy.get(`[data-cy="dueDate"]`).should('have.value', '2024-06-03T19:06');
+      cy.get(`[data-cy="dueDate"]`).should('have.value', '2024-06-07T13:01');
 
-      cy.get(`[data-cy="description"]`).type('turnover antagonize restfully');
-      cy.get(`[data-cy="description"]`).should('have.value', 'turnover antagonize restfully');
+      cy.get(`[data-cy="description"]`).type('yippee');
+      cy.get(`[data-cy="description"]`).should('have.value', 'yippee');
 
-      cy.get(`[data-cy="taxValue"]`).type('11056.36');
-      cy.get(`[data-cy="taxValue"]`).should('have.value', '11056.36');
+      cy.get(`[data-cy="taxValue"]`).type('7083.26');
+      cy.get(`[data-cy="taxValue"]`).should('have.value', '7083.26');
 
-      cy.get(`[data-cy="shippingValue"]`).type('2931.23');
-      cy.get(`[data-cy="shippingValue"]`).should('have.value', '2931.23');
+      cy.get(`[data-cy="shippingValue"]`).type('18737.48');
+      cy.get(`[data-cy="shippingValue"]`).should('have.value', '18737.48');
 
-      cy.get(`[data-cy="amountDueValue"]`).type('21097.23');
-      cy.get(`[data-cy="amountDueValue"]`).should('have.value', '21097.23');
+      cy.get(`[data-cy="amountDueValue"]`).type('5636.54');
+      cy.get(`[data-cy="amountDueValue"]`).should('have.value', '5636.54');
 
-      cy.get(`[data-cy="numberOfInstallmentsOriginal"]`).type('15287');
-      cy.get(`[data-cy="numberOfInstallmentsOriginal"]`).should('have.value', '15287');
+      cy.get(`[data-cy="numberOfInstallmentsOriginal"]`).type('5061');
+      cy.get(`[data-cy="numberOfInstallmentsOriginal"]`).should('have.value', '5061');
 
-      cy.get(`[data-cy="numberOfInstallmentsPaid"]`).type('15288');
-      cy.get(`[data-cy="numberOfInstallmentsPaid"]`).should('have.value', '15288');
+      cy.get(`[data-cy="numberOfInstallmentsPaid"]`).type('5738');
+      cy.get(`[data-cy="numberOfInstallmentsPaid"]`).should('have.value', '5738');
 
-      cy.get(`[data-cy="amountPaidValue"]`).type('11120.99');
-      cy.get(`[data-cy="amountPaidValue"]`).should('have.value', '11120.99');
+      cy.get(`[data-cy="amountPaidValue"]`).type('13114.29');
+      cy.get(`[data-cy="amountPaidValue"]`).should('have.value', '13114.29');
 
-      cy.get(`[data-cy="status"]`).select('CANCELLED');
+      cy.get(`[data-cy="status"]`).select('PAID_ONCE');
 
-      cy.get(`[data-cy="extraDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="extraDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).type('reassemble er knottily');
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).should('have.value', 'reassemble er knottily');
+
+      cy.get(`[data-cy="activationStatus"]`).select('INACTIVE');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

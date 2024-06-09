@@ -21,7 +21,6 @@ describe('Invoice Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             businessCode: expect.any(Object),
-            originalOrderId: expect.any(Object),
             invoiceDate: expect.any(Object),
             dueDate: expect.any(Object),
             description: expect.any(Object),
@@ -32,8 +31,9 @@ describe('Invoice Form Service', () => {
             numberOfInstallmentsPaid: expect.any(Object),
             amountPaidValue: expect.any(Object),
             status: expect.any(Object),
-            extraDetails: expect.any(Object),
-            preferrablePaymentMethod: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
+            activationStatus: expect.any(Object),
+            preferrablePaymentGateway: expect.any(Object),
           }),
         );
       });
@@ -45,7 +45,6 @@ describe('Invoice Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             businessCode: expect.any(Object),
-            originalOrderId: expect.any(Object),
             invoiceDate: expect.any(Object),
             dueDate: expect.any(Object),
             description: expect.any(Object),
@@ -56,8 +55,9 @@ describe('Invoice Form Service', () => {
             numberOfInstallmentsPaid: expect.any(Object),
             amountPaidValue: expect.any(Object),
             status: expect.any(Object),
-            extraDetails: expect.any(Object),
-            preferrablePaymentMethod: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
+            activationStatus: expect.any(Object),
+            preferrablePaymentGateway: expect.any(Object),
           }),
         );
       });

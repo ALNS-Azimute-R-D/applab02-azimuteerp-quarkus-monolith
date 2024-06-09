@@ -42,16 +42,23 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="firstName">
+            <th scope="col" jhiSortBy="firstname">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.firstName">First Name</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.firstname">Firstname</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="lastName">
+            <th scope="col" jhiSortBy="lastname">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.lastName">Last Name</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.lastname">Lastname</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fullname">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.fullname">Fullname</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -161,9 +168,11 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="extraDetails">
+            <th scope="col" jhiSortBy="customAttributesDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.extraDetails">Extra Details</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.customAttributesDetailsJSON"
+                  >Custom Attributes Details JSON</span
+                >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -194,7 +203,7 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="managerPerson.lastName">
+            <th scope="col" jhiSortBy="managerPerson.lastname">
               <div class="d-flex">
                 <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.managerPerson">Manager Person</span>
                 <fa-icon class="p-1" icon="sort"></fa-icon>
@@ -209,8 +218,9 @@
               <td>
                 <a [routerLink]="['/person', person.id, 'view']">{{ person.id }}</a>
               </td>
-              <td>{{ person.firstName }}</td>
-              <td>{{ person.lastName }}</td>
+              <td>{{ person.firstname }}</td>
+              <td>{{ person.lastname }}</td>
+              <td>{{ person.fullname }}</td>
               <td>{{ person.birthDate | formatMediumDate }}</td>
               <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.GenderEnum.' + person.gender }}">{{ person.gender }}</td>
               <td>{{ person.codeBI }}</td>
@@ -226,7 +236,7 @@
               <td>{{ person.preferredLanguage }}</td>
               <td>{{ person.usernameInOAuth2 }}</td>
               <td>{{ person.userIdInOAuth2 }}</td>
-              <td>{{ person.extraDetails }}</td>
+              <td>{{ person.customAttributesDetailsJSON }}</td>
               <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + person.activationStatus }}">
                 {{ person.activationStatus }}
               </td>
@@ -259,7 +269,7 @@
               <td>
                 @if (person.managerPerson) {
                   <div>
-                    <a [routerLink]="['/person', person.managerPerson.id, 'view']">{{ person.managerPerson.lastName }}</a>
+                    <a [routerLink]="['/person', person.managerPerson.id, 'view']">{{ person.managerPerson.lastname }}</a>
                   </div>
                 }
               </td>

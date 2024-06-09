@@ -23,7 +23,7 @@ type RawAssetProcTmpFormGroupContent = {
   fullFilenamePath: FormControl<IRawAssetProcTmp['fullFilenamePath']>;
   assetRawContentAsBlob: FormControl<IRawAssetProcTmp['assetRawContentAsBlob']>;
   assetRawContentAsBlobContentType: FormControl<IRawAssetProcTmp['assetRawContentAsBlobContentType']>;
-  extraDetails: FormControl<IRawAssetProcTmp['extraDetails']>;
+  customAttributesDetailsJSON: FormControl<IRawAssetProcTmp['customAttributesDetailsJSON']>;
   assetType: FormControl<IRawAssetProcTmp['assetType']>;
 };
 
@@ -53,7 +53,9 @@ export class RawAssetProcTmpFormService {
       }),
       assetRawContentAsBlob: new FormControl(rawAssetProcTmpRawValue.assetRawContentAsBlob),
       assetRawContentAsBlobContentType: new FormControl(rawAssetProcTmpRawValue.assetRawContentAsBlobContentType),
-      extraDetails: new FormControl(rawAssetProcTmpRawValue.extraDetails),
+      customAttributesDetailsJSON: new FormControl(rawAssetProcTmpRawValue.customAttributesDetailsJSON, {
+        validators: [Validators.maxLength(4096)],
+      }),
       assetType: new FormControl(rawAssetProcTmpRawValue.assetType, {
         validators: [Validators.required],
       }),

@@ -20,7 +20,7 @@ describe('AssetMetadata Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            metadataDetails: expect.any(Object),
+            metadataDetailsJSON: expect.any(Object),
             asset: expect.any(Object),
           }),
         );
@@ -32,7 +32,7 @@ describe('AssetMetadata Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            metadataDetails: expect.any(Object),
+            metadataDetailsJSON: expect.any(Object),
             asset: expect.any(Object),
           }),
         );

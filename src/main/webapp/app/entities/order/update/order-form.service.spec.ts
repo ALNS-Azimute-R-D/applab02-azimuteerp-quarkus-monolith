@@ -21,13 +21,14 @@ describe('Order Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             businessCode: expect.any(Object),
-            customerUserId: expect.any(Object),
             placedDate: expect.any(Object),
             totalTaxValue: expect.any(Object),
             totalDueValue: expect.any(Object),
             status: expect.any(Object),
-            invoiceId: expect.any(Object),
             estimatedDeliveryDate: expect.any(Object),
+            activationStatus: expect.any(Object),
+            invoice: expect.any(Object),
+            customer: expect.any(Object),
           }),
         );
       });
@@ -39,13 +40,14 @@ describe('Order Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             businessCode: expect.any(Object),
-            customerUserId: expect.any(Object),
             placedDate: expect.any(Object),
             totalTaxValue: expect.any(Object),
             totalDueValue: expect.any(Object),
             status: expect.any(Object),
-            invoiceId: expect.any(Object),
             estimatedDeliveryDate: expect.any(Object),
+            activationStatus: expect.any(Object),
+            invoice: expect.any(Object),
+            customer: expect.any(Object),
           }),
         );
       });

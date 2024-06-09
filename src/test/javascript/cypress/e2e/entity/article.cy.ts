@@ -15,7 +15,7 @@ describe('Article e2e test', () => {
   const articlePageUrlPattern = new RegExp('/article(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const articleSample = { inventoryProductId: 3078, itemSize: 'L' };
+  const articleSample = { inventoryProductId: 4542, itemSize: 'S', activationStatus: 'INACTIVE' };
 
   let article;
 
@@ -160,26 +160,24 @@ describe('Article e2e test', () => {
     });
 
     it('should create an instance of Article', () => {
-      cy.get(`[data-cy="inventoryProductId"]`).type('26945');
-      cy.get(`[data-cy="inventoryProductId"]`).should('have.value', '26945');
+      cy.get(`[data-cy="inventoryProductId"]`).type('9988');
+      cy.get(`[data-cy="inventoryProductId"]`).should('have.value', '9988');
 
-      cy.get(`[data-cy="customName"]`).type('venue');
-      cy.get(`[data-cy="customName"]`).should('have.value', 'venue');
+      cy.get(`[data-cy="skuCode"]`).type('ouch');
+      cy.get(`[data-cy="skuCode"]`).should('have.value', 'ouch');
 
-      cy.get(`[data-cy="customDescription"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="customDescription"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="customName"]`).type('splutter debug');
+      cy.get(`[data-cy="customName"]`).should('have.value', 'splutter debug');
 
-      cy.get(`[data-cy="priceValue"]`).type('21388.11');
-      cy.get(`[data-cy="priceValue"]`).should('have.value', '21388.11');
+      cy.get(`[data-cy="customDescription"]`).type('duh acclimatize daintily');
+      cy.get(`[data-cy="customDescription"]`).should('have.value', 'duh acclimatize daintily');
 
-      cy.get(`[data-cy="itemSize"]`).select('M');
+      cy.get(`[data-cy="priceValue"]`).type('5503.8');
+      cy.get(`[data-cy="priceValue"]`).should('have.value', '5503.8');
 
-      cy.get(`[data-cy="assetsCollectionUUID"]`).type('ouch');
-      cy.get(`[data-cy="assetsCollectionUUID"]`).should('have.value', 'ouch');
+      cy.get(`[data-cy="itemSize"]`).select('S');
 
-      cy.get(`[data-cy="isEnabled"]`).should('not.be.checked');
-      cy.get(`[data-cy="isEnabled"]`).click();
-      cy.get(`[data-cy="isEnabled"]`).should('be.checked');
+      cy.get(`[data-cy="activationStatus"]`).select('ON_HOLD');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

@@ -65,8 +65,8 @@
           ) {
             <div>
               @if (editForm.get('attributeValue')?.errors?.maxlength) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 4000 }"
-                  >This field cannot be longer than 4000 characters.</small
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 4096 }"
+                  >This field cannot be longer than 4096 characters.</small
                 >
               }
             </div>

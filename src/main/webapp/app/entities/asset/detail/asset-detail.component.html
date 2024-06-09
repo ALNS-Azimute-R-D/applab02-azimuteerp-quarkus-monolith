@@ -15,10 +15,6 @@
           <dd>
             <span>{{ asset.id }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.uid">Uid</span></dt>
-          <dd>
-            <span>{{ asset.uid }}</span>
-          </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.name">Name</span></dt>
           <dd>
             <span>{{ asset.name }}</span>
@@ -53,6 +49,12 @@
                 {{ asset.assetContentAsBlobContentType }}, {{ byteSize(asset.assetContentAsBlob) }}
               </div>
             }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.activationStatus">Activation Status</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + asset.activationStatus }}">{{
+              asset.activationStatus
+            }}</span>
           </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.asset.assetType">Asset Type</span></dt>
           <dd>

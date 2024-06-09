@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240603221850"
+    "changelogDate": "20240608075007"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "documentation": "- Tenant\\n- TypeOfOrganization\\n- Organization\\n- BusinessUnit",
@@ -38,24 +38,28 @@
       "fieldValidateRulesMaxlength": "512"
     },
     {
-      "fieldName": "mainContactPersonDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "mainContactPersonDetailsJSON",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "2048"
     },
     {
-      "fieldName": "billingDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "billingDetailsJSON",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "2048"
     },
     {
-      "fieldName": "technicalEnvironmentsDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "technicalEnvironmentsDetailsJSON",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "4096"
     },
     {
-      "fieldName": "commonCustomAttributesDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "customAttributesDetailsJSON",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "4096"
     },
     {
       "fieldName": "logoImg",

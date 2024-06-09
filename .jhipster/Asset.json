@@ -1,20 +1,16 @@
 {
   "annotations": {
-    "changelogDate": "20240603223150"
+    "changelogDate": "20240608080307"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
   "entityTableName": "tb_asset",
   "fields": [
     {
-      "fieldName": "uid",
-      "fieldType": "UUID"
-    },
-    {
       "fieldName": "name",
       "fieldType": "String",
       "fieldValidateRules": ["required", "maxlength"],
-      "fieldValidateRulesMaxlength": "255"
+      "fieldValidateRulesMaxlength": "512"
     },
     {
       "fieldName": "storageTypeUsed",
@@ -35,12 +31,18 @@
     {
       "fieldName": "preferredPurpose",
       "fieldType": "PreferredPurposeEnum",
-      "fieldValues": "USER_AVATAR,LOGO_IMG,PHOTO_ALBUM,OTHER"
+      "fieldValues": "USER_AVATAR,LOGO_IMG,PHOTO_ALBUM,ANY_OFFICE_FILE_TYPE,EXECUTABLE_PROGRAM_BINARY,OTHER"
     },
     {
       "fieldName": "assetContentAsBlob",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
     }
   ],
   "name": "Asset",
@@ -69,6 +71,13 @@
       "relationshipName": "assetMetadata",
       "relationshipSide": "right",
       "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "assetCollection",
+      "otherEntityRelationshipName": "asset",
+      "relationshipName": "assetCollection",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
     }
   ],
   "service": "serviceImpl"

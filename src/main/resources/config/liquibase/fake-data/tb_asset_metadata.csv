@@ -1,11 +1,11 @@
-id;metadata_details;asset_id
-1;../fake-data/blob/hipster.txt;1
-2;../fake-data/blob/hipster.txt;2
-3;../fake-data/blob/hipster.txt;3
-4;../fake-data/blob/hipster.txt;4
-5;../fake-data/blob/hipster.txt;5
-6;../fake-data/blob/hipster.txt;6
-7;../fake-data/blob/hipster.txt;7
-8;../fake-data/blob/hipster.txt;8
-9;../fake-data/blob/hipster.txt;9
-10;../fake-data/blob/hipster.txt;10
+id;metadata_details_json;asset_id
+1;incomplete;1
+2;till likewise blah;2
+3;next;3
+4;drat;4
+5;wool timeout;5
+6;how against backup;6
+7;blah;7
+8;hourly psst inside;8
+9;growing;9
+10;radio gosh leopard;10

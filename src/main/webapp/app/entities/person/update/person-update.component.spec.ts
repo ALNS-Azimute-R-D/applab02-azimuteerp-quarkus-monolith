@@ -76,10 +76,10 @@ describe('Person Management Update Component', () => {
 
     it('Should call District query and add missing value', () => {
       const person: IPerson = { id: 456 };
-      const district: IDistrict = { id: 20121 };
+      const district: IDistrict = { id: 1447 };
       person.district = district;
 
-      const districtCollection: IDistrict[] = [{ id: 23607 }];
+      const districtCollection: IDistrict[] = [{ id: 14680 }];
       jest.spyOn(districtService, 'query').mockReturnValue(of(new HttpResponse({ body: districtCollection })));
       const additionalDistricts = [district];
       const expectedCollection: IDistrict[] = [...additionalDistricts, ...districtCollection];
@@ -98,10 +98,10 @@ describe('Person Management Update Component', () => {
 
     it('Should call Person query and add missing value', () => {
       const person: IPerson = { id: 456 };
-      const managerPerson: IPerson = { id: 16345 };
+      const managerPerson: IPerson = { id: 7972 };
       person.managerPerson = managerPerson;
 
-      const personCollection: IPerson[] = [{ id: 27792 }];
+      const personCollection: IPerson[] = [{ id: 17204 }];
       jest.spyOn(personService, 'query').mockReturnValue(of(new HttpResponse({ body: personCollection })));
       const additionalPeople = [managerPerson];
       const expectedCollection: IPerson[] = [...additionalPeople, ...personCollection];
@@ -122,9 +122,9 @@ describe('Person Management Update Component', () => {
       const person: IPerson = { id: 456 };
       const typeOfPerson: ITypeOfPerson = { id: 27292 };
       person.typeOfPerson = typeOfPerson;
-      const district: IDistrict = { id: 26074 };
+      const district: IDistrict = { id: 8674 };
       person.district = district;
-      const managerPerson: IPerson = { id: 11 };
+      const managerPerson: IPerson = { id: 23917 };
       person.managerPerson = managerPerson;
 
       activatedRoute.data = of({ person });

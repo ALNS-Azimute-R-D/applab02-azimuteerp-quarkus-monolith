@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Customer.
+    -->
+    <changeSet id="20240608081507-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="buyer_person_id"
+                                 baseTableName="tb_customer"
+                                 constraintName="fk_tb_customer__buyer_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tb_person"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="customer_type_id"
+                                 baseTableName="tb_customer"
+                                 constraintName="fk_tb_customer__customer_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tb_type_customer"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="district_id"
+                                 baseTableName="tb_customer"
+                                 constraintName="fk_tb_customer__district_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tb_district"
+                                 />
+    </changeSet>
+</databaseChangeLog>

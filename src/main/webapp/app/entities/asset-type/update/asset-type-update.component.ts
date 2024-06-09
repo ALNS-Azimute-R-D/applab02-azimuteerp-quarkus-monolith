@@ -7,11 +7,8 @@ import { finalize } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
-import { AssetTypeService } from '../service/asset-type.service';
 import { IAssetType } from '../asset-type.model';
+import { AssetTypeService } from '../service/asset-type.service';
 import { AssetTypeFormService, AssetTypeFormGroup } from './asset-type-form.service';
 
 @Component({
@@ -24,8 +21,6 @@ export class AssetTypeUpdateComponent implements OnInit {
   isSaving = false;
   assetType: IAssetType | null = null;
 
-  protected dataUtils = inject(DataUtils);
-  protected eventManager = inject(EventManager);
   protected assetTypeService = inject(AssetTypeService);
   protected assetTypeFormService = inject(AssetTypeFormService);
   protected activatedRoute = inject(ActivatedRoute);
@@ -39,23 +34,6 @@ export class AssetTypeUpdateComponent implements OnInit {
       if (assetType) {
         this.updateForm(assetType);
       }
-    });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    this.dataUtils.openFile(base64String, contentType);
-  }
-
-  setFileData(event: Event, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
-      error: (err: FileLoadError) =>
-        this.eventManager.broadcast(
-          new EventWithContent<AlertError>('azimuteErpQuarkusAngularMonolith02App.error', { ...err, key: 'error.file.' + err.key }),
-        ),
     });
   }
 

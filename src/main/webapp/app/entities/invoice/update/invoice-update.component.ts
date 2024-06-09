@@ -7,12 +7,10 @@ import { finalize, map } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
-import { IPaymentMethod } from 'app/entities/payment-method/payment-method.model';
-import { PaymentMethodService } from 'app/entities/payment-method/service/payment-method.service';
+import { IPaymentGateway } from 'app/entities/payment-gateway/payment-gateway.model';
+import { PaymentGatewayService } from 'app/entities/payment-gateway/service/payment-gateway.service';
 import { InvoiceStatusEnum } from 'app/entities/enumerations/invoice-status-enum.model';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 import { InvoiceService } from '../service/invoice.service';
 import { IInvoice } from '../invoice.model';
 import { InvoiceFormService, InvoiceFormGroup } from './invoice-form.service';
@@ -27,21 +25,20 @@ export class InvoiceUpdateComponent implements OnInit {
   isSaving = false;
   invoice: IInvoice | null = null;
   invoiceStatusEnumValues = Object.keys(InvoiceStatusEnum);
+  activationStatusEnumValues = Object.keys(ActivationStatusEnum);
 
-  paymentMethodsSharedCollection: IPaymentMethod[] = [];
+  paymentGatewaysSharedCollection: IPaymentGateway[] = [];
 
-  protected dataUtils = inject(DataUtils);
-  protected eventManager = inject(EventManager);
   protected invoiceService = inject(InvoiceService);
   protected invoiceFormService = inject(InvoiceFormService);
-  protected paymentMethodService = inject(PaymentMethodService);
+  protected paymentGatewayService = inject(PaymentGatewayService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: InvoiceFormGroup = this.invoiceFormService.createInvoiceFormGroup();
 
-  comparePaymentMethod = (o1: IPaymentMethod | null, o2: IPaymentMethod | null): boolean =>
-    this.paymentMethodService.comparePaymentMethod(o1, o2);
+  comparePaymentGateway = (o1: IPaymentGateway | null, o2: IPaymentGateway | null): boolean =>
+    this.paymentGatewayService.comparePaymentGateway(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ invoice }) => {
@@ -51,23 +48,6 @@ export class InvoiceUpdateComponent implements OnInit {
       }
 
       this.loadRelationshipsOptions();
-    });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    this.dataUtils.openFile(base64String, contentType);
-  }
-
-  setFileData(event: Event, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
-      error: (err: FileLoadError) =>
-        this.eventManager.broadcast(
-          new EventWithContent<AlertError>('azimuteErpQuarkusAngularMonolith02App.error', { ...err, key: 'error.file.' + err.key }),
-        ),
     });
   }
 
@@ -108,24 +88,24 @@ export class InvoiceUpdateComponent implements OnInit {
     this.invoice = invoice;
     this.invoiceFormService.resetForm(this.editForm, invoice);
 
-    this.paymentMethodsSharedCollection = this.paymentMethodService.addPaymentMethodToCollectionIfMissing<IPaymentMethod>(
-      this.paymentMethodsSharedCollection,
-      invoice.preferrablePaymentMethod,
+    this.paymentGatewaysSharedCollection = this.paymentGatewayService.addPaymentGatewayToCollectionIfMissing<IPaymentGateway>(
+      this.paymentGatewaysSharedCollection,
+      invoice.preferrablePaymentGateway,
     );
   }
 
   protected loadRelationshipsOptions(): void {
-    this.paymentMethodService
+    this.paymentGatewayService
       .query()
-      .pipe(map((res: HttpResponse<IPaymentMethod[]>) => res.body ?? []))
+      .pipe(map((res: HttpResponse<IPaymentGateway[]>) => res.body ?? []))
       .pipe(
-        map((paymentMethods: IPaymentMethod[]) =>
-          this.paymentMethodService.addPaymentMethodToCollectionIfMissing<IPaymentMethod>(
-            paymentMethods,
-            this.invoice?.preferrablePaymentMethod,
+        map((paymentGateways: IPaymentGateway[]) =>
+          this.paymentGatewayService.addPaymentGatewayToCollectionIfMissing<IPaymentGateway>(
+            paymentGateways,
+            this.invoice?.preferrablePaymentGateway,
           ),
         ),
       )
-      .subscribe((paymentMethods: IPaymentMethod[]) => (this.paymentMethodsSharedCollection = paymentMethods));
+      .subscribe((paymentGateways: IPaymentGateway[]) => (this.paymentGatewaysSharedCollection = paymentGateways));
   }
 }

@@ -43,7 +43,7 @@ export class TypeOfPersonFormService {
         validators: [Validators.required, Validators.maxLength(5)],
       }),
       description: new FormControl(typeOfPersonRawValue.description, {
-        validators: [Validators.required, Validators.maxLength(40)],
+        validators: [Validators.required, Validators.maxLength(80)],
       }),
     });
   }

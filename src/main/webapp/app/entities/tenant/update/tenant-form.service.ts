@@ -23,10 +23,10 @@ type TenantFormGroupContent = {
   description: FormControl<ITenant['description']>;
   customerBusinessCode: FormControl<ITenant['customerBusinessCode']>;
   businessHandlerClazz: FormControl<ITenant['businessHandlerClazz']>;
-  mainContactPersonDetails: FormControl<ITenant['mainContactPersonDetails']>;
-  billingDetails: FormControl<ITenant['billingDetails']>;
-  technicalEnvironmentsDetails: FormControl<ITenant['technicalEnvironmentsDetails']>;
-  commonCustomAttributesDetails: FormControl<ITenant['commonCustomAttributesDetails']>;
+  mainContactPersonDetailsJSON: FormControl<ITenant['mainContactPersonDetailsJSON']>;
+  billingDetailsJSON: FormControl<ITenant['billingDetailsJSON']>;
+  technicalEnvironmentsDetailsJSON: FormControl<ITenant['technicalEnvironmentsDetailsJSON']>;
+  customAttributesDetailsJSON: FormControl<ITenant['customAttributesDetailsJSON']>;
   logoImg: FormControl<ITenant['logoImg']>;
   logoImgContentType: FormControl<ITenant['logoImgContentType']>;
   activationStatus: FormControl<ITenant['activationStatus']>;
@@ -64,10 +64,18 @@ export class TenantFormService {
       businessHandlerClazz: new FormControl(tenantRawValue.businessHandlerClazz, {
         validators: [Validators.maxLength(512)],
       }),
-      mainContactPersonDetails: new FormControl(tenantRawValue.mainContactPersonDetails),
-      billingDetails: new FormControl(tenantRawValue.billingDetails),
-      technicalEnvironmentsDetails: new FormControl(tenantRawValue.technicalEnvironmentsDetails),
-      commonCustomAttributesDetails: new FormControl(tenantRawValue.commonCustomAttributesDetails),
+      mainContactPersonDetailsJSON: new FormControl(tenantRawValue.mainContactPersonDetailsJSON, {
+        validators: [Validators.maxLength(2048)],
+      }),
+      billingDetailsJSON: new FormControl(tenantRawValue.billingDetailsJSON, {
+        validators: [Validators.maxLength(2048)],
+      }),
+      technicalEnvironmentsDetailsJSON: new FormControl(tenantRawValue.technicalEnvironmentsDetailsJSON, {
+        validators: [Validators.maxLength(4096)],
+      }),
+      customAttributesDetailsJSON: new FormControl(tenantRawValue.customAttributesDetailsJSON, {
+        validators: [Validators.maxLength(4096)],
+      }),
       logoImg: new FormControl(tenantRawValue.logoImg),
       logoImgContentType: new FormControl(tenantRawValue.logoImgContentType),
       activationStatus: new FormControl(tenantRawValue.activationStatus, {

@@ -1,11 +1,11 @@
-id;name;status_raw_processing;full_filename_path;asset_raw_content_as_blob;asset_raw_content_as_blob_content_type;extra_details;asset_type_id
-1;kindheartedly;UPLOADING;near deeply episode;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;1
-2;onto granular sympathetic;PROCESSING;phooey;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;2
-3;out;DONE;supposing;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;3
-4;nature unripe antennae;UPLOADING;duh yum yippee;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;4
-5;canine;FAILURE;gee mmm likewise;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;5
-6;although;UPLOADING;oversee pish consequently;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;6
-7;boldly;PROCESSING;curiously;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;7
-8;yahoo;DONE;skive;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;8
-9;likewise;UPLOADED;sweetly;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;9
-10;from during silk;PROCESSING;fetter an;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.txt;10
+id;name;status_raw_processing;full_filename_path;asset_raw_content_as_blob;asset_raw_content_as_blob_content_type;custom_attributes_details_json;asset_type_id
+1;kindheartedly;UPLOADING;near deeply episode;../fake-data/blob/hipster.png;image/png;onto granular sympathetic;1
+2;concerning gear;UPLOADED;misbehave nervously;../fake-data/blob/hipster.png;image/png;considering;2
+3;far during furiously;UPLOADING;worth;../fake-data/blob/hipster.png;image/png;onto mallet;3
+4;only;WAITING_FOR_PROCESSING;likewise as barring;../fake-data/blob/hipster.png;image/png;cleft;4
+5;circa and;UPLOADED;between;../fake-data/blob/hipster.png;image/png;ego;5
+6;intensely where regarding;PROCESSING;rebel picturize;../fake-data/blob/hipster.png;image/png;excitable;6
+7;um hold;PROCESSING;track forget on;../fake-data/blob/hipster.png;image/png;kitten wildly darken;7
+8;dozen phone;UPLOADING;old hanker;../fake-data/blob/hipster.png;image/png;primate;8
+9;usable;FAILURE;safely flog;../fake-data/blob/hipster.png;image/png;vague;9
+10;during creative;UPLOADING;whoever;../fake-data/blob/hipster.png;image/png;clearly pocket-watch gosh;10

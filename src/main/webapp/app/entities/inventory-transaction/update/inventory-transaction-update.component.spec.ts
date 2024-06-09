@@ -58,10 +58,10 @@ describe('InventoryTransaction Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Supplier query and add missing value', () => {
       const inventoryTransaction: IInventoryTransaction = { id: 456 };
-      const supplier: ISupplier = { id: 1636 };
+      const supplier: ISupplier = { id: 9231 };
       inventoryTransaction.supplier = supplier;
 
-      const supplierCollection: ISupplier[] = [{ id: 12462 }];
+      const supplierCollection: ISupplier[] = [{ id: 13391 }];
       jest.spyOn(supplierService, 'query').mockReturnValue(of(new HttpResponse({ body: supplierCollection })));
       const additionalSuppliers = [supplier];
       const expectedCollection: ISupplier[] = [...additionalSuppliers, ...supplierCollection];
@@ -80,10 +80,10 @@ describe('InventoryTransaction Management Update Component', () => {
 
     it('Should call Product query and add missing value', () => {
       const inventoryTransaction: IInventoryTransaction = { id: 456 };
-      const product: IProduct = { id: 26123 };
+      const product: IProduct = { id: 31967 };
       inventoryTransaction.product = product;
 
-      const productCollection: IProduct[] = [{ id: 447 }];
+      const productCollection: IProduct[] = [{ id: 21678 }];
       jest.spyOn(productService, 'query').mockReturnValue(of(new HttpResponse({ body: productCollection })));
       const additionalProducts = [product];
       const expectedCollection: IProduct[] = [...additionalProducts, ...productCollection];
@@ -102,10 +102,10 @@ describe('InventoryTransaction Management Update Component', () => {
 
     it('Should call Warehouse query and add missing value', () => {
       const inventoryTransaction: IInventoryTransaction = { id: 456 };
-      const warehouse: IWarehouse = { id: 24461 };
+      const warehouse: IWarehouse = { id: 9805 };
       inventoryTransaction.warehouse = warehouse;
 
-      const warehouseCollection: IWarehouse[] = [{ id: 5465 }];
+      const warehouseCollection: IWarehouse[] = [{ id: 22535 }];
       jest.spyOn(warehouseService, 'query').mockReturnValue(of(new HttpResponse({ body: warehouseCollection })));
       const additionalWarehouses = [warehouse];
       const expectedCollection: IWarehouse[] = [...additionalWarehouses, ...warehouseCollection];
@@ -124,11 +124,11 @@ describe('InventoryTransaction Management Update Component', () => {
 
     it('Should update editForm', () => {
       const inventoryTransaction: IInventoryTransaction = { id: 456 };
-      const supplier: ISupplier = { id: 23262 };
+      const supplier: ISupplier = { id: 7658 };
       inventoryTransaction.supplier = supplier;
-      const product: IProduct = { id: 7337 };
+      const product: IProduct = { id: 16991 };
       inventoryTransaction.product = product;
-      const warehouse: IWarehouse = { id: 29749 };
+      const warehouse: IWarehouse = { id: 30813 };
       inventoryTransaction.warehouse = warehouse;
 
       activatedRoute.data = of({ inventoryTransaction });

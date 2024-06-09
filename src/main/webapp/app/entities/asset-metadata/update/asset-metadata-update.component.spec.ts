@@ -50,10 +50,10 @@ describe('AssetMetadata Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call asset query and add missing value', () => {
       const assetMetadata: IAssetMetadata = { id: 456 };
-      const asset: IAsset = { id: 4235 };
+      const asset: IAsset = { id: 26515 };
       assetMetadata.asset = asset;
 
-      const assetCollection: IAsset[] = [{ id: 7880 }];
+      const assetCollection: IAsset[] = [{ id: 4516 }];
       jest.spyOn(assetService, 'query').mockReturnValue(of(new HttpResponse({ body: assetCollection })));
       const expectedCollection: IAsset[] = [asset, ...assetCollection];
       jest.spyOn(assetService, 'addAssetToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -68,7 +68,7 @@ describe('AssetMetadata Management Update Component', () => {
 
     it('Should update editForm', () => {
       const assetMetadata: IAssetMetadata = { id: 456 };
-      const asset: IAsset = { id: 3120 };
+      const asset: IAsset = { id: 11249 };
       assetMetadata.asset = asset;
 
       activatedRoute.data = of({ assetMetadata });

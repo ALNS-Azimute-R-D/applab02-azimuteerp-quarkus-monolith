@@ -15,13 +15,17 @@
           <dd>
             <span>{{ person.id }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.firstName">First Name</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.firstname">Firstname</span></dt>
           <dd>
-            <span>{{ person.firstName }}</span>
+            <span>{{ person.firstname }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.lastName">Last Name</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.lastname">Lastname</span></dt>
           <dd>
-            <span>{{ person.lastName }}</span>
+            <span>{{ person.lastname }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.fullname">Fullname</span></dt>
+          <dd>
+            <span>{{ person.fullname }}</span>
           </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.birthDate">Birth Date</span></dt>
           <dd>
@@ -83,9 +87,13 @@
           <dd>
             <span>{{ person.userIdInOAuth2 }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.extraDetails">Extra Details</span></dt>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.customAttributesDetailsJSON"
+              >Custom Attributes Details JSON</span
+            >
+          </dt>
           <dd>
-            <span>{{ person.extraDetails }}</span>
+            <span>{{ person.customAttributesDetailsJSON }}</span>
           </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.activationStatus">Activation Status</span></dt>
           <dd>
@@ -124,7 +132,7 @@
           <dd>
             @if (person.managerPerson) {
               <div>
-                <a [routerLink]="['/person', person.managerPerson.id, 'view']">{{ person.managerPerson.lastName }}</a>
+                <a [routerLink]="['/person', person.managerPerson.id, 'view']">{{ person.managerPerson.lastname }}</a>
               </div>
             }
           </dd>

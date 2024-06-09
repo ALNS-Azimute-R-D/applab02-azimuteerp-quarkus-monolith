@@ -31,7 +31,8 @@ type WarehouseFormGroupContent = {
   landPhoneNumber: FormControl<IWarehouse['landPhoneNumber']>;
   mobilePhoneNumber: FormControl<IWarehouse['mobilePhoneNumber']>;
   faxNumber: FormControl<IWarehouse['faxNumber']>;
-  extraDetails: FormControl<IWarehouse['extraDetails']>;
+  customAttributesDetailsJSON: FormControl<IWarehouse['customAttributesDetailsJSON']>;
+  activationStatus: FormControl<IWarehouse['activationStatus']>;
 };
 
 export type WarehouseFormGroup = FormGroup<WarehouseFormGroupContent>;
@@ -57,7 +58,9 @@ export class WarehouseFormService {
       name: new FormControl(warehouseRawValue.name, {
         validators: [Validators.required, Validators.minLength(2), Validators.maxLength(120)],
       }),
-      description: new FormControl(warehouseRawValue.description),
+      description: new FormControl(warehouseRawValue.description, {
+        validators: [Validators.maxLength(1024)],
+      }),
       streetAddress: new FormControl(warehouseRawValue.streetAddress, {
         validators: [Validators.required, Validators.maxLength(120)],
       }),
@@ -84,7 +87,12 @@ export class WarehouseFormService {
       faxNumber: new FormControl(warehouseRawValue.faxNumber, {
         validators: [Validators.maxLength(15)],
       }),
-      extraDetails: new FormControl(warehouseRawValue.extraDetails),
+      customAttributesDetailsJSON: new FormControl(warehouseRawValue.customAttributesDetailsJSON, {
+        validators: [Validators.maxLength(2048)],
+      }),
+      activationStatus: new FormControl(warehouseRawValue.activationStatus, {
+        validators: [Validators.required],
+      }),
     });
   }
 

@@ -20,9 +20,6 @@
       "id": "ID",
       "acronym": "Acronym",
       "companyName": "Company Name",
-      "representativeLastName": "Representative Last Name",
-      "representativeFirstName": "Representative First Name",
-      "jobTitle": "Job Title",
       "streetAddress": "Street Address",
       "houseNumber": "House Number",
       "locationName": "Location Name",
@@ -30,15 +27,15 @@
       "stateProvince": "State Province",
       "zipPostalCode": "Zip Postal Code",
       "countryRegion": "Country Region",
-      "webPage": "Web Page",
       "pointLocation": "Point Location",
       "mainEmail": "Main Email",
-      "landPhoneNumber": "Land Phone Number",
-      "mobilePhoneNumber": "Mobile Phone Number",
-      "faxNumber": "Fax Number",
-      "extraDetails": "Extra Details",
-      "productsList": "Products List",
-      "inventoryTransactionsList": "Inventory Transactions List"
+      "phoneNumber1": "Phone Number 1",
+      "phoneNumber2": "Phone Number 2",
+      "customAttributesDetailsJSON": "Custom Attributes Details JSON",
+      "activationStatus": "Activation Status",
+      "representativePerson": "Representative Person",
+      "inventoryTransactionsList": "Inventory Transactions List",
+      "toProduct": "To Product"
     }
   }
 }

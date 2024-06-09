@@ -49,59 +49,39 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="name">
+            <th scope="col" jhiSortBy="fullname">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.name">Name</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.fullname">Fullname</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="description">
+            <th scope="col" jhiSortBy="customAttributesDetailsJSON">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.description">Description</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.customAttributesDetailsJSON"
+                  >Custom Attributes Details JSON</span
+                >
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="email">
+            <th scope="col" jhiSortBy="customerStatus">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.email">Email</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.customerStatus">Customer Status</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="addressDetails">
+            <th scope="col" jhiSortBy="activationStatus">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.addressDetails">Address Details</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.activationStatus">Activation Status</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="zipCode">
+            <th scope="col" jhiSortBy="buyerPerson.lastname">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.zipCode">Zip Code</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="keycloakGroupDetails">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.keycloakGroupDetails">Keycloak Group Details</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="status">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.status">Status</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="active">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.active">Active</span>
-
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.customer.buyerPerson">Buyer Person</span>
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
@@ -127,16 +107,21 @@
                 <a [routerLink]="['/customer', customer.id, 'view']">{{ customer.id }}</a>
               </td>
               <td>{{ customer.customerBusinessCode }}</td>
-              <td>{{ customer.name }}</td>
-              <td>{{ customer.description }}</td>
-              <td>{{ customer.email }}</td>
-              <td>{{ customer.addressDetails }}</td>
-              <td>{{ customer.zipCode }}</td>
-              <td>{{ customer.keycloakGroupDetails }}</td>
-              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.CustomerStatusEnum.' + customer.status }}">
-                {{ customer.status }}
+              <td>{{ customer.fullname }}</td>
+              <td>{{ customer.customAttributesDetailsJSON }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.CustomerStatusEnum.' + customer.customerStatus }}">
+                {{ customer.customerStatus }}
               </td>
-              <td>{{ customer.active }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + customer.activationStatus }}">
+                {{ customer.activationStatus }}
+              </td>
+              <td>
+                @if (customer.buyerPerson) {
+                  <div>
+                    <a [routerLink]="['/person', customer.buyerPerson.id, 'view']">{{ customer.buyerPerson.lastname }}</a>
+                  </div>
+                }
+              </td>
               <td>
                 @if (customer.customerType) {
                   <div>

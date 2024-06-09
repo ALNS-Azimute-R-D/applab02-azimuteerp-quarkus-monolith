@@ -30,7 +30,8 @@
       "landPhoneNumber": "Land Phone Number",
       "mobilePhoneNumber": "Mobile Phone Number",
       "faxNumber": "Fax Number",
-      "extraDetails": "Extra Details",
+      "customAttributesDetailsJSON": "Custom Attributes Details JSON",
+      "activationStatus": "Activation Status",
       "inventoryTransactionsList": "Inventory Transactions List",
       "stockLevelsList": "Stock Levels List"
     }

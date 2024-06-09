@@ -1,15 +1,16 @@
 {
   "annotations": {
-    "changelogDate": "20240603223250"
+    "changelogDate": "20240608080407"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
   "entityTableName": "tb_asset_metadata",
   "fields": [
     {
-      "fieldName": "metadataDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "metadataDetailsJSON",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "8192"
     }
   ],
   "name": "AssetMetadata",

@@ -64,17 +64,23 @@
             for="field_description"
             >Description</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
             name="description"
             id="field_description"
             data-cy="description"
             formControlName="description"
-          ></textarea>
+          />
           @if (editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)) {
             <div>
               @if (editForm.get('description')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('description')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 128 }"
+                  >This field cannot be longer than 128 characters.</small
+                >
               }
             </div>
           }

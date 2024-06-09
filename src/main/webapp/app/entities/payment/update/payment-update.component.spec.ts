@@ -6,8 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, Subject, from } from 'rxjs';
 
-import { IPaymentMethod } from 'app/entities/payment-method/payment-method.model';
-import { PaymentMethodService } from 'app/entities/payment-method/service/payment-method.service';
+import { IPaymentGateway } from 'app/entities/payment-gateway/payment-gateway.model';
+import { PaymentGatewayService } from 'app/entities/payment-gateway/service/payment-gateway.service';
 import { PaymentService } from '../service/payment.service';
 import { IPayment } from '../payment.model';
 import { PaymentFormService } from './payment-form.service';
@@ -20,7 +20,7 @@ describe('Payment Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let paymentFormService: PaymentFormService;
   let paymentService: PaymentService;
-  let paymentMethodService: PaymentMethodService;
+  let paymentGatewayService: PaymentGatewayService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -42,43 +42,43 @@ describe('Payment Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     paymentFormService = TestBed.inject(PaymentFormService);
     paymentService = TestBed.inject(PaymentService);
-    paymentMethodService = TestBed.inject(PaymentMethodService);
+    paymentGatewayService = TestBed.inject(PaymentGatewayService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
-    it('Should call PaymentMethod query and add missing value', () => {
+    it('Should call PaymentGateway query and add missing value', () => {
       const payment: IPayment = { id: 456 };
-      const paymentMethod: IPaymentMethod = { id: 18801 };
-      payment.paymentMethod = paymentMethod;
+      const paymentGateway: IPaymentGateway = { id: 29478 };
+      payment.paymentGateway = paymentGateway;
 
-      const paymentMethodCollection: IPaymentMethod[] = [{ id: 28017 }];
-      jest.spyOn(paymentMethodService, 'query').mockReturnValue(of(new HttpResponse({ body: paymentMethodCollection })));
-      const additionalPaymentMethods = [paymentMethod];
-      const expectedCollection: IPaymentMethod[] = [...additionalPaymentMethods, ...paymentMethodCollection];
-      jest.spyOn(paymentMethodService, 'addPaymentMethodToCollectionIfMissing').mockReturnValue(expectedCollection);
+      const paymentGatewayCollection: IPaymentGateway[] = [{ id: 25089 }];
+      jest.spyOn(paymentGatewayService, 'query').mockReturnValue(of(new HttpResponse({ body: paymentGatewayCollection })));
+      const additionalPaymentGateways = [paymentGateway];
+      const expectedCollection: IPaymentGateway[] = [...additionalPaymentGateways, ...paymentGatewayCollection];
+      jest.spyOn(paymentGatewayService, 'addPaymentGatewayToCollectionIfMissing').mockReturnValue(expectedCollection);
 
       activatedRoute.data = of({ payment });
       comp.ngOnInit();
 
-      expect(paymentMethodService.query).toHaveBeenCalled();
-      expect(paymentMethodService.addPaymentMethodToCollectionIfMissing).toHaveBeenCalledWith(
-        paymentMethodCollection,
-        ...additionalPaymentMethods.map(expect.objectContaining),
+      expect(paymentGatewayService.query).toHaveBeenCalled();
+      expect(paymentGatewayService.addPaymentGatewayToCollectionIfMissing).toHaveBeenCalledWith(
+        paymentGatewayCollection,
+        ...additionalPaymentGateways.map(expect.objectContaining),
       );
-      expect(comp.paymentMethodsSharedCollection).toEqual(expectedCollection);
+      expect(comp.paymentGatewaysSharedCollection).toEqual(expectedCollection);
     });
 
     it('Should update editForm', () => {
       const payment: IPayment = { id: 456 };
-      const paymentMethod: IPaymentMethod = { id: 15647 };
-      payment.paymentMethod = paymentMethod;
+      const paymentGateway: IPaymentGateway = { id: 30826 };
+      payment.paymentGateway = paymentGateway;
 
       activatedRoute.data = of({ payment });
       comp.ngOnInit();
 
-      expect(comp.paymentMethodsSharedCollection).toContain(paymentMethod);
+      expect(comp.paymentGatewaysSharedCollection).toContain(paymentGateway);
       expect(comp.payment).toEqual(payment);
     });
   });
@@ -152,13 +152,13 @@ describe('Payment Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
-    describe('comparePaymentMethod', () => {
-      it('Should forward to paymentMethodService', () => {
+    describe('comparePaymentGateway', () => {
+      it('Should forward to paymentGatewayService', () => {
         const entity = { id: 123 };
         const entity2 = { id: 456 };
-        jest.spyOn(paymentMethodService, 'comparePaymentMethod');
-        comp.comparePaymentMethod(entity, entity2);
-        expect(paymentMethodService.comparePaymentMethod).toHaveBeenCalledWith(entity, entity2);
+        jest.spyOn(paymentGatewayService, 'comparePaymentGateway');
+        comp.comparePaymentGateway(entity, entity2);
+        expect(paymentGatewayService.comparePaymentGateway).toHaveBeenCalledWith(entity, entity2);
       });
     });
   });

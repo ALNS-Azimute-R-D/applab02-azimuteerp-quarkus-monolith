@@ -12,6 +12,9 @@ import { EventManager, EventWithContent } from 'app/core/util/event-manager.serv
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { IBrand } from 'app/entities/brand/brand.model';
 import { BrandService } from 'app/entities/brand/service/brand.service';
+import { ISupplier } from 'app/entities/supplier/supplier.model';
+import { SupplierService } from 'app/entities/supplier/service/supplier.service';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 import { ProductService } from '../service/product.service';
 import { IProduct } from '../product.model';
 import { ProductFormService, ProductFormGroup } from './product-form.service';
@@ -25,20 +28,25 @@ import { ProductFormService, ProductFormGroup } from './product-form.service';
 export class ProductUpdateComponent implements OnInit {
   isSaving = false;
   product: IProduct | null = null;
+  activationStatusEnumValues = Object.keys(ActivationStatusEnum);
 
   brandsSharedCollection: IBrand[] = [];
+  suppliersSharedCollection: ISupplier[] = [];
 
   protected dataUtils = inject(DataUtils);
   protected eventManager = inject(EventManager);
   protected productService = inject(ProductService);
   protected productFormService = inject(ProductFormService);
   protected brandService = inject(BrandService);
+  protected supplierService = inject(SupplierService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: ProductFormGroup = this.productFormService.createProductFormGroup();
 
   compareBrand = (o1: IBrand | null, o2: IBrand | null): boolean => this.brandService.compareBrand(o1, o2);
+
+  compareSupplier = (o1: ISupplier | null, o2: ISupplier | null): boolean => this.supplierService.compareSupplier(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ product }) => {
@@ -106,6 +114,10 @@ export class ProductUpdateComponent implements OnInit {
     this.productFormService.resetForm(this.editForm, product);
 
     this.brandsSharedCollection = this.brandService.addBrandToCollectionIfMissing<IBrand>(this.brandsSharedCollection, product.brand);
+    this.suppliersSharedCollection = this.supplierService.addSupplierToCollectionIfMissing<ISupplier>(
+      this.suppliersSharedCollection,
+      ...(product.toSuppliers ?? []),
+    );
   }
 
   protected loadRelationshipsOptions(): void {
@@ -114,5 +126,15 @@ export class ProductUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<IBrand[]>) => res.body ?? []))
       .pipe(map((brands: IBrand[]) => this.brandService.addBrandToCollectionIfMissing<IBrand>(brands, this.product?.brand)))
       .subscribe((brands: IBrand[]) => (this.brandsSharedCollection = brands));
+
+    this.supplierService
+      .query()
+      .pipe(map((res: HttpResponse<ISupplier[]>) => res.body ?? []))
+      .pipe(
+        map((suppliers: ISupplier[]) =>
+          this.supplierService.addSupplierToCollectionIfMissing<ISupplier>(suppliers, ...(this.product?.toSuppliers ?? [])),
+        ),
+      )
+      .subscribe((suppliers: ISupplier[]) => (this.suppliersSharedCollection = suppliers));
   }
 }

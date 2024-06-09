@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240603224250"
+    "changelogDate": "20240608081507"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "documentation": "- Category\\n- Article\\n- Order\\n- OrderItem",
@@ -14,56 +14,43 @@
       "fieldValidateRulesMaxlength": "15"
     },
     {
-      "fieldName": "name",
+      "fieldName": "fullname",
       "fieldType": "String",
       "fieldValidateRules": ["required", "minlength", "maxlength"],
       "fieldValidateRulesMaxlength": "80",
       "fieldValidateRulesMinlength": "2"
     },
     {
-      "fieldName": "description",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
-    },
-    {
-      "fieldName": "email",
-      "fieldType": "String",
-      "fieldValidateRules": ["unique", "required", "pattern"],
-      "fieldValidateRulesPattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
-    },
-    {
-      "fieldName": "addressDetails",
+      "fieldName": "customAttributesDetailsJSON",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "255"
+      "fieldValidateRulesMaxlength": "2048"
     },
     {
-      "fieldName": "zipCode",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "8"
-    },
-    {
-      "fieldName": "keycloakGroupDetails",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength"],
-      "fieldValidateRulesMaxlength": "1024"
-    },
-    {
-      "fieldName": "status",
+      "fieldName": "customerStatus",
       "fieldType": "CustomerStatusEnum",
       "fieldValidateRules": ["required"],
       "fieldValues": "UNDER_EVALUATION,ONBOARDING,READY_TO_START,WORKING,PENDENT,IN_FAILURE"
     },
     {
-      "fieldName": "active",
-      "fieldType": "Boolean",
-      "fieldValidateRules": ["required"]
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
     }
   ],
   "name": "Customer",
   "pagination": "pagination",
   "relationships": [
+    {
+      "otherEntityField": "lastname",
+      "otherEntityName": "person",
+      "otherEntityRelationshipName": "customersList",
+      "relationshipName": "buyerPerson",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
     {
       "otherEntityField": "name",
       "otherEntityName": "customerType",
@@ -79,6 +66,13 @@
       "relationshipName": "district",
       "relationshipSide": "left",
       "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "order",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "ordersList",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
     }
   ],
   "service": "serviceImpl"

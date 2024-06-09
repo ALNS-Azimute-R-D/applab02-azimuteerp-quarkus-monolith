@@ -7,21 +7,25 @@ export const sampleWithRequiredData: IBrand = {
 };
 
 export const sampleWithPartialData: IBrand = {
-  id: 8867,
-  acronym: 'like manor across',
-  name: 'bronze downright',
+  id: 30686,
+  acronym: 'go finished',
+  name: 'progenitor of',
+  logoBrand: '../fake-data/blob/hipster.png',
+  logoBrandContentType: 'unknown',
 };
 
 export const sampleWithFullData: IBrand = {
-  id: 19285,
-  acronym: 'smart',
-  name: 'vague squirrel',
-  description: '../fake-data/blob/hipster.txt',
+  id: 27906,
+  acronym: 'once pure vague',
+  name: 'outside inside abnormally',
+  description: 'obscure',
+  logoBrand: '../fake-data/blob/hipster.png',
+  logoBrandContentType: 'unknown',
 };
 
 export const sampleWithNewData: NewBrand = {
-  acronym: 'inside abnormally st',
-  name: 'phooey snivel',
+  acronym: 'below regularise',
+  name: 'inhibition unless though',
   id: null,
 };
 

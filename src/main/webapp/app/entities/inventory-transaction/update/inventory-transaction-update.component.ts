@@ -13,6 +13,7 @@ import { IProduct } from 'app/entities/product/product.model';
 import { ProductService } from 'app/entities/product/service/product.service';
 import { IWarehouse } from 'app/entities/warehouse/warehouse.model';
 import { WarehouseService } from 'app/entities/warehouse/service/warehouse.service';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 import { InventoryTransactionService } from '../service/inventory-transaction.service';
 import { IInventoryTransaction } from '../inventory-transaction.model';
 import { InventoryTransactionFormService, InventoryTransactionFormGroup } from './inventory-transaction-form.service';
@@ -26,6 +27,7 @@ import { InventoryTransactionFormService, InventoryTransactionFormGroup } from '
 export class InventoryTransactionUpdateComponent implements OnInit {
   isSaving = false;
   inventoryTransaction: IInventoryTransaction | null = null;
+  activationStatusEnumValues = Object.keys(ActivationStatusEnum);
 
   suppliersSharedCollection: ISupplier[] = [];
   productsSharedCollection: IProduct[] = [];

@@ -6,10 +6,12 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, Subject, from } from 'rxjs';
 
+import { IAssetCollection } from 'app/entities/asset-collection/asset-collection.model';
+import { AssetCollectionService } from 'app/entities/asset-collection/service/asset-collection.service';
 import { ICategory } from 'app/entities/category/category.model';
 import { CategoryService } from 'app/entities/category/service/category.service';
-import { ArticleService } from '../service/article.service';
 import { IArticle } from '../article.model';
+import { ArticleService } from '../service/article.service';
 import { ArticleFormService } from './article-form.service';
 
 import { ArticleUpdateComponent } from './article-update.component';
@@ -20,6 +22,7 @@ describe('Article Management Update Component', () => {
   let activatedRoute: ActivatedRoute;
   let articleFormService: ArticleFormService;
   let articleService: ArticleService;
+  let assetCollectionService: AssetCollectionService;
   let categoryService: CategoryService;
 
   beforeEach(() => {
@@ -42,12 +45,35 @@ describe('Article Management Update Component', () => {
     activatedRoute = TestBed.inject(ActivatedRoute);
     articleFormService = TestBed.inject(ArticleFormService);
     articleService = TestBed.inject(ArticleService);
+    assetCollectionService = TestBed.inject(AssetCollectionService);
     categoryService = TestBed.inject(CategoryService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
+    it('Should call AssetCollection query and add missing value', () => {
+      const article: IArticle = { id: 456 };
+      const assetCollections: IAssetCollection[] = [{ id: 31377 }];
+      article.assetCollections = assetCollections;
+
+      const assetCollectionCollection: IAssetCollection[] = [{ id: 16758 }];
+      jest.spyOn(assetCollectionService, 'query').mockReturnValue(of(new HttpResponse({ body: assetCollectionCollection })));
+      const additionalAssetCollections = [...assetCollections];
+      const expectedCollection: IAssetCollection[] = [...additionalAssetCollections, ...assetCollectionCollection];
+      jest.spyOn(assetCollectionService, 'addAssetCollectionToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ article });
+      comp.ngOnInit();
+
+      expect(assetCollectionService.query).toHaveBeenCalled();
+      expect(assetCollectionService.addAssetCollectionToCollectionIfMissing).toHaveBeenCalledWith(
+        assetCollectionCollection,
+        ...additionalAssetCollections.map(expect.objectContaining),
+      );
+      expect(comp.assetCollectionsSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should call Category query and add missing value', () => {
       const article: IArticle = { id: 456 };
       const mainCategory: ICategory = { id: 16665 };
@@ -72,12 +98,15 @@ describe('Article Management Update Component', () => {
 
     it('Should update editForm', () => {
       const article: IArticle = { id: 456 };
+      const assetCollection: IAssetCollection = { id: 27252 };
+      article.assetCollections = [assetCollection];
       const mainCategory: ICategory = { id: 26473 };
       article.mainCategory = mainCategory;
 
       activatedRoute.data = of({ article });
       comp.ngOnInit();
 
+      expect(comp.assetCollectionsSharedCollection).toContain(assetCollection);
       expect(comp.categoriesSharedCollection).toContain(mainCategory);
       expect(comp.article).toEqual(article);
     });
@@ -152,6 +181,16 @@ describe('Article Management Update Component', () => {
   });
 
   describe('Compare relationships', () => {
+    describe('compareAssetCollection', () => {
+      it('Should forward to assetCollectionService', () => {
+        const entity = { id: 123 };
+        const entity2 = { id: 456 };
+        jest.spyOn(assetCollectionService, 'compareAssetCollection');
+        comp.compareAssetCollection(entity, entity2);
+        expect(assetCollectionService.compareAssetCollection).toHaveBeenCalledWith(entity, entity2);
+      });
+    });
+
     describe('compareCategory', () => {
       it('Should forward to categoryService', () => {
         const entity = { id: 123 };

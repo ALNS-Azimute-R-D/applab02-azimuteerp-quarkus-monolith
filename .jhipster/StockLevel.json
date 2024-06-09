@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240603224150"
+    "changelogDate": "20240608081407"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
@@ -12,14 +12,15 @@
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "ramainingQuantity",
+      "fieldName": "remainingQuantity",
       "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "extraDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "commonAttributesDetailsJSON",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "2048"
     }
   ],
   "name": "StockLevel",

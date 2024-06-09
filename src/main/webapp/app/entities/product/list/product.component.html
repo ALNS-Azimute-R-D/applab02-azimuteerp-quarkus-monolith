@@ -126,9 +126,9 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="supplierIds">
+            <th scope="col" jhiSortBy="activationStatus">
               <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.supplierIds">Supplier Ids</span>
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.activationStatus">Activation Status</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -165,7 +165,9 @@
                   <span>{{ product.attachmentsContentType }}, {{ byteSize(product.attachments) }}</span>
                 }
               </td>
-              <td>{{ product.supplierIds }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + product.activationStatus }}">
+                {{ product.activationStatus }}
+              </td>
               <td>
                 @if (product.brand) {
                   <div>

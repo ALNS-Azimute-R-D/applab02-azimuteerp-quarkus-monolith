@@ -32,7 +32,8 @@ describe('Warehouse Form Service', () => {
             landPhoneNumber: expect.any(Object),
             mobilePhoneNumber: expect.any(Object),
             faxNumber: expect.any(Object),
-            extraDetails: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
+            activationStatus: expect.any(Object),
           }),
         );
       });
@@ -55,7 +56,8 @@ describe('Warehouse Form Service', () => {
             landPhoneNumber: expect.any(Object),
             mobilePhoneNumber: expect.any(Object),
             faxNumber: expect.any(Object),
-            extraDetails: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
+            activationStatus: expect.any(Object),
           }),
         );
       });

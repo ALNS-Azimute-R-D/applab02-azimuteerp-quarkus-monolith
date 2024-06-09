@@ -1,11 +1,11 @@
 import dayjs from 'dayjs/esm';
-import { IPaymentMethod } from 'app/entities/payment-method/payment-method.model';
+import { IPaymentGateway } from 'app/entities/payment-gateway/payment-gateway.model';
 import { InvoiceStatusEnum } from 'app/entities/enumerations/invoice-status-enum.model';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 
 export interface IInvoice {
   id: number;
   businessCode?: string | null;
-  originalOrderId?: number | null;
   invoiceDate?: dayjs.Dayjs | null;
   dueDate?: dayjs.Dayjs | null;
   description?: string | null;
@@ -16,8 +16,9 @@ export interface IInvoice {
   numberOfInstallmentsPaid?: number | null;
   amountPaidValue?: number | null;
   status?: keyof typeof InvoiceStatusEnum | null;
-  extraDetails?: string | null;
-  preferrablePaymentMethod?: Pick<IPaymentMethod, 'id' | 'code'> | null;
+  customAttributesDetailsJSON?: string | null;
+  activationStatus?: keyof typeof ActivationStatusEnum | null;
+  preferrablePaymentGateway?: Pick<IPaymentGateway, 'id' | 'aliasCode'> | null;
 }
 
 export type NewInvoice = Omit<IInvoice, 'id'> & { id: null };

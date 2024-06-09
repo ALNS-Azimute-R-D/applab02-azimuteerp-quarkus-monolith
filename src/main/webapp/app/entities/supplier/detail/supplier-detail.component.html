@@ -25,22 +25,6 @@
           <dd>
             <span>{{ supplier.companyName }}</span>
           </dd>
-          <dt>
-            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.representativeLastName">Representative Last Name</span>
-          </dt>
-          <dd>
-            <span>{{ supplier.representativeLastName }}</span>
-          </dd>
-          <dt>
-            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.representativeFirstName">Representative First Name</span>
-          </dt>
-          <dd>
-            <span>{{ supplier.representativeFirstName }}</span>
-          </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.jobTitle">Job Title</span></dt>
-          <dd>
-            <span>{{ supplier.jobTitle }}</span>
-          </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.streetAddress">Street Address</span></dt>
           <dd>
             <span>{{ supplier.streetAddress }}</span>
@@ -69,10 +53,6 @@
           <dd>
             <span>{{ supplier.countryRegion }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.webPage">Web Page</span></dt>
-          <dd>
-            <span>{{ supplier.webPage }}</span>
-          </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.pointLocation">Point Location</span></dt>
           <dd>
             @if (supplier.pointLocation) {
@@ -86,29 +66,34 @@
           <dd>
             <span>{{ supplier.mainEmail }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.landPhoneNumber">Land Phone Number</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.phoneNumber1">Phone Number 1</span></dt>
           <dd>
-            <span>{{ supplier.landPhoneNumber }}</span>
+            <span>{{ supplier.phoneNumber1 }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.mobilePhoneNumber">Mobile Phone Number</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.phoneNumber2">Phone Number 2</span></dt>
           <dd>
-            <span>{{ supplier.mobilePhoneNumber }}</span>
+            <span>{{ supplier.phoneNumber2 }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.faxNumber">Fax Number</span></dt>
+          <dt>
+            <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.customAttributesDetailsJSON"
+              >Custom Attributes Details JSON</span
+            >
+          </dt>
           <dd>
-            <span>{{ supplier.faxNumber }}</span>
+            <span>{{ supplier.customAttributesDetailsJSON }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.extraDetails">Extra Details</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.activationStatus">Activation Status</span></dt>
           <dd>
-            <span>{{ supplier.extraDetails }}</span>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + supplier.activationStatus }}">{{
+              supplier.activationStatus
+            }}</span>
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.productsList">Products List</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.supplier.representativePerson">Representative Person</span></dt>
           <dd>
-            @for (productsList of supplier.productsLists; track $index; let last = $last) {
-              <span>
-                <a [routerLink]="['/product', productsList.id, 'view']">{{ productsList.id }}</a
-                >{{ last ? '' : ', ' }}
-              </span>
+            @if (supplier.representativePerson) {
+              <div>
+                <a [routerLink]="['/person', supplier.representativePerson.id, 'view']">{{ supplier.representativePerson.lastname }}</a>
+              </div>
             }
           </dd>
         </dl>

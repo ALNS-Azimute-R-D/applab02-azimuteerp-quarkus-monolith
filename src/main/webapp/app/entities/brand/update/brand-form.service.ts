@@ -21,6 +21,8 @@ type BrandFormGroupContent = {
   acronym: FormControl<IBrand['acronym']>;
   name: FormControl<IBrand['name']>;
   description: FormControl<IBrand['description']>;
+  logoBrand: FormControl<IBrand['logoBrand']>;
+  logoBrandContentType: FormControl<IBrand['logoBrandContentType']>;
 };
 
 export type BrandFormGroup = FormGroup<BrandFormGroupContent>;
@@ -46,7 +48,11 @@ export class BrandFormService {
       name: new FormControl(brandRawValue.name, {
         validators: [Validators.required, Validators.minLength(2), Validators.maxLength(120)],
       }),
-      description: new FormControl(brandRawValue.description),
+      description: new FormControl(brandRawValue.description, {
+        validators: [Validators.maxLength(512)],
+      }),
+      logoBrand: new FormControl(brandRawValue.logoBrand),
+      logoBrandContentType: new FormControl(brandRawValue.logoBrandContentType),
     });
   }
 

@@ -50,10 +50,10 @@ describe('BusinessUnit Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Organization query and add missing value', () => {
       const businessUnit: IBusinessUnit = { id: 456 };
-      const organization: IOrganization = { id: 6787 };
+      const organization: IOrganization = { id: 29368 };
       businessUnit.organization = organization;
 
-      const organizationCollection: IOrganization[] = [{ id: 12110 }];
+      const organizationCollection: IOrganization[] = [{ id: 29917 }];
       jest.spyOn(organizationService, 'query').mockReturnValue(of(new HttpResponse({ body: organizationCollection })));
       const additionalOrganizations = [organization];
       const expectedCollection: IOrganization[] = [...additionalOrganizations, ...organizationCollection];
@@ -94,7 +94,7 @@ describe('BusinessUnit Management Update Component', () => {
 
     it('Should update editForm', () => {
       const businessUnit: IBusinessUnit = { id: 456 };
-      const organization: IOrganization = { id: 18876 };
+      const organization: IOrganization = { id: 10439 };
       businessUnit.organization = organization;
       const businessUnitParent: IBusinessUnit = { id: 18802 };
       businessUnit.businessUnitParent = businessUnitParent;

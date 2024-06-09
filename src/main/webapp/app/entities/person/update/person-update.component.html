@@ -20,16 +20,16 @@
         }
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.firstName" for="field_firstName"
-            >First Name</label
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.firstname" for="field_firstname"
+            >Firstname</label
           >
-          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
-          @if (editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)) {
+          <input type="text" class="form-control" name="firstname" id="field_firstname" data-cy="firstname" formControlName="firstname" />
+          @if (editForm.get('firstname')!.invalid && (editForm.get('firstname')!.dirty || editForm.get('firstname')!.touched)) {
             <div>
-              @if (editForm.get('firstName')?.errors?.required) {
+              @if (editForm.get('firstname')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
-              @if (editForm.get('firstName')?.errors?.maxlength) {
+              @if (editForm.get('firstname')?.errors?.maxlength) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }"
                   >This field cannot be longer than 50 characters.</small
                 >
@@ -39,18 +39,34 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.lastName" for="field_lastName"
-            >Last Name</label
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.lastname" for="field_lastname"
+            >Lastname</label
           >
-          <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
-          @if (editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)) {
+          <input type="text" class="form-control" name="lastname" id="field_lastname" data-cy="lastname" formControlName="lastname" />
+          @if (editForm.get('lastname')!.invalid && (editForm.get('lastname')!.dirty || editForm.get('lastname')!.touched)) {
             <div>
-              @if (editForm.get('lastName')?.errors?.required) {
+              @if (editForm.get('lastname')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
-              @if (editForm.get('lastName')?.errors?.maxlength) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 80 }"
-                  >This field cannot be longer than 80 characters.</small
+              @if (editForm.get('lastname')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 50 }"
+                  >This field cannot be longer than 50 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.fullname" for="field_fullname"
+            >Fullname</label
+          >
+          <input type="text" class="form-control" name="fullname" id="field_fullname" data-cy="fullname" formControlName="fullname" />
+          @if (editForm.get('fullname')!.invalid && (editForm.get('fullname')!.dirty || editForm.get('fullname')!.touched)) {
+            <div>
+              @if (editForm.get('fullname')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }"
+                  >This field cannot be longer than 100 characters.</small
                 >
               }
             </div>
@@ -411,16 +427,32 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.extraDetails" for="field_extraDetails"
-            >Extra Details</label
+          <label
+            class="form-label"
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.person.customAttributesDetailsJSON"
+            for="field_customAttributesDetailsJSON"
+            >Custom Attributes Details JSON</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
-            name="extraDetails"
-            id="field_extraDetails"
-            data-cy="extraDetails"
-            formControlName="extraDetails"
-          ></textarea>
+            name="customAttributesDetailsJSON"
+            id="field_customAttributesDetailsJSON"
+            data-cy="customAttributesDetailsJSON"
+            formControlName="customAttributesDetailsJSON"
+          />
+          @if (
+            editForm.get('customAttributesDetailsJSON')!.invalid &&
+            (editForm.get('customAttributesDetailsJSON')!.dirty || editForm.get('customAttributesDetailsJSON')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('customAttributesDetailsJSON')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 2048 }"
+                  >This field cannot be longer than 2048 characters.</small
+                >
+              }
+            </div>
+          }
         </div>
 
         <div class="mb-3">
@@ -564,7 +596,7 @@
           >
             <option [ngValue]="null"></option>
             @for (personOption of peopleSharedCollection; track $index) {
-              <option [ngValue]="personOption">{{ personOption.lastName }}</option>
+              <option [ngValue]="personOption">{{ personOption.lastname }}</option>
             }
           </select>
         </div>

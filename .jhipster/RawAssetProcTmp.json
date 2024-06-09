@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240603223050"
+    "changelogDate": "20240608080207"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "dto": "mapstruct",
@@ -29,9 +29,10 @@
       "fieldTypeBlobContent": "any"
     },
     {
-      "fieldName": "extraDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "customAttributesDetailsJSON",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "4096"
     }
   ],
   "name": "RawAssetProcTmp",

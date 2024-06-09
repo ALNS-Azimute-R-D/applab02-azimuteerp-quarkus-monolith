@@ -15,7 +15,7 @@ describe('District e2e test', () => {
   const districtPageUrlPattern = new RegExp('/district(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  // const districtSample = {"acronym":"temporar","name":"oily"};
+  // const districtSample = {"acronym":"amidst","name":"annually hmph shoddy"};
 
   let district;
   // let townCity;
@@ -49,6 +49,11 @@ describe('District e2e test', () => {
     cy.intercept('GET', '/api/town-cities', {
       statusCode: 200,
       body: [townCity],
+    });
+
+    cy.intercept('GET', '/api/common-localities', {
+      statusCode: 200,
+      body: [],
     });
 
     cy.intercept('GET', '/api/people', {
@@ -223,11 +228,11 @@ describe('District e2e test', () => {
     });
 
     it.skip('should create an instance of District', () => {
-      cy.get(`[data-cy="acronym"]`).type('selfishl');
-      cy.get(`[data-cy="acronym"]`).should('have.value', 'selfishl');
+      cy.get(`[data-cy="acronym"]`).type('noisily');
+      cy.get(`[data-cy="acronym"]`).should('have.value', 'noisily');
 
-      cy.get(`[data-cy="name"]`).type('um aha');
-      cy.get(`[data-cy="name"]`).should('have.value', 'um aha');
+      cy.get(`[data-cy="name"]`).type('likewise');
+      cy.get(`[data-cy="name"]`).should('have.value', 'likewise');
 
       cy.setFieldImageAsBytesOfEntity('geoPolygonArea', 'integration-test.png', 'image/png');
 

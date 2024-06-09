@@ -23,6 +23,7 @@ describe('Brand Form Service', () => {
             acronym: expect.any(Object),
             name: expect.any(Object),
             description: expect.any(Object),
+            logoBrand: expect.any(Object),
           }),
         );
       });
@@ -36,6 +37,7 @@ describe('Brand Form Service', () => {
             acronym: expect.any(Object),
             name: expect.any(Object),
             description: expect.any(Object),
+            logoBrand: expect.any(Object),
           }),
         );
       });

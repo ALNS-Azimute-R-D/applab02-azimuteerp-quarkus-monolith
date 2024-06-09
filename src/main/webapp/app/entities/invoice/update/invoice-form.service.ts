@@ -33,7 +33,6 @@ type InvoiceFormDefaults = Pick<NewInvoice, 'id' | 'invoiceDate' | 'dueDate'>;
 type InvoiceFormGroupContent = {
   id: FormControl<InvoiceFormRawValue['id'] | NewInvoice['id']>;
   businessCode: FormControl<InvoiceFormRawValue['businessCode']>;
-  originalOrderId: FormControl<InvoiceFormRawValue['originalOrderId']>;
   invoiceDate: FormControl<InvoiceFormRawValue['invoiceDate']>;
   dueDate: FormControl<InvoiceFormRawValue['dueDate']>;
   description: FormControl<InvoiceFormRawValue['description']>;
@@ -44,8 +43,9 @@ type InvoiceFormGroupContent = {
   numberOfInstallmentsPaid: FormControl<InvoiceFormRawValue['numberOfInstallmentsPaid']>;
   amountPaidValue: FormControl<InvoiceFormRawValue['amountPaidValue']>;
   status: FormControl<InvoiceFormRawValue['status']>;
-  extraDetails: FormControl<InvoiceFormRawValue['extraDetails']>;
-  preferrablePaymentMethod: FormControl<InvoiceFormRawValue['preferrablePaymentMethod']>;
+  customAttributesDetailsJSON: FormControl<InvoiceFormRawValue['customAttributesDetailsJSON']>;
+  activationStatus: FormControl<InvoiceFormRawValue['activationStatus']>;
+  preferrablePaymentGateway: FormControl<InvoiceFormRawValue['preferrablePaymentGateway']>;
 };
 
 export type InvoiceFormGroup = FormGroup<InvoiceFormGroupContent>;
@@ -68,7 +68,6 @@ export class InvoiceFormService {
       businessCode: new FormControl(invoiceRawValue.businessCode, {
         validators: [Validators.required, Validators.maxLength(15)],
       }),
-      originalOrderId: new FormControl(invoiceRawValue.originalOrderId),
       invoiceDate: new FormControl(invoiceRawValue.invoiceDate),
       dueDate: new FormControl(invoiceRawValue.dueDate),
       description: new FormControl(invoiceRawValue.description, {
@@ -85,8 +84,13 @@ export class InvoiceFormService {
       status: new FormControl(invoiceRawValue.status, {
         validators: [Validators.required],
       }),
-      extraDetails: new FormControl(invoiceRawValue.extraDetails),
-      preferrablePaymentMethod: new FormControl(invoiceRawValue.preferrablePaymentMethod),
+      customAttributesDetailsJSON: new FormControl(invoiceRawValue.customAttributesDetailsJSON, {
+        validators: [Validators.maxLength(4096)],
+      }),
+      activationStatus: new FormControl(invoiceRawValue.activationStatus, {
+        validators: [Validators.required],
+      }),
+      preferrablePaymentGateway: new FormControl(invoiceRawValue.preferrablePaymentGateway),
     });
   }
 

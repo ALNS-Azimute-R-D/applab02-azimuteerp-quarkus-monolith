@@ -19,16 +19,14 @@
       },
       "id": "ID",
       "customerBusinessCode": "Customer Business Code",
-      "name": "Name",
-      "description": "Description",
-      "email": "Email",
-      "addressDetails": "Address Details",
-      "zipCode": "Zip Code",
-      "keycloakGroupDetails": "Keycloak Group Details",
-      "status": "Status",
-      "active": "Active",
+      "fullname": "Fullname",
+      "customAttributesDetailsJSON": "Custom Attributes Details JSON",
+      "customerStatus": "Customer Status",
+      "activationStatus": "Activation Status",
+      "buyerPerson": "Buyer Person",
       "customerType": "Customer Type",
-      "district": "District"
+      "district": "District",
+      "ordersList": "Orders List"
     }
   }
 }

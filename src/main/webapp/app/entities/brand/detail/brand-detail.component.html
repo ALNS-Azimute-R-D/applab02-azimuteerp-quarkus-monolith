@@ -27,6 +27,17 @@
           <dd>
             <span>{{ brand.description }}</span>
           </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.brand.logoBrand">Logo Brand</span></dt>
+          <dd>
+            @if (brand.logoBrand) {
+              <div>
+                <a (click)="openFile(brand.logoBrand, brand.logoBrandContentType)">
+                  <img [src]="'data:' + brand.logoBrandContentType + ';base64,' + brand.logoBrand" style="max-width: 100%" alt="brand" />
+                </a>
+                {{ brand.logoBrandContentType }}, {{ byteSize(brand.logoBrand) }}
+              </div>
+            }
+          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

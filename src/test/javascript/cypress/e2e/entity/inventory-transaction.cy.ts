@@ -15,7 +15,7 @@ describe('InventoryTransaction e2e test', () => {
   const inventoryTransactionPageUrlPattern = new RegExp('/inventory-transaction(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  // const inventoryTransactionSample = {"invoiceId":22541,"quantity":26069};
+  // const inventoryTransactionSample = {"invoiceId":10021,"quantity":30416,"activationStatus":"BLOCKED"};
 
   let inventoryTransaction;
   // let supplier;
@@ -32,7 +32,7 @@ describe('InventoryTransaction e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/suppliers',
-      body: {"acronym":"to dwell","companyName":"gah uh-huh basic","representativeLastName":"diphthongize and","representativeFirstName":"hollow psychology mysteriously","jobTitle":"Forward Functionality Architect","streetAddress":"never","houseNumber":"rear","locationName":"smear quarrel","city":"Port Alexandra","stateProvince":"till security","zipPostalCode":"rosemary accide","countryRegion":"upliftingly","webPage":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","pointLocation":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","pointLocationContentType":"unknown","mainEmail":"RK5@Nd8{3.}hgFi'","landPhoneNumber":"blah above","mobilePhoneNumber":"pricey favorite","faxNumber":"brr blissfully ","extraDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ="},
+      body: {"acronym":"brr","companyName":"a though","streetAddress":"origin segment","houseNumber":"wetly whoever incomp","locationName":"lean excepting","city":"San Marcos","stateProvince":"including after enchanted","zipPostalCode":"rim because","countryRegion":"briskly sluice","pointLocation":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","pointLocationContentType":"unknown","mainEmail":"H@\"\\G.^7","phoneNumber1":"save hollow psy","phoneNumber2":"whenever anneal","customAttributesDetailsJSON":"under classmate till","activationStatus":"INVALID"},
     }).then(({ body }) => {
       supplier = body;
     });
@@ -40,7 +40,7 @@ describe('InventoryTransaction e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/products',
-      body: {"productSKU":"sorrowful","productName":"attractive gosh supposing","description":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","standardCost":29506.45,"listPrice":19479.99,"reorderLevel":17680,"targetLevel":1476,"quantityPerUnit":"picturize duh","discontinued":false,"minimumReorderQuantity":25989,"suggestedCategory":"across musculature","attachments":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","attachmentsContentType":"unknown","supplierIds":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ="},
+      body: {"productSKU":"mmm with however","productName":"in colorfully annual","description":"psst yet hurdle","standardCost":31316.13,"listPrice":19833.79,"reorderLevel":25230,"targetLevel":20657,"quantityPerUnit":"a cluttered sympathetically","discontinued":false,"minimumReorderQuantity":22182,"suggestedCategory":"times um","attachments":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","attachmentsContentType":"unknown","activationStatus":"ON_HOLD"},
     }).then(({ body }) => {
       product = body;
     });
@@ -48,7 +48,7 @@ describe('InventoryTransaction e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/warehouses',
-      body: {"acronym":"accomplished guitar","name":"temptation","description":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","streetAddress":"lunchmeat bludgeon","houseNumber":"inch","locationName":"hmph upload a","postalCode":"scissors ","pointLocation":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","pointLocationContentType":"unknown","mainEmail":"S@K&j}.iTEPXw","landPhoneNumber":"lazily um polit","mobilePhoneNumber":"tart","faxNumber":"clearly whoever","extraDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ="},
+      body: {"acronym":"klap militarize","name":"plume wisely lie","description":"fooey","streetAddress":"revoke bully impressionable","houseNumber":"why","locationName":"brazen difficult strap","postalCode":"gah joint","pointLocation":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","pointLocationContentType":"unknown","mainEmail":"~@N$H.g","landPhoneNumber":"who","mobilePhoneNumber":"creep prune","faxNumber":"times foolish s","customAttributesDetailsJSON":"minimize devoice fortunately","activationStatus":"BLOCKED"},
     }).then(({ body }) => {
       warehouse = body;
     });
@@ -259,22 +259,24 @@ describe('InventoryTransaction e2e test', () => {
     });
 
     it.skip('should create an instance of InventoryTransaction', () => {
-      cy.get(`[data-cy="invoiceId"]`).type('11670');
-      cy.get(`[data-cy="invoiceId"]`).should('have.value', '11670');
+      cy.get(`[data-cy="invoiceId"]`).type('7631');
+      cy.get(`[data-cy="invoiceId"]`).should('have.value', '7631');
 
-      cy.get(`[data-cy="transactionCreatedDate"]`).type('2024-06-03T19:27');
+      cy.get(`[data-cy="transactionCreatedDate"]`).type('2024-06-07T12:03');
       cy.get(`[data-cy="transactionCreatedDate"]`).blur();
-      cy.get(`[data-cy="transactionCreatedDate"]`).should('have.value', '2024-06-03T19:27');
+      cy.get(`[data-cy="transactionCreatedDate"]`).should('have.value', '2024-06-07T12:03');
 
-      cy.get(`[data-cy="transactionModifiedDate"]`).type('2024-06-03T21:14');
+      cy.get(`[data-cy="transactionModifiedDate"]`).type('2024-06-08T06:32');
       cy.get(`[data-cy="transactionModifiedDate"]`).blur();
-      cy.get(`[data-cy="transactionModifiedDate"]`).should('have.value', '2024-06-03T21:14');
+      cy.get(`[data-cy="transactionModifiedDate"]`).should('have.value', '2024-06-08T06:32');
 
-      cy.get(`[data-cy="quantity"]`).type('12001');
-      cy.get(`[data-cy="quantity"]`).should('have.value', '12001');
+      cy.get(`[data-cy="quantity"]`).type('11670');
+      cy.get(`[data-cy="quantity"]`).should('have.value', '11670');
 
-      cy.get(`[data-cy="comments"]`).type('whoever');
-      cy.get(`[data-cy="comments"]`).should('have.value', 'whoever');
+      cy.get(`[data-cy="transactionComments"]`).type('unexpectedly');
+      cy.get(`[data-cy="transactionComments"]`).should('have.value', 'unexpectedly');
+
+      cy.get(`[data-cy="activationStatus"]`).select('PENDENT');
 
       cy.get(`[data-cy="supplier"]`).select(1);
       cy.get(`[data-cy="product"]`).select(1);

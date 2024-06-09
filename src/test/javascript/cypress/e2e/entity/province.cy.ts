@@ -30,9 +30,9 @@ describe('Province e2e test', () => {
       method: 'POST',
       url: '/api/countries',
       body: {
-        acronym: 'res',
-        name: 'towards quickly',
-        continent: 'EUROPE',
+        acronym: 'abo',
+        name: 'waiting close',
+        continent: 'OCEANIA',
         geoPolygonArea: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=',
         geoPolygonAreaContentType: 'unknown',
       },

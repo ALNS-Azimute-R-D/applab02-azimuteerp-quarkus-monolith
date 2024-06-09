@@ -7,10 +7,10 @@ export interface ITenant {
   description?: string | null;
   customerBusinessCode?: string | null;
   businessHandlerClazz?: string | null;
-  mainContactPersonDetails?: string | null;
-  billingDetails?: string | null;
-  technicalEnvironmentsDetails?: string | null;
-  commonCustomAttributesDetails?: string | null;
+  mainContactPersonDetailsJSON?: string | null;
+  billingDetailsJSON?: string | null;
+  technicalEnvironmentsDetailsJSON?: string | null;
+  customAttributesDetailsJSON?: string | null;
   logoImg?: string | null;
   logoImgContentType?: string | null;
   activationStatus?: keyof typeof ActivationStatusEnum | null;

@@ -22,7 +22,7 @@
       "statusRawProcessing": "Status Raw Processing",
       "fullFilenamePath": "Full Filename Path",
       "assetRawContentAsBlob": "Asset Raw Content As Blob",
-      "extraDetails": "Extra Details",
+      "customAttributesDetailsJSON": "Custom Attributes Details JSON",
       "assetType": "Asset Type",
       "assets": "Assets"
     }

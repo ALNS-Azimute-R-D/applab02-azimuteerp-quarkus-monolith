@@ -70,9 +70,11 @@
               </div>
             }
           </dd>
-          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.supplierIds">Supplier Ids</span></dt>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.activationStatus">Activation Status</span></dt>
           <dd>
-            <span>{{ product.supplierIds }}</span>
+            <span jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + product.activationStatus }}">{{
+              product.activationStatus
+            }}</span>
           </dd>
           <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.brand">Brand</span></dt>
           <dd>
@@ -80,6 +82,15 @@
               <div>
                 <a [routerLink]="['/brand', product.brand.id, 'view']">{{ product.brand.acronym }}</a>
               </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.product.toSupplier">To Supplier</span></dt>
+          <dd>
+            @for (toSupplier of product.toSuppliers; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/supplier', toSupplier.id, 'view']">{{ toSupplier.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
             }
           </dd>
         </dl>

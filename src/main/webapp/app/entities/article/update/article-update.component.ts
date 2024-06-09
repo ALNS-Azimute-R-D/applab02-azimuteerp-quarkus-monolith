@@ -7,12 +7,12 @@ import { finalize, map } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AlertError } from 'app/shared/alert/alert-error.model';
-import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
-import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
+import { IAssetCollection } from 'app/entities/asset-collection/asset-collection.model';
+import { AssetCollectionService } from 'app/entities/asset-collection/service/asset-collection.service';
 import { ICategory } from 'app/entities/category/category.model';
 import { CategoryService } from 'app/entities/category/service/category.service';
 import { SizeOptionEnum } from 'app/entities/enumerations/size-option-enum.model';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 import { ArticleService } from '../service/article.service';
 import { IArticle } from '../article.model';
 import { ArticleFormService, ArticleFormGroup } from './article-form.service';
@@ -27,18 +27,22 @@ export class ArticleUpdateComponent implements OnInit {
   isSaving = false;
   article: IArticle | null = null;
   sizeOptionEnumValues = Object.keys(SizeOptionEnum);
+  activationStatusEnumValues = Object.keys(ActivationStatusEnum);
 
+  assetCollectionsSharedCollection: IAssetCollection[] = [];
   categoriesSharedCollection: ICategory[] = [];
 
-  protected dataUtils = inject(DataUtils);
-  protected eventManager = inject(EventManager);
   protected articleService = inject(ArticleService);
   protected articleFormService = inject(ArticleFormService);
+  protected assetCollectionService = inject(AssetCollectionService);
   protected categoryService = inject(CategoryService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: ArticleFormGroup = this.articleFormService.createArticleFormGroup();
+
+  compareAssetCollection = (o1: IAssetCollection | null, o2: IAssetCollection | null): boolean =>
+    this.assetCollectionService.compareAssetCollection(o1, o2);
 
   compareCategory = (o1: ICategory | null, o2: ICategory | null): boolean => this.categoryService.compareCategory(o1, o2);
 
@@ -50,23 +54,6 @@ export class ArticleUpdateComponent implements OnInit {
       }
 
       this.loadRelationshipsOptions();
-    });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    this.dataUtils.openFile(base64String, contentType);
-  }
-
-  setFileData(event: Event, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
-      error: (err: FileLoadError) =>
-        this.eventManager.broadcast(
-          new EventWithContent<AlertError>('azimuteErpQuarkusAngularMonolith02App.error', { ...err, key: 'error.file.' + err.key }),
-        ),
     });
   }
 
@@ -107,6 +94,10 @@ export class ArticleUpdateComponent implements OnInit {
     this.article = article;
     this.articleFormService.resetForm(this.editForm, article);
 
+    this.assetCollectionsSharedCollection = this.assetCollectionService.addAssetCollectionToCollectionIfMissing<IAssetCollection>(
+      this.assetCollectionsSharedCollection,
+      ...(article.assetCollections ?? []),
+    );
     this.categoriesSharedCollection = this.categoryService.addCategoryToCollectionIfMissing<ICategory>(
       this.categoriesSharedCollection,
       article.mainCategory,
@@ -114,6 +105,19 @@ export class ArticleUpdateComponent implements OnInit {
   }
 
   protected loadRelationshipsOptions(): void {
+    this.assetCollectionService
+      .query()
+      .pipe(map((res: HttpResponse<IAssetCollection[]>) => res.body ?? []))
+      .pipe(
+        map((assetCollections: IAssetCollection[]) =>
+          this.assetCollectionService.addAssetCollectionToCollectionIfMissing<IAssetCollection>(
+            assetCollections,
+            ...(this.article?.assetCollections ?? []),
+          ),
+        ),
+      )
+      .subscribe((assetCollections: IAssetCollection[]) => (this.assetCollectionsSharedCollection = assetCollections));
+
     this.categoryService
       .query()
       .pipe(map((res: HttpResponse<ICategory[]>) => res.body ?? []))

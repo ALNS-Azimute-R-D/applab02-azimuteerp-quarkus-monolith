@@ -32,8 +32,8 @@ type StockLevelFormDefaults = Pick<NewStockLevel, 'id' | 'lastModifiedDate'>;
 type StockLevelFormGroupContent = {
   id: FormControl<StockLevelFormRawValue['id'] | NewStockLevel['id']>;
   lastModifiedDate: FormControl<StockLevelFormRawValue['lastModifiedDate']>;
-  ramainingQuantity: FormControl<StockLevelFormRawValue['ramainingQuantity']>;
-  extraDetails: FormControl<StockLevelFormRawValue['extraDetails']>;
+  remainingQuantity: FormControl<StockLevelFormRawValue['remainingQuantity']>;
+  commonAttributesDetailsJSON: FormControl<StockLevelFormRawValue['commonAttributesDetailsJSON']>;
   warehouse: FormControl<StockLevelFormRawValue['warehouse']>;
   product: FormControl<StockLevelFormRawValue['product']>;
 };
@@ -58,10 +58,12 @@ export class StockLevelFormService {
       lastModifiedDate: new FormControl(stockLevelRawValue.lastModifiedDate, {
         validators: [Validators.required],
       }),
-      ramainingQuantity: new FormControl(stockLevelRawValue.ramainingQuantity, {
+      remainingQuantity: new FormControl(stockLevelRawValue.remainingQuantity, {
         validators: [Validators.required],
       }),
-      extraDetails: new FormControl(stockLevelRawValue.extraDetails),
+      commonAttributesDetailsJSON: new FormControl(stockLevelRawValue.commonAttributesDetailsJSON, {
+        validators: [Validators.maxLength(2048)],
+      }),
       warehouse: new FormControl(stockLevelRawValue.warehouse, {
         validators: [Validators.required],
       }),

@@ -1,6 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20240603223650"
+    "changelogDate": "20240608080907"
   },
   "applications": ["azimuteERPQuarkusAngularMonolith02"],
   "documentation": "- Warehouse\\n- Supplier\\n- Brand\\n- Product\\n- InventoryTransaction\\n- StockLevel",
@@ -22,8 +22,9 @@
     },
     {
       "fieldName": "description",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1024"
     },
     {
       "fieldName": "streetAddress",
@@ -80,9 +81,16 @@
       "fieldValidateRulesMaxlength": "15"
     },
     {
-      "fieldName": "extraDetails",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldName": "customAttributesDetailsJSON",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "2048"
+    },
+    {
+      "fieldName": "activationStatus",
+      "fieldType": "ActivationStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,ON_HOLD,PENDENT,BLOCKED,INVALID"
     }
   ],
   "name": "Warehouse",

@@ -49,13 +49,6 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="customerUserId">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.customerUserId">Customer User Id</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="placedDate">
               <div class="d-flex">
                 <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.placedDate">Placed Date</span>
@@ -84,17 +77,29 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="invoiceId">
-              <div class="d-flex">
-                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.invoiceId">Invoice Id</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
             <th scope="col" jhiSortBy="estimatedDeliveryDate">
               <div class="d-flex">
                 <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.estimatedDeliveryDate">Estimated Delivery Date</span>
 
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activationStatus">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.activationStatus">Activation Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="invoice.description">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.invoice">Invoice</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="customer.fullname">
+              <div class="d-flex">
+                <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.order.customer">Customer</span>
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
@@ -108,13 +113,28 @@
                 <a [routerLink]="['/order', order.id, 'view']">{{ order.id }}</a>
               </td>
               <td>{{ order.businessCode }}</td>
-              <td>{{ order.customerUserId }}</td>
               <td>{{ order.placedDate | formatMediumDatetime }}</td>
               <td>{{ order.totalTaxValue }}</td>
               <td>{{ order.totalDueValue }}</td>
               <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.OrderStatusEnum.' + order.status }}">{{ order.status }}</td>
-              <td>{{ order.invoiceId }}</td>
               <td>{{ order.estimatedDeliveryDate | formatMediumDatetime }}</td>
+              <td jhiTranslate="{{ 'azimuteErpQuarkusAngularMonolith02App.ActivationStatusEnum.' + order.activationStatus }}">
+                {{ order.activationStatus }}
+              </td>
+              <td>
+                @if (order.invoice) {
+                  <div>
+                    <a [routerLink]="['/invoice', order.invoice.id, 'view']">{{ order.invoice.description }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (order.customer) {
+                  <div>
+                    <a [routerLink]="['/customer', order.customer.id, 'view']">{{ order.customer.fullname }}</a>
+                  </div>
+                }
+              </td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/order', order.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

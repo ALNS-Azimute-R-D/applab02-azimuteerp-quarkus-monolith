@@ -15,25 +15,59 @@ describe('Customer e2e test', () => {
   const customerPageUrlPattern = new RegExp('/customer(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const customerSample = {
-    customerBusinessCode: 'phew actualize ',
-    name: 'blah deadly',
-    email: '0@e:.,Qj',
-    status: 'READY_TO_START',
-    active: false,
-  };
+  // const customerSample = {"customerBusinessCode":"disorientate ba","fullname":"woefully ah","customerStatus":"PENDENT","activationStatus":"INVALID"};
 
   let customer;
+  // let person;
 
   beforeEach(() => {
     cy.login(username, password);
   });
+
+  /* Disabled due to incompatibility
+  beforeEach(() => {
+    // create an instance at the required relationship entity:
+    cy.authenticatedRequest({
+      method: 'POST',
+      url: '/api/people',
+      body: {"firstname":"fondly boo ah","lastname":"abaft through excepting","fullname":"intent patrimony","birthDate":"2024-06-07","gender":"OTHER","codeBI":"timer dissociate sha","codeNIF":"provided","streetAddress":"abhor footprint","houseNumber":"excluding notwithsta","locationName":"playfully ick","postalCode":"dollop do","mainEmail":";r@[z.&}","landPhoneNumber":"extroverted","mobilePhoneNumber":"opposite","occupation":"till ouch yahoo","preferredLanguage":"how","usernameInOAuth2":"instead posit","userIdInOAuth2":"officially","customAttributesDetailsJSON":"survey","activationStatus":"INVALID","avatarImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","avatarImgContentType":"unknown"},
+    }).then(({ body }) => {
+      person = body;
+    });
+  });
+   */
 
   beforeEach(() => {
     cy.intercept('GET', '/api/customers+(?*|)').as('entitiesRequest');
     cy.intercept('POST', '/api/customers').as('postEntityRequest');
     cy.intercept('DELETE', '/api/customers/*').as('deleteEntityRequest');
   });
+
+  /* Disabled due to incompatibility
+  beforeEach(() => {
+    // Simulate relationships api for better performance and reproducibility.
+    cy.intercept('GET', '/api/people', {
+      statusCode: 200,
+      body: [person],
+    });
+
+    cy.intercept('GET', '/api/customer-types', {
+      statusCode: 200,
+      body: [],
+    });
+
+    cy.intercept('GET', '/api/districts', {
+      statusCode: 200,
+      body: [],
+    });
+
+    cy.intercept('GET', '/api/orders', {
+      statusCode: 200,
+      body: [],
+    });
+
+  });
+   */
 
   afterEach(() => {
     if (customer) {
@@ -45,6 +79,19 @@ describe('Customer e2e test', () => {
       });
     }
   });
+
+  /* Disabled due to incompatibility
+  afterEach(() => {
+    if (person) {
+      cy.authenticatedRequest({
+        method: 'DELETE',
+        url: `/api/people/${person.id}`,
+      }).then(() => {
+        person = undefined;
+      });
+    }
+  });
+   */
 
   it('Customers menu should load Customers page', () => {
     cy.visit('/');
@@ -81,11 +128,15 @@ describe('Customer e2e test', () => {
     });
 
     describe('with existing value', () => {
+      /* Disabled due to incompatibility
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
           url: '/api/customers',
-          body: customerSample,
+          body: {
+            ...customerSample,
+            buyerPerson: person,
+          },
         }).then(({ body }) => {
           customer = body;
 
@@ -101,13 +152,24 @@ describe('Customer e2e test', () => {
                 link: '<http://localhost/api/customers?page=0&size=20>; rel="last",<http://localhost/api/customers?page=0&size=20>; rel="first"',
               },
               body: [customer],
-            },
+            }
           ).as('entitiesRequestInternal');
         });
 
         cy.visit(customerPageUrl);
 
         cy.wait('@entitiesRequestInternal');
+      });
+       */
+
+      beforeEach(function () {
+        cy.visit(customerPageUrl);
+
+        cy.wait('@entitiesRequest').then(({ response }) => {
+          if (response.body.length === 0) {
+            this.skip();
+          }
+        });
       });
 
       it('detail button click should load details Customer page', () => {
@@ -141,7 +203,7 @@ describe('Customer e2e test', () => {
         cy.url().should('match', customerPageUrlPattern);
       });
 
-      it('last delete button click should delete instance of Customer', () => {
+      it.skip('last delete button click should delete instance of Customer', () => {
         cy.get(entityDeleteButtonSelector).last().click();
         cy.getEntityDeleteDialogHeading('customer').should('exist');
         cy.get(entityConfirmDeleteButtonSelector).click();
@@ -165,33 +227,21 @@ describe('Customer e2e test', () => {
       cy.getEntityCreateUpdateHeading('Customer');
     });
 
-    it('should create an instance of Customer', () => {
-      cy.get(`[data-cy="customerBusinessCode"]`).type('hastily like in');
-      cy.get(`[data-cy="customerBusinessCode"]`).should('have.value', 'hastily like in');
+    it.skip('should create an instance of Customer', () => {
+      cy.get(`[data-cy="customerBusinessCode"]`).type('demerge condesc');
+      cy.get(`[data-cy="customerBusinessCode"]`).should('have.value', 'demerge condesc');
 
-      cy.get(`[data-cy="name"]`).type('wet yodel mask');
-      cy.get(`[data-cy="name"]`).should('have.value', 'wet yodel mask');
+      cy.get(`[data-cy="fullname"]`).type('oof cup');
+      cy.get(`[data-cy="fullname"]`).should('have.value', 'oof cup');
 
-      cy.get(`[data-cy="description"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="description"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).type('concerning');
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).should('have.value', 'concerning');
 
-      cy.get(`[data-cy="email"]`).type('w/8?:I@#.^');
-      cy.get(`[data-cy="email"]`).should('have.value', 'w/8?:I@#.^');
+      cy.get(`[data-cy="customerStatus"]`).select('IN_FAILURE');
 
-      cy.get(`[data-cy="addressDetails"]`).type('cough');
-      cy.get(`[data-cy="addressDetails"]`).should('have.value', 'cough');
+      cy.get(`[data-cy="activationStatus"]`).select('PENDENT');
 
-      cy.get(`[data-cy="zipCode"]`).type('56262-94');
-      cy.get(`[data-cy="zipCode"]`).should('have.value', '56262-94');
-
-      cy.get(`[data-cy="keycloakGroupDetails"]`).type('neatly joshingly ironclad');
-      cy.get(`[data-cy="keycloakGroupDetails"]`).should('have.value', 'neatly joshingly ironclad');
-
-      cy.get(`[data-cy="status"]`).select('ONBOARDING');
-
-      cy.get(`[data-cy="active"]`).should('not.be.checked');
-      cy.get(`[data-cy="active"]`).click();
-      cy.get(`[data-cy="active"]`).should('be.checked');
+      cy.get(`[data-cy="buyerPerson"]`).select(1);
 
       cy.get(entityCreateSaveButtonSelector).click();
 

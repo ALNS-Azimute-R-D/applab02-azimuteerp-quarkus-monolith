@@ -21,12 +21,13 @@ describe('Article Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             inventoryProductId: expect.any(Object),
+            skuCode: expect.any(Object),
             customName: expect.any(Object),
             customDescription: expect.any(Object),
             priceValue: expect.any(Object),
             itemSize: expect.any(Object),
-            assetsCollectionUUID: expect.any(Object),
-            isEnabled: expect.any(Object),
+            activationStatus: expect.any(Object),
+            assetCollections: expect.any(Object),
             mainCategory: expect.any(Object),
           }),
         );
@@ -39,12 +40,13 @@ describe('Article Form Service', () => {
           expect.objectContaining({
             id: expect.any(Object),
             inventoryProductId: expect.any(Object),
+            skuCode: expect.any(Object),
             customName: expect.any(Object),
             customDescription: expect.any(Object),
             priceValue: expect.any(Object),
             itemSize: expect.any(Object),
-            assetsCollectionUUID: expect.any(Object),
-            isEnabled: expect.any(Object),
+            activationStatus: expect.any(Object),
+            assetCollections: expect.any(Object),
             mainCategory: expect.any(Object),
           }),
         );

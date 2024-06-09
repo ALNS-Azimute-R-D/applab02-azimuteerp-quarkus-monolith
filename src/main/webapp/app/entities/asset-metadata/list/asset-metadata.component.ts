@@ -9,11 +9,10 @@ import { sortStateSignal, SortDirective, SortByDirective, type SortState, SortSe
 import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe } from 'app/shared/date';
 import { ItemCountComponent } from 'app/shared/pagination';
 import { FormsModule } from '@angular/forms';
+
 import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
 import { SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
-import { DataUtils } from 'app/core/util/data-util.service';
 import { IAssetMetadata } from '../asset-metadata.model';
-
 import { EntityArrayResponseType, AssetMetadataService } from '../service/asset-metadata.service';
 import { AssetMetadataDeleteDialogComponent } from '../delete/asset-metadata-delete-dialog.component';
 
@@ -48,7 +47,6 @@ export class AssetMetadataComponent implements OnInit {
   protected assetMetadataService = inject(AssetMetadataService);
   protected activatedRoute = inject(ActivatedRoute);
   protected sortService = inject(SortService);
-  protected dataUtils = inject(DataUtils);
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
@@ -61,14 +59,6 @@ export class AssetMetadataComponent implements OnInit {
         tap(() => this.load()),
       )
       .subscribe();
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(base64String: string, contentType: string | null | undefined): void {
-    return this.dataUtils.openFile(base64String, contentType);
   }
 
   delete(assetMetadata: IAssetMetadata): void {

@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (commonLocality) {
+      <div>
+        <h2 data-cy="commonLocalityDetailsHeading">
+          <span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.commonLocality.detail.title">Common Locality</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ commonLocality.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.commonLocality.acronym">Acronym</span></dt>
+          <dd>
+            <span>{{ commonLocality.acronym }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.commonLocality.name">Name</span></dt>
+          <dd>
+            <span>{{ commonLocality.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.commonLocality.description">Description</span></dt>
+          <dd>
+            <span>{{ commonLocality.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.commonLocality.streetAddress">Street Address</span></dt>
+          <dd>
+            <span>{{ commonLocality.streetAddress }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.commonLocality.houseNumber">House Number</span></dt>
+          <dd>
+            <span>{{ commonLocality.houseNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.commonLocality.locationName">Location Name</span></dt>
+          <dd>
+            <span>{{ commonLocality.locationName }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.commonLocality.postalCode">Postal Code</span></dt>
+          <dd>
+            <span>{{ commonLocality.postalCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.commonLocality.geoPolygonArea">Geo Polygon Area</span></dt>
+          <dd>
+            @if (commonLocality.geoPolygonArea) {
+              <div>
+                <a
+                  (click)="openFile(commonLocality.geoPolygonArea, commonLocality.geoPolygonAreaContentType)"
+                  jhiTranslate="entity.action.open"
+                  >Open</a
+                >
+                {{ commonLocality.geoPolygonAreaContentType }}, {{ byteSize(commonLocality.geoPolygonArea) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="azimuteErpQuarkusAngularMonolith02App.commonLocality.district">District</span></dt>
+          <dd>
+            @if (commonLocality.district) {
+              <div>
+                <a [routerLink]="['/district', commonLocality.district.id, 'view']">{{ commonLocality.district.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/common-locality', commonLocality.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

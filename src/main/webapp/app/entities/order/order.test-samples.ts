@@ -5,38 +5,36 @@ import { IOrder, NewOrder } from './order.model';
 export const sampleWithRequiredData: IOrder = {
   id: 26290,
   businessCode: 'now provided',
-  customerUserId: 'establishment cathedral rich',
-  placedDate: dayjs('2024-06-03T14:15'),
-  status: 'CANCELLED',
+  placedDate: dayjs('2024-06-07T15:46'),
+  status: 'COMPLETED',
+  activationStatus: 'INVALID',
 };
 
 export const sampleWithPartialData: IOrder = {
-  id: 2793,
-  businessCode: 'drat',
-  customerUserId: 'brr helplessly upon',
-  placedDate: dayjs('2024-06-03T21:40'),
-  totalTaxValue: 31638.47,
-  totalDueValue: 25275.1,
-  status: 'CANCELLED',
+  id: 16216,
+  businessCode: 'cathedral',
+  placedDate: dayjs('2024-06-07T16:52'),
+  totalTaxValue: 23293.98,
+  status: 'COMPLETED',
+  activationStatus: 'BLOCKED',
 };
 
 export const sampleWithFullData: IOrder = {
-  id: 29175,
-  businessCode: 'yahoo background res',
-  customerUserId: 'chomp',
-  placedDate: dayjs('2024-06-03T19:14'),
-  totalTaxValue: 5736.25,
-  totalDueValue: 30931.09,
+  id: 26566,
+  businessCode: 'reverse whirlpool',
+  placedDate: dayjs('2024-06-07T13:17'),
+  totalTaxValue: 14290.85,
+  totalDueValue: 32011.89,
   status: 'CANCELLED',
-  invoiceId: 3522,
-  estimatedDeliveryDate: dayjs('2024-06-03T13:17'),
+  estimatedDeliveryDate: dayjs('2024-06-07T11:33'),
+  activationStatus: 'BLOCKED',
 };
 
 export const sampleWithNewData: NewOrder = {
-  businessCode: 'circa',
-  customerUserId: 'antique concerning within',
-  placedDate: dayjs('2024-06-03T04:34'),
+  businessCode: 'eek',
+  placedDate: dayjs('2024-06-07T09:10'),
   status: 'COMPLETED',
+  activationStatus: 'ACTIVE',
   id: null,
 };
 

@@ -10,7 +10,7 @@ export const sampleWithPartialData: IAssetMetadata = {
 
 export const sampleWithFullData: IAssetMetadata = {
   id: 342,
-  metadataDetails: '../fake-data/blob/hipster.txt',
+  metadataDetailsJSON: 'apud zowie sans',
 };
 
 export const sampleWithNewData: NewAssetMetadata = {

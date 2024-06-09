@@ -10,8 +10,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
-import { IProduct } from 'app/entities/product/product.model';
-import { ProductService } from 'app/entities/product/service/product.service';
+import { IPerson } from 'app/entities/person/person.model';
+import { PersonService } from 'app/entities/person/service/person.service';
+import { ActivationStatusEnum } from 'app/entities/enumerations/activation-status-enum.model';
 import { SupplierService } from '../service/supplier.service';
 import { ISupplier } from '../supplier.model';
 import { SupplierFormService, SupplierFormGroup } from './supplier-form.service';
@@ -25,20 +26,21 @@ import { SupplierFormService, SupplierFormGroup } from './supplier-form.service'
 export class SupplierUpdateComponent implements OnInit {
   isSaving = false;
   supplier: ISupplier | null = null;
+  activationStatusEnumValues = Object.keys(ActivationStatusEnum);
 
-  productsSharedCollection: IProduct[] = [];
+  peopleSharedCollection: IPerson[] = [];
 
   protected dataUtils = inject(DataUtils);
   protected eventManager = inject(EventManager);
   protected supplierService = inject(SupplierService);
   protected supplierFormService = inject(SupplierFormService);
-  protected productService = inject(ProductService);
+  protected personService = inject(PersonService);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: SupplierFormGroup = this.supplierFormService.createSupplierFormGroup();
 
-  compareProduct = (o1: IProduct | null, o2: IProduct | null): boolean => this.productService.compareProduct(o1, o2);
+  comparePerson = (o1: IPerson | null, o2: IPerson | null): boolean => this.personService.comparePerson(o1, o2);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ supplier }) => {
@@ -105,21 +107,19 @@ export class SupplierUpdateComponent implements OnInit {
     this.supplier = supplier;
     this.supplierFormService.resetForm(this.editForm, supplier);
 
-    this.productsSharedCollection = this.productService.addProductToCollectionIfMissing<IProduct>(
-      this.productsSharedCollection,
-      ...(supplier.productsLists ?? []),
+    this.peopleSharedCollection = this.personService.addPersonToCollectionIfMissing<IPerson>(
+      this.peopleSharedCollection,
+      supplier.representativePerson,
     );
   }
 
   protected loadRelationshipsOptions(): void {
-    this.productService
+    this.personService
       .query()
-      .pipe(map((res: HttpResponse<IProduct[]>) => res.body ?? []))
+      .pipe(map((res: HttpResponse<IPerson[]>) => res.body ?? []))
       .pipe(
-        map((products: IProduct[]) =>
-          this.productService.addProductToCollectionIfMissing<IProduct>(products, ...(this.supplier?.productsLists ?? [])),
-        ),
+        map((people: IPerson[]) => this.personService.addPersonToCollectionIfMissing<IPerson>(people, this.supplier?.representativePerson)),
       )
-      .subscribe((products: IProduct[]) => (this.productsSharedCollection = products));
+      .subscribe((people: IPerson[]) => (this.peopleSharedCollection = people));
   }
 }

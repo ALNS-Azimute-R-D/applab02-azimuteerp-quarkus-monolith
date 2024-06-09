@@ -22,17 +22,30 @@
         <div class="mb-3">
           <label
             class="form-label"
-            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.assetMetadata.metadataDetails"
-            for="field_metadataDetails"
-            >Metadata Details</label
+            jhiTranslate="azimuteErpQuarkusAngularMonolith02App.assetMetadata.metadataDetailsJSON"
+            for="field_metadataDetailsJSON"
+            >Metadata Details JSON</label
           >
-          <textarea
+          <input
+            type="text"
             class="form-control"
-            name="metadataDetails"
-            id="field_metadataDetails"
-            data-cy="metadataDetails"
-            formControlName="metadataDetails"
-          ></textarea>
+            name="metadataDetailsJSON"
+            id="field_metadataDetailsJSON"
+            data-cy="metadataDetailsJSON"
+            formControlName="metadataDetailsJSON"
+          />
+          @if (
+            editForm.get('metadataDetailsJSON')!.invalid &&
+            (editForm.get('metadataDetailsJSON')!.dirty || editForm.get('metadataDetailsJSON')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('metadataDetailsJSON')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 8192 }"
+                  >This field cannot be longer than 8192 characters.</small
+                >
+              }
+            </div>
+          }
         </div>
 
         <div class="mb-3">

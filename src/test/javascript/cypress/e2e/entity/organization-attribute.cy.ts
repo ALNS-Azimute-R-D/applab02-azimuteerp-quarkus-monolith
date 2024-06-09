@@ -30,7 +30,7 @@ describe('OrganizationAttribute e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/organizations',
-      body: {"acronym":"discrepancy giddy in","businessCode":"stupefy restful","hierarchicalLevel":"on","name":"row","description":"save","businessHandlerClazz":"dart water gratefully","mainContactPersonDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","technicalEnvironmentsDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","commonCustomAttributesDetails":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=","organizationStatus":"READY_TO_START","activationStatus":"INVALID","logoImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","logoImgContentType":"unknown"},
+      body: {"acronym":"yum","businessCode":"helpless","hierarchicalLevel":"plugin where wobble","name":"muskrat with nudge","description":"vector step-mother colossal","businessHandlerClazz":"thwart nearer cautiously","mainContactPersonDetailsJSON":"partial within ew","technicalEnvironmentsDetailsJSON":"beg","customAttributesDetailsJSON":"mmm mmm trickle","organizationStatus":"ONBOARDING","activationStatus":"ACTIVE","logoImg":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","logoImgContentType":"unknown"},
     }).then(({ body }) => {
       organization = body;
     });

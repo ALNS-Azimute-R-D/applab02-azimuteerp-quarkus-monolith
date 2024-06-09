@@ -18,16 +18,17 @@
         "title": "Asset"
       },
       "id": "ID",
-      "uid": "Uid",
       "name": "Name",
       "storageTypeUsed": "Storage Type Used",
       "fullFilenamePath": "Full Filename Path",
       "status": "Status",
       "preferredPurpose": "Preferred Purpose",
       "assetContentAsBlob": "Asset Content As Blob",
+      "activationStatus": "Activation Status",
       "assetType": "Asset Type",
       "rawAssetProcTmp": "Raw Asset Proc Tmp",
-      "assetMetadata": "Asset Metadata"
+      "assetMetadata": "Asset Metadata",
+      "assetCollection": "Asset Collection"
     }
   }
 }

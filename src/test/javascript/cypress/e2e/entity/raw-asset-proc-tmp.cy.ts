@@ -15,7 +15,7 @@ describe('RawAssetProcTmp e2e test', () => {
   const rawAssetProcTmpPageUrlPattern = new RegExp('/raw-asset-proc-tmp(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const rawAssetProcTmpSample = { name: 'omission humanize given' };
+  const rawAssetProcTmpSample = { name: 'ick reset' };
 
   let rawAssetProcTmp;
   let assetType;
@@ -30,11 +30,11 @@ describe('RawAssetProcTmp e2e test', () => {
       method: 'POST',
       url: '/api/asset-types',
       body: {
-        acronym: 'streetcar',
-        name: 'by mid carelessly',
-        description: 'bogus',
-        handlerClazzName: 'regarding dressing investigate',
-        extraDetails: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci50eHQ=',
+        acronym: 'tambour brr',
+        name: 'forenenst ick',
+        description: 'officially weak',
+        handlerClazzName: 'gee',
+        customAttributesDetailsJSON: 'bath contemplate',
       },
     }).then(({ body }) => {
       assetType = body;
@@ -205,18 +205,18 @@ describe('RawAssetProcTmp e2e test', () => {
     });
 
     it('should create an instance of RawAssetProcTmp', () => {
-      cy.get(`[data-cy="name"]`).type('clever fearless rough');
-      cy.get(`[data-cy="name"]`).should('have.value', 'clever fearless rough');
+      cy.get(`[data-cy="name"]`).type('fluster');
+      cy.get(`[data-cy="name"]`).should('have.value', 'fluster');
 
-      cy.get(`[data-cy="statusRawProcessing"]`).select('WAITING_FOR_PROCESSING');
+      cy.get(`[data-cy="statusRawProcessing"]`).select('PROCESSING');
 
-      cy.get(`[data-cy="fullFilenamePath"]`).type('understatement oh');
-      cy.get(`[data-cy="fullFilenamePath"]`).should('have.value', 'understatement oh');
+      cy.get(`[data-cy="fullFilenamePath"]`).type('yet');
+      cy.get(`[data-cy="fullFilenamePath"]`).should('have.value', 'yet');
 
       cy.setFieldImageAsBytesOfEntity('assetRawContentAsBlob', 'integration-test.png', 'image/png');
 
-      cy.get(`[data-cy="extraDetails"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="extraDetails"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).type('anglicize except indeed');
+      cy.get(`[data-cy="customAttributesDetailsJSON"]`).should('have.value', 'anglicize except indeed');
 
       cy.get(`[data-cy="assetType"]`).select(1);
 

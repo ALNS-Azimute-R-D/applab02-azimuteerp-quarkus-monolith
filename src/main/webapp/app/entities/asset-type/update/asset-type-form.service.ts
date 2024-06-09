@@ -22,7 +22,7 @@ type AssetTypeFormGroupContent = {
   name: FormControl<IAssetType['name']>;
   description: FormControl<IAssetType['description']>;
   handlerClazzName: FormControl<IAssetType['handlerClazzName']>;
-  extraDetails: FormControl<IAssetType['extraDetails']>;
+  customAttributesDetailsJSON: FormControl<IAssetType['customAttributesDetailsJSON']>;
 };
 
 export type AssetTypeFormGroup = FormGroup<AssetTypeFormGroupContent>;
@@ -54,7 +54,9 @@ export class AssetTypeFormService {
       handlerClazzName: new FormControl(assetTypeRawValue.handlerClazzName, {
         validators: [Validators.maxLength(255)],
       }),
-      extraDetails: new FormControl(assetTypeRawValue.extraDetails),
+      customAttributesDetailsJSON: new FormControl(assetTypeRawValue.customAttributesDetailsJSON, {
+        validators: [Validators.maxLength(2048)],
+      }),
     });
   }
 

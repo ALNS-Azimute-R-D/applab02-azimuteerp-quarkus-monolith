@@ -20,8 +20,9 @@ describe('Person Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            firstName: expect.any(Object),
-            lastName: expect.any(Object),
+            firstname: expect.any(Object),
+            lastname: expect.any(Object),
+            fullname: expect.any(Object),
             birthDate: expect.any(Object),
             gender: expect.any(Object),
             codeBI: expect.any(Object),
@@ -37,7 +38,7 @@ describe('Person Form Service', () => {
             preferredLanguage: expect.any(Object),
             usernameInOAuth2: expect.any(Object),
             userIdInOAuth2: expect.any(Object),
-            extraDetails: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
             activationStatus: expect.any(Object),
             avatarImg: expect.any(Object),
             typeOfPerson: expect.any(Object),
@@ -53,8 +54,9 @@ describe('Person Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            firstName: expect.any(Object),
-            lastName: expect.any(Object),
+            firstname: expect.any(Object),
+            lastname: expect.any(Object),
+            fullname: expect.any(Object),
             birthDate: expect.any(Object),
             gender: expect.any(Object),
             codeBI: expect.any(Object),
@@ -70,7 +72,7 @@ describe('Person Form Service', () => {
             preferredLanguage: expect.any(Object),
             usernameInOAuth2: expect.any(Object),
             userIdInOAuth2: expect.any(Object),
-            extraDetails: expect.any(Object),
+            customAttributesDetailsJSON: expect.any(Object),
             activationStatus: expect.any(Object),
             avatarImg: expect.any(Object),
             typeOfPerson: expect.any(Object),
